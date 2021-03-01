@@ -20,6 +20,12 @@ export default {
   css: [
   ],
   plugins: [
+    '~plugins/config',
+    '~plugins/i18n',
+    '~plugins/axios',
+    '~plugins/api',
+    '~plugins/vuelidate',
+    '~plugins/vue-notify',
   ],
   components: true,
   buildModules: [
@@ -29,6 +35,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
 
   axios: {},
@@ -55,4 +62,9 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
+  ,
+  server: {
+    port: 8000,
+    host: `0.0.0.0`,
+  },
 }

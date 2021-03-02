@@ -23,6 +23,9 @@ const testValidate = {
   password: {
     required,
   },
+  note: {
+    required,
+  }
 }
 
 export default testValidate;

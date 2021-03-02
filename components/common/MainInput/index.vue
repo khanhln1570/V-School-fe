@@ -1,17 +1,30 @@
 <template lang="">
-  <div enter-class="aa">
+  <div>
     <label :for="name" class="form__input form__input--label" v-if="label">{{
       label
     }}</label>
-    <v-text-field
-      :id="name"
-      outlined
-      dense
-      v-model="value"
-      hide-details="auto"
-      :placeholder="placeholder"
-      :type="type"
-    ></v-text-field>
+    <v-input>
+      <slot>
+        <textarea
+          v-if="type === 'textarea'"
+          :id="name"
+          :type="type"
+          :placeholder="placeholder"
+          :value="value"
+          @input="$emit('input', $event.target.value.trim('.'))"
+          class="rounded-lg"
+        />
+        <input
+          v-else
+          :id="name"
+          :type="type"
+          :placeholder="placeholder"
+          :value="value"
+          @input="$emit('input', $event.target.value.trim('.'))"
+          class="rounded-lg"
+        />
+      </slot>
+    </v-input>
   </div>
 </template>
 
@@ -25,37 +38,37 @@ const TYPES = [
   "tel",
   "search",
   "color",
-  "textarea",
+  "textarea"
 ];
 
 export default {
   props: {
     value: {
       type: [String, Number],
-      default: null,
+      default: null
     },
     label: {
       type: String,
-      default: null,
+      default: null
     },
     placeholder: {
       type: String,
-      default: null,
+      default: null
     },
     name: {
       type: String,
       default: null,
-      required: true,
+      required: true
     },
     type: {
       type: String,
-      default: "text",
+      default: "text"
     },
     invalid: {
       type: Boolean,
-      default: true,
-    },
-  },
+      default: true
+    }
+  }
 };
 </script>
 

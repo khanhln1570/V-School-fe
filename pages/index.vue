@@ -11,9 +11,25 @@
         </v-card-title>
         <v-card-text>
           <p>{{ $v.form.email }}</p>
-          <p>{{ form.email }}</p>
-          <CommonMainInput label="abc" name="email" type="email" />
-          <CommonMainInput label="password" name="password" type="password" />
+          <CommonMainInput
+            label="abc"
+            name="email"
+            type="email"
+            v-model="$v.form.email.$model"
+          />
+          <CommonMainInput
+            label="password"
+            name="password"
+            type="password"
+            v-model="$v.form.password.$model"
+          />
+          <CommonMainInput
+            label="test"
+            name="test"
+            type="textarea"
+            v-model="$v.form.note.$model"
+          />
+          <p>{{ $v.form.password }}</p>
         </v-card-text>
       </v-card>
     </v-col>
@@ -21,21 +37,15 @@
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
-import VuetifyLogo from "~/components/VuetifyLogo.vue";
 import testValidation from "@/validations/test/test.validate";
 
-console.log(testValidation);
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
-  },
   data() {
     return {
       form: {
         email: null,
         password: null,
+        note: null,
       },
     };
   },

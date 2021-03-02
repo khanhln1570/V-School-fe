@@ -56,7 +56,13 @@ export default {
           success: colors.green.accent3
         }
       }
-    }
+    },
+    defaultAssets: {
+      font: {
+        family: "Poppins",
+      },
+      icons: "mdi",
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -7,6 +7,7 @@ export default {
   validation: {
     email: 'Please enter a valid email address.',
     required: 'This is a required field.',
+    password: 'Password must have at least 8 letters.',
     alpha: 'Field accepts only character.',
     phoneNumber: 'Plase enter a valid mobile number.',
     validNric: 'Please enter a valid NRIC number.',

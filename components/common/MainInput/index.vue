@@ -3,7 +3,8 @@
     <label :for="name" class="form__input form__input--label" v-if="label">{{
       label
     }}</label>
-    <v-input>
+    <p>{{errors}}</p>
+    <v-input :error-messages="errors.length ? errors[0] : ''">
       <slot>
         <textarea
           v-if="type === 'textarea'"
@@ -29,6 +30,12 @@
 </template>
 
 <script>
+import template from "lodash/template";
+import templateSettings from "lodash/templateSettings";
+
+// curly brace syntax
+templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+
 const TYPES = [
   "text",
   "password",
@@ -67,7 +74,54 @@ export default {
     invalid: {
       type: Boolean,
       default: true
+    },
+    validation: {
+      type: Object,
+      default: null,
+      required: true,
     }
+  },
+  data() {
+    return {
+      templatesMap: {
+        email: this.$t("validation.email"),
+        password: this.$t("validation.password"),
+        alpha: this.$t("validation.alpha"),
+        required: this.$t("validation.required"),
+        phoneNumber: this.$t("validation.phoneNumber"),
+        validNric: this.$t("validation.validNric"),
+        minAge: this.$t("validation.minAge"),
+        number: this.$t("validation.number"),
+        amount: this.$t("validation.amount"),
+        minAmount: this.$t("validation.minAmount"),
+        maxLengthAmount: this.$t("validation.maxLengthAmount"),
+        maxLengthReceipt: this.$t("validation.maxLengthReceipt"),
+        isUnique: this.$t("validation.isUnique")
+      },
+    }
+  },
+  computed: {
+    errors() {
+      if (!this.invalid) {
+        return [];
+      }
+      return Object.keys(this.validation.$params).reduce(
+        (errors, validator) => {
+          if (!this.validation[validator]) {
+            const compiled = template(this.templatesMap[validator]);
+            errors.push(compiled(this.validation.$params[validator]));
+          }
+
+          return errors;
+        },
+        []
+      );
+    },
+    invalid() {
+      if(!this.validation) return;
+      
+      return this.validation.$dirty && this.validation.$invalid;
+    },
   }
 };
 </script>

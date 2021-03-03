@@ -37,6 +37,11 @@ export default {
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
   ],
+  router: {
+    middleware: [
+      'authentication'
+    ]
+  },
 
   axios: {},
 

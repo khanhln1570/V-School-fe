@@ -54,6 +54,12 @@
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
+        <v-list-item @click.native="handleLogout">
+          <v-list-item-action>
+            <v-icon light> mdi-logout </v-icon>
+          </v-list-item-action>
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-footer :absolute="!fixed" app>
@@ -63,6 +69,7 @@
 </template>
 
 <script>
+import {CLEAR_AUTH_MUTATION} from '~/store/auth/auth.constants';
 export default {
   data() {
     return {
@@ -87,5 +94,10 @@ export default {
       title: "Vuetify.js",
     };
   },
+  methods: {
+    handleLogout() {
+      this.$store.commit(CLEAR_AUTH_MUTATION)
+    }
+  }
 };
 </script>

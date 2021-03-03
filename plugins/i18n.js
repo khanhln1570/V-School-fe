@@ -21,8 +21,6 @@ export default async ({ app, store }, inject) => {
  * @param {String} locale
  */
 export async function loadMessages(locale) {
-  console.log(locale);
-
   if (Object.keys(i18n.getLocaleMessage(locale)).length === 0) {
     const messages = await import(
       /* webpackChunkName: "lang-[request]" */ `~/lang/${locale}`

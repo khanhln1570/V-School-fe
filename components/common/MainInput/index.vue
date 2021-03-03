@@ -3,7 +3,6 @@
     <label :for="name" class="form__input form__input--label" v-if="label">{{
       label
     }}</label>
-    <p>{{errors}}</p>
     <v-input :error-messages="errors.length ? errors[0] : ''">
       <slot>
         <textarea
@@ -70,10 +69,6 @@ export default {
     type: {
       type: String,
       default: "text"
-    },
-    invalid: {
-      type: Boolean,
-      default: true
     },
     validation: {
       type: Object,

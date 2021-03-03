@@ -11,7 +11,7 @@
         </v-card-title>
         <v-card-text>
           <p>{{ $v.form.email }}</p>
-          <CommonMainInput
+          <!-- <CommonMainInput
             label="abc"
             name="email"
             type="email"
@@ -28,7 +28,7 @@
             name="test"
             type="textarea"
             v-model="$v.form.note.$model"
-          />
+          /> -->
           <p>{{ $v.form.password }}</p>
         </v-card-text>
       </v-card>

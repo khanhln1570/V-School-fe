@@ -1,41 +1,41 @@
 <template>
-  <div class="signin-container d-flex justify-end">
-    <v-card
-      width="100%"
-      class="signin-left px-5 py-16"
-      elevation="0"
-    >
-      <v-card-title>Sign in</v-card-title>
-      <p>{{$v.form.email}}</p>
+  <div class="signin-container d-flex justify-end flex-column-reverse flex-md-row ">
+    <v-card width="100%" class="signin-left px-5 py-16" elevation="0">
+      <v-card-title class="pa-0 mb-5"><h2>Sign In</h2></v-card-title>
       <CommonMainInput
-        label="abc"
+        label="Email"
         name="email"
         type="email"
         v-model.trim="$v.form.email.$model"
         :validation="$v.form.email"
       />
       <CommonMainInput
-        label="password"
+        label="Password"
         name="password"
         type="password"
         v-model.trim="$v.form.password.$model"
         :validation="$v.form.password"
       />
-      <p>{{$v.form.password}}</p>
-      <v-btn>Sign in</v-btn>
+      <v-btn @click="onSubmit">Sign in</v-btn>
     </v-card>
     <v-sheet
-      class="signin-left"
+      class="signin-left d-flex justify-center align-center"
       color="light-blue lighten-4"
       elevation="3"
-      min-height="50vh"
+      min-height="100vh"
       min-width="55vw"
-    ></v-sheet>
+    >
+      <div>
+        <h1 class="text-center">Madison technology</h1>
+        <h3 class="text-center">Since 2019</h3>
+      </div>
+    </v-sheet>
   </div>
 </template>
 
 <script>
-import {signIn} from '~/validations/auth/auth.validate';
+import { signIn } from "~/validations/auth/auth.validate";
+import {SIGN_IN_ACTION} from '~/store/auth/auth.constants';
 export default {
   layout: "auth",
   middleware: "",
@@ -45,10 +45,28 @@ export default {
         email: null,
         password: null,
       },
+      loading: false,
     };
   },
   validations: {
-    form: signIn
+    form: signIn,
+  },
+  methods: {
+    async onSubmit() {
+      this.$v.$touch();
+
+      console.log("object");
+      if (this.$v.$invalid) {
+        return;
+      }
+
+      // do your submit logic here
+      this.loading = true;
+      await this.$store.dispatch(SIGN_IN_ACTION, {
+        ...this.form,
+      });
+      this.loading = false;
+    }
   }
 };
 </script>

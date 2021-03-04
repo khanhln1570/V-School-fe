@@ -1,20 +1,18 @@
 <template lang="">
-  <div>
-    <label :for="name" class="form__input form__input--label" v-if="label">{{
+<div>
+  <div class="input-header d-flex justify-space-between">
+    <label :for="name" class="" v-if="label">{{
       label
     }}</label>
-    <v-input :error-messages="errors.length ? errors[0] : ''">
-      <slot>
-        <textarea
-          v-if="type === 'textarea'"
-          :id="name"
-          :type="type"
-          :placeholder="placeholder"
-          :value="value"
-          @input="$emit('input', $event.target.value.trim('.'))"
-          class="rounded-lg"
-        />
-        <input
+    <nuxt-link class="" v-if="labelLink" :to="labelLink.link">{{
+      labelLink.name
+    }}</nuxt-link>
+  </div>
+
+  <v-input :error-messages="errors.length ? errors[0] : ''">
+    <slot>
+      <textarea v-if="type === 'textarea'" :id="name" :type="type" :placeholder="placeholder" :value="value" @input="$emit('input', $event.target.value.trim('.'))" class="rounded-lg" />
+      <input
           v-else
           :id="name"
           :type="type"
@@ -44,37 +42,41 @@ const TYPES = [
   "tel",
   "search",
   "color",
-  "textarea"
+  "textarea",
 ];
 
 export default {
   props: {
     value: {
       type: [String, Number],
-      default: null
+      default: null,
     },
     label: {
       type: String,
-      default: null
+      default: null,
     },
     placeholder: {
       type: String,
-      default: null
+      default: null,
     },
     name: {
       type: String,
       default: null,
-      required: true
+      required: true,
     },
     type: {
       type: String,
-      default: "text"
+      default: "text",
     },
     validation: {
       type: Object,
       default: null,
       required: true,
-    }
+    },
+    labelLink: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
@@ -91,9 +93,9 @@ export default {
         minAmount: this.$t("validation.minAmount"),
         maxLengthAmount: this.$t("validation.maxLengthAmount"),
         maxLengthReceipt: this.$t("validation.maxLengthReceipt"),
-        isUnique: this.$t("validation.isUnique")
+        isUnique: this.$t("validation.isUnique"),
       },
-    }
+    };
   },
   computed: {
     errors() {
@@ -113,11 +115,11 @@ export default {
       );
     },
     invalid() {
-      if(!this.validation) return;
-      
+      if (!this.validation) return;
+
       return this.validation.$dirty && this.validation.$invalid;
     },
-  }
+  },
 };
 </script>
 

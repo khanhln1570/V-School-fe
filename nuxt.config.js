@@ -18,6 +18,7 @@ export default {
     ]
   },
   css: [
+    '~/assets/scss/reset.scss'
   ],
   plugins: [
     '~plugins/config',

@@ -15,8 +15,9 @@
         type="password"
         v-model.trim="$v.form.password.$model"
         :validation="$v.form.password"
+        :labelLink="{link:'reset-password', name: 'Forgot Password ?'}"
       />
-      <v-btn @click="onSubmit">Sign in</v-btn>
+      <v-btn color="primary" @click="onSubmit">Sign in</v-btn>
     </v-card>
     <v-sheet
       class="signin-left d-flex justify-center align-center"
@@ -55,7 +56,6 @@ export default {
     async onSubmit() {
       this.$v.$touch();
 
-      console.log("object");
       if (this.$v.$invalid) {
         return;
       }
@@ -71,4 +71,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" src="./SignIn.scss"></style>

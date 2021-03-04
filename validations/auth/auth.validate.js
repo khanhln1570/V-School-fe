@@ -43,3 +43,10 @@ export const signIn = {
     password: minLength(8),
   }
 };
+
+export const forgotPassword = {
+  email: {
+    required,
+    email,
+  },
+};

@@ -1,0 +1,15 @@
+.spacer-custom {
+  display: block;
+  transition: width 2s;
+  &--active {
+    width: 12rem;
+  }
+}
+
+.v-toolbar__extension {
+  border-top: 1px solid #EAEDF6;
+}
+
+.main-drawler .v-list-item__content {
+  margin-left: -1rem !important;
+}

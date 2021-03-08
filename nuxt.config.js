@@ -18,7 +18,8 @@ export default {
     ]
   },
   css: [
-    '~/assets/scss/reset.scss'
+    '~/assets/scss/reset.scss',
+    '~/assets/scss/custom.scss'
   ],
   plugins: [
     '~plugins/config',
@@ -60,6 +61,9 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          background: "#EAEDF6",
         }
       }
     },

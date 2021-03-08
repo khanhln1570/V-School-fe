@@ -83,6 +83,7 @@ export default {
       templatesMap: {
         email: this.$t("validation.email"),
         password: this.$t("validation.password"),
+        confirmPassword: this.$t("validation.confirmPassword"),
         alpha: this.$t("validation.alpha"),
         required: this.$t("validation.required"),
         phoneNumber: this.$t("validation.phoneNumber"),

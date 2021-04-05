@@ -31,7 +31,7 @@
     </v-app-bar>
     <v-main class="background">
       <div class="pa-8">
-        <nuxt />
+        <nuxt class="mb-15" />
         <Footer />
       </div>
     </v-main>

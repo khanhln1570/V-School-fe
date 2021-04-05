@@ -2,15 +2,24 @@
   <v-row no-gutters>
     <v-col cols="12" md="2"></v-col>
     <v-col cols="12" md="8">
-      <CommonMainChart chartType="Line" :chartdata="chartdata" :options="options"/>
-      <br>
-      <CommonMainChart chartType="Radar" :chartdata="chartdata" :options="options"/>
-      <br>
-      <CommonMainChart chartType="Bar" :chartdata="chartdata" :options="options"/>
-      <br>
-      <client-only>
-        <CommonMainTable :headers="headers" :items="items" itemKey="name" />
-      </client-only>
+      <CommonMainChart
+        chartType="Line"
+        :chartdata="chartdata"
+        :options="options"
+      />
+      <br />
+      <CommonMainChart
+        chartType="Radar"
+        :chartdata="chartdata"
+        :options="options"
+      />
+      <br />
+      <CommonMainChart
+        chartType="Bar"
+        :chartdata="chartdata"
+        :options="options"
+      />
+      <br />
     </v-col>
     <v-col cols="12" md="2"></v-col>
   </v-row>
@@ -23,9 +32,10 @@ export default {
   data() {
     return {
       chartdata: {
-        labels: ['January', 'February', 'March', 'April'],
+        labels: ["January", "February", "March", "April"],
         datasets: [
           {
+<<<<<<< HEAD
             label: 'Data One',
             backgroundColor: 'rgba(248,121,121,0.4)',
             pointBackgroundColor: 'rgba(0,0,0,0)',
@@ -68,13 +78,33 @@ export default {
             data: [55, 44, 52, 42]
           }
         ]
+=======
+            label: "Data One",
+            backgroundColor: "rgba(248,121,121,0.4)",
+            borderColor: "#f87979",
+            data: [40, 62, 34, 20],
+          },
+          {
+            label: "Data Two",
+            backgroundColor: "rgba(1,197,142,0.4)",
+            borderColor: "#00c58e",
+            data: [25, 54, 48, 62],
+          },
+          {
+            label: "Data Three",
+            backgroundColor: "rgba(57,169,220,0.4)",
+            borderColor: "#39A9DC",
+            data: [55, 44, 52, 42],
+          },
+        ],
+>>>>>>> 51aa9a9594ee14cc8bffa1e7794ff648a9b91b78
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         legend: {
-          display: true
-        }
+          display: true,
+        },
       },
       ///////////////////////////////////////
       headers: [

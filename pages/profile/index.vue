@@ -37,6 +37,20 @@
               :validation="$v.form.confirmPassword"
             />
           </v-card-text>
+          <v-card-title>
+            <p class="font-weight-bold title">Account activities</p>
+          </v-card-title>
+          <v-card-text>
+            <label for="enable2FA">Enable2FA</label>
+            <v-switch
+              v-model="enable2FA"
+              inset
+              id="enable2FA"
+              class="mt-0"
+              :ripple="false"
+              @change="handle2FA"
+            ></v-switch>
+          </v-card-text>
         </v-card>
       </v-col>
       <v-col cols="12" md="2"> </v-col>
@@ -45,21 +59,34 @@
 </template>
 
 <script>
-import {editProfile} from '~/validations/profile/profile.validation';
+import { editProfile } from "~/validations/profile/profile.validation";
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
+      enable2FA: false,
       form: {
         name: null,
         email: null,
         password: null,
         confirmPassword: null,
       },
-    }
+    };
   },
-  validations : {
-    form : editProfile
-  }
+  computed: {
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
+  },
+  validations: {
+    form: editProfile,
+  },
+  methods: {
+    handle2FA() {
+      console.log("object");
+    },
+  },
 };
 </script>
 

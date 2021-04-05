@@ -4,19 +4,19 @@
     <v-col cols="12" md="8">
       <CommonMainChart
         chartType="Line"
-        :chartdata="chartdata"
+        :chartData="chartData"
         :options="options"
       />
       <br />
       <CommonMainChart
         chartType="Radar"
-        :chartdata="chartdata"
+        :chartData="chartData"
         :options="options"
       />
       <br />
       <CommonMainChart
         chartType="Bar"
-        :chartdata="chartdata"
+        :chartData="chartData"
         :options="options"
       />
       <br />
@@ -31,7 +31,7 @@ import testValidation from "@/validations/test/test.validate";
 export default {
   data() {
     return {
-      chartdata: {
+      chartData: {
         labels: ["January", "February", "March", "April"],
         datasets: [
           {

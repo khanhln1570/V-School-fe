@@ -1,12 +1,12 @@
 <template>
   <div>
-    <CommonMainChartLine v-if="chartType === 'Line'" :chartdata="chartdata" :options="options"/>
-    <CommonMainChartBar v-if="chartType === 'Bar'" :chartdata="chartdata" :options="options"/>
-    <CommonMainChartDoughnut v-if="chartType === 'Doughnut'" :chartdata="chartdata" :options="options"/>
-    <CommonMainChartPie v-if="chartType === 'Pie'" :chartdata="chartdata" :options="options"/>
-    <CommonMainChartRadar v-if="chartType === 'Radar'" :chartdata="chartdata" :options="options"/>
-    <CommonMainChartPolarArea v-if="chartType === 'PolarArea'" :chartdata="chartdata" :options="options"/>
-    <CommonMainChartBubble v-if="chartType === 'Bubble'" :chartdata="chartdata" :options="options"/>
+    <CommonMainChartLine v-if="chartType === 'Line'" :chartData="chartData" :options="options"/>
+    <CommonMainChartBar v-if="chartType === 'Bar'" :chartData="chartData" :options="options"/>
+    <CommonMainChartDoughnut v-if="chartType === 'Doughnut'" :chartData="chartData" :options="options"/>
+    <CommonMainChartPie v-if="chartType === 'Pie'" :chartData="chartData" :options="options"/>
+    <CommonMainChartRadar v-if="chartType === 'Radar'" :chartData="chartData" :options="options"/>
+    <CommonMainChartPolarArea v-if="chartType === 'PolarArea'" :chartData="chartData" :options="options"/>
+    <CommonMainChartBubble v-if="chartType === 'Bubble'" :chartData="chartData" :options="options"/>
   </div>
   
 </template>
@@ -18,7 +18,7 @@ export default {
       type: String,
       default: null
     },
-    chartdata: {
+    chartData: {
       type: Object,
       default: null
     },

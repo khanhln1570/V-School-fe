@@ -114,27 +114,4 @@ export default {
     }
   },
 
-  async signupByInvite({ commit, dispatch }, payload) {
-    try {
-      const response = await this.$api.auth.signupByInvite(payload);
-      console.log(response);
-      if (response.data.ok) {
-        this.$cookies.remove(AUTH_TOKEN_KEY, { path: '/', });
-        const setMaxAge = setExpireTime();
-        this.$cookies.set(AUTH_TOKEN_KEY, response.data.data.token, {
-          maxAge: setMaxAge,
-          path: "/",
-        });
-        location.href = "/servers";
-        return false;
-      }
-    } catch (e) {
-      console.log(e);
-      commit(
-        this.$alert.ADD_ERROR_ALERT_MUTATION,
-        { message: e.response.data.message },
-        { root: true }
-      );
-    }
-  },
 };

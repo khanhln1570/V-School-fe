@@ -1,10 +1,11 @@
 <script>
-import { Line } from 'vue-chartjs'
+import { Line, mixins } from 'vue-chartjs'
 
 export default {
   extends: Line,
+  mixins: [mixins.reactiveProp],
   props: {
-    chartdata: {
+    chartData: {
       type: Object,
       default: null
     },
@@ -41,7 +42,7 @@ export default {
     // gradient3.addColorStop(0.5, 'rgba(248, 121, 121, 0.25)')
     // gradient3.addColorStop(1, 'rgba(248, 121, 121, 0)')
 
-    this.renderChart(this.chartdata, this.options)
+    this.renderChart(this.chartData, this.options)
   }
 }
 

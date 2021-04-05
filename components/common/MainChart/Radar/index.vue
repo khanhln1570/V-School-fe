@@ -1,10 +1,11 @@
 <script>
-import { Radar } from 'vue-chartjs'
+import { Radar, mixins } from 'vue-chartjs'
 
 export default {
   extends: Radar,
+  mixins: [mixins.reactiveProp],
   props: {
-    chartdata: {
+    chartData: {
       type: Object,
       default: null
     },
@@ -17,7 +18,7 @@ export default {
     return {}
   },
   mounted () {
-    this.renderChart(this.chartdata, this.options)
+    this.renderChart(this.chartData, this.options)
   }
 }
 

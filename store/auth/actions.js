@@ -7,7 +7,7 @@ export default {
       // if (response.data.ok) {
       //   commit("setAuth", { ...response.data.data });
       // }
-      commit("setAuth", { token: 'fakeToken', user: { id: 1, name: 'Lam', role: 'admin' } });
+      commit("setAuth", { token: 'fakeToken', user: { id: 1, name: 'Lam', role: 'Staff' } });
     } catch (error) {
       // console.log(error.response.data);
       // commit(

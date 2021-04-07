@@ -73,8 +73,8 @@
       </v-toolbar>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
-      <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
-      <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+      <v-icon small class="mr-2" @click="editItem(item)" :disabled="disableButton(item)"> mdi-pencil </v-icon>
+      <v-icon small @click="deleteItem(item)" :disabled="disableButton(item)"> mdi-delete </v-icon>
     </template>
     <template v-slot:no-data>
       <v-btn color="primary"> Reset </v-btn>
@@ -97,6 +97,10 @@ export default {
       type: String,
       default: null,
     },
+    currentRole: {
+      type: String,
+      default: null
+    }
   },
   data() {
     return {
@@ -117,6 +121,24 @@ export default {
     };
   },
   methods: {
+    disableButton(item) {
+      if (this.currentRole) {
+        if (this.currentRole === "Admin") {
+          return false
+        }
+        else if (this.currentRole === "Staff") {
+          if (item.role === "Admin" || item.role === "Staff") {
+            return true
+          } else {
+            return false
+          }
+        } else {
+          return true
+        }
+      } else {
+        return true
+      }
+    },
     editItem(item) {
       this.editedIndex = this.items.indexOf(item);
       this.editedItem = Object.assign({}, item);

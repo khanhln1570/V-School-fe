@@ -9,15 +9,26 @@
       />
       <br />
       <CommonMainChart
-        chartType="Radar"
+        chartType="Bar"
         :chartData="chartData"
         :options="options"
       />
       <br />
       <CommonMainChart
-        chartType="Bar"
+        chartType="Radar"
         :chartData="chartData"
-        :options="options"
+        :options="optionsRadar"
+      />
+      <br />
+      <CommonMainChart
+        chartType="Doughnut"
+        :chartData="chartDataDoughnut"
+        :options="optionsRadar"
+      />
+      <CommonMainChart
+        chartType="PolarArea"
+        :chartData="chartDataPolarArea"
+        :options="optionsRadar"
       />
       <br />
     </v-col>
@@ -42,11 +53,12 @@ export default {
             pointHoverBorderColor: "#f87979",
             pointHoverBackgroundColor: "#fff",
             pointHoverRadius: 4,
-            pointHitRadius: 10,
+            pointHitRadius: 50,
             pointHoverBorderWidth: 1,
-            borderWidth: 1,
+            borderWidth: 2,
             borderColor: "#f87979",
             data: [40, 62, 34, 20],
+            fill: false
           },
           {
             label: "Data Two",
@@ -56,27 +68,30 @@ export default {
             pointHoverBorderColor: "#00c58e",
             pointHoverBackgroundColor: "#fff",
             pointHoverRadius: 4,
-            pointHitRadius: 10,
+            pointHitRadius: 50,
             pointHoverBorderWidth: 1,
-            borderWidth: 1,
+            borderWidth: 2,
             borderColor: "#00c58e",
             data: [25, 54, 48, 62],
+            fill: false
           },
           {
             label: "Data Three",
-            backgroundColor: "rgba(57,169,220,0.4)",
+            backgroundColor: "rgba(57,220,255,0.4)",
             pointBackgroundColor: "rgba(0,0,0,0)",
             pointBorderColor: "rgba(0,0,0,0)",
             pointHoverBorderColor: "#39A9DC",
             pointHoverBackgroundColor: "#fff",
             pointHoverRadius: 4,
-            pointHitRadius: 10,
+            pointHitRadius: 50,
             pointHoverBorderWidth: 1,
-            borderWidth: 1,
+            borderWidth: 2,
             borderColor: "#39A9DC",
             data: [55, 44, 52, 42],
+            fill: false
           },
         ],
+        
       },
       options: {
         responsive: true,
@@ -84,6 +99,93 @@ export default {
         legend: {
           display: true,
         },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            gridLines: {
+              display: true,
+              color: 'rgba(0,0,0,0.2)',
+              borderDash: [5, 15]
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              // mirror: true
+            },
+            gridLines: {
+              display: true,
+              color: 'rgba(0,0,0,0.2)',
+              borderDash: [5, 15]
+            }
+          }]
+        },
+        tooltips: {
+          mode: "index",
+          position: "nearest",
+          backgroundColor: '#4F5565',
+          titleFontStyle: 'bold',
+          titleFontSize: 18,
+          bodyFontFamily: "sans-serif",
+          cornerRadius: 8,
+          bodyFontColor: '#39A9DC',
+          bodyFontStyle: "bold",
+          bodyFontSize: 16,
+          xPadding: 14,
+          yPadding: 14,
+          displayColors: false,
+        }
+      },
+      optionsRadar: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: true,
+        },
+        scales: {},
+        tooltips: {
+          position: "nearest",
+          backgroundColor: '#4F5565',
+          titleFontStyle: 'bold',
+          titleFontSize: 18,
+          bodyFontFamily: "sans-serif",
+          cornerRadius: 8,
+          bodyFontColor: '#39A9DC',
+          bodyFontStyle: "bold",
+          bodyFontSize: 16,
+          xPadding: 14,
+          yPadding: 14,
+          displayColors: false,
+        }
+      },
+      chartDataDoughnut: {
+        labels: ["January", "February", "March", "April"],
+        datasets: [
+          {
+            backgroundColor: ["rgba(248,121,121,0.7)", "rgba(1,197,142,0.7)", "rgba(57,220,255,0.7)", "rgba(111,5,58,0.7)"],
+            pointBackgroundColor: "rgba(0,0,0,0)",
+            pointBorderColor: "rgba(0,0,0,0)",
+            pointHoverBorderColor: "#f87979",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverRadius: 4,
+            pointHitRadius: 50,
+            pointHoverBorderWidth: 1,
+            borderWidth: 2,
+            borderColor: "rgba(0,0,0,0)",
+            data: [40, 62, 34, 20],
+          }
+        ],
+      },
+      chartDataPolarArea: {
+        labels: ["January", "February", "March", "April"],
+        datasets: [
+          {
+            backgroundColor: ["rgba(248,121,121,0.5)", "rgba(1,197,142,0.5)", "rgba(57,220,255,0.5)", "rgba(111,5,58,0.5)"],
+            borderWidth: 1,
+            data: [40, 62, 34, 20],
+          }
+        ],
       },
       ///////////////////////////////////////
       headers: [

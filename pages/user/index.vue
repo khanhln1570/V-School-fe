@@ -4,7 +4,7 @@
     <v-col cols="12" md="8">
       <download-excel :data="items"> Download Data </download-excel>
       <client-only>
-        <UserTable :headers="headers" :items="items" itemKey="name" />
+        <UserTable :headers="headers" :items="items" itemKey="name" :currentRole="getCurrentRole" />
       </client-only>
     </v-col>
     <v-col cols="12" md="2"></v-col>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import testValidation from "@/validations/test/test.validate";
 
 export default {
@@ -42,12 +43,12 @@ export default {
         {
           name: "bb",
           email: "bb@agmail.som",
-          role: "Member",
+          role: "Staff",
         },
         {
           name: "ba",
           email: "bb@agmail.som",
-          role: "Member",
+          role: "Staff",
         },
         {
           name: "baba",
@@ -66,6 +67,14 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      getCurrentRole: "auth/getCurrentRole",
+    }),
+  },
+  mounted() {
+    // console.log(this.getCurrentRole);
   },
   validations: {
     form: testValidation,

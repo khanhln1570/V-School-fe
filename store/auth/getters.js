@@ -4,5 +4,8 @@ export default {
   },
   isLoggedIn(state) {
     return state.isLoggedIn;
+  },
+  getCurrentRole(state) {
+    return state.currentUser ? state.currentUser.role : ""
   }
 };

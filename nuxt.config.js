@@ -28,6 +28,7 @@ export default {
     '~plugins/api',
     '~plugins/vuelidate',
     '~plugins/vue-notify',
+    { src: '~plugins/vue-json-excel', mode: 'client' },
   ],
   components: true,
   buildModules: [

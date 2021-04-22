@@ -2,6 +2,7 @@
   <v-row no-gutters>
     <v-col cols="12" md="2"></v-col>
     <v-col cols="12" md="8">
+      <download-excel :data="items"> Download Data </download-excel>
       <client-only>
         <UserTable :headers="headers" :items="items" itemKey="name" />
       </client-only>

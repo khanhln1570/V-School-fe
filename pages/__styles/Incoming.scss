@@ -1,0 +1,19 @@
+.incoming {
+  &__card {
+    &__details {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 85px;
+
+      &__durians {
+        &__items {
+          background-color: rgb(216, 216, 216);
+
+          &--updated {
+            background-color: rgb(255, 232, 169);
+          }
+        }
+      }
+    }
+  }
+}

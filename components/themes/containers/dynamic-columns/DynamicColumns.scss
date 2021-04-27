@@ -1,0 +1,15 @@
+.rightbar__section {
+  background-color: var(--background-dark);
+
+  &--container {
+    position: sticky;
+    width: 100%;
+    left: 0;
+  }
+}
+
+.main__content,
+.rightbar__section--container {
+  max-height: calc(100vh - var(--base-height-header));
+  overflow: auto;
+}

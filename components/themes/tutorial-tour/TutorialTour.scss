@@ -1,0 +1,98 @@
+
+.tour {
+	&__overlay {
+    opacity: 1;
+    animation: showOverlay .25s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+		z-index: 999;
+	}
+	&__overlap {
+		position: fixed;
+		transition: all 0.3s;
+		box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
+	}
+	&__text {
+		position: absolute;
+		margin: .75rem 0.25rem;
+		padding: 1rem;
+		border: 1px solid var(--border-dark);
+		border-radius: 0.25rem;
+		color: var(--text-light);
+    background-color: var(--background-dark);
+
+    &::before {
+      content: "";
+      border-color: transparent;
+      border-style: solid;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+
+		&.top {
+			bottom: 100%;
+      
+      &::before {
+        border-width: 20px 17px 0 17px;
+        border-top-color: var(--border-dark);
+        bottom: -10px;
+      }
+		}
+
+		&.bottom {
+			top: 100%;
+      
+      &::before {
+        border-width: 0 17px 20px 17px;
+        border-bottom-color: var(--border-dark);
+        top: -10px;
+      }
+		}
+
+		&.left {
+			left: 0;
+			.tour-arrow {
+				left: 0;
+				margin: 0;
+			}
+		}
+		
+    &.right {
+      right: -130%;
+      left: 75%;
+		}
+	}
+
+	&__cancel {
+    position: absolute;
+    top: 1rem;
+    right: 2.5rem;
+    color: var(--text-dark);
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+
+    }
+	}
+
+  &__actions {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+}
+
+@keyframes showOverlay {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

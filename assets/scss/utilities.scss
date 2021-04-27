@@ -1,0 +1,46 @@
+.min-auto {
+  min-width: auto !important;
+}
+
+.max-h-100 {
+  max-height: 100% !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.separator {
+  border-style: solid;
+  border-color: var(--base-separator);
+  border-width: 0;
+
+  &--left {
+    border-left-width: 1px;
+  }
+}
+
+.v-dialog--fullscreen {
+  width: 81vw !important;
+  width: calc(100vw - 260px) !important;
+  top: 65px !important;
+  left: auto !important;
+  right: 0 !important;
+}
+
+.v-text-field__details {
+  padding-left: 0rem !important;
+}
+
+.v-input--is-disabled .v-input__slot {
+  background-color: #EAECEF !important;
+
+  input {
+    font-style: italic;
+  }
+  
+}
+
+.w-100 {
+  width: 100%;
+}

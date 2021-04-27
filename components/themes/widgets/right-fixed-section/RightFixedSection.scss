@@ -1,0 +1,8 @@
+.rightbar__section {
+  &--close {
+    z-index: 9;
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+  }
+}

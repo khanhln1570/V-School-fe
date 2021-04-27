@@ -1,0 +1,41 @@
+.nav-drawler {
+  top: 0px !important;
+  max-height: calc(100% ) !important;
+}
+
+.avatar {
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.header__fixed {
+  &--wrapper {
+    padding-top: calc(var(--base-height-header) + 1rem);
+  }
+
+  &--top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--base-separator);
+    height: var(--base-height-header) !important;
+  }
+
+  &--logo {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+::v-deep {
+  .header__fixed {
+    &--top {
+      .v-toolbar__content {
+        justify-content: center;
+        height: 100% !important;
+      }
+    }
+  }
+}

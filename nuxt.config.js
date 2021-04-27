@@ -3,8 +3,8 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: 'Madcms',
-    title: 'Madcms',
+    titleTemplate: 'Durian Admin',
+    title: 'Durian Admin',
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,10 +17,6 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  css: [
-    '~/assets/scss/reset.scss',
-    '~/assets/scss/custom.scss'
-  ],
   plugins: [
     '~plugins/config',
     '~plugins/i18n',
@@ -28,18 +24,27 @@ export default {
     '~plugins/api',
     '~plugins/vuelidate',
     '~plugins/vue-notify',
-    { src: '~plugins/vue-json-excel', mode: 'client' },
   ],
-  components: true,
+  components: false,
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/style-resources',
   ],
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
   ],
+  styleResources: {
+    scss: [
+      './assets/scss/fonts.scss',
+      './assets/scss/reset.scss',
+      './assets/scss/_mixins.scss',
+      './assets/scss/utilities.scss',
+      './assets/scss/customs.scss',
+    ],
+  },
   router: {
     middleware: [
       'authentication'
@@ -50,7 +55,9 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
+    treeShake: true,
     customVariables: ['~/assets/scss/variables.scss'],
+    treeShake: true,
     theme: {
       dark: false,
       themes: {
@@ -64,13 +71,19 @@ export default {
           success: colors.green.accent3
         },
         light: {
-          background: "#EAEDF6",
+          'bg-main': "#EAEDF6",
+          'bg-sidebar': "#231F20",
+          'bg-dark': "#231F20",
+          primary: "#DBB95E",
+          'txt-secondary': "#939598",
+          'txt-gray': "#868E96",
+          'txt-disable': "#C7C8CA",
         }
       }
     },
     defaultAssets: {
       font: {
-        family: "Poppins",
+        family: "Helvetica Neue",
       },
       icons: "mdi",
     },

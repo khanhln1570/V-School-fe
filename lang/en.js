@@ -5,12 +5,12 @@ export default {
   },
   // every page is a ojbect...
   validation: {
-    email: 'Please enter a valid email address.',
+    email: 'You have entered an invalid email.',
     required: 'This is a required field.',
-    password: 'Password must have at least 8 letters.',
+    password: 'You have entered an invalid password.',
     confirmPassword: 'Must be the same',
     alpha: 'Field accepts only character.',
-    phoneNumber: 'Plase enter a valid mobile number.',
+    phoneNumber: 'Invalid mobile number. Please make sure the mobile number consist of at least 10 numbers.',
     validNric: 'Please enter a valid NRIC number.',
     minAmount: 'Invalid Amount.',
     maxLengthAmount: 'Invalid Amount.',
@@ -19,5 +19,6 @@ export default {
     isUnique: 'Receipt number is entered for a different item. Please enter a different receipt number.',
     minAge: 'You must be aged 21 years or above to participate.',
     maxLengthReceipt: 'Receipt Numbers must be 30 characters at maximum.',
+    deliveryNoteNo: 'Delivery Note No must have at least 10 letters.',
   },
 }

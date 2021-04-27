@@ -1,21 +1,17 @@
 import { AUTH_TOKEN_KEY } from "./auth.constants";
 
 export default {
-  async signin({ commit, dispatch }, payload) {
-    try {
-      //const response = await this.$api.auth.signin(payload);
-      // if (response.data.ok) {
-      //   commit("setAuth", { ...response.data.data });
+  async login({ commit, dispatch }, payload) {
+     
+      commit("setAuth", { token: 'fakeToken', user: { id: 1, name: 'Lam', role: 'admin' } });
+      // try {
+      //   const response = await this.$api.auth.login(payload);
+      //   if (response.data.ok) {
+      //     commit("setAuth", { ...response.data.data });
+      //   }
+      // } catch (error) {
+      //   throw error;
       // }
-      commit("setAuth", { token: 'fakeToken', user: { id: 1, name: 'Lam', role: 'Staff' } });
-    } catch (error) {
-      // console.log(error.response.data);
-      // commit(
-      //   this.$alert.ADD_ERROR_ALERT_MUTATION,
-      //   { ...error.response.data },
-      //   { root: true }
-      // );
-    }
   },
 
   async signup({ commit, dispatch }, payload) {

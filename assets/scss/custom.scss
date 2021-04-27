@@ -1,3 +1,8 @@
+.lock-scroll {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 .spacer-custom {
   display: block;
   transition: width 2s;

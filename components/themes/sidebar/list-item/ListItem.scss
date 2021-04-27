@@ -1,0 +1,37 @@
+.v-list-item--dense,
+.v-list--dense .v-list-item {
+  min-height: 30px;
+}
+
+.cs__list__item {
+  &--default {
+
+    .v-list-item__title {
+      color: var(--text-item);
+      @include text-size-1-25rem;
+
+      &:hover {
+        color: var(--text-active);
+      }
+    }
+  }
+
+  &--active {
+    .v-list-item__title {
+      color: var(--text-active);
+      text-decoration: underline;
+      @include text-size-1-25rem($font-weight: bold);
+    }
+
+
+    &:hover::before,
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  &--group {
+    color: var(--text-group) !important;
+    @include text-size-1rem;
+  }
+}

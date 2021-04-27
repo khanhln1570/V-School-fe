@@ -1,0 +1,37 @@
+
+/* Character Styles */
+@mixin text-size-1-25rem($font-weight: normal) {
+  @if $font-weight == bold {
+    @include font-bold;
+  }
+  @if $font-weight == medium {
+    @include font-medium;
+  }
+  
+  font-size: var(--font-size-1-25rem);
+  line-height: var(--line-spacing-1-5rem);
+  letter-spacing: var(--character-spacing-0);
+}
+
+@mixin text-size-1rem($font-weight: normal) {
+  @if $font-weight == bold {
+    @include font-bold;
+  }
+  @if $font-weight == medium {
+    @include font-medium;
+  }
+
+  font-size: var(--font-size-1rem);
+  line-height: var(--line-spacing-1-25rem);
+  letter-spacing: var(--character-spacing-0);
+}
+
+@mixin font-bold {
+  font-family: "Helvetica Neue Bold";
+  font-weight: 700;
+}
+
+@mixin font-medium {
+  font-family: "Helvetica Neue Medium";
+  font-weight: 500;
+}

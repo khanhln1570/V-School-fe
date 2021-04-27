@@ -3,28 +3,27 @@ import {
   helpers,
   minValue,
   maxLength,
+  minLength,
   email
 } from "vuelidate/lib/validators";
 
-const regexNumber = /^[a-zA-Z0-9-]*$/;
-const number = (val) => {
-  if (val.charAt(0) === '-' || val.slice(-1) === '-') return false;
-  const test = regexNumber.test(val);
-  if (!test) return false;
-
-  return true;
-}
-
 const testValidate = {
+  name: {
+    required,
+  },
   email: {
     required,
     email
   },
   password: {
     required,
+    password: minLength(8),
   },
   note: {
     required,
+  },
+  mobile: {
+    required
   }
 }
 

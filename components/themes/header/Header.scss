@@ -1,0 +1,9 @@
+.overlap__border {
+  z-index: 9 !important;
+  border-bottom: 1px solid var(--base-separator) !important;
+
+  &--left {
+    margin-left: -1px;
+    border-left: 1px solid var(--border-dark);
+  }
+}

@@ -31,20 +31,21 @@
         >Submit</v-btn
       >
       <div class="w-100 d-flex justify-center mt-2">
-        <nuxt-link to="#" class="txt-secondary--text"
+        <nuxt-link to="reset-password" class="txt-secondary--text"
           >Forgot password? Contact Superadmin.</nuxt-link
         >
       </div>
     </v-card>
     <v-sheet
-      class="signin-left d-flex justify-center align-center bg-dark"
+      class="signin-left d-flex justify-center align-center bg-main"
       color=""
       elevation="0"
       min-height="100vh"
       min-width="50vw"
     >
-      <div>
-        <img src="@/assets/images/login-logo.svg" alt="login-logo" />
+      <div class="d-flex justify-center align-center flex-column">
+        <img src="@/assets/images/school.svg" alt="school" width="200px">
+        <h1 class="display-2 white--text font-weight-bold mt-4">S-payment</h1>
       </div>
     </v-sheet>
   </div>

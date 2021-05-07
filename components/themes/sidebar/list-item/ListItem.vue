@@ -3,7 +3,7 @@
     <slot>
       <template v-if="item.group">
         <v-list width="100%">
-          <v-subheader class="text-uppercase px-4 cs__list__item--group">{{ item.group.title }}</v-subheader>
+          <v-subheader class="text-uppercase px-4 cs__list__item--group font-weight-bold">{{ item.group.title }}</v-subheader>
           <v-list-item-group>
             <list-item v-for="(item, i) in item.group.items" :key="i" :item="item" />
           </v-list-item-group>

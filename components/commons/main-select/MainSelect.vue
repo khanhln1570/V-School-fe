@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex align-center">
-    <label :for="id" class="mr-3">{{label}}</label>
+    <label :for="id" class="mr-3" v-if="label">{{label}}</label>
     <v-select
       v-if="items"
       :items="items"

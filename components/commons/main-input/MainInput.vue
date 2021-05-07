@@ -21,6 +21,7 @@
       :clearable="clearable"
       :error-messages="errors"
       :disabled="disabled"
+      dense
     />
     <v-text-field
       v-if="type === 'password'"
@@ -38,6 +39,7 @@
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       :type="showPassword ? 'text' : 'password'"
       @click:append="showPassword = !showPassword"
+      dense
     />
     <v-text-field
       v-else
@@ -53,6 +55,7 @@
       :clearable="clearable"
       :error-messages="errors"
       :disabled="disabled"
+      dense
     />
   </div>
 </template>

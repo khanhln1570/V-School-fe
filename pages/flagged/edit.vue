@@ -3,15 +3,15 @@
     <v-col>
       <page-heading pageTitle="Edit history" backTo="/flagged/history">
       </page-heading>
-      <v-container fluid>
+      <v-container fluid class="pa-0">
         <v-card
           flat
           rounded="0"
-          class="overflow-y-auto mt-4"
+          class="overflow-y-auto overflow-x-hidden mt-4"
           max-height="75vh"
         >
-          <v-card-text>
-            <v-container>
+          <v-card-text class="pa-0">
+            <v-container class="pa-0">
               <v-row>
                 <v-col md="9">
                   <v-row>

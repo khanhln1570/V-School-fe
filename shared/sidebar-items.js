@@ -6,30 +6,6 @@ const sidebarItems = [
   },
   {
     group: {
-      title: 'Reports',
-      id: 'reports',
-      items: [
-        {
-          title: "Overview",
-          to: "/reports",
-        },
-        {
-          title: "Farmers",
-          to: "/reports/farmers",
-        },
-        {
-          title: "Collection Centres",
-          to: "/reports/collection-centers",
-        },
-        {
-          title: "Archive",
-          to: "/reports/archive",
-        },
-      ]
-    }
-  },
-  {
-    group: {
       title: 'Flagged entry',
       id: 'flagged-entry',
       items: [
@@ -56,26 +32,6 @@ const sidebarItems = [
         {
           title: "Supervisor",
           to: "/user-management/supervisor",
-        },
-        {
-          title: "Farmer",
-          to: "/user-management/farmer",
-        },
-      ]
-    }
-  },
-  {
-    group: {
-      title: 'Settings',
-      id: 'settings',
-      items: [
-        {
-          title: "Durians",
-          to: "/settings/durians",
-        },
-        {
-          title: "Collection Centre",
-          to: "/settings/collections",
         },
       ]
     }

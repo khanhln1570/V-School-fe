@@ -5,7 +5,6 @@
       <h2>Forgotten Password ?</h2>
       <h3>Enter your email to reset your password</h3>
     </v-card-title>
-    <!-- <CommonMainInput label="Email" name="email" type="email" v-model.trim="$v.form.email.$model" :validation="$v.form.email" /> -->
     <group-validator :validation="$v.form.email">
       <template  slot-scope="{errors}">
         <main-input label="Email" name="email" type="email" v-model.trim="$v.form.email.$model" :errors="errors" />
@@ -16,12 +15,17 @@
       <v-btn @click="onCancel" color="primary" outlined :ripple="false" width="50%">Cancel</v-btn>
     </v-card-actions>
   </v-card>
-  <v-sheet class="signin-left d-flex justify-center align-center" color="light-blue lighten-4" elevation="0" min-height="100vh" min-width="55vw">
-    <div>
-      <h1 class="text-center">Madison technology</h1>
-      <h3 class="text-center">Since 2019</h3>
-    </div>
-  </v-sheet>
+  <v-sheet
+      class="signin-left d-flex justify-center align-center bg-dark"
+      color=""
+      elevation="0"
+      min-height="100vh"
+      min-width="50vw"
+    >
+      <div>
+        <img src="@/assets/images/login-logo.svg" alt="login-logo" />
+      </div>
+    </v-sheet>
 </div>
 </template>
 

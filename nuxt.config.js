@@ -1,10 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: 'Durian Admin',
-    title: 'Durian Admin',
+    titleTemplate: 'S-payment Admin',
+    title: 'S-payment Admin',
     htmlAttrs: {
       lang: 'en'
     },
@@ -71,10 +70,10 @@ export default {
           success: colors.green.accent3
         },
         light: {
-          'bg-main': "#EAEDF6",
+          'bg-main': "#A8DADC",
           'bg-sidebar': "#231F20",
           'bg-dark': "#231F20",
-          primary: "#DBB95E",
+          primary: "#457B9D",
           'txt-secondary': "#939598",
           'txt-gray': "#868E96",
           'txt-disable': "#C7C8CA",

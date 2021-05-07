@@ -5,7 +5,7 @@
     app
     v-model="expanded"
     width="260"
-    class="header__fixed--wrapper bg-sidebar"
+    class="header__fixed--wrapper bg-main"
   >
     <v-toolbar light flat class="header__fixed--top" color="transparent">
       <v-toolbar-title class="ml-0 font-weight-bold header__fixed--logo py-1">

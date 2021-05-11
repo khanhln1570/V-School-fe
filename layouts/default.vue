@@ -13,7 +13,7 @@
       class="pb-16"
     >
       <template v-slot:custom-list>
-        <v-footer fixed outlined color="transparent" dark>
+        <v-footer fixed outlined color="transparent">
           <p class="text-capitalize pointer my-0 py-2" @click="logout">Logout</p>
         </v-footer>
       </template>

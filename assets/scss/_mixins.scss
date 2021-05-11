@@ -7,6 +7,9 @@
   @if $font-weight == medium {
     @include font-medium;
   }
+  @if $font-weight == light {
+    @include font-light;
+  }
   
   font-size: var(--font-size-1-25rem);
   line-height: var(--line-spacing-1-5rem);
@@ -20,18 +23,44 @@
   @if $font-weight == medium {
     @include font-medium;
   }
-
+  @if $font-weight == light {
+    @include font-light;
+  }
+  
   font-size: var(--font-size-1rem);
   line-height: var(--line-spacing-1-25rem);
   letter-spacing: var(--character-spacing-0);
 }
 
+@mixin text-size-0875rem($font-weight: normal) {
+  @if $font-weight == bold {
+    @include font-bold;
+  }
+  @if $font-weight == medium {
+    @include font-medium;
+  }
+  @if $font-weight == light {
+    @include font-light;
+  }
+  
+  font-size: var(--font-size-0875rem);
+  line-height: var(--line-spacing-1rem);
+  letter-spacing: var(--character-spacing-0);
+}
+
+
+
 @mixin font-bold {
-  font-family: "Helvetica Neue Bold";
+  font-family: "Montserrat Bold";
   font-weight: 700;
 }
 
 @mixin font-medium {
-  font-family: "Helvetica Neue Medium";
+  font-family: "Montserrat Medium";
   font-weight: 500;
+}
+
+@mixin font-light {
+  font-family: "Montserrat Light";
+  font-weight: 300;
 }

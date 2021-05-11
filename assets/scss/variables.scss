@@ -8,28 +8,30 @@
   --background-light: #000;
 
   // Dark
-  --text-dark: #FFF;
-  --border-dark: #FFF;
-  --background-dark: #FFF;
+  --text-dark: #fff;
+  --border-dark: #fff;
+  --background-dark: #fff;
 
   // For design
   //Sidebar
-  --sidebar-background: #231F20;
+  --sidebar-background: #231f20;
   --text-active: #28495e;
-  --text-group: #1D3557;
-  --text-item: #457B9D;
-
+  --text-group: #1d3557;
+  --text-item: #457b9d;
 
   /* Font/text values */
-  --font-family-helveticaneue-medium: HelveticaNeue-Medium;
-  --font-family-helveticaneue-light: HelveticaNeue-Light;
+  --font-family-montserrat-medium: Montserrat-Medium;
+  --font-family-montserrat-light: Montserrat-Light;
   --font-style-normal: normal;
   --font-weight-300: 300px;
   --font-weight-medium: medium;
+  --font-size-08125rem: 0.8125rem;
+  --font-size-0875rem: 0.875rem;
   --font-size-1rem: 1rem;
   --font-size-1-25rem: 1.25rem;
-  --line-spacing-1-5rem: 1.5rem;
+  --line-spacing-1rem: 1rem;
   --line-spacing-1-25rem: 1.25rem;
+  --line-spacing-1-5rem: 1.5rem;
 }
 
 @media screen and (min-width: 1920px) {
@@ -43,6 +45,6 @@ $font-size-root: var(--base-font-size);
 
 $pagination-item-margin: 0;
 $pagination-navigation-height: 34px;
-$pagination-navigation-margin: .3rem 0;
+$pagination-navigation-margin: 0.3rem 0;
 
-$text-field-filled-full-width-outlined-slot-min-height : 48px !important;
+$text-field-filled-full-width-outlined-slot-min-height: 48px !important;

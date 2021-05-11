@@ -37,7 +37,7 @@
       </div>
     </v-card>
     <v-sheet
-      class="signin-left d-flex justify-center align-center bg-main"
+      class="signin-left d-flex justify-center align-center primary"
       color=""
       elevation="0"
       min-height="100vh"

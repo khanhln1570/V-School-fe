@@ -60,29 +60,29 @@ export default {
     theme: {
       dark: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        },
+        // dark: {
+        //   primary: colors.blue.darken2,
+        //   accent: colors.grey.darken3,
+        //   secondary: colors.amber.darken3,
+        //   info: colors.teal.lighten1,
+        //   warning: colors.amber.base,
+        //   error: colors.deepOrange.accent4,
+        //   success: colors.green.accent3
+        // },
         light: {
-          'bg-main': "#A8DADC",
-          'bg-sidebar': "#231F20",
-          'bg-dark': "#231F20",
-          primary: "#457B9D",
-          'txt-secondary': "#939598",
-          'txt-gray': "#868E96",
-          'txt-disable': "#C7C8CA",
+          'bg-sidebar': "#031B4D",
+          primary: "#0956C6",
+          'txt-secondary': "#677694",
+          'txt-warning': "#FF9D00",
+          'txt-error': "#E63946",
+          'txt-success': "#1FBC67",
+          'txt-active': "#0080FF",
         }
       }
     },
     defaultAssets: {
       font: {
-        family: "Helvetica Neue",
+        family: "Montserrat",
       },
       icons: "mdi",
     },

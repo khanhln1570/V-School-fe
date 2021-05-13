@@ -9,52 +9,59 @@
       <div
         class="signin-container d-flex justify-center align-center flex-column-reverse flex-md-row-reverse"
       >
-        <v-card
-          height="50%"
-          width="27%"
-          class="signin-left px-16 py-13 my-auto"
-          elevation="11"
-          shaped
-        >
-          <div class="d-flex justify-center align-center text-right">
-            <div>
-              <div class="display-1 font-weight-normal">V-School</div>
-              <small class="mt-1">beta</small>
-            </div>
-          </div>
-          <group-validator class="mt-8" :validation="$v.form.email">
-            <template slot-scope="{ errors }">
-              <main-input
-                placeholder="Enter email"
-                label="Email"
-                name="email"
-                type="email"
-                v-model.trim="$v.form.email.$model"
-                :errors="errors"
-              />
-            </template>
-          </group-validator>
-          <group-validator class="mt-1" :validation="$v.form.password">
-            <template slot-scope="{ errors }">
-              <main-input
-                placeholder="Enter password"
-                label="Password"
-                name="password"
-                type="password"
-                v-model.trim="$v.form.password.$model"
-                :errors="errors"
-              />
-            </template>
-          </group-validator>
-          <v-btn class="mt-12" block large color="primary" @click="onSubmit"
-            >Submit</v-btn
-          >
-          <div class="w-100 mt-1 text-right">
-            <nuxt-link to="reset-password" class="txt-secondary--text"
-              ><small>Quên mật khẩu?</small></nuxt-link
+        <div></div>
+        <div class="col-md-4 col-xl-4">
+          <div class="">
+            <v-card
+              class="rounded-lg signin-left px-xl-16 py-xl-12 px-md-12 py-md-6 my-auto mx-lg-auto"
+              elevation="11"
             >
+              <div class="d-flex justify-center align-center text-right">
+                <div class="">
+                  <div class="display-2 font-weight-normal">V-School</div>
+                  <div>
+                    <small>beta</small>
+                  </div>
+                </div>
+              </div>
+              <group-validator class="mt-xl-8 mt-md-3" :validation="$v.form.email">
+                <template slot-scope="{ errors }">
+                  <label>Tên đăng nhập <span class="red--text">*</span></label>
+                  <main-input
+                    placeholder=""
+                    name="email"
+                    type="email"
+                    v-model.trim="$v.form.email.$model"
+                    :errors="errors"
+                  />
+                </template>
+              </group-validator>
+              <group-validator class="mt-xl-1" :validation="$v.form.password">
+                <template slot-scope="{ errors }">
+                  <label>Mật khẩu <span class="red--text">*</span></label>
+
+                  <main-input
+                    placeholder=""
+                    name="password"
+                    type="password"
+                    v-model.trim="$v.form.password.$model"
+                    :errors="errors"
+                  />
+                </template>
+              </group-validator>
+              <v-btn class="mt-xl-12 mt-md-4" block large color="primary" @click="onSubmit"
+                >Đăng nhập</v-btn
+              >
+              <div class="w-100 mt-1 text-right">
+                <nuxt-link to="reset-password" class="txt-secondary--text"
+                  ><small>Quên mật khẩu?</small></nuxt-link
+                >
+              </div>
+            </v-card>
           </div>
-        </v-card>
+        </div>
+        <div></div>
+
         <!-- <v-sheet class="signin-left d-flex justify-center align-center primary" color="" elevation="0" min-height="100vh" min-width="50vw">
         <div class="d-flex justify-center align-center flex-column">
             <img src="@/assets/images/school.svg" alt="school" width="200px" />
@@ -90,6 +97,7 @@ export default {
   validations: {
     form: signIn,
   },
+  
   methods: {
     async onSubmit() {
       this.$v.$touch();
@@ -133,7 +141,7 @@ export default {
 
 .overlay {
   position: absolute;
-  background-image: url("../assets/images/bg-under.svg");
+  background-image: url("../assets/images/login/bg-login-mountain.svg");
   background-size: cover;
   height: 60%;
   width: 103%;
@@ -143,7 +151,7 @@ export default {
 
 .overlay-book {
   position: absolute;
-  background-image: url("../assets/images/bg-login-book.svg");
+  background-image: url("../assets/images/login/bg-login-book.svg");
   background-size: cover;
   height: 37%;
   width: 18%;
@@ -153,7 +161,7 @@ export default {
 
 .overlay-moon {
   position: absolute;
-  background-image: url("../assets/images/bg-login-moon.svg");
+  background-image: url("../assets/images/login/bg-login-moon.svg");
   background-size: cover;
   height: 25%;
   width: 25%;
@@ -163,9 +171,9 @@ export default {
 
 .overlay-tree {
   position: absolute;
-  background-image: url("../assets/images/bg-login-tree.svg");
+  background-image: url("../assets/images/login/bg-login-tree.svg");
   background-size: cover;
-  height: 34%;
+  height: 35%;
   width: 24%;
   top: 42%;
   left: 10%;
@@ -173,10 +181,10 @@ export default {
 
 .overlay-logo {
   position: absolute;
-  background-image: url("../assets/images/bg-login-logo.svg");
+  background-image: url("../assets/images/login/bg-login-logo.svg");
   background-size: cover;
-  height: 9.2%;
-  width: 5.6%;
+  height: 9.9%;
+  width: 6%;
   top: 8%;
   left: 48%;
 }

@@ -1,4 +1,6 @@
 <template>
+<!-- <div></div> -->
+<!-- <div></div> -->
   <div class="bg-color">
     <div class="overlay"></div>
     <div class="overlay-book"></div>

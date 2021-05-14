@@ -10,10 +10,10 @@
         class="signin-container d-flex justify-center align-center flex-column-reverse flex-md-row-reverse"
       >
         <div></div>
-        <div class="col-md-4 col-xl-4">
+        <div class="col-md-4 col-xl-4 px-xl-10">
           <div class="">
             <v-card
-              class="rounded-lg signin-left px-xl-16 py-xl-12 px-md-12 py-md-6 my-auto mx-lg-auto"
+              class="rounded-lg signin-left py-xl-12 px-md-12 py-md-6 my-auto mx-lg-auto"
               elevation="11"
             >
               <div class="d-flex justify-center align-center text-right">
@@ -24,7 +24,10 @@
                   </div>
                 </div>
               </div>
-              <group-validator class="mt-xl-8 mt-md-3" :validation="$v.form.email">
+              <group-validator
+                class="mt-xl-8 mt-md-3 px-xl-8"
+                :validation="$v.form.email"
+              >
                 <template slot-scope="{ errors }">
                   <label>Tên đăng nhập <span class="red--text">*</span></label>
                   <main-input
@@ -36,7 +39,10 @@
                   />
                 </template>
               </group-validator>
-              <group-validator class="mt-xl-1" :validation="$v.form.password">
+              <group-validator
+                class="mt-xl-1 px-xl-8"
+                :validation="$v.form.password"
+              >
                 <template slot-scope="{ errors }">
                   <label>Mật khẩu <span class="red--text">*</span></label>
 
@@ -49,12 +55,19 @@
                   />
                 </template>
               </group-validator>
-              <v-btn class="mt-xl-12 mt-md-4" block large color="primary" @click="onSubmit"
-                >Đăng nhập</v-btn
-              >
+              <div class=" px-xl-10">
+                <v-btn
+                  class="mt-xl-12 mt-md-4"
+                  block
+                  large
+                  color="primary"
+                  @click="onSubmit"
+                  >Đăng nhập</v-btn
+                >
+              </div>
               <div class="w-100 mt-1 text-right">
                 <nuxt-link to="reset-password" class="txt-secondary--text"
-                  ><small>Quên mật khẩu?</small></nuxt-link
+                  ><small class="reset-pass">Quên mật khẩu?</small></nuxt-link
                 >
               </div>
             </v-card>
@@ -97,7 +110,7 @@ export default {
   validations: {
     form: signIn,
   },
-  
+
   methods: {
     async onSubmit() {
       this.$v.$touch();
@@ -187,5 +200,9 @@ export default {
   width: 6%;
   top: 8%;
   left: 48%;
+}
+
+.reset-pass:hover {
+  text-decoration: underline;
 }
 </style>

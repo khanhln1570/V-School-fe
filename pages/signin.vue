@@ -1,4 +1,5 @@
 <template>
+<!-- <div></div> -->
   <div class="bg-color">
     <img src="../assets/images/login/bg-login-mountain.svg" class="overlay" />
     <img src="../assets/images/login/bg-login-book.svg" class="overlay-book" />

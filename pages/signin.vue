@@ -5,6 +5,14 @@
     <div class="overlay-moon"></div>
     <div class="overlay-tree"></div>
     <div class="overlay-logo"></div>
+
+
+
+
+
+
+
+    
     <div>
       <div
         class="signin-container d-flex justify-center align-center flex-column-reverse flex-md-row-reverse"
@@ -55,7 +63,7 @@
                   />
                 </template>
               </group-validator>
-              <div class=" px-xl-10">
+              <div class="px-xl-10">
                 <v-btn
                   class="mt-xl-12 mt-md-4"
                   block

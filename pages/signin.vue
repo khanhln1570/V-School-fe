@@ -13,7 +13,6 @@
       <span class="pl-4 white--text">Điều khoản</span>
     </div>
 
-
     <div>
       <div
         class="signin-container d-flex justify-center align-center flex-column-reverse flex-md-row-reverse"

@@ -1,18 +1,11 @@
 <template>
   <div class="bg-color">
-    <div class="overlay"></div>
-    <div class="overlay-book"></div>
-    <div class="overlay-moon"></div>
-    <div class="overlay-tree"></div>
-    <div class="overlay-logo"></div>
+    <img src="../assets/images/login/bg-login-mountain.svg" class="overlay" />
+    <img src="../assets/images/login/bg-login-book.svg" class="overlay-book" />
+    <img src="../assets/images/login/bg-login-moon.svg" class="overlay-moon" />
+    <img src="../assets/images/login/bg-login-tree.svg" class="overlay-tree" />
+    <img src="../assets/images/login/bg-login-logo.svg" class="overlay-logo" />
 
-
-
-
-
-
-
-    
     <div>
       <div
         class="signin-container d-flex justify-center align-center flex-column-reverse flex-md-row-reverse"
@@ -157,22 +150,19 @@ export default {
     rgba(209, 232, 255, 1) 0%,
     rgba(0, 72, 142, 1) 100%
   );
-  width: 100vw;
 }
 
 .overlay {
   position: absolute;
-  background-image: url("../assets/images/login/bg-login-mountain.svg");
-  background-size: cover;
-  height: 60%;
-  width: 103%;
-  top: 40%;
+  background-size: auto auto;
+  height: 58.8%;
+  width: 100%;
+  top: 41%;
   left: 0;
 }
 
 .overlay-book {
   position: absolute;
-  background-image: url("../assets/images/login/bg-login-book.svg");
   background-size: cover;
   height: 37%;
   width: 18%;
@@ -182,7 +172,6 @@ export default {
 
 .overlay-moon {
   position: absolute;
-  background-image: url("../assets/images/login/bg-login-moon.svg");
   background-size: cover;
   height: 25%;
   width: 25%;
@@ -192,7 +181,6 @@ export default {
 
 .overlay-tree {
   position: absolute;
-  background-image: url("../assets/images/login/bg-login-tree.svg");
   background-size: cover;
   height: 35%;
   width: 24%;
@@ -202,7 +190,6 @@ export default {
 
 .overlay-logo {
   position: absolute;
-  background-image: url("../assets/images/login/bg-login-logo.svg");
   background-size: cover;
   height: 9.9%;
   width: 6%;

@@ -11,7 +11,13 @@
       @clickOffDrawer="onClickMainDrawer"
       @toggleSidebar="toggleSidebar"
     >
-      
+      <template v-slot:custom-list>
+        <v-footer fixed outlined color="transparent">
+          <p class="text-capitalize pointer my-0 py-2 white--text" @click="logout">
+            Logout
+          </p>
+        </v-footer>
+      </template>
     </main-drawer>
 
     <v-main class="white">
@@ -19,7 +25,7 @@
         <nuxt class="mb-15 py-5 px-10" />
       </v-lazy>
     </v-main>
-    
+
     <v-lazy>
       <tutorial-tour
         v-if="show"
@@ -37,10 +43,12 @@ import sidebarItems from "@/shared/sidebar-items";
 
 export default {
   components: {
-    MainDrawer: () => import('@/components/themes/sidebar/main-drawer/MainDrawer'),
-    MainHeader: () => import('@/components/themes/header/Header'),
+    MainDrawer: () =>
+      import("@/components/themes/sidebar/main-drawer/MainDrawer"),
+    MainHeader: () => import("@/components/themes/header/Header"),
     // MainFooter: () => import('@/components/themes/footer/Footer'),
-    TutorialTour: () => import('@/components/themes/tutorial-tour/TutorialTour')
+    TutorialTour: () =>
+      import("@/components/themes/tutorial-tour/TutorialTour"),
   },
   data() {
     return {
@@ -88,7 +96,7 @@ export default {
   computed: {
     error() {
       return this.$nuxt?.nuxt?.err;
-    }
+    },
   },
   methods: {
     logout() {

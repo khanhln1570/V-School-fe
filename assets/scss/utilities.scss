@@ -44,3 +44,7 @@
 .w-100 {
   width: 100%;
 }
+
+.v-expansion-panel::before {
+  box-shadow: none !important;
+}

@@ -5,7 +5,8 @@
     app
     v-model="expanded"
     width="260"
-    class="header__fixed--wrapper bg-main"
+    class="header__fixed--wrapper bg-sidebar"
+    mobile-breakpoint="1000"
   >
     <v-toolbar light flat class="header__fixed--top" color="transparent">
       <v-toolbar-title class="ml-0 font-weight-bold header__fixed--logo py-1">
@@ -13,9 +14,12 @@
       </v-toolbar-title>
     </v-toolbar>
 
-    <v-list dense expand v-if="items">
+    <!-- <v-list dense expand v-if="items">
       <list-item v-for="(item, i) in items" :key="i" :item="item" />
-    </v-list>
+    </v-list> -->
+    <v-expansion-panels accordion multiple :dark="!$vuetify.dark">
+      <expansion-child v-for="(item, i) in items" :key="i"></expansion-child>
+    </v-expansion-panels>
     <slot name="custom-list"> </slot>
   </v-navigation-drawer>
 </template>
@@ -23,8 +27,9 @@
 <script>
 export default {
   components: {
-    ListItem: () => import("@/components/themes/sidebar/list-item/ListItem"),
-    Logo: () => import("@/components/themes/resources/Logo")
+    ExpansionChild: () =>
+      import("@/components/themes/sidebar/expansion-child/ExpansionChild"),
+    Logo: () => import("@/components/themes/resources/Logo"),
   },
   props: {
     drawer: {
@@ -66,8 +71,7 @@ export default {
     },
   },
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     expanded: {

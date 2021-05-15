@@ -11,7 +11,7 @@
 
 .header__fixed {
   &--wrapper {
-    padding-top: calc(var(--base-height-header) + 1rem);
+    padding-top: calc(var(--base-height-header));
   }
 
   &--top {

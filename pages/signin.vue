@@ -1,11 +1,17 @@
 <template>
-<!-- <div></div> -->
+
   <div class="bg-color">
     <img src="../assets/images/login/bg-login-mountain.svg" class="overlay" />
     <img src="../assets/images/login/bg-login-book.svg" class="overlay-book" />
     <img src="../assets/images/login/bg-login-moon.svg" class="overlay-moon" />
     <img src="../assets/images/login/bg-login-tree.svg" class="overlay-tree" />
     <img src="../assets/images/login/bg-login-logo.svg" class="overlay-logo" />
+
+
+    <div class="rules pa-2">
+      <span class="pr-5 white--text" style="border-right: 1px solid">Chính sách</span>
+      <span class="pl-4 white--text">Điều khoản</span>
+    </div>
 
     <div>
       <div
@@ -15,8 +21,11 @@
         <div class="col-md-4 col-xl-4 px-xl-10">
           <div class="">
             <v-card
-              class="rounded-lg signin-left py-xl-12 px-md-12 py-md-6 my-auto mx-lg-auto"
+              class="card rounded-lg signin-left py-xl-10 px-md-12 py-md-6 my-auto mx-lg-auto"
               elevation="11"
+              :class="{
+                'pa-10': $vuetify.breakpoint.mobile,
+              }"
             >
               <div class="d-flex justify-center align-center text-right">
                 <div class="">
@@ -27,7 +36,7 @@
                 </div>
               </div>
               <group-validator
-                class="mt-xl-8 mt-md-3 px-xl-8"
+                class="mt-xl-10 mt-md-3 px-xl-8"
                 :validation="$v.form.email"
               >
                 <template slot-scope="{ errors }">
@@ -57,7 +66,7 @@
                   />
                 </template>
               </group-validator>
-              <div class="px-xl-10">
+              <div class="px-xl-8">
                 <v-btn
                   class="mt-xl-12 mt-md-4"
                   block
@@ -67,22 +76,17 @@
                   >Đăng nhập</v-btn
                 >
               </div>
-              <div class="w-100 mt-1 text-right">
+              <div class="mt-1 text-right">
                 <nuxt-link to="reset-password" class="txt-secondary--text"
-                  ><small class="reset-pass">Quên mật khẩu?</small></nuxt-link
+                  ><small class="reset-password px-xl-8"
+                    >Quên mật khẩu?</small
+                  ></nuxt-link
                 >
               </div>
             </v-card>
           </div>
         </div>
         <div></div>
-
-        <!-- <v-sheet class="signin-left d-flex justify-center align-center primary" color="" elevation="0" min-height="100vh" min-width="50vw">
-        <div class="d-flex justify-center align-center flex-column">
-            <img src="@/assets/images/school.svg" alt="school" width="200px" />
-            <h1 class="display-2 white--text font-weight-bold mt-4">S-payment</h1>
-        </div>
-    </v-sheet> -->
       </div>
     </div>
   </div>
@@ -139,6 +143,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "./__styles/signin.scss";
+<<<<<<< HEAD
 
 .signin-container {
   height: 100vh;
@@ -201,4 +206,6 @@ export default {
 .reset-pass:hover {
   text-decoration: underline;
 }
+=======
+>>>>>>> feature/signin
 </style>

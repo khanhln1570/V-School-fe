@@ -1,9 +1,10 @@
-.overlap__border {
-  z-index: 9 !important;
-  border-bottom: 1px solid var(--base-separator) !important;
+.header {
+  &__input {
+    width: 350px;
+    @include font-medium;
+  }
 
-  &--left {
-    margin-left: -1px;
-    border-left: 1px solid var(--border-dark);
+  &__input:focus {
+    outline: none;
   }
 }

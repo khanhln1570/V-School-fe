@@ -221,8 +221,6 @@ export default {
       import(
         "@/components/themes/widgets/right-fixed-section/RightFixedSection"
       ),
-    DynamicColumns: () =>
-      import("@/components/themes/containers/dynamic-columns/DynamicColumns"),
   },
   computed: {
     ...mapGetters({

@@ -11,14 +11,8 @@
       @clickOffDrawer="onClickMainDrawer"
       @toggleSidebar="toggleSidebar"
     >
-      <template v-slot:custom-list>
-        <v-footer fixed outlined color="transparent">
-          <p class="text-capitalize pointer my-0 py-2 white--text" @click="logout">
-            Logout
-          </p>
-        </v-footer>
-      </template>
     </main-drawer>
+    <main-header @logout="logout"></main-header>
 
     <v-main class="white">
       <v-lazy>

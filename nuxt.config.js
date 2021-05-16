@@ -77,6 +77,7 @@ export default {
           'txt-error': "#E63946",
           'txt-success': "#1FBC67",
           'txt-active': "#0080FF",
+          'icon-light': "#CECECE",
         }
       }
     },

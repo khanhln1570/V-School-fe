@@ -40,7 +40,8 @@
 <script>
 export default {
   components: {
-    MiniStatistic: () => import('@/components/themes/widgets/mini-statistic/MiniStatistic')
+    MiniStatistic: () => import('@/components/themes/widgets/mini-statistic/MiniStatistic'),
+    PageHeading: () => import('@/components/themes/widgets/page-heading/PageHeading')
   },
   data() {
     return {

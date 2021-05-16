@@ -21,7 +21,7 @@
         <div class="col-md-4 col-xl-4 px-xl-10">
           <div class="">
             <v-card
-              class="card rounded-lg signin-left py-xl-10 px-md-12 py-md-6 my-auto mx-lg-auto"
+              class="card rounded-lg signin-left py-xl-15 px-md-12 py-md-6 py-10"
               elevation="11"
               :class="{
                 'pa-10': $vuetify.breakpoint.mobile,

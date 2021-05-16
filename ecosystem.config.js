@@ -1,10 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: "madcms-frontend",
+      name: "vschool-frontend",
       script: "npm",
       args: "run start",
-      cwd: "/home/crystal/frontend/",
+      cwd: "/home/vschool/fe/",
       watch: ["server", "client"],
       // Delay between restart
       watch_delay: 1000,

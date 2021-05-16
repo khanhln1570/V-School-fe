@@ -33,7 +33,7 @@
               class="overlay-logo mb-xl-5 mt-5 mb-md-10"
             />
             <v-card
-              class="card rounded-lg signin-left py-xl-10 px-md-8 py-md-8"
+              class="card rounded-lg signin-left py-xl-10 px-md-10 py-md-15"
               elevation="11"
               :class="{
                 'pa-8 ': $vuetify.breakpoint.mobile,

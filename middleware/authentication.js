@@ -12,9 +12,9 @@ export default async function ({ isHMR, app, store, route, redirect }) {
     if (excludeRoutes.includes(route.name)) {
       return true;
     }
-    // return redirect(
-    //   '/signin'
-    // )
+    return redirect(
+      '/signin'
+    )
   } else {
     if (excludeRoutes.includes(route.name)) {
       return redirect(

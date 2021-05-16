@@ -25,7 +25,7 @@
       alt="notification"
       width="22px"
     />
-    <v-divider vertical inset class="mx-3"></v-divider>
+    <v-divider vertical inset class="mx-3 mr-4"></v-divider>
 
     <v-menu offset-y nudge-bottom="10" v-model="showMenu">
       <template v-slot:activator="{ on }">

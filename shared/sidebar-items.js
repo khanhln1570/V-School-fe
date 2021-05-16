@@ -1,37 +1,45 @@
 const sidebarItems = [
-  {
-    title: "Summary",
-    to: "/",
-    id: "summary"
-  },
+  // {
+  //   title: "Summary",
+  //   to: "/",
+  //   id: "summary"
+  // },
   {
     group: {
-      title: 'Flagged entry',
-      id: 'flagged-entry',
+      title: 'Con của bạn',
+      id: 'your-child',
       items: [
         {
-          title: "Incoming Flags",
-          to: "/flagged/incoming",
+          title: "Trần Thị Tố Trinh",
+          to: "/students/studentId",
         },
         {
-          title: "Flag History",
-          to: "/flagged/history",
+          title: "Hoàng Việt Cường",
+          to: "/students/studentId",
         },
       ]
     }
   },
   {
     group: {
-      title: 'User management',
-      id: 'user-management',
+      title: 'Quản Lý',
+      id: 'management',
       items: [
         {
-          title: "Admin",
-          to: "/user-management/admin",
+          title: "Phí thu",
+          to: "/invoices",
         },
+      ]
+    }
+  },
+  {
+    group: {
+      title: 'Tài Khoản',
+      id: 'account',
+      items: [
         {
-          title: "Supervisor",
-          to: "/user-management/supervisor",
+          title: "Cài đặt",
+          to: "/account/settings",
         },
       ]
     }

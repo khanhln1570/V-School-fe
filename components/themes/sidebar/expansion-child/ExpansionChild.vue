@@ -1,7 +1,7 @@
 <template>
-  <v-expansion-panel>
-    <v-expansion-panel-header color="bg-sidebar pl-8">Item</v-expansion-panel-header>
-    <v-expansion-panel-content color="bg-sidebar"> 
+  <v-expansion-panel class="expansion">
+    <v-expansion-panel-header color="bg-sidebar pl-8 text-uppercase expansion__title">{{item.group.title}}</v-expansion-panel-header>
+    <v-expansion-panel-content color="bg-sidebar expansion__body"> 
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -22,4 +22,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./ExpansionChild.scss";
 </style>

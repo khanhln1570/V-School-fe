@@ -18,7 +18,7 @@
       <list-item v-for="(item, i) in items" :key="i" :item="item" />
     </v-list> -->
     <v-expansion-panels accordion multiple :dark="!$vuetify.dark">
-      <expansion-child v-for="(item, i) in items" :key="i"></expansion-child>
+      <expansion-child v-for="(item, i) in items" :item="item" :key="i"></expansion-child>
     </v-expansion-panels>
     <slot name="custom-list"> </slot>
   </v-navigation-drawer>

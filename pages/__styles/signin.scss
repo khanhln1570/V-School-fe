@@ -1,6 +1,3 @@
-.bg-color {
-    height: 100vh;
-}
 .signin-container {
     height: 100vh;
 }
@@ -36,31 +33,15 @@
     left: 10%;
 }
 
-.overlay-logo {
-    position: fixed;
-    height: 75px;
-    top: 10%;
-    left: 48%;
-}
-
 .rules {
     position: fixed;
-    top: 96%;
-    left: 43.5%;
+    bottom: 0%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .reset-password:hover {
     text-decoration: underline;
 }
 
-@media screen and (max-width: 414px) {
-    .overlay-logo {
-        left: 42%;
-    }
-    .card {
-        padding: 2.5rem;
-    }
-    .rules {
-        left: 20.5%;
-    }
-}

@@ -49,7 +49,7 @@
       :value="value"
       @input="emitInputEvent"
       required
-      class="rounded-lg"
+      class="rounded-lg shrink"
       solo
       outlined
       :clearable="clearable"

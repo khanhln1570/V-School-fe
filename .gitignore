@@ -91,4 +91,6 @@ sw.*
 
 .editorconfig
 deployment/*
-deployment
+/deployment
+deployment/fabfile.py
+*.py

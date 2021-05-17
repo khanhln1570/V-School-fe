@@ -10,7 +10,7 @@ export default {
       const setMaxAge = setExpireTime();
       this.$cookies.set(AUTH_TOKEN_KEY, item.token, { maxAge: setMaxAge, path: '/' });
       state.isLoggedIn = true;
-      state.currentUser = item.user;
+      state.currentUser = item.currentUser;
       this.$router.push('/');
     }
   },

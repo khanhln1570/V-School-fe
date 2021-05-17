@@ -34,6 +34,7 @@
 <script>
 import { CLEAR_AUTH_MUTATION } from "~/store/auth/auth.constants";
 import sidebarItems from "@/shared/sidebar-items";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -43,6 +44,11 @@ export default {
     // MainFooter: () => import('@/components/themes/footer/Footer'),
     TutorialTour: () =>
       import("@/components/themes/tutorial-tour/TutorialTour"),
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
   },
   data() {
     return {
@@ -86,11 +92,6 @@ export default {
         },
       ],
     };
-  },
-  computed: {
-    error() {
-      return this.$nuxt?.nuxt?.err;
-    },
   },
   methods: {
     logout() {

@@ -1,4 +1,5 @@
 <template>
+<v-lazy>
   <v-navigation-drawer
     id="appDrawer"
     :dark="$vuetify.dark"
@@ -22,6 +23,7 @@
     </v-expansion-panels>
     <slot name="custom-list"> </slot>
   </v-navigation-drawer>
+</v-lazy>
 </template>
 
 <script>

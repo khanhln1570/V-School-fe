@@ -2,8 +2,8 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   head: {
-    titleTemplate: 'S-payment Admin',
-    title: 'S-payment Admin',
+    titleTemplate: 'V-school',
+    title: 'V-school',
     htmlAttrs: {
       lang: 'en'
     },

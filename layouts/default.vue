@@ -49,12 +49,33 @@ export default {
     ...mapGetters({
       currentUser: "auth/getCurrentUser",
     }),
+    items() {
+      const childs = this.currentUser.childs || [];
+
+      sidebarItems.forEach(item => {
+        if(item.group?.title === 'Con của bạn') {
+          const newChilds = [];
+          childs.forEach(child => {
+            newChilds.push({
+                title: child.name,
+                to: `/students/${child.id}`,
+            })
+          });
+
+          item.group.childs = newChilds;
+      console.log(newChilds);
+
+        }
+      });
+
+      console.log(childs);
+      return sidebarItems;
+    }
   },
   data() {
     return {
       drawer: true,
       show: true,
-      items: sidebarItems,
       right: true,
       rightDrawer: false,
       title: "Vuetify.js",

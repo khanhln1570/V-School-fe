@@ -51,21 +51,26 @@
 
 
 @mixin font-bold {
-  font-family: "Montserrat Bold";
+  font-family: "Montserrat Bold" !important;
   font-weight: 700;
 }
 
 @mixin font-semi-bold {
-  font-family: "Montserrat Semi Bold";
+  font-family: "Montserrat Semi Bold" !important;
   font-weight: 600;
 }
 
 @mixin font-medium {
-  font-family: "Montserrat Medium";
+  font-family: "Montserrat Medium" !important;
   font-weight: 500;
 }
 
 @mixin font-light {
-  font-family: "Montserrat Light";
+  font-family: "Montserrat Light" !important;
   font-weight: 300;
+}
+
+@mixin font-regular {
+  font-family: "Montserrat" ;
+  font-weight: 400;
 }

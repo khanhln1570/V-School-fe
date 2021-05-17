@@ -78,6 +78,7 @@ export default {
           'txt-success': "#1FBC67",
           'txt-active': "#0080FF",
           'icon-light': "#CECECE",
+          'icon-secondary': "#677694",
         }
       }
     },

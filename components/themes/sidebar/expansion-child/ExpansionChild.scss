@@ -1,5 +1,21 @@
 .expansion {
   &__title {
     @include font-semi-bold;
+    color: #677694;
+  }
+
+  &__body {
+    &__item {
+      &--active {
+        background-color: #FFFFFF34;
+        color: white;
+
+        .expansion__body__item__title {
+          @include font-bold;
+
+        }
+      }
+
+    }
   }
 }

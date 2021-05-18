@@ -50,6 +50,7 @@ export default {
       currentUser: "auth/getCurrentUser",
     }),
     items() {
+
       const childs = this.currentUser.childs || [];
 
       sidebarItems.forEach((item) => {

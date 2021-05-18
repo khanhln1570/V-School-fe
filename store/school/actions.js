@@ -1,4 +1,3 @@
-import { AUTH_TOKEN_KEY } from "./auth.constants";
 
 export default {
   async login({ commit, dispatch }, payload) {

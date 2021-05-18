@@ -9,14 +9,7 @@ const sidebarItems = [
       title: 'Con của bạn',
       id: 'your-child',
       items: [
-        {
-          title: "Trần Thị Tố Trinh",
-          to: "/students/studentId",
-        },
-        {
-          title: "Hoàng Việt Cường",
-          to: "/students/studentId",
-        },
+        
       ]
     }
   },

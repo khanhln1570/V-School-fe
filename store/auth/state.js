@@ -3,7 +3,7 @@ export default () => ({
   currentUser: {
     id: 1,
     name: 'Lam',
-    role: 'parent',
+    role: 'superAdmin',
     childs: [
       {
         id: 1,

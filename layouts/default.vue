@@ -14,7 +14,7 @@
     </main-drawer>
     <main-header @logout="logout"></main-header>
 
-    <v-main class="white">
+    <v-main class="white mt-10">
       <v-lazy>
         <nuxt class="mb-15 py-5 px-10" />
       </v-lazy>
@@ -50,9 +50,8 @@ export default {
       currentUser: "auth/getCurrentUser",
     }),
     items() {
-
+      //prepare childs items for parents
       const childs = this.currentUser.childs || [];
-
       sidebarItems.forEach((item) => {
         if (item.group?.title === "Con của bạn") {
           const newChilds = [];
@@ -67,7 +66,6 @@ export default {
         }
       });
 
-      console.log(sidebarItems);
       return sidebarItems;
     },
   },

@@ -9,12 +9,10 @@
           <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
         </template>
       </page-header>
-      <v-tabs color="black" slider-color="blue" class="mt-10">
-        <v-tab>Phí thu</v-tab>
-        <v-tab>Hoạt động</v-tab>
-        <v-tab>Cài đặt</v-tab>
-      </v-tabs>
-      <div class="mt-12 row d-felx justify-center">
+      <page-body :items="items">
+
+        <template #invoices>
+<div class="mt-12 row d-felx justify-center">
         <div class="col-12">
           <div class="d-flex justify-space-around">
             <p>Phụ đạo</p>
@@ -54,6 +52,10 @@
           </v-alert>
         </div>
       </div>
+        </template>
+
+      </page-body>
+      
     </v-container>
   </div>
 </template>
@@ -62,6 +64,25 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
+    PageBody: () => import("@/components/commons/page-body/PageBody"),
+  },
+  data() {
+    return {
+      items: [
+        {
+          label: "Phí thu",
+          value: 'invoices',
+        },
+        {
+          label: "Hoạt động",
+          value: 'activities',
+        },
+        {
+          label: "Thời khoá biểu",
+          value: 'timeSchedual',
+        },
+      ],
+    };
   },
   mounted() {
     console.log(this.$route.params.id);

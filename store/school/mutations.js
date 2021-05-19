@@ -1,7 +1,8 @@
 export default {
-  setSchool(state, item) {
+  setSchools(state, item) {
     if (item) {
-      state.schools = item;
+      state.schools = item.items;
+      state.countSchool = item.count;
     }
   },
 };

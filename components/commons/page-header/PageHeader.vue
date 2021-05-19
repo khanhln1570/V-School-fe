@@ -1,5 +1,5 @@
 <template>
-  <div class="pageHeader">
+  <div class="pageHeader mb-10">
     <nuxt-link
       v-if="backTo"
       :to="backTo"

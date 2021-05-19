@@ -27,7 +27,7 @@
     @include font-light;
   }
   
-  font-size: var(--font-size-1rem);
+  font-size: var(--font-size-1rem) !important;
   line-height: var(--line-spacing-1-25rem);
   letter-spacing: var(--character-spacing-0);
 }

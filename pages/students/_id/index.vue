@@ -9,7 +9,7 @@
           <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
         </template>
       </page-header>
-      <page-body :items="items">
+      <main-tabs :items="items">
 
         <template #invoices>
 <div class="mt-12 row d-felx justify-center">
@@ -54,7 +54,7 @@
       </div>
         </template>
 
-      </page-body>
+      </main-tabs>
       
     </v-container>
   </div>
@@ -64,7 +64,7 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
-    PageBody: () => import("@/components/commons/page-body/PageBody"),
+    MainTab: () => import("@/components/commons/main-tabs/MainTab"),
   },
   data() {
     return {

@@ -38,5 +38,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../page-body/PageBody.scss";
+@import "./MainTab.scss";
 </style>

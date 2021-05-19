@@ -8,7 +8,7 @@
         <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
       </template>
     </page-header>
-    <page-body tab="Thanh toán phí thu">
+    <main-tabs tab="Thanh toán phí thu">
       <template #tabContent>
         <h4 class="font-weight-medium">Phụ đạo (1)</h4>
         <p>- Phụ đạo tiếng anh</p>
@@ -23,7 +23,7 @@
           <v-btn outlined color="red" class="ml-4 rounded-lg">Huỷ</v-btn>
         </div>
       </template>
-    </page-body>
+    </main-tabs>
   </v-container>
 </template>
 
@@ -31,7 +31,7 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
-    PageBody: () => import("@/components/commons/page-body/PageBody"),
+    MainTab: () => import("@/components/commons/main-tabs/MainTab"),
   },
   mounted() {
     console.log(this.$route.params.billId);

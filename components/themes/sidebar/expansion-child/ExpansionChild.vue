@@ -10,8 +10,15 @@
     <v-expansion-panel-content color="bg-sidebar expansion__body">
       <v-list dense>
         <v-list-item-group color="primary">
-          <v-list-item :to="subItem.to" v-for="(subItem, i) in item.group.items" :key="i" active-class="expansion__body__item--active">
-            <v-list-item-content>
+          <v-list-item
+            :to="subItem.to"
+            v-for="(subItem, i) in item.group.items"
+            :key="i"
+            active-class="expansion__body__item--active"
+            v-show="subItem.role ? subItem.role === currentUser.role : true"
+          >
+            <v-list-item-content
+            >
               <v-list-item-title
                 v-text="subItem.title"
                 class="pl-5 expansion__body__item__title"
@@ -25,12 +32,19 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   props: {
     item: {
       type: [Array, Object, String],
       default: null,
     },
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
   },
 };
 </script>

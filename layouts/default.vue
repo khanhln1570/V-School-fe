@@ -54,7 +54,7 @@ export default {
       const childs = this.currentUser.childs || [];
 
       sidebarItems.forEach((item) => {
-        if (item.group?.title === "Con của bạn") {
+        if (item.group.title === "Con của bạn") {
           const newChilds = [];
           childs.forEach((child) => {
             newChilds.push({

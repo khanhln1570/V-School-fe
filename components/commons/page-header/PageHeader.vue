@@ -12,6 +12,7 @@
       </h2>
       <slot name="titleIcon"></slot>
     </div>
+      <slot name="address"></slot>
   </div>
 </template>
 

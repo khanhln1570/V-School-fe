@@ -17,7 +17,7 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
-    PageBody: () => import("@/components/commons/page-body/PageBody"),
+    MainTab: () => import("@/components/commons/main-tabs/MainTab"),
   },
 };
 </script>

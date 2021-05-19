@@ -18,7 +18,6 @@
         <span>{{ child.address }}</span>
       </div>
     </v-alert>
-    <span class="dot"></span>
   </div>
 </template>
 

@@ -17,7 +17,7 @@
                 <p>Phụ đạo</p>
                 <p>Số tiền &#9660;</p>
                 <p>Ghi chú</p>
-                <nuxt-link to="./bills/_billId.vue">Thanh toán &#8594;</nuxt-link>
+                <nuxt-link to="./bills/_billId">Thanh toán &#8594;</nuxt-link>
               </div>
               <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
                 <div
@@ -42,7 +42,6 @@
         <template #settings>
           Cài đặt
         </template>
-
       </main-tabs>
     </v-container>
   </div>
@@ -79,8 +78,7 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.$route.params.id);
-    console.log(this.$store.state.invoices.invoices);
+    console.log(this.$route.params.id);
   },
 };
 </script>

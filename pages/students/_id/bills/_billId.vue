@@ -10,7 +10,7 @@
     </page-header>
     <main-tabs :items="items">
       <template #bills>
-        <v-alert outlined class="mt-5 rounded-lg">
+        <v-alert outlined class="mt-5 rounded-lg pa-6">
           <h4 class="font-weight-medium">Phụ đạo ({{ invoices.length }})</h4>
           <div
             class="mt-3 row"
@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
-    console.log(this.$store.getters.getInvoices);
+
   },
 };
 </script>

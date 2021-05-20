@@ -4,7 +4,7 @@
       <template #titleIcon>
         <img src="@/assets/images/school.svg" alt="student" />
       </template>
-      <template #address>
+      <template #subTitle>
         <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
       </template>
     </page-header>
@@ -70,7 +70,6 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
-
   },
 };
 </script>

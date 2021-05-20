@@ -8,6 +8,7 @@
     color="white"
     class="header px-6"
   >
+  <v-app-bar-nav-icon @click="$emit('drawlerClick')" v-if="$vuetify.breakpoint.mobile"></v-app-bar-nav-icon>
     <img
       class="header__search mr-3"
       src="@/assets/images/search.svg"

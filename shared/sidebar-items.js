@@ -38,7 +38,7 @@ const sidebarItems = [
       items: [
         {
           title: "Cài đặt",
-          to: "/account/settings",
+          to: "/settings",
         },
       ]
     }

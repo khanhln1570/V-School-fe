@@ -24,6 +24,12 @@
             </div>
           </div>
         </template>
+        <template #activities>
+          Hoạt động
+        </template>
+        <template #settings>
+          Cài đặt
+        </template>
       </main-tabs>
     </v-container>
   </div>
@@ -59,6 +65,7 @@ export default {
           value: "activities",
         },
         {
+<<<<<<< HEAD
           label: "Thời khoá biểu",
           value: "timeSchedular",
         },
@@ -75,12 +82,24 @@ export default {
         {
           text: "",
           value: "action",
+=======
+          label: "Cài đặt",
+          value: "settings",
+>>>>>>> develop
         },
       ],
+      
     };
   },
+<<<<<<< HEAD
   methods: {
     getInvoiceByType(type) {},
+=======
+  computed: {
+    invoices() {
+      return this.$store.state.invoices.invoices;
+    },
+>>>>>>> develop
   },
   mounted() {
     console.log(this.$route.params.id);

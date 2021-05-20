@@ -16,7 +16,7 @@ export default {
   },
   clearAuth(state) {
     state.isLoggedIn = false;
-    state.currentUser= {};
+    // state.currentUser= {};
     this.$cookies.remove(AUTH_TOKEN_KEY, {path: '/',});
     this.$axios.defaults.headers.common[
       "token"

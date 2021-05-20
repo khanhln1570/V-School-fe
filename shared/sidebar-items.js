@@ -21,6 +21,7 @@ const sidebarItems = [
         {
           title: "Phí thu",
           to: "/invoices",
+          role: "school"
         },
         {
           title: "Trường học",

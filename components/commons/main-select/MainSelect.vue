@@ -3,15 +3,23 @@
     <label :for="id" class="mr-3" v-if="label">{{label}}</label>
     <v-select
       v-if="items"
+      :value="value"
       :items="items"
       :item-text="itemText"
       :item-value="itemValue"
       :placeholder="placeholder"
-      hide-details
-      solo
-      dense
+      :hide-details="errors ? false : true"
       outlined
       :id="id"
+      class="main__select"
+      @change="$emit('input', $event)"
+      :style="{
+        maxWidth: `${maxWidth}px`
+      }"
+      :error-messages="errors"
+      :clearable="clearable"
+      :return-object="returnObject"
+      @click:clear="$emit('clear')"
     ></v-select>
   </div>
 </template>
@@ -19,6 +27,10 @@
 <script>
 export default {
   props: {
+    maxWidth: {
+      type: [Number, String],
+      default: null
+    },
     items: {
       type: Array,
       default: null,
@@ -44,16 +56,29 @@ export default {
       default: "",
     },
     value: {
-      type: Object,
+      type: [Number, String, Object],
       default: null,
     }, 
     placeholder: {
       type: String,
       default: "",
     },
+    errors: {
+      type: [Array, String, Object],
+      default: null,
+    },
+    clearable: {
+      type: Boolean,
+      default: null,
+    },
+    returnObject: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import './MainSelect.scss';
 </style>

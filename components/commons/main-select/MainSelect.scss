@@ -1,0 +1,12 @@
+.main__select {
+  ::v-deep {
+    .v-text-field--outlined>.v-input__control>.v-input__slot,
+    .v-input__slot {
+      max-height: 2.375rem !important;
+    }
+    .v-input__append-inner {
+      margin-top: 0;
+      align-self: center;
+    }
+  }
+}

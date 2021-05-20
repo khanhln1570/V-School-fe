@@ -9,7 +9,7 @@
           <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
         </template>
       </page-header>
-      <main-tabs :items="items">
+      <main-tab :items="items">
         <template #invoices>
           <div class="mt-12 row d-felx justify-center">
             <div class="col-12">
@@ -20,39 +20,30 @@
                 <p>Thanh toán &#8594;</p>
               </div>
               <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div class="d-flex justify-space-around">
+                <div
+                  v-for="(invoice, index) in invoices"
+                  :key="index"
+                  class="d-flex justify-space-around"
+                >
                   <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>Phụ đạo tiếng anh
+                    <span class="dot mr-2"></span>{{ invoice.name }}
                   </div>
-                  <span>320.000</span>
-                  <span>Tháng 2</span>
-                  <input type="checkbox" />
-                </div>
-              </v-alert>
-              <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div class="d-flex justify-space-around">
-                  <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>Phụ đạo tiếng anh
-                  </div>
-                  <span>320.000</span>
-                  <span>Tháng 2</span>
-                  <input type="checkbox" />
-                </div>
-              </v-alert>
-              <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div class="d-flex justify-space-around">
-                  <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>Phụ đạo tiếng anh
-                  </div>
-                  <span>320.000</span>
-                  <span>Tháng 2</span>
+                  <span>{{ invoice.fee }}</span>
+                  <span>{{ invoice.note }}</span>
                   <input type="checkbox" />
                 </div>
               </v-alert>
             </div>
           </div>
         </template>
-      </main-tabs>
+        <template #activities>
+          Hoạt động
+        </template>
+        <template #settings>
+          Cài đặt
+        </template>
+
+      </main-tab>
     </v-container>
   </div>
 </template>
@@ -75,14 +66,21 @@ export default {
           value: "activities",
         },
         {
-          label: "Thời khoá biểu",
-          value: "timeSchedual",
+          label: "Cài đặt",
+          value: "settings",
         },
       ],
+      
     };
   },
+  computed: {
+    invoices() {
+      return this.$store.state.invoices.invoices;
+    },
+  },
   mounted() {
-    console.log(this.$route.params.id);
+    // console.log(this.$route.params.id);
+    console.log(this.$store.state.invoices.invoices);
   },
 };
 </script>

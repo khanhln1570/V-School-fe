@@ -42,6 +42,7 @@
 
 // The variables you want to modify
 $font-size-root: var(--base-font-size);
+// $border-radius-root: 10px;
 
 $pagination-item-margin: 0;
 $pagination-navigation-height: 34px;
@@ -50,3 +51,8 @@ $pagination-navigation-margin: 0.3rem 0;
 $text-field-filled-full-width-outlined-slot-min-height: 48px !important;
 $expansion-panel-border-radius: 0px;
 $divider-inset-max-height	: calc(100% - 24px) !default;
+
+//table
+$data-table-border-radius: 10px;
+$data-table-regular-header-height: 39px !default;
+$data-table-regular-row-height: 60px;

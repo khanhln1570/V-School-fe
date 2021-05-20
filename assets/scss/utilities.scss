@@ -81,3 +81,39 @@
   font-size: 1.8125rem !important;
   @include font-medium;
 }
+
+//table
+
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  @include text-size-1rem;
+  @include font-medium;
+  color: black !important;
+  transition: color ease-in-out .3s;
+}
+
+.v-data-table > .v-data-table__wrapper > table > thead {
+  background-color: #EBEBEB;
+}
+
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th:hover {
+  color: #0080FF !important;
+}
+
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > td {
+  @include text-size-1rem;
+  @include font-medium;
+}
+
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > td:first-child {
+  border-radius: 0px !important;
+}
+
+.v-data-table > .v-data-table__wrapper > table {
+  border: 1px solid #031B4D;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.v-input--selection-controls {
+  margin-top: 0px !important;
+}

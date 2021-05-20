@@ -3,16 +3,24 @@
     <v-container class="px-0">
       <v-row align="center">
         <v-col md="8" lg="9">
-          <table-search v-if="showSearch" :search.sync="search" :disabled="loading" :searchLabel="searchLabel"/>
+          <table-search
+            v-if="showSearch"
+            :search.sync="search"
+            :disabled="loading"
+            :searchLabel="searchLabel"
+          />
         </v-col>
         <v-col md="4" lg="3">
           <slot name="filter"></slot>
         </v-col>
       </v-row>
     </v-container>
-    
-  
-    <v-skeleton-loader v-if="firstLoad" :loading="loading" type="table"></v-skeleton-loader>
+
+    <v-skeleton-loader
+      v-if="firstLoad"
+      :loading="loading"
+      type="table"
+    ></v-skeleton-loader>
     <v-data-table
       v-show="!firstLoad"
       v-model="selected"
@@ -30,25 +38,39 @@
       <template v-slot:top>
         <slot name="top"></slot>
       </template>
-      <template v-for="keyname in headers" v-slot:[getToKey(keyname.value)]="{item, value}">
+      <template
+        v-for="keyname in headers"
+        v-slot:[getToKey(keyname.value)]="{ item, value }"
+      >
         <slot :name="keyname.value" :item="item" :value="value">
           {{ value }}
         </slot>
       </template>
     </v-data-table>
 
-    <table-footer :footerSelectItem="footerSelectItem" :showPagination="showPagination" :page="page" :pageCount="pageCount" :disabled="loading" />
+    <table-footer
+      :perpage="perpage"
+      :footerSelectItem="
+        footerSelectItem.length ? footerSelectItem : limitTable
+      "
+      :showPagination="showPagination"
+      :page="page"
+      :pageCount="pageCount"
+      :disabled="loading"
+      @setPerpage="setPerpage"
+    />
   </div>
 </template>
 
 <script>
 import { toString } from "lodash";
+import LIMIT_LIST from "@/shared/limitTable-list";
 
 export default {
   components: {
-    MainSelect: () => import('@/components/commons/main-select/MainSelect'),
-    TableSearch: () => import('./TableSearch'),
-    TableFooter: () => import('./TableFooter'),
+    MainSelect: () => import("@/components/commons/main-select/MainSelect"),
+    TableSearch: () => import("./TableSearch"),
+    TableFooter: () => import("./TableFooter"),
   },
   props: {
     count: {
@@ -61,7 +83,7 @@ export default {
     },
     searchLabel: {
       type: String,
-      default: "Enter your search keyword..."
+      default: "Enter your search keyword...",
     },
     showPagination: {
       type: Boolean,
@@ -81,12 +103,12 @@ export default {
     },
     fetchItems: {
       type: Function,
-      require: true
+      require: true,
     },
     footerSelectItem: {
       type: Array,
-      default: () => [10, 25, 50, 100]
-    }
+      default: () => [],
+    },
   },
   data: () => {
     return {
@@ -97,6 +119,8 @@ export default {
       perpage: 10,
       options: {},
       loading: false,
+      limitTable: LIMIT_LIST,
+      refetch: true,
     };
   },
   computed: {
@@ -120,7 +144,7 @@ export default {
   },
   methods: {
     rowClick(response) {
-      return this.$emit('click:row', response);
+      return this.$emit("click:row", response);
     },
     getRequestParams(searchTitle, page, pageSize) {
       let params = {};
@@ -167,28 +191,50 @@ export default {
     getToKey(value, prefix = "item.") {
       return toString(prefix + value);
     },
-    setPage(page) {
-      return (this.page = page);
+    setPage(page, fetch = true) {
+      this.page = page;
+      this.refetch = fetch;
     },
     enterSearch() {
       // Submit search and reset page to fisrt.2
       this.page = 1;
       this.onFetchItems();
     },
+    setPerpage(perpage) {
+      this.perpage = perpage;
+    },
   },
   watch: {
-    page() {
+    page(value) {
       const { query } = this.$route;
       this.$router.push({
         path: this.$route.path,
         query: {
           ...query,
-          page: this.page,
+          page: value,
         },
       });
 
-      this.onFetchItems();
+      if (this.refetch) this.onFetchItems();
     },
+    perpage(value) {
+      const { query } = this.$route;
+      this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...query,
+          views: value,
+        },
+      });
+
+      if (this.page !== 1) return this.setPage(1);
+
+      return this.onFetchItems();
+    },
+    
+  },
+  beforeDestroy() {
+    this.refetch = true;
   },
 };
 </script>

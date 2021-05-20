@@ -1,54 +1,26 @@
 <template>
   <div>
-    <v-container>
-      <page-header title="Trần Thị Tố Trinh">
+    <v-container v-if="currentChild">
+      <page-header :title="currentChild.name">
         <template #titleIcon>
-          <img src="@/assets/images/school.svg" alt="student" />
+          <img src="@/assets/images/woman.svg" alt="woman" />
         </template>
         <template #address>
-          <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
+          <p class="txt-secondary--text mt-2">
+            {{ currentChild.classCode }}, {{ currentChild.schoolId }}
+          </p>
         </template>
       </page-header>
       <main-tabs :items="items">
         <template #invoices>
-          <div class="mt-12 row d-felx justify-center">
-            <div class="col-12">
-              <div class="d-flex justify-space-around">
-                <p>Phụ đạo</p>
-                <p>Số tiền &#9660;</p>
-                <p>Ghi chú</p>
-                <p>Thanh toán &#8594;</p>
-              </div>
-              <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div class="d-flex justify-space-around">
-                  <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>Phụ đạo tiếng anh
-                  </div>
-                  <span>320.000</span>
-                  <span>Tháng 2</span>
-                  <input type="checkbox" />
-                </div>
-              </v-alert>
-              <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div class="d-flex justify-space-around">
-                  <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>Phụ đạo tiếng anh
-                  </div>
-                  <span>320.000</span>
-                  <span>Tháng 2</span>
-                  <input type="checkbox" />
-                </div>
-              </v-alert>
-              <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div class="d-flex justify-space-around">
-                  <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>Phụ đạo tiếng anh
-                  </div>
-                  <span>320.000</span>
-                  <span>Tháng 2</span>
-                  <input type="checkbox" />
-                </div>
-              </v-alert>
+          <div class="mt-10">
+            <div v-for="(type, index) in invoiceTypes" :key="index">
+              <invoice-group
+                :invoiceType="type"
+                :invoices="currentChildInvoicesByType(type.id)"
+                :headers="headers"
+                v-if="currentChildInvoicesByType(type.id).length"
+              ></invoice-group>
             </div>
           </div>
         </template>
@@ -58,10 +30,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
+    InvoiceGroup: () =>
+      import("@/components/yourChild/invoice-group/InvoiceGroup"),
+  },
+  computed: {
+    ...mapGetters({
+      invoiceTypes: "invoices/getInvoiceTypes",
+      currentChildInvoices: "yourChild/getCurrentChildInvoices",
+      currentChild: "yourChild/getCurrentChild",
+      currentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
+    }),
   },
   data() {
     return {
@@ -76,10 +60,27 @@ export default {
         },
         {
           label: "Thời khoá biểu",
-          value: "timeSchedual",
+          value: "timeSchedular",
+        },
+      ],
+      headers: [
+        {
+          text: "Số tiền",
+          value: "total",
+        },
+        {
+          text: "Ghi chú",
+          value: "note",
+        },
+        {
+          text: "",
+          value: "action",
         },
       ],
     };
+  },
+  methods: {
+    getInvoiceByType(type) {},
   },
   mounted() {
     console.log(this.$route.params.id);

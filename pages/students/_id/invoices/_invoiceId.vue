@@ -34,7 +34,7 @@ export default {
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
   },
   mounted() {
-    console.log(this.$route.params.billId);
+    console.log(this.$route.params.invoiceId);
   },
 };
 </script>

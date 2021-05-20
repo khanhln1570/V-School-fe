@@ -12,7 +12,7 @@
       </h2>
       <slot name="titleIcon"></slot>
     </div>
-      <slot name="address"></slot>
+      <slot name="subTitle"></slot>
   </div>
 </template>
 

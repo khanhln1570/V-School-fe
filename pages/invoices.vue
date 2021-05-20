@@ -6,9 +6,7 @@
           <img src="@/assets/images/school.svg" alt="fee" />
         </template>
       </page-header>
-      <main-tabs tab1="Chưa thu" tab2="Đã thu">
-        <template #tabMenu>asd</template>
-      </main-tabs>
+      
     </v-container>
   </div>
 </template>
@@ -17,7 +15,7 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
-    MainTab: () => import("@/components/commons/main-tabs/MainTab"),
+    MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
   },
 };
 </script>

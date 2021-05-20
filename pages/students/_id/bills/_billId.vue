@@ -8,7 +8,7 @@
         <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
       </template>
     </page-header>
-    <main-tab :items="items">
+    <main-tabs :items="items">
       <template #bills>
         <v-alert outlined class="mt-5 rounded-lg">
           <h4 class="font-weight-medium">Phụ đạo ({{ invoices.length }})</h4>
@@ -43,7 +43,7 @@
           </div>
         </v-alert>
       </template>
-    </main-tab>
+    </main-tabs>
   </v-container>
 </template>
 
@@ -51,7 +51,7 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
-    MainTab: () => import("@/components/commons/main-tabs/MainTab"),
+    MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
   },
   data() {
     return {

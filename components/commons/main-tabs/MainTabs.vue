@@ -6,6 +6,10 @@
       <v-tab v-for="(item, index) in items" :key="index">
         {{ item.label }}
       </v-tab>
+      <v-spacer></v-spacer>
+      <div class="tab__right d-flex">
+        <slot name="tabRight"></slot>
+      </div>
     </v-tabs>
     <v-tabs-items v-model="tab">
       <v-tab-item v-for="(item, index) in items" :key="index">
@@ -34,5 +38,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./MainTab.scss";
+@import "./MainTabs.scss";
 </style>

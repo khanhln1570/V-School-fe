@@ -13,7 +13,7 @@ function makerandom(length) {
 const objSchool = (i) => {
   return {
     id: i,
-    name: 'Name ' + i,
+    name: 'School ' + i,
     phone: '+' + Math.floor(Math.random() * (89 - 1) + 10) +' '+ Math.floor(Math.random() * (99999999 - 1) + 2),
     mst: Math.floor(Math.random() * (99999999 - 1) + 12),
     address: makerandom(12),

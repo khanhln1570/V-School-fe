@@ -9,7 +9,7 @@
           <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
         </template>
       </page-header>
-      <main-tab :items="items">
+      <main-tabs :items="items">
         <template #invoices>
           <div class="mt-12 row d-felx justify-center">
             <div class="col-12">
@@ -17,7 +17,7 @@
                 <p>Phụ đạo</p>
                 <p>Số tiền &#9660;</p>
                 <p>Ghi chú</p>
-                <p>Thanh toán &#8594;</p>
+                <nuxt-link to="./bills/_billId.vue">Thanh toán &#8594;</nuxt-link>
               </div>
               <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
                 <div
@@ -43,7 +43,7 @@
           Cài đặt
         </template>
 
-      </main-tab>
+      </main-tabs>
     </v-container>
   </div>
 </template>
@@ -52,7 +52,7 @@
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
-    MainTab: () => import("@/components/commons/main-tabs/MainTab"),
+    MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
   },
   data() {
     return {

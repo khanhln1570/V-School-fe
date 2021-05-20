@@ -1,0 +1,16 @@
+.tab {
+  .v-tabs {
+    .v-tab {
+      @include text-size-1rem(medium);
+      text-transform: capitalize;
+    }
+
+    .v-slide-group__content {
+      div:not(.v-tab--active) {
+        border-bottom: 2px solid #d6d6d6;
+        box-sizing: border-box;
+        color: black;
+      }
+    }
+  }
+}

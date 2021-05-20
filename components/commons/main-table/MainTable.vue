@@ -109,12 +109,15 @@ export default {
       type: Array,
       default: () => [],
     },
+    search: {
+      type: String,
+      require: '',
+    },
   },
   data: () => {
     return {
       firstLoad: true,
       selected: [],
-      search: "",
       page: 1,
       perpage: 10,
       options: {},
@@ -231,7 +234,9 @@ export default {
 
       return this.onFetchItems();
     },
-    
+    search(value) {
+      this.enterSearch();
+    }
   },
   beforeDestroy() {
     this.refetch = true;

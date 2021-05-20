@@ -1,0 +1,16 @@
+.cusIconTextBtn {
+  padding: .3rem .7rem;
+  border-radius: 10px 10px 0 0;
+
+  height: 100%;
+  cursor: pointer;
+  transition: background-color ease-in-out .3s;
+
+  p {
+    @include font-medium;
+  }
+}
+
+.cusIconTextBtn:hover {
+  background-color: #ECECEC;
+}

@@ -52,6 +52,9 @@ export default {
       currentChild: "yourChild/getCurrentChild",
       currentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
     }),
+    invoices() {
+      return this.$store.state.invoices.invoices;
+    },
   },
   data() {
     return {
@@ -65,7 +68,6 @@ export default {
           value: "activities",
         },
         {
-<<<<<<< HEAD
           label: "Thời khoá biểu",
           value: "timeSchedular",
         },
@@ -82,24 +84,13 @@ export default {
         {
           text: "",
           value: "action",
-=======
-          label: "Cài đặt",
-          value: "settings",
->>>>>>> develop
         },
       ],
       
     };
   },
-<<<<<<< HEAD
   methods: {
     getInvoiceByType(type) {},
-=======
-  computed: {
-    invoices() {
-      return this.$store.state.invoices.invoices;
-    },
->>>>>>> develop
   },
   mounted() {
     console.log(this.$route.params.id);

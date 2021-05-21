@@ -6,28 +6,22 @@
     </page-header>
     <main-tabs :items="items">
       <template #personal>
-        <v-card outlined class="mt-6 px-10 py-7 rounded-lg d-flex justify-space-between">
-          <div class="d-flex">
+        <main-card>
+          <template #titleImg>
             <img src="../assets/images/parent.svg" />
-            <div class="ml-10">
-              <h2 class="font-weight-medium">{{ personal.name }}</h2>
-              <div class="mt-5">
-                <p class="font-weight-medium mb-1">{{ personal.phone }}</p>
-                <p class="text--secondary mb-1">{{ personal.address }}</p>
-                <p class="text--secondary mb-1">{{ personal.email }}</p>
-                <p>
-                  <img src="../assets/images/children.svg" />{{ personal.child }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <v-btn elevation="0" large class="text-lowercase rounded-lg" style="color:#677694;"
-              ><span class="text-uppercase"> T</span>hay đổi thông tin cá nhân</v-btn
-            >
-          </div>
-        </v-card>
+          </template>
+          <template #name>{{ personal.name }}</template>
+          <template #phone>{{ personal.phone }}</template>
+          <template #address>{{ personal.address }}</template>
+          <template #email>{{ personal.email }}</template>
+          <template #img>
+            <img src="../assets/images/children.svg" />
+          </template>
+          <template #child>{{ personal.child }}</template>
+          <template #first-btn>
+            <span class="text-uppercase"> T</span>hay đổi thông tin cá nhân
+          </template>
+        </main-card>
       </template>
     </main-tabs>
   </v-container>
@@ -38,6 +32,7 @@ export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
+    MainCard: () => import("@/components/commons/main-card/MainCard"),
   },
   data() {
     return {

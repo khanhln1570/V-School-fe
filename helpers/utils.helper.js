@@ -31,3 +31,14 @@
 export function setExpireTime() {
   return 3600 * 24 * 365 * 1;
 }
+
+export function arrayToQuery(array) {
+  let string = '';
+  array.forEach((item, index) => {
+    string += item;
+    if (index !== (array.length - 1)) {
+      string += ',';
+    }
+  });
+  return string;
+}

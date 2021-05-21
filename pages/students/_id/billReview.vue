@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <page-header title="Trần Thị Tố Trinh">
+    <page-header title="Trần Thị Tố Trinh" :backTo="`/students/${currentChild.id}`">
       <template #titleIcon>
         <img src="@/assets/images/school.svg" alt="student" />
       </template>
@@ -11,17 +11,17 @@
     <main-tabs :items="items">
       <template #bills>
         <v-card outlined class="mt-5 rounded-lg pa-6">
-          <h4 class="font-weight-medium">Phụ đạo ({{ invoices.length }})</h4>
+          <h4 class="font-weight-medium">Bao gồm ({{ arrayInvoices.length }})</h4>
           <div
             class="mt-3 row"
-            v-for="(invoice, index) in invoices"
+            v-for="(invoice, index) in arrayInvoices"
             :key="index"
           >
             <div class="col-4">
-              <span>- {{ invoice.name }}</span>
+              <span>- {{ invoice.title }}</span>
             </div>
             <div class="col-4">
-              <span> {{ invoice.fee }}</span>
+              <span> {{ invoice.total }}</span>
             </div>
             <div class="col-4"></div>
           </div>
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
@@ -64,12 +66,17 @@ export default {
     };
   },
   computed: {
-    invoices() {
-      return this.$store.state.invoices.invoices;
-    },
+    ...mapGetters({
+      currentChild: "yourChild/getCurrentChild",
+      getCurrentChildInvoicesByArrayId: "yourChild/getCurrentChildInvoicesByArrayId"
+    }),
+    arrayInvoices() {
+      let arrayInvoiceId = this.$route.query.invoices.split(',');
+      arrayInvoiceId = arrayInvoiceId.map(item => Number.parseInt(item));
+      return this.getCurrentChildInvoicesByArrayId(arrayInvoiceId);
+    }
   },
   mounted() {
-    console.log(this.$route.params.invoiceId);
   },
 };
 </script>

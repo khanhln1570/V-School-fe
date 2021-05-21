@@ -68,7 +68,7 @@ export default () => ({
             total: 340000,
             note: "Tháng 2",
             type: "EXTRA_TUITION",
-            title: "Phụ đạo âm nhạc",
+            title: "Phụ đạo tiếng anh",
             status: "PENDING"
 
         },
@@ -77,7 +77,7 @@ export default () => ({
             total: 340000,
             note: "Tháng 2",
             type: "EXTRA_TUITION",
-            title: "Phụ đạo âm nhạc",
+            title: "Phụ đạo ngữ văn",
             status: "SUCCESS"
 
         },

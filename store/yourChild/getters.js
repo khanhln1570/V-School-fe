@@ -12,5 +12,12 @@ export default {
   },
   getCurrentChildInvoicesByType: (state) => (type) => {
     return state.currentChildInvoices.filter(invoice => invoice.type === type);
-  }
+  },
+  getCurrentChildInvoicesByArrayId: (state) => (arrayId) => {
+    console.log(arrayId);
+
+    return state.currentChildInvoices.filter(invoice => {
+      return arrayId.find(id => invoice.id === id);
+    });
+  },
 };

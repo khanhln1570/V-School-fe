@@ -2,7 +2,9 @@
   <v-sheet elevation="0" class="invoiceRow mb-2 px-5 py-3">
     <v-container>
       <v-row>
-        <v-col v-for="(item, index) in headers" :key="index" class="pa-0 d-flex align-center">
+        <v-col v-for="(item, index) in headers" :key="index" class="pa-0 d-flex align-center" :class="{
+          'd-flex justify-end': index === headers.length - 1,
+        }">
           <slot :name="item.value" :value="invoice[item.value]" :item="invoice">
             {{invoice[item.value]}}
           </slot>

@@ -12,6 +12,20 @@
         </template>
       </page-header>
       <main-tabs :items="items">
+        <template #tabRight>
+          <span
+          :class="selectedInvoiceLength ? 'icon-active--text' : 'txt-secondary--text'"
+          >({{ selectedInvoiceLength || 0 }}) Thanh toán
+          <v-icon
+            size="20"
+            class="mb-1"
+            :color="selectedInvoiceLength ? 'icon-active' : 'txt-secondary--text'"
+            >mdi-arrow-right</v-icon
+          >
+        </span>
+        </template>
+        
+
         <template #invoices>
           <div class="mt-10">
             <div v-for="(type, index) in invoiceTypes" :key="index">
@@ -19,6 +33,7 @@
                 :invoiceType="type"
                 :invoices="currentChildInvoicesByType(type.id)"
                 :headers="headers"
+                @selected="handleSelectedChange"
                 v-if="currentChildInvoicesByType(type.id).length"
               ></invoice-group>
             </div>
@@ -55,6 +70,11 @@ export default {
     invoices() {
       return this.$store.state.invoices.invoices;
     },
+    selectedInvoiceLength() {
+      return this.selectedInvoice.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.values.length
+      }, 0)
+    }
   },
   data() {
     return {
@@ -86,14 +106,28 @@ export default {
           value: "action",
         },
       ],
-      
+      selectedInvoice: [],
     };
   },
   methods: {
     getInvoiceByType(type) {},
+    handleSelectedChange(item) {
+      console.log(this.selectedInvoice.map(type => {
+        if(type.id === item.id) {
+          type.values = item.values;
+        }
+      }));
+      
+    }
   },
   mounted() {
     console.log(this.$route.params.id);
+    this.invoiceTypes.forEach(type => {
+      this.selectedInvoice.push({
+        id: type.id,
+        values: []
+      })
+    });
   },
 };
 </script>

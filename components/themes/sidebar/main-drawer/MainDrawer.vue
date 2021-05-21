@@ -18,7 +18,7 @@
     <!-- <v-list dense expand v-if="items">
       <list-item v-for="(item, i) in items" :key="i" :item="item" />
     </v-list> -->
-    <v-expansion-panels accordion multiple :dark="!$vuetify.dark">
+    <v-expansion-panels accordion multiple :dark="!$vuetify.dark" :value="openExpansion">
       <expansion-child v-for="(item, i) in items" :item="item" :key="i"></expansion-child>
     </v-expansion-panels>
     <slot name="custom-list"> </slot>
@@ -73,7 +73,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      openExpansion: [0, 1, 2],
+    };
   },
   computed: {
     expanded: {

@@ -6,7 +6,7 @@
           <img src="@/assets/images/woman.svg" alt="woman" v-if="currentChild.gender === 'female'" />
           <img src="@/assets/images/man.svg" alt="man" v-else-if="currentChild.gender === 'male'"/>
         </template>
-        <template #address>
+        <template #subTitle>
           <p class="txt-secondary--text mt-2">
             {{ currentChild.classCode }}, {{ currentChild.schoolId }}
           </p>

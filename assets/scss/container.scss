@@ -1,0 +1,9 @@
+@media only screen and (max-width: 1920px) {
+  .container {
+    max-width: 1200px !important;
+  }
+
+  .container--fluid {
+    max-width: 100% !important;
+  }
+}

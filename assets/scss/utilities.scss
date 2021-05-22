@@ -33,12 +33,11 @@
 }
 
 .v-input--is-disabled .v-input__slot {
-  background-color: #EAECEF !important;
+  background-color: #eaecef !important;
 
   input {
     font-style: italic;
   }
-  
 }
 
 .v-expansion-panel::before {
@@ -51,7 +50,7 @@
       padding: 0 0 1rem 0 !important;
     }
   }
-} 
+}
 
 .v-list--dense .v-list-item .v-list-item__title {
   @include text-size-1rem;
@@ -62,6 +61,9 @@
   background-color: #eaecef00 !important;
 }
 
+    .custom-container {
+      max-width: 1200px !important;
+    }
 
 @media only screen and (max-width: 1920px) {
   .container {
@@ -74,7 +76,7 @@
 }
 
 .v-toolbar__extension {
-  border-top: 1px solid #EAEDF6;
+  border-top: 1px solid #eaedf6;
 }
 
 .main-drawler .v-list-item__content {
@@ -86,21 +88,20 @@
   @include font-medium;
 }
 
-//table
-
+//NOTE CUSTOM DATA-TABLE
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th {
   @include text-size-1rem;
   @include font-medium;
   color: black !important;
-  transition: color ease-in-out .3s;
+  transition: color ease-in-out 0.3s;
 }
 
 .v-data-table > .v-data-table__wrapper > table > thead {
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th:hover {
-  color: #0080FF !important;
+  color: #0080ff !important;
 }
 
 .v-data-table > .v-data-table__wrapper > table > tbody > tr > td {
@@ -113,10 +114,11 @@
 }
 
 .v-data-table > .v-data-table__wrapper > table {
-  border: 1px solid #031B4D;
+  border: 1px solid #031b4d;
   border-radius: 10px;
   overflow: hidden;
 }
+// END OF CUSTOM DATA-TABLE
 
 .v-input--selection-controls {
   margin-top: 0px !important;

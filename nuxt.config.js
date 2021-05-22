@@ -40,8 +40,8 @@ export default {
       './assets/scss/fonts.scss',
       './assets/scss/reset.scss',
       './assets/scss/_mixins.scss',
-      './assets/scss/utilities.scss',
       './assets/scss/customs.scss',
+      './assets/scss/utilities.scss',
     ],
   },
   router: {

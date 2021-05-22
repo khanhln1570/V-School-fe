@@ -5,7 +5,7 @@
         <template #titleIcon>
           <img src="@/assets/images/woman.svg" alt="woman" />
         </template>
-        <template #address>
+        <template #subTitle>
           <p class="txt-secondary--text mt-2">
             {{ currentChild.classCode }}, {{ currentChild.schoolId }}
           </p>

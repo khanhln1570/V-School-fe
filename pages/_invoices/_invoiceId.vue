@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <v-container>
       <page-header title="Cài đặt tài khoản">
@@ -10,41 +9,31 @@
         <template #personal>
           <v-alert outlined class="mt-6 px-10 py-7 rounded-lg">
             <div class="d-flex justify-space-between">
-              <div class="col-5">
+              <div class="col-6">
                 <h2 class="font-weight-medium">
-                  Phụ đạo tiếng anh - <span>1 tháng</span>
+                  {{ invoices.name }} -
+                  <span class="blue--text">{{ invoices.time }}</span>
                 </h2>
-                <p>7/2021</p>
-                <span class="font-weight-medium">Hoá đơn số:</span
-                ><span>12UIOJHGBN</span>
-                <p>
+                <p class="blue--text">{{ invoices.expiry }}</p>
+                <div>
+                  <span class="font-weight-medium">Hoá đơn số: </span
+                  ><span>{{ invoices.invoice }}</span>
+                </div>
+                <p class="mt-4">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Adipisci necessitatibus voluptate praesentium distinctio quod
                   esse inventore fugit quisquam fuga libero! Earum natus cum
                   veritatis molestiae. Nisi labore hic assumenda praesentium?
                 </p>
               </div>
-              <div>Chưa thanh toán</div>
-            </div>
 
-            <div class="d-flex justify-space-between">
-              <div>
-              <v-btn
-              elevation="0"
-              large
-              class="text-lowercase rounded-lg"
-              style="color: #677694"
-              ><span class="text-uppercase"> T</span>Tiến hành thanh toán</v-btn
-            >
-            <v-btn
-              elevation="0"
-              large
-              class="text-lowercase rounded-lg"
-              style="color: #677694"
-              ><span class="text-uppercase"> T</span>Tiến hành thanh toán</v-btn
-            >
+              <div class="col-3 font-weight-medium text-right orange--text">
+                Chưa thanh toán
+              </div>
             </div>
-            <div>Tổng cộng</div>
+            <div class="text-right">
+              <span class="font-weight-medium">Tổng cộng: </span>
+              {{ invoices.total }} (VND)
             </div>
           </v-alert>
         </template>
@@ -67,6 +56,13 @@ export default {
           value: "personal",
         },
       ],
+      invoices: {
+        name: "Phụ đạo tiếng anh",
+        time: "1 tháng",
+        expiry: "7/2021",
+        invoice: "DE3847D",
+        total: "320.000",
+      },
     };
   },
   computed: {

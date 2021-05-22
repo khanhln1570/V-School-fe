@@ -6,43 +6,6 @@
     </page-header>
     <main-tabs :items="items">
       <template #personal>
-        <!-- <main-card>
-          <template #imgContent>
-            <img
-              style="height: 9rem; width: 9rem"
-              src="../assets/images/school.svg"
-            />
-          </template>
-          <template #sub-1>{{ detailsSchool.name }}</template>
-          <template #sub-2>{{detailsSchool.phone}}</template>
-          <template #sub-3>{{detailsSchool.address}}</template>
-          <template #sub-4>{{detailsSchool.email}}</template>
-          <template #sub-5>{{detailsSchool.child}}</template>
-          <template #img>
-           <img src="../assets/images/children.svg" />
-          </template>
-          <template #btn-right-1>
-            <v-btn
-          elevation="0"
-          large
-          class="text-lowercase rounded-lg"
-          style="color: #677694"
-          ><span class="text-uppercase"> T</span>hay đổi thông tin cá
-          nhân</v-btn
-        >
-          </template>
-          <template #btn-right-2>
-            <v-btn
-              block
-                elevation="0"
-                outlined
-                large
-                color="red"
-                class="text-lowercase rounded-lg mt-3"
-                ><span class="text-uppercase"> K</span>hoá tài khoản</v-btn
-              >
-          </template>
-        </main-card> -->
         <main-card>
           <template #imgContent>
             <img
@@ -82,7 +45,6 @@
               ><span class="text-uppercase">Đ</span>ặt lại mật khẩu</v-btn
             >
           </template>
-
           <template #btn-right-2>
             <v-btn
               block
@@ -95,6 +57,43 @@
             >
           </template>
         </main-card>
+        <!-- <main-card>
+          <template #imgContent>
+            <img
+              style="height: 9rem; width: 9rem"
+              src="../assets/images/school.svg"
+            />
+          </template>
+          <template #sub-1>{{ detailsSchool.name }}</template>
+          <template #sub-2>{{detailsSchool.phone}}</template>
+          <template #sub-3>{{detailsSchool.address}}</template>
+          <template #sub-4>{{detailsSchool.email}}</template>
+          <template #sub-5>{{detailsSchool.child}}</template>
+          <template #img>
+           <img src="../assets/images/children.svg" />
+          </template>
+          <template #btn-right-1>
+            <v-btn
+          elevation="0"
+          large
+          class="text-lowercase rounded-lg"
+          style="color: #677694"
+          ><span class="text-uppercase"> T</span>hay đổi thông tin cá
+          nhân</v-btn
+        >
+          </template>
+          <template #btn-right-2>
+            <v-btn
+              block
+                elevation="0"
+                outlined
+                large
+                color="red"
+                class="text-lowercase rounded-lg mt-3"
+                ><span class="text-uppercase"> K</span>hoá tài khoản</v-btn
+              >
+          </template>
+        </main-card> -->
       </template>
     </main-tabs>
   </v-container>

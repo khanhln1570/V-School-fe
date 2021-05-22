@@ -79,8 +79,7 @@
               large
               class="text-lowercase rounded-lg"
               style="color: #677694"
-              ><span class="text-uppercase"> T</span>hay đổi thông tin cá
-              nhân</v-btn
+              ><span class="text-uppercase">Đ</span>ặt lại mật khẩu</v-btn
             >
           </template>
 
@@ -92,8 +91,7 @@
               large
               class="text-lowercase rounded-lg mt-3"
               color="red"
-              ><span class="text-uppercase"> T</span>hay đổi thông tin cá
-              nhân</v-btn
+              ><span class="text-uppercase"> K</span>hoá tài khoản</v-btn
             >
           </template>
         </main-card>

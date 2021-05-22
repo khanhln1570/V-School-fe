@@ -34,7 +34,7 @@
           dense
           :ripple="false"
         ></v-checkbox>
-        <text-button :to="`schools/${item.id}`">
+        <text-button :to="`invoices/${item.id}`">
           <p class="mb-0 font-weight-medium">
             View
           </p>

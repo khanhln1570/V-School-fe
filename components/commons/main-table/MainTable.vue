@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainTable">
     <v-container class="px-0">
       <v-row align="center">
         <v-col md="8" lg="9">
@@ -34,6 +34,8 @@
       :loading="loading"
       :server-items-length="pageCount"
       @click:row="rowClick"
+      @update:sort-by="handleSortClick($event)"
+      @update:sort-desc="handleSortClick($event)"
     >
       <template v-slot:top>
         <slot name="top"></slot>
@@ -206,6 +208,9 @@ export default {
     setPerpage(perpage) {
       this.perpage = perpage;
     },
+    handleSortClick(s) {
+      console.log(s);
+    }
   },
   watch: {
     page(value) {

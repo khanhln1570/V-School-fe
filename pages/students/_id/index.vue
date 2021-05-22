@@ -1,38 +1,41 @@
 <template>
   <div>
-    <v-container>
-      <page-header title="Trần Thị Tố Trinh">
+    <v-container v-if="currentChild">
+      <page-header :title="currentChild.name">
         <template #titleIcon>
-          <img src="@/assets/images/school.svg" alt="student" />
+          <img src="@/assets/images/woman.svg" alt="woman" />
         </template>
-        <template #subTitle>
-          <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
+        <template #address>
+          <p class="txt-secondary--text mt-2">
+            {{ currentChild.classCode }}, {{ currentChild.schoolId }}
+          </p>
         </template>
       </page-header>
       <main-tabs :items="items">
+        <template #tabRight>
+          <span
+          :class="selectedInvoiceLength ? 'icon-active--text' : 'txt-secondary--text'"
+          >({{ selectedInvoiceLength || 0 }}) Thanh toán
+          <v-icon
+            size="20"
+            class="mb-1"
+            :color="selectedInvoiceLength ? 'icon-active' : 'txt-secondary--text'"
+            >mdi-arrow-right</v-icon
+          >
+        </span>
+        </template>
+        
+
         <template #invoices>
-          <div class="mt-12 row d-felx justify-center">
-            <div class="col-12">
-              <div class="d-flex justify-space-around">
-                <p>Phụ đạo</p>
-                <p>Số tiền &#9660;</p>
-                <p>Ghi chú</p>
-                <nuxt-link to="./bills/_billId">Thanh toán &#8594;</nuxt-link>
-              </div>
-              <v-alert outlined class="mt-xl-5 mt-md-3 px-xl-3 py-xl-4">
-                <div
-                  v-for="(invoice, index) in invoices"
-                  :key="index"
-                  class="d-flex justify-space-around"
-                >
-                  <div class="font-weight-medium">
-                    <span class="dot mr-2"></span>{{ invoice.name }}
-                  </div>
-                  <span>{{ invoice.fee }}</span>
-                  <span>{{ invoice.note }}</span>
-                  <input type="checkbox" />
-                </div>
-              </v-alert>
+          <div class="mt-10">
+            <div v-for="(type, index) in invoiceTypes" :key="index">
+              <invoice-group
+                :invoiceType="type"
+                :invoices="currentChildInvoicesByType(type.id)"
+                :headers="headers"
+                @selected="handleSelectedChange"
+                v-if="currentChildInvoicesByType(type.id).length"
+              ></invoice-group>
             </div>
           </div>
         </template>
@@ -48,10 +51,30 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
+    InvoiceGroup: () =>
+      import("@/components/yourChild/invoice-group/InvoiceGroup"),
+  },
+  computed: {
+    ...mapGetters({
+      invoiceTypes: "invoices/getInvoiceTypes",
+      currentChildInvoices: "yourChild/getCurrentChildInvoices",
+      currentChild: "yourChild/getCurrentChild",
+      currentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
+    }),
+    invoices() {
+      return this.$store.state.invoices.invoices;
+    },
+    selectedInvoiceLength() {
+      return this.selectedInvoice.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.values.length
+      }, 0)
+    }
   },
   data() {
     return {
@@ -65,20 +88,46 @@ export default {
           value: "activities",
         },
         {
-          label: "Cài đặt",
-          value: "settings",
+          label: "Thời khoá biểu",
+          value: "timeSchedular",
         },
       ],
-      
+      headers: [
+        {
+          text: "Số tiền",
+          value: "total",
+        },
+        {
+          text: "Ghi chú",
+          value: "note",
+        },
+        {
+          text: "",
+          value: "action",
+        },
+      ],
+      selectedInvoice: [],
     };
   },
-  computed: {
-    invoices() {
-      return this.$store.state.invoices.invoices;
-    },
+  methods: {
+    getInvoiceByType(type) {},
+    handleSelectedChange(item) {
+      console.log(this.selectedInvoice.map(type => {
+        if(type.id === item.id) {
+          type.values = item.values;
+        }
+      }));
+      
+    }
   },
   mounted() {
     console.log(this.$route.params.id);
+    this.invoiceTypes.forEach(type => {
+      this.selectedInvoice.push({
+        id: type.id,
+        values: []
+      })
+    });
   },
 };
 </script>

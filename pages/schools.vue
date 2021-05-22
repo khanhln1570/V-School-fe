@@ -57,6 +57,13 @@
           <template #phone="{ value }">
             <p class="mb-0 txt-active--text font-weight-medium">{{ value }}</p>
           </template>
+          <template #action="{ item }">
+              <text-button @click.native="handleViewClick(item)" :to="`/schools/${item.id}`">
+                <p class="mb-0 font-weight-medium">
+                  View
+                </p>
+              </text-button>
+          </template>
         </main-table>
       </template>
     </main-tabs>
@@ -74,6 +81,8 @@ export default {
     MainSelect: () => import("@/components/commons/main-select/MainSelect"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
     CusIconTextButton: () => import("@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"),
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
   data() {
     return {
@@ -93,6 +102,10 @@ export default {
         {
           text: "Địa chỉ",
           value: "address",
+        },
+        {
+          text: "",
+          value: "action",
         },
       ],
       tabItem: [
@@ -124,6 +137,9 @@ export default {
     },
     handleChangeSearch(event) {
       this.search = event.target.value;
+    },
+    handleViewClick(item) {
+      console.log(item);
     }
   },
 };

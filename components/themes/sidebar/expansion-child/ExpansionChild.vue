@@ -7,7 +7,7 @@
         <v-icon color="icon-secondary"> $expand </v-icon> </template
       >{{ item.group.title }}</v-expansion-panel-header
     >
-    <v-expansion-panel-content color="bg-sidebar expansion__body">
+    <v-expansion-panel-content color="bg-sidebar expansion__body" >
       <v-list dense>
         <v-list-item-group color="primary">
           <v-list-item

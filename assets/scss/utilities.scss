@@ -45,9 +45,13 @@
   box-shadow: none !important;
 }
 
-.v-expansion-panel-content__wrap {
-  padding: 0 0 1rem 0 !important;
-}
+.v-expansion-panel {
+  ::v-deep {
+    .v-expansion-panel-content > .v-expansion-panel-content__wrap {
+      padding: 0 0 1rem 0 !important;
+    }
+  }
+} 
 
 .v-list--dense .v-list-item .v-list-item__title {
   @include text-size-1rem;
@@ -105,7 +109,7 @@
 }
 
 .v-data-table > .v-data-table__wrapper > table > tbody > tr > td:first-child {
-  border-radius: 0px !important;
+  border-radius: 0px 0px 0px 0px !important;
 }
 
 .v-data-table > .v-data-table__wrapper > table {

@@ -77,8 +77,11 @@ export default {
           'txt-error': "#E63946",
           'txt-success': "#1FBC67",
           'txt-active': "#0080FF",
+          'icon-active': "#0080FF",
           'icon-light': "#CECECE",
           'icon-secondary': "#677694",
+          'color-warning': "#FFCE00",
+          'color-success': "#1FBC67",
         }
       }
     },
@@ -96,6 +99,6 @@ export default {
   ,
   server: {
     port: 3000,
-    // host: `0.0.0.0`,
+    host: `0.0.0.0`,
   },
 }

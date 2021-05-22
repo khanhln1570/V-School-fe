@@ -1,5 +1,5 @@
 <template>
-  <v-btn :color="buttonColor" :text="text" :to="to" :elevation="elevation" :ripple="ripple">
+  <v-btn :color="buttonColor" :disabled="disabled" :loading="loading" :text="text" :to="to" :elevation="elevation" :ripple="ripple" :min-width="minWidth" :outlined="outlined">
     <slot>
 
     </slot>
@@ -9,13 +9,21 @@
 <script>
 export default {
   props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     color: {
       type: String,
       default: null
     },
     text: {
       type: Boolean,
-      default: false
+      default: true
     },
     to: {
       type: [String, Object],
@@ -23,12 +31,20 @@ export default {
     },
     elevation: {
       type: Number,
-      default: null,
+      default: 0,
     },
     ripple: {
-     type: Boolean,
+      type: Boolean,
       default: false
     },
+    minWidth: {
+      type: [Number, String],
+      default: 0
+    },
+    outlined: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => {
     return {

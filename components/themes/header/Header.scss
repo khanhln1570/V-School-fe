@@ -2,6 +2,7 @@
   &__input {
     width: 350px;
     @include font-medium;
+    padding-right: .5rem;
   }
 
   &__input:focus {

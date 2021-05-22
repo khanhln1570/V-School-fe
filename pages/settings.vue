@@ -7,19 +7,40 @@
     <main-tabs :items="items">
       <template #personal>
         <main-card>
-          <template #titleImg>
+          <template #imgContent>
             <img src="../assets/images/parent.svg" />
           </template>
-          <template #name>{{ personal.name }}</template>
-          <template #phone>{{ personal.phone }}</template>
-          <template #address>{{ personal.address }}</template>
-          <template #email>{{ personal.email }}</template>
-          <template #img>
-            <img src="../assets/images/children.svg" />
+          <template #contentCard>
+            <div class="ml-10">
+              <h2 class="font-weight-medium">
+                {{ personal.name }}
+              </h2>
+              <div class="mt-5">
+                <p class="font-weight-medium mb-1">
+                  {{ personal.phone }}
+                </p>
+                <p class="text--secondary mb-1">
+                  {{ personal.address }}
+                </p>
+                <p class="text--secondary mb-1">
+                  {{ personal.email }}
+                </p>
+                <p>
+                  <img src="../assets/images/children.svg" />
+                  <slot name="sub-5">{{ personal.child }}</slot>
+                </p>
+              </div>
+            </div>
           </template>
-          <template #child>{{ personal.child }}</template>
-          <template #first-btn>
-            <span class="text-uppercase"> T</span>hay đổi thông tin cá nhân
+          <template #btn-right-1>
+            <v-btn
+              elevation="0"
+              large
+              class="text-lowercase rounded-lg"
+              style="color: #677694"
+              ><span class="text-uppercase"> T</span>hay đổi thông tin cá
+              nhân</v-btn
+            >
           </template>
         </main-card>
       </template>

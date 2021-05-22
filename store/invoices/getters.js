@@ -1,6 +1,8 @@
 export default {
-    getInvoices(state) {
-        return state.invoices;
-      },
+  getInvoiceTypes(state) {
+    return state.invoiceTypes;
+  },
+  getInvoices(state) {
+    return state.invoices;
+  },
 };
-  

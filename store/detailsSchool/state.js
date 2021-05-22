@@ -1,10 +1,10 @@
 export default () => ({
-    personal: 
+    detailsSchool: 
         {
-            name: 'Đinh Thành Long',
+            name: 'THPT.Phan Châu Trinh',
             phone: "0523 142 235", address: "123 Trần Phú, Quận Hải Châu, TP.Đà Nẵng",
-            email: "Longnq9@gmail.com",
-            child: "3 học sinh"
+            email: "thptphanchautrinh@gmail.com",
+            child: "355 học sinh"
         },
     
 });

@@ -12,7 +12,7 @@
       @toggleSidebar="toggleSidebar"
     >
     </main-drawer>
-    <main-header @logout="logout"></main-header>
+    <main-header @logout="logout" @drawlerClick="handleDrawlerClick"></main-header>
 
     <v-main class="white mt-10">
       <v-lazy>
@@ -20,14 +20,14 @@
       </v-lazy>
     </v-main>
 
-    <v-lazy>
+    <!-- <v-lazy>
       <tutorial-tour
         v-if="show"
         :value="show"
         :steps="steps"
         @skip="show = false"
       />
-    </v-lazy>
+    </v-lazy> -->
   </v-app>
 </template>
 
@@ -73,9 +73,7 @@ export default {
     return {
       drawer: true,
       show: true,
-      right: true,
       rightDrawer: false,
-      title: "Vuetify.js",
       collapseMainDrawer: false,
       linkItems: [
         {
@@ -124,6 +122,9 @@ export default {
     toggleSidebar(value) {
       this.collapseMainDrawer = !this.collapseMainDrawer;
     },
+    handleDrawlerClick() {
+      this.drawer = !this.drawer;
+    }
   },
   watch: {
     "$route.name": {

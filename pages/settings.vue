@@ -71,7 +71,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$store.state.personal.personal);
   },
 };
 </script>

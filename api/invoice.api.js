@@ -9,28 +9,32 @@ function makerandom(length) {
   return result.join('');
 }
 
+function randomBetween(from, to) {
+  return Math.round(Math.random() * to) + from;
+}
 
-const objSchool = (i) => {
+const objInvoice = (i) => {
   return {
     id: i,
-    name: 'School ' + i,
-    phone: '+' + Math.floor(Math.random() * (89 - 1) + 10) +' '+ Math.floor(Math.random() * (99999999 - 1) + 2),
-    MST: Math.floor(Math.random() * (99999999 - 1) + 12),
-    address: makerandom(12),
+    MST: makerandom(8),
+    amount: Math.floor(Math.random() * (999999 - 1)),
+    description: 'Invoice ' + i,
+    BHYT: makerandom(8),
+    status: randomBetween(0, 1) ? 'SUCCESS' : 'PENDING',
   };
 }
 
 
 
-const schools = () => {
+const invoices = () => {
   let data = [];
 
   for (let i = 0; i <= 16; i++) {
-    const supervisor = objSchool(i);
+    const invoice = objInvoice(i);
 
     data = [
       ...data,
-      supervisor
+      invoice
     ]
   }
 
@@ -38,8 +42,8 @@ const schools = () => {
 }
 
 export default (axios, resource) => ({
-  getSchools(params = { page: 1, size: 10, search: null }) {
-    const list = schools();
+  getInvoices(params = { page: 1, size: 10, search: null }) {
+    const list = invoices();
     let items = list;
     if (params.search) {
       items = items.filter(value => value.name.search(params.search) > -1);

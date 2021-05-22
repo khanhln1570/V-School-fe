@@ -1,25 +1,13 @@
 <template>
   <v-container>
-    <page-header title="Danh sách trường học">
+    <page-header title="Niên khoá 2020-2021">
       <template #titleIcon>
-        <img src="@/assets/images/school.svg" alt="school" />
+        <!-- <img src="@/assets/images/school.svg" alt="school" /> -->
       </template>
     </page-header>
 
     <main-tabs :items="tabItem">
       <template #tabRight>
-        <cus-icon-text-button>
-          <template #icon>
-            <img src="@/assets/images/ban-user.svg" alt="ban-user" class="mr-2">
-            <p class="mb-0 d-flex align-center black--text">Khoá tài khoản</p>
-          </template>
-        </cus-icon-text-button>
-        <cus-icon-text-button>
-          <template #icon>
-            <img src="@/assets/images/rotation-lock.svg" alt="ban-user" class="mr-2">
-            <p class="mb-0 d-flex align-center black--text">Đặt lại mật khẩu</p>
-          </template>
-        </cus-icon-text-button>
         <table-search :search.sync="search" placeHolder="Hãy nhập gì đó …" @searchChange="handleChangeSearch"></table-search>
       </template>
 

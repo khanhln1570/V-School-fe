@@ -53,6 +53,8 @@ export default {
     items() {
       //prepare childs items for parents
       const childs = this.yourChild || [];
+      console.log(childs);
+
       sidebarItems.forEach((item) => {
         if (item.group?.title === "Con của bạn") {
           const newChilds = [];

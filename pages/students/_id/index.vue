@@ -3,7 +3,8 @@
     <v-container v-if="currentChild">
       <page-header :title="currentChild.name">
         <template #titleIcon>
-          <img src="@/assets/images/woman.svg" alt="woman" />
+          <img src="@/assets/images/woman.svg" alt="woman" v-if="currentChild.gender === 'female'" />
+          <img src="@/assets/images/man.svg" alt="man" v-else-if="currentChild.gender === 'male'"/>
         </template>
         <template #address>
           <p class="txt-secondary--text mt-2">
@@ -84,6 +85,9 @@ export default {
       return `/students/${this.currentChild.id}/billReview?invoices=${string}`
     }
   },
+  async beforeCreate() {
+    await this.$store.dispatch('yourChild/setCurrentChild', this.$route.params.id)
+  },
   data() {
     return {
       items: [
@@ -94,10 +98,12 @@ export default {
         {
           label: "Hoạt động",
           value: "activities",
+          disabled: true,
         },
         {
           label: "Thời khoá biểu",
           value: "timeSchedular",
+          disabled: true,
         },
       ],
       headers: [
@@ -128,7 +134,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$route.params.id);
     this.invoiceTypes.forEach(type => {
       this.selectedInvoice.push({
         id: type.id,

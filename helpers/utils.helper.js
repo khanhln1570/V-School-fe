@@ -42,3 +42,8 @@ export function arrayToQuery(array) {
   });
   return string;
 }
+
+export function numberToMoney(number, unit = 'VND') {
+  // return number.toLocaleString('it-IT', unit ? {style : 'currency', currency : unit} : {});
+  return new Intl.NumberFormat('vi-VN', unit ? { style: 'currency', currency: 'VND' } : {}).format(number);
+}

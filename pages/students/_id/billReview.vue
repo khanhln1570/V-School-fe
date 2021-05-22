@@ -1,11 +1,8 @@
 <template>
   <v-container>
-    <page-header title="Trần Thị Tố Trinh" :backTo="`/students/${currentChild.id}`">
-      <template #titleIcon>
-        <img src="@/assets/images/school.svg" alt="student" />
-      </template>
+    <page-header :title="currentChild.name" :backTo="`/students/${currentChild.id}`">
       <template #subTitle>
-        <p class="txt-secondary--text mt-5">8C5, Hoàng Diệu</p>
+        <p class="txt-secondary--text mt-3">{{currentChild.address}}</p>
       </template>
     </page-header>
     <main-tabs :items="items">
@@ -17,21 +14,20 @@
             v-for="(invoice, index) in arrayInvoices"
             :key="index"
           >
-            <div class="col-4">
+            <div class="col-4 py-0">
               <span>- {{ invoice.title }}</span>
             </div>
-            <div class="col-4">
-              <span> {{ invoice.total }}</span>
+            <div class="col-4 py-0">
+              <span> {{ numberToMoney(invoice.total, false) }}</span>
             </div>
             <div class="col-4"></div>
           </div>
-          <h4 class="mt-15">Tổng tiền</h4>
-          <div class="row mt-3">
+          <div class="row mt-10">
             <div class="col-4">
-              <span>- Học phí học kì I - 2021</span>
+              <h4 class="">Tổng tiền</h4>
             </div>
             <div class="col-4">
-              <span>1.300.000</span>
+              <span>{{numberToMoney(totalArrayInvoices)}}</span>
             </div>
             <div class="col-4"></div>
           </div>
@@ -39,7 +35,7 @@
             <v-btn depressed elevation="0" color="primary" class="rounded-lg"
               >Tiến hành thanh toán</v-btn
             >
-            <v-btn outlined color="red" class="ml-4 rounded-lg">Huỷ</v-btn>
+            <v-btn outlined color="red" class="ml-4 rounded-lg" :to="`/students/${currentChild.id}`">Huỷ</v-btn>
           </div>
         </v-card>
       </template>
@@ -49,6 +45,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { numberToMoney } from '@/helpers/utils.helper';
 
 export default {
   components: {
@@ -74,7 +71,15 @@ export default {
       let arrayInvoiceId = this.$route.query.invoices.split(',');
       arrayInvoiceId = arrayInvoiceId.map(item => Number.parseInt(item));
       return this.getCurrentChildInvoicesByArrayId(arrayInvoiceId);
+    },
+    totalArrayInvoices() {
+      return this.arrayInvoices.reduce((initValue, currentValue) => {
+        return initValue + currentValue.total;
+      }, 0)
     }
+  },
+  methods: {
+    numberToMoney: numberToMoney,
   },
   mounted() {
   },

@@ -21,12 +21,11 @@ const sidebarItems = [
         {
           title: "Phí thu",
           to: "/invoices",
-          role: "school"
         },
         {
           title: "Trường học",
           to: "/schools",
-          role: "superAdmin"
+          role: "SUPERADMIN"
         },
       ]
     }

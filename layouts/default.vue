@@ -48,10 +48,11 @@ export default {
   computed: {
     ...mapGetters({
       currentUser: "auth/getCurrentUser",
+      yourChild: "yourChild/getYourChild",
     }),
     items() {
       //prepare childs items for parents
-      const childs = this.currentUser.childs || [];
+      const childs = this.yourChild || [];
       sidebarItems.forEach((item) => {
         if (item.group?.title === "Con của bạn") {
           const newChilds = [];

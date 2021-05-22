@@ -4,6 +4,9 @@ export default {
   //     return state.children[i];
   //   }
   // },
+  getYourChild(state) {
+    return state.yourChild;
+  },
   getCurrentChild(state) {
     return state.currentChild;
   },
@@ -14,8 +17,6 @@ export default {
     return state.currentChildInvoices.filter(invoice => invoice.type === type);
   },
   getCurrentChildInvoicesByArrayId: (state) => (arrayId) => {
-    console.log(arrayId);
-
     return state.currentChildInvoices.filter(invoice => {
       return arrayId.find(id => invoice.id === id);
     });

@@ -3,7 +3,7 @@
     <v-tabs v-model="tab">
       <v-tabs-slider color="txt-active"></v-tabs-slider>
 
-      <v-tab v-for="(item, index) in items" :key="index">
+      <v-tab v-for="(item, index) in items" :key="index" :disabled="item.disabled">
         {{ item.label }}
       </v-tab>
       <v-spacer></v-spacer>

@@ -1,8 +1,9 @@
 export default () => ({
-    children: [
+    yourChild: [
         {
             id: 1,
             name: "Trần Thị Tố Trinh",
+            gender: "female",
             address: "8C5 Hoàng Diệu",
             classCode: "10A9",
             schoolId: "DE12",
@@ -12,6 +13,7 @@ export default () => ({
         {
             id: 2,
             name: "Nguyễn Quốc Cường",
+            gender: "male",
             address: "365 Nguyễn Tri Phương",
             classCode: "10A12",
             schoolId: "DE12",
@@ -21,6 +23,7 @@ export default () => ({
         {
             id: 3,
             name: "Khánh Mooi",
+            gender: "male",
             address: "12 Phan Bội Châu",
             classCode: "10A15",
             schoolId: "DE12",
@@ -28,15 +31,7 @@ export default () => ({
             isActive: false,
         },
     ],
-    currentChild: {
-        id: 1,
-        name: "Trần Thị Tố Trinh",
-        address: "8C5 Hoàng Diệu",
-        classCode: "10A9",
-        schoolId: "DE12",
-        status: "",
-        isActive: true,
-    },
+    currentChild: null,
     currentChildInvoices: [
         {
             id: 1,

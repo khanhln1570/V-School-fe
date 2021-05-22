@@ -33,8 +33,10 @@
           hide-details
           dense
           :ripple="false"
+          v-if="item.status !== 'SUCCESS'"
         ></v-checkbox>
-        <text-button :to="`schools/${item.id}`">
+        <p class="mb-0 txt-success--text font-weight-bold" v-else>Đã thu</p>
+        <text-button :to="`/invoices/${item.id}`" class="ml-2">
           <p class="mb-0 font-weight-medium">
             View
           </p>

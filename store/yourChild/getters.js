@@ -13,8 +13,8 @@ export default {
   getCurrentChildInvoices(state) {
     return state.currentChildInvoices;
   },
-  getCurrentChildInvoicesByType: (state) => (type) => {
-    return state.currentChildInvoices.filter(invoice => invoice.type === type);
+  getCurrentChildInvoicesByType: (state) => (typeId) => {
+    return state.currentChildInvoices.filter(invoice => invoice.type === typeId);
   },
   getCurrentChildInvoicesByArrayId: (state) => (arrayId) => {
     return state.currentChildInvoices.filter(invoice => {

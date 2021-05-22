@@ -12,47 +12,9 @@
       </template>
 
       <template #table>
-        <main-table
-          :showSearch="false"
-          :headers="headers"
-          :items="schools"
-          :count="count"
-          :showPagination="true"
-          @selected-items="getSelectedItem"
-          :fetchItems="fetchItems"
-          :search="search"
-          searchLabel="Search name or ID"
-        >
-          <template #name="{ value, item }">
-            <div class="d-flex">
-              <v-checkbox
-                v-model="selected"
-                dense
-                hide-details
-                :value="item.id"
-              ></v-checkbox>
-              <div>
-                <p class="mb-1">{{ value }}</p>
-                <span class="font-italic txt-secondary--text"
-                  >id: {{ item.id }}</span
-                >
-              </div>
-            </div>
-          </template>
-          <template #MST="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
-          </template>
-          <template #phone="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">{{ value }}</p>
-          </template>
-          <template #action="{ item }">
-              <text-button @click.native="handleViewClick(item)" :to="`/schools/${item.id}`">
-                <p class="mb-0 font-weight-medium">
-                  View
-                </p>
-              </text-button>
-          </template>
-        </main-table>
+
+        <p v-for="(invoice, index) in invoices" :key="index"> {{invoice}}</p>
+
       </template>
     </main-tabs>
   </v-container>
@@ -74,28 +36,6 @@ export default {
   },
   data() {
     return {
-      headers: [
-        {
-          text: "Tên trường",
-          value: "name",
-        },
-        {
-          text: "Mã số thuế",
-          value: "MST",
-        },
-        {
-          text: "Số điện thoại",
-          value: "phone",
-        },
-        {
-          text: "Địa chỉ",
-          value: "address",
-        },
-        {
-          text: "",
-          value: "action",
-        },
-      ],
       tabItem: [
         {
           label: "Bảng",
@@ -112,16 +52,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      schools: "school/getSchools",
-      count: "school/getCountSchool",
+      invoices: "invoice/getInvoices",
+      count: "invoice/getCountSchool",
     }),
   },
   methods: {
     getSelectedItem(items) {
       console.log(items);
-    },
-    async fetchItems(params) {
-      await this.$store.dispatch("school/getSchools", params);
     },
     handleChangeSearch(event) {
       this.search = event.target.value;
@@ -130,6 +67,9 @@ export default {
       console.log(item);
     }
   },
+  async created() {
+    await this.$store.dispatch("invoice/getInvoices");
+  }
 };
 </script>
 

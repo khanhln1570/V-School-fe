@@ -126,11 +126,11 @@ export default {
   methods: {
     getInvoiceByType(type) {},
     handleSelectedChange(item) {
-      console.log(this.selectedInvoice.map(type => {
+      this.selectedInvoice.map(type => {
         if(type.id === item.id) {
           type.values = item.values;
         }
-      }));
+      });
     },
   },
   mounted() {

@@ -1,8 +1,8 @@
 export default {
   setInvoices(state, item) {
     if (item) {
-      state.schools = item.items;
-      state.countSchool = item.count;
+      state.invoices = item.items;
+      state.countInvoice = item.count;
     }
   },
 };

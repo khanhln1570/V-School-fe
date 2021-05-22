@@ -42,7 +42,7 @@ const invoices = () => {
 }
 
 export default (axios, resource) => ({
-  getInvoices(params = { page: 1, size: 10, search: null }) {
+  getInvoices(params = { page: 1, size: 20, search: null }) {
     const list = invoices();
     let items = list;
     if (params.search) {

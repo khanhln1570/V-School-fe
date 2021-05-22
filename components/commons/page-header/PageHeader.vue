@@ -1,6 +1,7 @@
 <template>
   <div class="pageHeader mb-10">
     <nuxt-link
+    exact-path
       v-if="backTo"
       :to="backTo"
       class="pageHeader__subTitle font-weight-bold txt-active--text"

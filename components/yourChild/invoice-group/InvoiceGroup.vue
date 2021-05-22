@@ -5,9 +5,7 @@
         v-for="(item, index) in headersAfter"
         :key="index"
         class="invoiceGroup__header__item mb-3"
-        :class="{
-          'd-flex justify-end': index === headersAfter.length - 1,
-        }"
+        
       >
         <span :class="{ 'ml-3': index === 1 }">
           {{ item.text }}
@@ -28,14 +26,19 @@
         ></div>
         <span>{{ value }}</span>
       </template>
-      <template #action="{ value, item }">
-        <v-checkbox
+      <template #action="{ item }">
+          <v-checkbox
           v-model="selected"
           :value="item.id"
           hide-details
           dense
           :ripple="false"
         ></v-checkbox>
+        <text-button :to="`schools/${item.id}`">
+          <p class="mb-0 font-weight-medium">
+            View
+          </p>
+        </text-button>
       </template>
     </invoice-row>
   </v-container>
@@ -45,6 +48,8 @@
 export default {
   components: {
     InvoiceRow: () => import("@/components/yourChild/invoice-row/InvoiceRow"),
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
   props: {
     invoices: {

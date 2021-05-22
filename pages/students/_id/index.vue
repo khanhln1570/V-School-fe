@@ -13,16 +13,18 @@
       </page-header>
       <main-tabs :items="items">
         <template #tabRight>
-          <span
-          :class="selectedInvoiceLength ? 'icon-active--text' : 'txt-secondary--text'"
-          >({{ selectedInvoiceLength || 0 }}) Thanh toán
+          <nuxt-link
+          class="d-flex align-center"
+          :class="selectedInvoiceId.length ? 'txt-active--text' : 'txt-secondary--text'"
+          :to="selectedInvoiceId.length ? handleCheckoutSelect : '#'"
+          >({{ selectedInvoiceId.length || 0 }}) Thanh toán
           <v-icon
             size="20"
-            class="mb-1"
-            :color="selectedInvoiceLength ? 'icon-active' : 'txt-secondary--text'"
+            class="mb-0 ml-2"
+            :color="selectedInvoiceId.length ? 'txt-active' : 'txt-secondary--text'"
             >mdi-arrow-right</v-icon
           >
-        </span>
+        </nuxt-link>
         </template>
         
 
@@ -31,10 +33,10 @@
             <div v-for="(type, index) in invoiceTypes" :key="index">
               <invoice-group
                 :invoiceType="type"
-                :invoices="currentChildInvoicesByType(type.id)"
+                :invoices="getCurrentChildInvoicesByType(type.id)"
                 :headers="headers"
                 @selected="handleSelectedChange"
-                v-if="currentChildInvoicesByType(type.id).length"
+                v-if="getCurrentChildInvoicesByType(type.id).length"
               ></invoice-group>
             </div>
           </div>
@@ -52,6 +54,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { arrayToQuery } from '@/helpers/utils.helper';
 
 export default {
   components: {
@@ -63,17 +66,22 @@ export default {
   computed: {
     ...mapGetters({
       invoiceTypes: "invoices/getInvoiceTypes",
-      currentChildInvoices: "yourChild/getCurrentChildInvoices",
       currentChild: "yourChild/getCurrentChild",
-      currentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
+      getCurrentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
     }),
     invoices() {
       return this.$store.state.invoices.invoices;
     },
-    selectedInvoiceLength() {
+    selectedInvoiceId() {
       return this.selectedInvoice.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue.values.length
-      }, 0)
+        currentValue.values.forEach(id => accumulator.push(id))
+        // return accumulator + currentValue.values.length
+        return accumulator;
+      }, [])
+    },
+    handleCheckoutSelect() {
+      let string = arrayToQuery(this.selectedInvoiceId);
+      return `/students/${this.currentChild.id}/billReview?invoices=${string}`
     }
   },
   data() {
@@ -117,8 +125,7 @@ export default {
           type.values = item.values;
         }
       }));
-      
-    }
+    },
   },
   mounted() {
     console.log(this.$route.params.id);

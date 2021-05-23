@@ -115,6 +115,10 @@ export default {
       type: String,
       require: '',
     },
+    status: {
+      type: String,
+      require: '',
+    }
   },
   data: () => {
     return {
@@ -151,7 +155,7 @@ export default {
     rowClick(response) {
       return this.$emit("click:row", response);
     },
-    getRequestParams(searchTitle, page, pageSize) {
+    getRequestParams(searchTitle, page, pageSize, status) {
       let params = {};
 
       if (searchTitle) {
@@ -166,6 +170,10 @@ export default {
         params["size"] = pageSize;
       }
 
+      if (status) {
+        params["status"] = status;
+      }
+
       return params;
     },
     async onFetchItems() {
@@ -177,9 +185,9 @@ export default {
       const params = this.getRequestParams(
         this.search,
         this.page,
-        this.perpage
+        this.perpage,
+        this.status
       );
-
       await this.fetchItems(params);
 
       this.loading = false;

@@ -11,7 +11,7 @@
             <img src="../assets/images/parent.svg" />
           </template>
           <template #contentCard>
-            <div class="ml-5">
+            <div class="ml-xl-5 ml-md-12">
               <h2 class="font-weight-medium">
                 {{ personal.name }}
               </h2>

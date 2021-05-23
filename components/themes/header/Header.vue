@@ -40,7 +40,7 @@
 
       <v-list dense>
         <v-list-item-group color="primary">
-          <v-list-item v-for="(item, i) in items" :key="i">
+          <v-list-item v-for="(item, i) in items" :key="i" :to="item.to">
             <v-list-item-content>
               <v-list-item-title v-text="item.title"></v-list-item-title>
             </v-list-item-content>
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       showMenu: false,
-      items: [{ title: "Tài khoản" }],
+      items: [{ title: "Tài khoản", to: '/settings' }],
     };
   },
   props: {

@@ -11,7 +11,7 @@
             <img src="../assets/images/parent.svg" />
           </template>
           <template #contentCard>
-            <div class="ml-10">
+            <div class="ml-xl-5 ml-md-12">
               <h2 class="font-weight-medium">
                 {{ personal.name }}
               </h2>
@@ -35,6 +35,7 @@
           <template #btn-right-1>
             <v-btn
               elevation="0"
+              block
               large
               class="text-lowercase rounded-lg"
               style="color: #677694"

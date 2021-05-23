@@ -13,7 +13,7 @@
             <img src="@/assets/images/superAdminAvatar.svg" v-if="currentUser.role === 'SUPERADMIN'" alt="superAdmin" />
           </template>
           <template #contentCard>
-            <div class="ml-10">
+            <div class="ml-xl-5 ml-md-12">
               <h2 class="font-weight-medium">
                 {{ currentUser.name }}
               </h2>
@@ -37,6 +37,7 @@
           <template #btn-right-1>
             <v-btn
               elevation="0"
+              block
               large
               class="text-lowercase rounded-lg"
               style="color: #677694"

@@ -1,5 +1,5 @@
 <template>
-  <v-expansion-panel class="expansion">
+  <v-expansion-panel class="expansion" v-if="item.role ? item.role === currentUser.role : true">
     <v-expansion-panel-header
       color="bg-sidebar pl-8 text-uppercase expansion__title"
     >
@@ -37,7 +37,7 @@ import { mapGetters } from "vuex";
 export default {
   props: {
     item: {
-      type: [Array, Object, String],
+      type: [Array, Object],
       default: null,
     },
   },

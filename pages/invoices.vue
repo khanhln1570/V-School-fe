@@ -38,12 +38,12 @@ export default {
     return {
       tabItem: [
         {
-          label: "Bảng",
-          value: "table",
+          label: "Chưa thu",
+          value: "incoming",
         },
         {
-          label: "test",
-          value: "test",
+          label: "Đã thu",
+          value: "history",
         },
       ],
       selected: [],

@@ -66,7 +66,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      invoiceTypes: "invoices/getInvoiceTypes",
+      invoiceTypes: "invoice/getInvoiceTypes",
       currentChild: "yourChild/getCurrentChild",
       getCurrentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
     }),

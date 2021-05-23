@@ -8,26 +8,28 @@
       <template #personal>
         <main-card>
           <template #imgContent>
-            <img src="../assets/images/parent.svg" />
+            <img src="@/assets/images/parentAvatar.svg" v-if="currentUser.role === 'PARENT'" alt="parent"/>
+            <img src="@/assets/images/schoolAvatar.svg" v-if="currentUser.role === 'SCHOOL'" alt="school" />
+            <img src="@/assets/images/superAdminAvatar.svg" v-if="currentUser.role === 'SUPERADMIN'" alt="superAdmin" />
           </template>
           <template #contentCard>
             <div class="ml-10">
               <h2 class="font-weight-medium">
-                {{ personal.name }}
+                {{ currentUser.name }}
               </h2>
               <div class="mt-5">
                 <p class="font-weight-medium mb-1">
-                  {{ personal.phone }}
+                  {{ currentUser.phone }}
                 </p>
                 <p class="text--secondary mb-1">
-                  {{ personal.address }}
+                  {{ currentUser.address }}
                 </p>
                 <p class="text--secondary mb-1">
-                  {{ personal.email }}
+                  {{ currentUser.email }}
                 </p>
                 <p>
                   <img src="../assets/images/children.svg" />
-                  <slot name="sub-5">{{ personal.child }}</slot>
+                  <slot name="sub-5">{{ currentUser.child }}</slot>
                 </p>
               </div>
             </div>
@@ -49,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
@@ -66,9 +70,9 @@ export default {
     };
   },
   computed: {
-    personal() {
-      return this.$store.state.personal.personal;
-    },
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
   },
   mounted() {
   },

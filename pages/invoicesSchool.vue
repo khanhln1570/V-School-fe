@@ -6,7 +6,7 @@
       </template>
     </page-header>
 
-    <main-tabs :items="tabItem">
+    <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
         <cus-icon-text-button>
           <template #icon>
@@ -34,7 +34,7 @@
           :fetchItems="fetchItems"
           :search="search"
           searchLabel="Search name or ID"
-          status="SUCCESS"
+          :status="status"
         >
           <template #studentName="{ value, item }">
             <div class="d-flex">
@@ -69,6 +69,55 @@
           </template>
         </main-table>
       </template>
+
+      <template #history>
+        <main-table
+          :showSearch="false"
+          :headers="headers"
+          :items="invoices"
+          :count="count"
+          :showPagination="true"
+          @selected-items="getSelectedItem"
+          :fetchItems="fetchItems"
+          :search="search"
+          searchLabel="Search name or ID"
+          :status="status"
+        >
+          <template #studentName="{ value, item }">
+            <div class="d-flex">
+              <v-checkbox
+                v-model="selected"
+                dense
+                hide-details
+                :value="item.id"
+              ></v-checkbox>
+              <div>
+                <p class="mb-1">{{ value }}</p>
+                <span class="font-italic txt-secondary--text"
+                  >id: {{ item.id }}</span
+                >
+              </div>
+            </div>
+          </template>
+          <template #type="{ value }">
+            <p class="mb-0 txt-active--text font-weight-medium">{{ value.label }}</p>
+          </template>
+          <template #unit="{ value }">
+            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
+          </template>
+
+
+          <template #action="{ item }">
+              <text-button @click.native="handleViewClick(item)" :to="`/schools/${item.id}`">
+                <p class="mb-0 font-weight-medium">
+                  View
+                </p>
+              </text-button>
+          </template>
+        </main-table>
+      </template>
+
+      
     </main-tabs>
   </v-container>
 </template>
@@ -111,10 +160,6 @@ export default {
           value: "unit",
         },
         {
-          text: "status",
-          value: "status",
-        },
-        {
           text: "",
           value: "action",
         },
@@ -131,6 +176,8 @@ export default {
       ],
       selected: [],
       search: '',
+      invoicesStatus: ['SUCCESS', 'PENDING'],
+      status: 'SUCCESS'
     };
   },
   computed: {
@@ -139,6 +186,9 @@ export default {
       invoices: "invoice/getInvoices",
     }),
   },
+  // fetch() {
+  //   this.$route.query.status = this.tabItem[0].value;
+  // },
   methods: {
     getSelectedItem(items) {
       console.log(items);
@@ -151,8 +201,20 @@ export default {
     },
     handleViewClick(item) {
       console.log(item);
+    },
+    handleChangeTab(tabIndex) {
+      this.search = '';
     }
   },
+  watch: {
+    '$route.query.tab': {
+        handler: function(value) {
+          this.status = this.invoicesStatus[value];
+        },
+        deep: true,
+        immediate: true
+      }
+  }
 };
 </script>
 

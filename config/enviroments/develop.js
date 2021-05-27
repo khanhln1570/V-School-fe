@@ -1,5 +1,5 @@
 export default {
-  apiURL: 'https://api.tiger-stg.madlab.tech/api',
-  baseURL: 'https://tiger-stg.madlab.tech',
+  apiURL: 'https://api.v-school.vn/api',
+  baseURL: 'https://api.v-school.vn',
   //!TODO somethings config key, value ...
 }

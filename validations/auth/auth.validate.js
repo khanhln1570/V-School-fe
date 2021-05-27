@@ -40,7 +40,7 @@ export const signIn = {
   },
   password: {
     required,
-    password: minLength(8),
+    password: minLength(6),
   }
 };
 

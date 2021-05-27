@@ -29,12 +29,17 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources',
+    '@nuxtjs/toast',
   ],
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
+      
   ],
+  toast: {
+    position: 'bottom-right',
+  },
   styleResources: {
     scss: [
       './assets/scss/fonts.scss',

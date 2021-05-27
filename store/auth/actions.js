@@ -9,10 +9,10 @@ export default {
       const response = await this.$api.auth.login(payload);
       if (response.data.ok) {
         commit(SET_AUTH_MUTATION, { ...response.data.data });
+        this.$toast.success("Welcome", {
+          duration: 3000
+        });
       }
-      this.$toast.success("Welcome", {
-        duration: 1000
-      });
     } catch (error) {
       errorHandle(error);
     }

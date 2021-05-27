@@ -10,7 +10,7 @@ export default {
       // }
     } catch (error) {
       // throw error;
-      console.log(error);
+      errorHandle(error);
     }
   },
 };

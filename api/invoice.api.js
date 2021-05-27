@@ -64,32 +64,35 @@ const invoices = () => {
 }
 
 export default (axios, resource) => ({
-  getInvoices(params = { page: 1, size: 10, search: null, status: null }) {
+  // getInvoices(params = { page: 1, size: 10, search: null, status: null }) {
 
-    const list = invoices();
-    let items = list;
-    if (params.search) {
-      items = items.filter(value => value.studentName.search(params.search) > -1);
-    }
+    // const list = invoices();
+    // let items = list;
+    // if (params.search) {
+    //   items = items.filter(value => value.studentName.search(params.search) > -1);
+    // }
 
-    if (params.status) {
-      items = items.filter(value => value.status === params.status);
-    }
+    // if (params.status) {
+    //   items = items.filter(value => value.status === params.status);
+    // }
 
-    const count = items.length;
-    console.log(items);
+    // const count = items.length;
+    // console.log(items);
 
-    items = items.slice((params.page - 1) * params.size, params.page * params.size);
+    // items = items.slice((params.page - 1) * params.size, params.page * params.size);
 
-    const response = {
-      count: count,
-      items
-    }
+    // const response = {
+    //   count: count,
+    //   items
+    // }
 
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(response)
-      }, 700)
-    })
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve(response)
+    //   }, 700)
+    // })
+  // },
+  getInvoices(payload) {
+    return axios.post(resource.getInvoices, payload);
   },
 });

@@ -96,14 +96,6 @@ export default {
       },
     };
   },
-  computed: {
-    personal() {
-      return this.$store.state.personal.personal;
-    },
-  },
-  mounted() {
-    console.log(this.$store.state.personal.personal);
-  },
 };
 </script>
 

@@ -1,5 +1,14 @@
-export default ({ store, redirect, $appConfig, $axios }, inject) => {
+import { AUTH_TOKEN_KEY } from "@/store/auth/auth.constants";
+
+export default ({ store, redirect, $appConfig, $axios, $cookies }, inject) => {
   $axios.defaults.baseURL = $appConfig.apiURL;
+
+  const token = $cookies.get(AUTH_TOKEN_KEY);
+  if (token) {
+    $axios.defaults.headers.common[
+      "Authentication"
+    ] = token;
+  }
 
   // Skip process from server
   if (process.server) {
@@ -13,12 +22,12 @@ export default ({ store, redirect, $appConfig, $axios }, inject) => {
     if (locale) {
       config.headers.common['Accept-Language'] = locale;
     }
-    
-    // Set token to header
-    const token = store.getters['game/token'];
-    if (token) {
-      config.headers.common['token'] = `Bearer ${token}`;
-    }
+
+    // // Set token to header
+    // const token = store.getters['game/token'];
+    // if (token) {
+    //   config.headers.common['token'] = `Bearer ${token}`;
+    // }
   });
 
   $axios.onResponse(response => response, (error) => {

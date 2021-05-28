@@ -5,7 +5,7 @@ export default {
   setAuth(state, item) {
     if (item) {
       this.$axios.defaults.headers.common[
-        "token"
+        "Authentication"
       ] = item.token;
       const setMaxAge = setExpireTime();
       this.$cookies.set(AUTH_TOKEN_KEY, item.token, { maxAge: setMaxAge, path: '/' });
@@ -22,5 +22,13 @@ export default {
       "token"
     ] = "";
     this.$router.push('/signin');
+  },
+  setProfile(state, item) {
+    if (item) {
+      state.currentUser = item;
+      if (item.accRole && !state.currentUser.role) {
+        state.currentUser.role = item.accRole;
+      }
+    }
   },
 };

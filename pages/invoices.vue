@@ -42,6 +42,8 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { GET_INVOICES_ACTION } from "@/store/invoice/invoice.constants";
+
 
 
 export default {
@@ -113,6 +115,8 @@ export default {
   },
   fetch() {
     if(this.currentUser.role !== "PARENT") this.$router.push("/invoicesSchool");
+
+    // await this.$store.dispatch(GET_INVOICES_ACTION);
   },
   async created() {
     await this.$store.dispatch("invoice/getInvoices");

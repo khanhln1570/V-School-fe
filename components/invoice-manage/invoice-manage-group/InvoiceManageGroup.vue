@@ -19,13 +19,13 @@
       :invoice="item"
       :headers="headersAfter"
     >
-      <template #title="{ value, item }">
+      <template #title="{ item }">
         <div
           class="pa-1 mr-1 rounded-circle d-inline-block"
           :class="item.status === 'PENDING' ? 'color-warning' : 'color-success'"
         ></div>
-        <span>{{ value }}</span>
-        <span>{{item.id}}</span>
+        <!-- <span>{{ value }}</span> -->
+        <span>{{item.description}}</span>
       </template>
     </invoice-manage-row>
   </v-container>

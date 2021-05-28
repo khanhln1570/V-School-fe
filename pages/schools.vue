@@ -144,7 +144,7 @@ export default {
     }
   },
   async fetch() {
-    await this.$store.dispatch(GET_PROFILE_ACTION);
+    // await this.$store.dispatch(GET_PROFILE_ACTION);
   }
 };
 </script>

@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      openExpansion: [0, 1, 2],
+      openExpansion: [0, 1, 2, 3],
     };
   },
   computed: {

@@ -1,9 +1,10 @@
 const sidebarItems = [
-  // {
-  //   title: "Summary",
-  //   to: "/",
-  //   id: "summary"
-  // },
+  {
+    role: 'all',
+    title: "Summary",
+    to: "/",
+    id: "summary"
+  },
   {
     role: 'PARENT',
     group: {
@@ -15,6 +16,7 @@ const sidebarItems = [
     }
   },
   {
+    role: 'all',
     group: {
       title: 'Quản Lý',
       id: 'management',
@@ -22,27 +24,28 @@ const sidebarItems = [
         {
           title: "Phí thu",
           to: "/invoices",
-          role: "PARENT"
+          role: "parent"
         },
         {
           title: "Phí thu",
           to: "/invoicesSchool",
-          role: "SCHOOL"
+          role: "school"
         },
         {
           title: "Phụ huynh",
           to: "/parents",
-          role: "SCHOOL"
+          role: "school"
         },
         {
           title: "Trường học",
           to: "/schools",
-          role: "SUPERADMIN"
+          role: "superAdmin"
         },
       ]
     }
   },
   {
+    role: 'all',
     group: {
       title: 'Tài Khoản',
       id: 'account',

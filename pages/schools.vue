@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
 import { mapGetters } from "vuex";
 
 export default {
@@ -142,6 +143,9 @@ export default {
       console.log(item);
     }
   },
+  async fetch() {
+    await this.$store.dispatch(GET_PROFILE_ACTION);
+  }
 };
 </script>
 

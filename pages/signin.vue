@@ -47,7 +47,7 @@
 
 <script>
 import { signIn } from "~/validations/auth/auth.validate";
-import { LOG_IN_ACTION } from "~/store/auth/auth.constants";
+import { LOG_IN_ACTION, GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
 export default {
   layout: "auth",
   middleware: "",
@@ -84,6 +84,7 @@ export default {
         await this.$store.dispatch(LOG_IN_ACTION, {
           ...this.form,
         });
+        await this.$store.dispatch(GET_PROFILE_ACTION);
       } catch (error) {
         this.message = "";
       } finally {

@@ -16,6 +16,11 @@ export default async function ({ isHMR, app, store, route, redirect }) {
       '/signin'
     )
   } else {
+    app.$axios.defaults.headers.common[
+      "Authentication"
+    ] = isLoggedIn;
+
+    await store.dispatch('auth/getProfile');
     if (excludeRoutes.includes(route.name)) {
       return redirect(
         '/'

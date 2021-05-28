@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import { GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
+
 export default {
   components: {
     MiniStatistic: () => import('@/components/themes/widgets/mini-statistic/MiniStatistic'),
@@ -75,5 +77,8 @@ export default {
   methods: {
     
   },
+  async fetch() {
+    // await this.$store.dispatch(GET_PROFILE_ACTION);
+  }
 };
 </script>

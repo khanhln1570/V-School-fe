@@ -4,5 +4,6 @@ export default {
     login: "/login",
 
     getInvoices: "/invoices",
+    getProfile: "/profile",
   }
 }

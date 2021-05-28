@@ -1,4 +1,4 @@
-import { AUTH_TOKEN_KEY, SET_AUTH_MUTATION } from "./auth.constants";
+import { AUTH_TOKEN_KEY, SET_AUTH_MUTATION, SET_PROFILE_MUTATION } from "./auth.constants";
 import errorHandle from '@/helpers/errorHandle.helper';
 
 export default {
@@ -9,7 +9,20 @@ export default {
       const response = await this.$api.auth.login(payload);
       if (response.data.ok) {
         commit(SET_AUTH_MUTATION, { ...response.data.data });
-        this.$toast.success("Welcome", {
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
+  async getProfile({ commit, dispatch }, payload) {
+    // commit("setAuth", { token: 'fakeToken' });
+    try {
+      const response = await this.$api.auth.getProfile(payload);
+
+      if (response.data.ok) {
+        commit(SET_PROFILE_MUTATION, { ...response.data.data });
+        this.$toast.success(`Xin chào ${response.data.data?.name}!`, {
           duration: 3000
         });
       }
@@ -40,78 +53,5 @@ export default {
   //   }
   // },
 
-  async getProfile({ commit, dispatch }) {
-    try {
-      const response = await this.$api.auth.getProfile();
-      commit("updateAuth", { ...response.data.data });
-      await dispatch(GET_SERVERS_ACTION, {}, { root: true });
-      await dispatch(GET_MEMBERS_ACTION, {}, { root: true });
-    } catch (e) {
-      console.log(e);
-      commit(
-        this.$alert.ADD_ERROR_ALERT_MUTATION,
-        { ...e.response.data },
-        { root: true }
-      );
-      commit("clearAuth");
-    }
-  },
-
-  async updateProfile({ commit, dispatch }, payload) {
-    try {
-      const response = await this.$api.auth.updateProfile(payload);
-      if (response.data.ok) {
-        await dispatch("getProfile");
-        commit(
-          this.$alert.ADD_SUCCESS_ALERT_MUTATION,
-          { message: "Update profile success" },
-          { root: true }
-        );
-      }
-    } catch (e) {
-      console.log(e);
-      throw e;
-    }
-  },
-
-  async sendMailResetPassword({ commit }, payload) {
-    try {
-      const response = await this.$api.auth.sendMailResetPassword(payload);
-      if (response.data.ok) {
-        commit(
-          this.$alert.ADD_SUCCESS_ALERT_MUTATION,
-          { message: "Please check your email to reset your password" },
-          { root: true }
-        );
-      }
-    } catch (e) {
-      console.log(e.response.data);
-      commit(
-        this.$alert.ADD_ERROR_ALERT_MUTATION,
-        { message: e.response.data.message },
-        { root: true }
-      );
-    }
-  },
-
-  async resetPassword({ commit }, payload) {
-    try {
-      const response = await this.$api.auth.resetPassword(payload);
-      if (response.data.ok) {
-        commit(
-          this.$alert.ADD_SUCCESS_ALERT_MUTATION,
-          { message: "Reset password success" },
-          { root: true }
-        );
-      }
-    } catch (e) {
-      console.log(e.response.data);
-      commit(
-        this.$alert.ADD_ERROR_ALERT_MUTATION,
-        { message: "Invalid token, please resend new reset password email" },
-        { root: true }
-      );
-    }
-  },
 
 };

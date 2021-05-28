@@ -5,6 +5,9 @@ export default {
   getInvoices(state) {
     return state.invoices;
   },
+  getInvoiceByType: (state) => (typeId) => {
+    return state.invoices.filter(invoice => invoice.type.id === typeId);
+  },
   getCountInvoice(state) {
     return state.countInvoice;
   },

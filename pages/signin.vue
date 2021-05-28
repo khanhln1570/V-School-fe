@@ -84,7 +84,7 @@ export default {
         await this.$store.dispatch(LOG_IN_ACTION, {
           ...this.form,
         });
-        await this.$store.dispatch(GET_PROFILE_ACTION);
+        // await this.$store.dispatch(GET_PROFILE_ACTION);
       } catch (error) {
         this.message = "";
       } finally {

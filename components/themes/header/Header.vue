@@ -28,11 +28,11 @@
     />
     <v-divider vertical inset class="mx-3 mr-4"></v-divider>
 
-    <v-menu offset-y nudge-bottom="10" v-model="showMenu">
+    <v-menu offset-y nudge-bottom="10" v-model="showMenu" v-if="currentUser.name">
       <template v-slot:activator="{ on }">
         <v-btn depressed icon plain v-on="on" :ripple="false">
-          <v-avatar size="34" color="red">
-            <span class="white--text headline">J</span>
+          <v-avatar size="34" color="blue">
+            <span class="white--text headline">{{currentUser.name.substr(0,1)}}</span>
           </v-avatar>
           <v-icon size="25" color="icon-light"> $expand </v-icon>
         </v-btn>
@@ -57,7 +57,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
+  },
   components: {
     TextButton: () =>
       import("@/components/commons/main-button/text-button/TextButton"),

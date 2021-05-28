@@ -19,7 +19,7 @@
     <v-skeleton-loader
       v-if="firstLoad"
       :loading="loading"
-      type="table"
+      type="table-tbody"
     ></v-skeleton-loader>
     <v-data-table
       v-show="!firstLoad"

@@ -29,7 +29,7 @@
                 </p>
                 <p>
                   <img src="../assets/images/children.svg" />
-                  <slot name="sub-5">{{ currentUser.child }}</slot>
+                  <slot name="sub-5">{{ currentUser.totalChild }}</slot>
                 </p>
               </div>
             </div>

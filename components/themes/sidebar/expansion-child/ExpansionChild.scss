@@ -1,21 +1,32 @@
 .expansion {
-  &__title {
-    @include font-semi-bold;
-    color: #677694;
-  }
 
-  &__body {
-    &__item {
+    &__title {
+      @include font-semi-bold;
+      color: #677694;
+    }
+  
+    &__body {
+      &__item {
+        &--active {
+          background-color: rgba(255,255,255,0.20392) !important;
+          color: white;
+  
+          .expansion__body__item__title {
+            @include font-bold;
+  
+          }
+        }
+  
+      }
+    }  
+
+    .itemNoGroup {
       &--active {
-        background-color: #FFFFFF34;
-        color: white;
+        background-color: rgb(55,74,114) !important;
 
-        .expansion__body__item__title {
+        .v-list-item__title {
           @include font-bold;
-
         }
       }
-
     }
-  }
 }

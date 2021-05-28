@@ -7,6 +7,7 @@ export default async function ({ isHMR, app, store, route, redirect }) {
   }
 
   const isLoggedIn = app.$cookies.get(AUTH_TOKEN_KEY);
+  const currentUser = store.state.auth.currentUser;
   const excludeRoutes = ['signin', 'reset-password', 'reset-password-token'];
   if (!isLoggedIn) {
     if (excludeRoutes.includes(route.name)) {
@@ -20,7 +21,10 @@ export default async function ({ isHMR, app, store, route, redirect }) {
       "Authentication"
     ] = isLoggedIn;
 
-    await store.dispatch('auth/getProfile');
+    if (!currentUser.id && isLoggedIn) {
+      console.log("object");
+      await store.dispatch('auth/getProfile');
+    }
     if (excludeRoutes.includes(route.name)) {
       return redirect(
         '/'

@@ -7,7 +7,7 @@ export default {
   validation: {
     email: 'You have entered an invalid email.',
     required: 'This is a required field.',
-    password: 'You have entered an invalid password.',
+    password: 'Password should be at least 6 characters.',
     confirmPassword: 'Must be the same',
     alpha: 'Field accepts only character.',
     phoneNumber: 'Invalid mobile number. Please make sure the mobile number consist of at least 10 numbers.',

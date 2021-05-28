@@ -67,12 +67,12 @@ export default {
     return {
       tabItem: [
         {
-          label: "Chưa thu",
-          value: "incoming",
+          label: "Bảng",
+          value: "table",
         },
         {
-          label: "Đã thu",
-          value: "history",
+          label: "test",
+          value: "test",
         },
       ],
       selected: [],
@@ -110,6 +110,9 @@ export default {
     handleViewClick(item) {
       console.log(item);
     },
+  },
+  fetch() {
+    if(this.currentUser.role !== "PARENT") this.$router.push("/invoicesSchool");
   },
   async created() {
     await this.$store.dispatch("invoice/getInvoices");

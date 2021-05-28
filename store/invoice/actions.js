@@ -3,7 +3,6 @@ export default {
     // commit("setAuth", { token: 'fakeToken', currentUser: { id: 1, name: 'Lam', role: 'parent' } });
     try {
       const response = await this.$api.invoice.getInvoices(payload);
-      console.log(response);
       commit("setInvoices", { ...response });
       // if (response.data.ok) {
       //   commit("setSchools", { ...response.data });

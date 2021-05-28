@@ -113,7 +113,11 @@ export default {
     },
     search: {
       type: String,
-      require: '',
+      require: "",
+    },
+    status: {
+      type: String,
+      require: "",
     },
   },
   data: () => {
@@ -151,7 +155,7 @@ export default {
     rowClick(response) {
       return this.$emit("click:row", response);
     },
-    getRequestParams(searchTitle, page, pageSize) {
+    getRequestParams(searchTitle, page, pageSize, status) {
       let params = {};
 
       if (searchTitle) {
@@ -166,6 +170,10 @@ export default {
         params["size"] = pageSize;
       }
 
+      if (status) {
+        params["status"] = status;
+      }
+
       return params;
     },
     async onFetchItems() {
@@ -177,9 +185,9 @@ export default {
       const params = this.getRequestParams(
         this.search,
         this.page,
-        this.perpage
+        this.perpage,
+        this.status
       );
-
       await this.fetchItems(params);
 
       this.loading = false;
@@ -210,7 +218,7 @@ export default {
     },
     handleSortClick(s) {
       console.log(s);
-    }
+    },
   },
   watch: {
     page(value) {
@@ -241,7 +249,17 @@ export default {
     },
     search(value) {
       this.enterSearch();
-    }
+    },
+    async status(value) {
+      console.log(value);
+      const params = this.getRequestParams(
+        this.search,
+        this.page,
+        this.perpage,
+        this.status
+      );
+      await this.fetchItems(params);
+    },
   },
   beforeDestroy() {
     this.refetch = true;

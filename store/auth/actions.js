@@ -1,40 +1,44 @@
-import { AUTH_TOKEN_KEY } from "./auth.constants";
+import { AUTH_TOKEN_KEY, SET_AUTH_MUTATION } from "./auth.constants";
+import errorHandle from '@/helpers/errorHandle.helper';
 
 export default {
   async login({ commit, dispatch }, payload) {
 
-    commit("setAuth", { token: 'fakeToken' });
-    // try {
-    //   const response = await this.$api.auth.login(payload);
-    //   if (response.data.ok) {
-    //     commit("setAuth", { ...response.data.data });
-    //   }
-    // } catch (error) {
-    //   throw error;
-    // }
-  },
-
-  async signup({ commit, dispatch }, payload) {
+    // commit("setAuth", { token: 'fakeToken' });
     try {
-      const response = await this.$api.auth.signup(payload);
+      const response = await this.$api.auth.login(payload);
       if (response.data.ok) {
-        const setMaxAge = setExpireTime();
-
-        this.$cookies.set(AUTH_TOKEN_KEY, response.data.data.token, {
-          maxAge: setMaxAge,
-          path: "/",
-        });
-        location.reload();
+        commit(SET_AUTH_MUTATION, { ...response.data.data });
       }
+      this.$toast.success("Welcome", {
+        duration: 1000
+      });
     } catch (error) {
-      console.log(error);
-      commit(
-        this.$alert.ADD_ERROR_ALERT_MUTATION,
-        { message: error.response.data.message },
-        { root: true }
-      );
+      errorHandle(error);
     }
   },
+
+  // async signup({ commit, dispatch }, payload) {
+  //   try {
+  //     const response = await this.$api.auth.signup(payload);
+  //     if (response.data.ok) {
+  //       const setMaxAge = setExpireTime();
+
+  //       this.$cookies.set(AUTH_TOKEN_KEY, response.data.data.token, {
+  //         maxAge: setMaxAge,
+  //         path: "/",
+  //       });
+  //       location.reload();
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     commit(
+  //       this.$alert.ADD_ERROR_ALERT_MUTATION,
+  //       { message: error.response.data.message },
+  //       { root: true }
+  //     );
+  //   }
+  // },
 
   async getProfile({ commit, dispatch }) {
     try {

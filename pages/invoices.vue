@@ -20,7 +20,7 @@
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
             <invoice-manage-group
-              :invoices="getSuccessInvoice(type.id)"
+              :invoices="getInvoiceByType(type.id)"
               :invoiceType="type"
               :headers="headers"
             >
@@ -102,7 +102,7 @@ export default {
       invoices: "invoice/getInvoices",
       count: "invoice/getCountSchool",
       invoiceTypes: "invoice/getInvoiceTypes",
-      getSuccessInvoice: "invoice/getSuccessInvoice",
+      getInvoiceByType: "invoice/getInvoiceByType",
     }),
   },
   methods: {

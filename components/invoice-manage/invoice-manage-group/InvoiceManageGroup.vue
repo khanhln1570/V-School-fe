@@ -28,7 +28,7 @@
       <template #action="{ item }">
         <text-button :to="`/invoices/${item.id}`" class="ml-2">
           <p class="mb-0 font-weight-medium">
-            View
+            Chi tiết
           </p>
         </text-button>
       </template>

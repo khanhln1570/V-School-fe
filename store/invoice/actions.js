@@ -1,9 +1,6 @@
 import errorHandle from '@/helpers/errorHandle.helper';
-<<<<<<< HEAD
 
 
-=======
->>>>>>> develop
 export default {
   async getInvoices({ commit, dispatch }, payload) {
     // commit("setAuth", { token: 'fakeToken', currentUser: { id: 1, name: 'Lam', role: 'parent' } });

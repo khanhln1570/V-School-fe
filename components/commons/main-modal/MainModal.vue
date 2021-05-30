@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="modal" :width="width" persistent :transition="transition">
+  <v-dialog v-model="modal" :width="width" :transition="transition">
     <v-card>
       <v-toolbar color="primary" dark>
         <slot name="modalHeader"></slot>

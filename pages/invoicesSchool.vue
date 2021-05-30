@@ -8,7 +8,7 @@
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
-        <cus-icon-text-button>
+        <cus-icon-text-button @click.native="modalSendNotification = !modalSendNotification">
           <template #icon>
             <img
               src="@/assets/images/sendNotification.svg"
@@ -145,6 +145,12 @@
         </main-table>
       </template>
     </main-tabs>
+      <main-modal :modal="modalSendNotification">
+      <template #modalBody>
+       ád
+      </template>
+      </main-modal>
+
   </v-container>
 </template>
 
@@ -159,6 +165,7 @@ export default {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
     MainSelect: () => import("@/components/commons/main-select/MainSelect"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
+    MainModal: () => import("@/components/commons/main-modal/MainModal"),
     CusIconTextButton: () =>
       import(
         "@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"
@@ -210,6 +217,7 @@ export default {
       invoicesStatus: ["SUCCESS", "PENDING"],
       status: "SUCCESS",
       isSelectAll: false,
+      modalSendNotification: false,
     };
   },
   computed: {

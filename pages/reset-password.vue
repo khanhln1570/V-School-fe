@@ -23,7 +23,6 @@
       min-width="50vw"
     >
       <div>
-        <img src="@/assets/images/login-logo.svg" alt="login-logo" />
       </div>
     </v-sheet>
 </div>

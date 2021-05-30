@@ -5,5 +5,8 @@ export default {
 
     getInvoices: "/invoices",
     getProfile: "/profile",
+
+    getSchools: "/schools",
+    getSchoolDetails: "/schools/:id",
   }
 }

@@ -28,11 +28,11 @@
     />
     <v-divider vertical inset class="mx-3 mr-4"></v-divider>
 
-    <v-menu offset-y nudge-bottom="10" v-model="showMenu" v-if="currentUser.name">
+    <v-menu offset-y nudge-bottom="10" v-model="showMenu">
       <template v-slot:activator="{ on }">
         <v-btn depressed icon plain v-on="on" :ripple="false">
           <v-avatar size="34" color="blue">
-            <span class="white--text headline">{{currentUser.name.substr(0,1)}}</span>
+            <span class="white--text headline">{{firstChar}}</span>
           </v-avatar>
           <v-icon size="25" color="icon-light"> $expand </v-icon>
         </v-btn>
@@ -64,6 +64,9 @@ export default {
     ...mapGetters({
       currentUser: "auth/getCurrentUser",
     }),
+    firstChar() {
+      return this.currentUser.name?.substr(0,1);
+    }
   },
   components: {
     TextButton: () =>

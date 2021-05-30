@@ -12,7 +12,6 @@
         <span v-if="index === 0">({{ invoices.length }})</span>
       </v-col>
     </v-row>
-    <!-- <div v-for="(item, index) in invoices" :key="index">{{ item }}</div> -->
     <invoice-manage-row
       v-for="(item, index) in invoices"
       :key="index"
@@ -24,8 +23,14 @@
           class="pa-1 mr-1 rounded-circle d-inline-block"
           :class="item.status === 'PENDING' ? 'color-warning' : 'color-success'"
         ></div>
-        <!-- <span>{{ value }}</span> -->
         <span>{{item.description}}</span>
+      </template>
+      <template #action="{ item }">
+        <text-button :to="`/invoices/${item.id}`" class="ml-2">
+          <p class="mb-0 font-weight-medium">
+            Chi tiết
+          </p>
+        </text-button>
       </template>
     </invoice-manage-row>
   </v-container>
@@ -36,7 +41,11 @@ export default {
   components: {
     InvoiceManageRow: () =>
       import("@/components/invoice-manage/invoice-manage-row/InvoiceManageRow"),
+
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
+      
   props: {
     invoiceType: {
       type: Object,

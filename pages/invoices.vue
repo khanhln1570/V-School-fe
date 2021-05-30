@@ -20,7 +20,7 @@
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
             <invoice-manage-group
-              :invoices="invoices"
+              :invoices="getInvoiceByType(type.id)"
               :invoiceType="type"
               :headers="headers"
             >
@@ -31,7 +31,11 @@
       <template #history>
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
-            <invoice-manage-group :invoices="invoices" :invoiceType="type" :headers="headers">
+            <invoice-manage-group
+              :invoices="getInvoiceByType(type.id)"
+              :invoiceType="type"
+              :headers="headers"
+            >
             </invoice-manage-group>
           </div>
         </div>
@@ -43,8 +47,6 @@
 <script>
 import { mapGetters } from "vuex";
 import { GET_INVOICES_ACTION } from "@/store/invoice/invoice.constants";
-
-
 
 export default {
   components: {
@@ -63,18 +65,18 @@ export default {
         "@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"
       ),
     TextButton: () =>
-      import("@/components/commons/main-button/text-button/TextButton")
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
   data() {
     return {
       tabItem: [
         {
-          label: "Bảng",
-          value: "table",
+          label: "Chưa thu",
+          value: "incoming",
         },
         {
-          label: "test",
-          value: "test",
+          label: "Đã thu",
+          value: "history",
         },
       ],
       selected: [],
@@ -82,11 +84,11 @@ export default {
       headers: [
         {
           text: "Số tiền",
-          value: "total",
+          value: "amount",
         },
         {
           text: "Học sinh",
-          value: "student",
+          value: "studentName",
         },
         {
           text: "",
@@ -100,6 +102,7 @@ export default {
       invoices: "invoice/getInvoices",
       count: "invoice/getCountSchool",
       invoiceTypes: "invoice/getInvoiceTypes",
+      getInvoiceByType: "invoice/getInvoiceByType",
     }),
   },
   methods: {
@@ -114,8 +117,7 @@ export default {
     },
   },
   fetch() {
-    if(this.currentUser.role !== "PARENT") this.$router.push("/invoicesSchool");
-
+    // if(this.currentUser.role !== "PARENT") this.$router.push("/invoicesSchool");
     // await this.$store.dispatch(GET_INVOICES_ACTION);
   },
   async created() {

@@ -5,7 +5,6 @@
         v-for="(item, index) in headersAfter"
         :key="index"
         class="invoiceGroup__header__item mb-3"
-        
       >
         <span :class="{ 'ml-3': index === 1 }">
           {{ item.text }}

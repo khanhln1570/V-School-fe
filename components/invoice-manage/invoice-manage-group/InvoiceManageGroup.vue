@@ -37,6 +37,7 @@
 </template>
 
 <script>
+
 export default {
   components: {
     InvoiceManageRow: () =>
@@ -71,6 +72,9 @@ export default {
       ];
     },
   },
+  methods: {
+    numberToMoney: numberToMoney
+  }
 };
 </script>
 

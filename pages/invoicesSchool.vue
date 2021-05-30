@@ -76,6 +76,11 @@
               {{ value.label }}
             </p>
           </template>
+          <template #amount="{ value }">
+            <p class="mb-0 font-weight-medium">
+              {{ numberToMoney(value) }}
+            </p>
+          </template>
           <template #unit="{ value }">
             <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
           </template>
@@ -145,6 +150,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { numberToMoney } from '@/helpers/utils.helper';
 
 export default {
   components: {
@@ -240,6 +246,7 @@ export default {
       } else {
       }
     },
+    numberToMoney: numberToMoney,
   },
   watch: {
     "$route.query.tab": {

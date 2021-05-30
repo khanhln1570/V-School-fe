@@ -25,6 +25,9 @@
         ></div>
         <span>{{ value }}</span>
       </template>
+      <template #total="{ value, item }">
+        <span>{{ numberToMoney(value) }}</span>
+      </template>
       <template #action="{ item }">
           <v-checkbox
           v-model="selected"
@@ -46,6 +49,8 @@
 </template>
 
 <script>
+import { numberToMoney } from '@/helpers/utils.helper';
+
 export default {
   components: {
     InvoiceRow: () => import("@/components/yourChild/invoice-row/InvoiceRow"),
@@ -81,6 +86,9 @@ export default {
         ...this.headers,
       ];
     },
+  },
+  methods: {
+    numberToMoney: numberToMoney
   },
   watch: {
     selected() {

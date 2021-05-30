@@ -27,7 +27,7 @@ export default {
         });
       }
     } catch (error) {
-      commit("clearAuth");
+      // commit("clearAuth");
       errorHandle(error);
     }
   },

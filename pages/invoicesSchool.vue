@@ -10,17 +10,29 @@
       <template #tabRight>
         <cus-icon-text-button>
           <template #icon>
-            <img src="@/assets/images/sendNotification.svg" alt="sendNotification" class="mr-2">
+            <img
+              src="@/assets/images/sendNotification.svg"
+              alt="sendNotification"
+              class="mr-2"
+            />
             <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
           </template>
         </cus-icon-text-button>
         <cus-icon-text-button>
           <template #icon>
-            <img src="@/assets/images/excelExport.svg" alt="excelExport" class="mr-2">
+            <img
+              src="@/assets/images/excelExport.svg"
+              alt="excelExport"
+              class="mr-2"
+            />
             <p class="mb-0 d-flex align-center black--text">Xuất excel</p>
           </template>
         </cus-icon-text-button>
-        <table-search :search.sync="search" placeHolder="Hãy nhập gì đó …" @searchChange="handleChangeSearch"></table-search>
+        <table-search
+          :search.sync="search"
+          placeHolder="Hãy nhập gì đó …"
+          @searchChange="handleChangeSearch"
+        ></table-search>
       </template>
 
       <template #incoming>
@@ -36,6 +48,13 @@
           searchLabel="Search name or ID"
           :status="status"
         >
+          <template #header-studentName="{ header }">
+              <v-checkbox v-model="isSelectAll" dense hide-details class="ma-0" @change="handleSelectAll">
+                <template #label>
+                  <p class="mb-1 body-1 black--text font-weight-medium">{{ header.text }}</p>
+                </template>
+              </v-checkbox>
+          </template>
           <template #studentName="{ value, item }">
             <div class="d-flex">
               <v-checkbox
@@ -53,19 +72,21 @@
             </div>
           </template>
           <template #type="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">{{ value.label }}</p>
+            <p class="mb-0 txt-active--text font-weight-medium">
+              {{ value.label }}
+            </p>
           </template>
           <template #unit="{ value }">
             <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
           </template>
 
-
           <template #action="{ item }">
-              <text-button @click.native="handleViewClick(item)" :to="`/schools/${item.id}`">
-                <p class="mb-0 font-weight-medium">
-                  View
-                </p>
-              </text-button>
+            <text-button
+              @click.native="handleViewClick(item)"
+              :to="`/schools/${item.id}`"
+            >
+              <p class="mb-0 font-weight-medium">View</p>
+            </text-button>
           </template>
         </main-table>
       </template>
@@ -100,24 +121,24 @@
             </div>
           </template>
           <template #type="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">{{ value.label }}</p>
+            <p class="mb-0 txt-active--text font-weight-medium">
+              {{ value.label }}
+            </p>
           </template>
           <template #unit="{ value }">
             <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
           </template>
 
-
           <template #action="{ item }">
-              <text-button @click.native="handleViewClick(item)" :to="`/schools/${item.id}`">
-                <p class="mb-0 font-weight-medium">
-                  View
-                </p>
-              </text-button>
+            <text-button
+              @click.native="handleViewClick(item)"
+              :to="`/schools/${item.id}`"
+            >
+              <p class="mb-0 font-weight-medium">View</p>
+            </text-button>
           </template>
         </main-table>
       </template>
-
-      
     </main-tabs>
   </v-container>
 </template>
@@ -132,7 +153,10 @@ export default {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
     MainSelect: () => import("@/components/commons/main-select/MainSelect"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
-    CusIconTextButton: () => import("@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"),
+    CusIconTextButton: () =>
+      import(
+        "@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"
+      ),
     TextButton: () =>
       import("@/components/commons/main-button/text-button/TextButton"),
   },
@@ -142,6 +166,7 @@ export default {
         {
           text: "Tên học sinh",
           value: "studentName",
+          sortable: false,
         },
         {
           text: "Loại phí",
@@ -175,9 +200,10 @@ export default {
         },
       ],
       selected: [],
-      search: '',
-      invoicesStatus: ['SUCCESS', 'PENDING'],
-      status: 'SUCCESS'
+      search: "",
+      invoicesStatus: ["SUCCESS", "PENDING"],
+      status: "SUCCESS",
+      isSelectAll: false,
     };
   },
   computed: {
@@ -203,18 +229,27 @@ export default {
       console.log(item);
     },
     handleChangeTab(tabIndex) {
-      this.search = '';
-    }
+      this.search = "";
+    },
+    handleSelectAll() {
+      this.selected = [];
+      if(this.isSelectAll) {
+        this.invoices.map(invoice => {
+          this.selected.push(invoice.id)
+        })
+      } else {
+      }
+    },
   },
   watch: {
-    '$route.query.tab': {
-        handler: function(value) {
-          this.status = this.invoicesStatus[value];
-        },
-        deep: true,
-        immediate: true
-      }
-  }
+    "$route.query.tab": {
+      handler: function (value) {
+        this.status = this.invoicesStatus[value];
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <page-header title="Phí thu" :backTo="`/invoices/`">
+      <page-header title="Phí thu" :backTo="currentUser.role === 'school' ? '/invoicesSchool': '/invoices/' ">
         <template #titleIcon></template>
         <template #subTitle></template>
       </page-header>
@@ -57,6 +57,7 @@ export default {
   computed: {
     ...mapGetters({
       getInvoiceById: "invoice/getInvoiceById",
+      currentUser: "auth/getCurrentUser",
     }),
   },
   data() {

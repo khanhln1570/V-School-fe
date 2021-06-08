@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/firebase": "^7.5.0",
     "@nuxtjs/toast": "^3.3.1",
     "chart.js": "^2.9.4",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.8.3",
+    "firebase": "^8.6.5",
     "lodash": "^4.17.21",
     "nuxt": "^2.14.12",
     "vue-chartjs": "^3.5.1",

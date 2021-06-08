@@ -1,8 +1,16 @@
 <template>
-  <v-btn :color="buttonColor" :disabled="disabled" :loading="loading" :text="text" :to="to" :elevation="elevation" :ripple="ripple" :min-width="minWidth" :outlined="outlined">
-    <slot>
-
-    </slot>
+  <v-btn
+    :color="buttonColor"
+    :disabled="disabled"
+    :loading="loading"
+    :text="text"
+    :to="to"
+    :elevation="elevation"
+    :ripple="ripple"
+    :min-width="minWidth"
+    :outlined="outlined"
+  >
+    <slot> </slot>
   </v-btn>
 </template>
 
@@ -11,23 +19,23 @@ export default {
   props: {
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     color: {
       type: String,
-      default: null
+      default: null,
     },
     text: {
       type: Boolean,
-      default: true
+      default: true,
     },
     to: {
       type: [String, Object],
-      default: null
+      default: null,
     },
     elevation: {
       type: Number,
@@ -35,30 +43,30 @@ export default {
     },
     ripple: {
       type: Boolean,
-      default: false
+      default: false,
     },
     minWidth: {
       type: [Number, String],
-      default: 0
+      default: 0,
     },
     outlined: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: () => {
     return {
-      defaultColor: 'primary'
-    }
+      defaultColor: "primary",
+    };
   },
   computed: {
     /**
-     * Set current button color by props color. If null default is color in child component type(Ex: Pdf, Excel) 
+     * Set current button color by props color. If null default is color in child component type(Ex: Pdf, Excel)
      */
     buttonColor() {
-      if(this.color) return this.color;
+      if (this.color) return this.color;
       return this.defaultColor;
-    }
+    },
   },
   // created() {
   //   this.getDefaultColorButton();
@@ -71,5 +79,5 @@ export default {
   //     return this.$options.components[this.type]?.().then(rs => this.defaultColor = rs.default?.color);
   //   }
   // }
-}
+};
 </script>

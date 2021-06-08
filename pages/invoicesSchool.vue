@@ -8,7 +8,9 @@
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
-        <cus-icon-text-button @click.native="modalSendNotification = !modalSendNotification">
+        <cus-icon-text-button
+          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
+        >
           <template #icon>
             <img
               src="@/assets/images/sendNotification.svg"
@@ -49,11 +51,19 @@
           :status="status"
         >
           <template #header-studentName="{ header }">
-              <v-checkbox v-model="isSelectAll" dense hide-details class="ma-0" @change="handleSelectAll">
-                <template #label>
-                  <p class="mb-1 body-1 black--text font-weight-medium">{{ header.text }}</p>
-                </template>
-              </v-checkbox>
+            <v-checkbox
+              v-model="isSelectAll"
+              dense
+              hide-details
+              class="ma-0"
+              @change="handleSelectAll"
+            >
+              <template #label>
+                <p class="mb-1 body-1 black--text font-weight-medium">
+                  {{ header.text }}
+                </p>
+              </template>
+            </v-checkbox>
           </template>
           <template #studentName="{ value, item }">
             <div class="d-flex">
@@ -88,7 +98,7 @@
           <template #action="{ item }">
             <text-button
               @click.native="handleViewClick(item)"
-              :to="`/schools/${item.id}`"
+              :to="`/invoices/${item.id}`"
             >
               <p class="mb-0 font-weight-medium">View</p>
             </text-button>
@@ -145,18 +155,39 @@
         </main-table>
       </template>
     </main-tabs>
-      <main-modal :modal="modalSendNotification">
-      <template #modalBody>
-       ád
+    <main-modal
+      :modal="modalSendNotification"
+      @closeClick="modalSendNotification = false"
+      @nextClick="handleNextClick"
+      persistent
+    >
+      <template #modalHeader>
+        <h4 class="mb-0 subtitle">Gủi thông báo phí thu</h4>
       </template>
-      </main-modal>
-
+      <template #modalBody>
+        <main-select
+          label="Loại thông báo"
+          :items="getInvoiceTypes"
+          itemText="label"
+          itemValue="id"
+          class="mb-5"
+          @input="handleSelectClick"
+        ></main-select>
+        <v-lazy>
+          <main-input
+            v-show="notificationObject.type"
+            label="Nội dung thông báo"
+            type="textarea"
+          ></main-input>
+        </v-lazy>
+      </template>
+    </main-modal>
   </v-container>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { numberToMoney } from '@/helpers/utils.helper';
+import { numberToMoney } from "@/helpers/utils.helper";
 
 export default {
   components: {
@@ -172,6 +203,7 @@ export default {
       ),
     TextButton: () =>
       import("@/components/commons/main-button/text-button/TextButton"),
+    MainInput: () => import("@/components/commons/main-input/MainInput"),
   },
   data() {
     return {
@@ -218,12 +250,16 @@ export default {
       status: "SUCCESS",
       isSelectAll: false,
       modalSendNotification: false,
+      notificationObject: {
+        type: null,
+      },
     };
   },
   computed: {
     ...mapGetters({
       count: "invoice/getCountInvoice",
       invoices: "invoice/getInvoices",
+      getInvoiceTypes: "invoice/getInvoiceTypes",
     }),
   },
   // fetch() {
@@ -247,14 +283,30 @@ export default {
     },
     handleSelectAll() {
       this.selected = [];
-      if(this.isSelectAll) {
-        this.invoices.map(invoice => {
-          this.selected.push(invoice.id)
-        })
+      if (this.isSelectAll) {
+        this.invoices.map((invoice) => {
+          this.selected.push(invoice.id);
+        });
       } else {
       }
     },
     numberToMoney: numberToMoney,
+    // handleCloseClick() {
+
+    // },
+    handleNextClick() {
+      this.modalSendNotification = !this.modalSendNotification;
+      this.notificationObject = {
+        type: null,
+      };
+      this.selected = [];
+      return this.$nuxt?.$toast?.success("Gửi thông báo thành cồng !", {
+        duration: 3000,
+      });
+    },
+    handleSelectClick(invoiceNotificationTypeId) {
+      this.notificationObject.type = invoiceNotificationTypeId;
+    },
   },
   watch: {
     "$route.query.tab": {

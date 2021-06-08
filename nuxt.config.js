@@ -35,7 +35,22 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
-      
+    [
+      "@nuxtjs/firebase",
+      {
+        config: {
+          apiKey: 'AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA',
+          authDomain: 'notifications-vschool.firebaseapp.com',
+          projectId: 'notifications-vschool',
+          storageBucket: 'notifications-vschool.appspot.com',
+          messagingSenderId: '131725339638',
+          appId: '1:131725339638:web:6fe70ff2eca617f7a875d7',
+        },
+        services: {
+          firestore: true,
+        },
+      },
+    ],
   ],
   toast: {
     position: 'bottom-right',

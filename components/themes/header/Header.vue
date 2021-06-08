@@ -8,7 +8,10 @@
     color="white"
     class="header px-6"
   >
-  <v-app-bar-nav-icon @click="$emit('drawlerClick')" v-if="$vuetify.breakpoint.mobile"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon
+      @click="$emit('drawlerClick')"
+      v-if="$vuetify.breakpoint.mobile"
+    ></v-app-bar-nav-icon>
     <img
       class="header__search mr-3"
       src="@/assets/images/search.svg"
@@ -20,19 +23,29 @@
       placeholder="Tìm bằng tên học sinh hoặc chức năng"
     />
     <v-spacer></v-spacer>
-    <img
-      class="header__search"
-      src="@/assets/images/notification.svg"
-      alt="notification"
-      width="22px"
-    />
-    <v-divider vertical inset class="mx-3 mr-4"></v-divider>
+
+    <div class="rounded-circle">
+      <cus-icon-text-button depressed>
+        <template #icon>
+          <nuxt-link to="/notifications">
+            <img
+              class="header__search"
+              src="@/assets/images/notification.svg"
+              alt="notification"
+              width="22px"
+            />
+          </nuxt-link>
+        </template>
+      </cus-icon-text-button>
+    </div>
+
+    <v-divider vertical inset class="ml-1 mr-4"></v-divider>
 
     <v-menu offset-y nudge-bottom="10" v-model="showMenu">
       <template v-slot:activator="{ on }">
         <v-btn depressed icon plain v-on="on" :ripple="false">
           <v-avatar size="34" color="blue">
-            <span class="white--text headline">{{firstChar}}</span>
+            <span class="white--text headline">{{ firstChar }}</span>
           </v-avatar>
           <v-icon size="25" color="icon-light"> $expand </v-icon>
         </v-btn>
@@ -60,22 +73,27 @@
 import { mapGetters } from "vuex";
 
 export default {
+  components: {
+    CusIconTextButton: () =>
+      import(
+        "@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"
+      ),
+
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
+  },
   computed: {
     ...mapGetters({
       currentUser: "auth/getCurrentUser",
     }),
     firstChar() {
-      return this.currentUser.name?.substr(0,1);
-    }
-  },
-  components: {
-    TextButton: () =>
-      import("@/components/commons/main-button/text-button/TextButton"),
+      return this.currentUser.name?.substr(0, 1);
+    },
   },
   data() {
     return {
       showMenu: false,
-      items: [{ title: "Tài khoản", to: '/settings' }],
+      items: [{ title: "Tài khoản", to: "/settings" }],
     };
   },
   props: {
@@ -84,8 +102,7 @@ export default {
       default: false,
     },
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 

@@ -22,7 +22,7 @@ export default {
 
       if (response.data.ok) {
         commit(SET_PROFILE_MUTATION, { ...response.data.data });
-        this.$toast.success(`Xin chào ${response.data.data?.name}!`, {
+        this.$toast.success(`Xin chào ${response.data.data?.user?.name}!`, {
           duration: 3000
         });
       }

@@ -20,7 +20,19 @@
     }
 
     background-color: #ececec00 !important;
+  }
 
+  &--new {
+    position: relative;
+
+    ::after {
+      content: "";
+      background-color: var(--error);
+      padding: .3rem;
+      border-radius: 50%;
+      position: absolute;
+      right: 0%;
+    }
   }
 }
 

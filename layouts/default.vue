@@ -12,7 +12,11 @@
       @toggleSidebar="toggleSidebar"
     >
     </main-drawer>
-    <main-header @logout="logout" @drawlerClick="handleDrawlerClick"></main-header>
+    <main-header
+      @logout="logout"
+      @drawlerClick="handleDrawlerClick"
+      :anyNewNotifications="anyNewNotifications"
+    ></main-header>
 
     <v-main class="white mt-10">
       <v-lazy>
@@ -33,6 +37,7 @@
 
 <script>
 import { CLEAR_AUTH_MUTATION } from "~/store/auth/auth.constants";
+import { GET_CHILD_ACTION } from "~/store/yourChild/yourChild.constants";
 import sidebarItems from "@/shared/sidebar-items";
 import { mapGetters } from "vuex";
 
@@ -49,6 +54,7 @@ export default {
     ...mapGetters({
       currentUser: "auth/getCurrentUser",
       yourChild: "yourChild/getYourChild",
+      notifications: "notification/getNotifications",
     }),
     items() {
       //prepare childs items for parents
@@ -70,6 +76,17 @@ export default {
 
       return sidebarItems;
     },
+    anyNewNotifications() {
+      let anyNew = this.notifications.find((item) => {
+        return item.isRead === false;
+      });
+      if (!anyNew) {
+        anyNew = false;
+      } else {
+        anyNew = true;
+      }
+      return anyNew;
+    },
   },
   data() {
     return {
@@ -87,20 +104,17 @@ export default {
       steps: [
         {
           el: "#summary",
-          text:
-            "Eiusmod esse est aliqua velit eu officia dolore do mollit eu reprehenderit voluptate duis voluptate.",
+          text: "Eiusmod esse est aliqua velit eu officia dolore do mollit eu reprehenderit voluptate duis voluptate.",
           position: "bottom right",
         },
         {
           el: "#reports",
-          text:
-            "Anim non eiusmod non nulla aliqua eu quis aliqua eu voluptate deserunt deserunt ea.",
+          text: "Anim non eiusmod non nulla aliqua eu quis aliqua eu voluptate deserunt deserunt ea.",
           position: "bottom right",
         },
         {
           el: "#user-management",
-          text:
-            "Exercitation fugiat minim enim id nulla ad sunt fugiat ipsum anim dolore cillum.",
+          text: "Exercitation fugiat minim enim id nulla ad sunt fugiat ipsum anim dolore cillum.",
           position: "bottom right",
         },
         {
@@ -126,7 +140,7 @@ export default {
     },
     handleDrawlerClick() {
       this.drawer = !this.drawer;
-    }
+    },
   },
   watch: {
     "$route.name": {
@@ -149,6 +163,45 @@ export default {
             disabled: false,
             href: this.$route.fullPath,
           });
+      },
+      deep: true,
+      immediate: true,
+    },
+    currentUser: {
+      handler: async function (value) {
+        if (value.id) {
+          //get notification
+          //this.$store.state.auth.currentUser.userId
+          const messageRef = this.$fire.firestore
+            .collection("notifications")
+            .where("to", "==", value.id);
+          try {
+            messageRef.onSnapshot((querySnapshot) => {
+              var noti = [];
+              querySnapshot.forEach((doc) => {
+                noti.unshift(doc.data());
+              });
+              console.log("get noti", noti);
+
+              if (this.notifications.length !== noti.length) {
+                this.$nuxt?.$toast?.success("Bạn có thông báo mới !", {
+                  duration: 3000,
+                });
+                this.$store.commit("notification/setNotifications", noti);
+              }
+            });
+
+            //get your child
+            if(value.role === "PARENT") {
+              await this.$store.dispatch(GET_CHILD_ACTION, 
+                value.parent.phone
+              );
+            }
+          } catch (e) {
+            console.log(e);
+            return;
+          }
+        }
       },
       deep: true,
       immediate: true,

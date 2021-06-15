@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex cusIconTextBtn" :class="{
-    'cusIconTextBtn--depressed' : depressed
+    'cusIconTextBtn--depressed' : depressed,
+    'cusIconTextBtn--new' : dot
   }">
     <slot name="icon"></slot>
   </div>
@@ -10,6 +11,10 @@
   export default {
     props: {
       depressed: {
+        type: Boolean,
+        default: false
+      },
+      dot: {
         type: Boolean,
         default: false
       }

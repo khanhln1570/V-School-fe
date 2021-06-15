@@ -8,9 +8,9 @@
       <template #personal>
         <main-card>
           <template #imgContent>
-            <img src="@/assets/images/parentAvatar.svg" v-if="currentUser.role === 'parent'" alt="parent"/>
-            <img src="@/assets/images/schoolAvatar.svg" v-if="currentUser.role === 'school'" alt="school" />
-            <img src="@/assets/images/superAdminAvatar.svg" v-if="currentUser.role === 'superAdmin'" alt="superAdmin" />
+            <img src="@/assets/images/parentAvatar.svg" v-if="currentUser.role === 'PARENT'" alt="parent"/>
+            <img src="@/assets/images/schoolAvatar.svg" v-if="currentUser.role === 'SCHOOL'" alt="school" />
+            <img src="@/assets/images/superAdminAvatar.svg" v-if="currentUser.role === 'SUPERADMIN'" alt="superAdmin" />
           </template>
           <template #contentCard>
             <div class="ml-xl-5 ml-md-12">

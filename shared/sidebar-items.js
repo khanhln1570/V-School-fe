@@ -6,7 +6,7 @@ const sidebarItems = [
     id: "summary"
   },
   {
-    role: 'parent',
+    role: 'PARENT',
     group: {
       title: 'Con của bạn',
       id: 'your-child',
@@ -24,22 +24,22 @@ const sidebarItems = [
         {
           title: "Phí thu",
           to: "/invoices",
-          role: "parent"
+          role: "PARENT"
         },
         {
           title: "Phí thu",
           to: "/invoicesSchool",
-          role: "school"
+          role: "SCHOOL"
         },
         // {
         //   title: "Phụ huynh",
         //   to: "/parents",
-        //   role: "school"
+        //   role: "SCHOOL"
         // },
         {
           title: "Trường học",
           to: "/schools",
-          role: "superAdmin"
+          role: "SUPERADMIN"
         },
       ]
     }

@@ -39,12 +39,13 @@ export default {
       "@nuxtjs/firebase",
       {
         config: {
-          apiKey: 'AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA',
-          authDomain: 'notifications-vschool.firebaseapp.com',
-          projectId: 'notifications-vschool',
-          storageBucket: 'notifications-vschool.appspot.com',
-          messagingSenderId: '131725339638',
-          appId: '1:131725339638:web:6fe70ff2eca617f7a875d7',
+          apiKey: "AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA",
+          authDomain: "notifications-vschool.firebaseapp.com",
+          projectId: "notifications-vschool",
+          storageBucket: "notifications-vschool.appspot.com",
+          messagingSenderId: "131725339638",
+          appId: "1:131725339638:web:6fe70ff2eca617f7a875d7",
+          measurementId: "G-RCZG21NREZ"
         },
         services: {
           firestore: true,

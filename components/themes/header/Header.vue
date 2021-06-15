@@ -25,21 +25,29 @@
     <v-spacer></v-spacer>
 
     <div class="rounded-circle">
-      <cus-icon-text-button depressed>
+      <cus-icon-text-button depressed :dot="anyNewNotifications">
         <template #icon>
           <nuxt-link to="/notifications">
             <img
-              class="header__search"
+              class="header__notifications"
               src="@/assets/images/notification.svg"
               alt="notification"
               width="22px"
+              v-if="!anyNewNotifications"
+            />
+            <img
+              class="header__notifications--new"
+              src="@/assets/images/notification.svg"
+              alt="notification"
+              width="22px"
+              v-else
             />
           </nuxt-link>
         </template>
       </cus-icon-text-button>
     </div>
 
-    <v-divider vertical inset class="ml-1 mr-4"></v-divider>
+    <v-divider vertical inset class="ml-2 mr-5 header__divider"></v-divider>
 
     <v-menu offset-y nudge-bottom="10" v-model="showMenu">
       <template v-slot:activator="{ on }">
@@ -99,6 +107,10 @@ export default {
   props: {
     drawer: {
       type: [Boolean],
+      default: false,
+    },
+    anyNewNotifications: {
+      type: Boolean,
       default: false,
     },
   },

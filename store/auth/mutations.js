@@ -25,9 +25,10 @@ export default {
   },
   setProfile(state, item) {
     if (item) {
-      state.currentUser = item;
-      if (item.accRole && !state.currentUser.role) {
-        state.currentUser.role = item.accRole;
+      state.currentUser = {...item.user};
+      state.currentUser.totalChild = item.totalChild;
+      if (item.user.accRole && !state.currentUser.role) {
+        state.currentUser.role = item.user.accRole;
       }
     }
   },

@@ -22,6 +22,8 @@ export default {
       "token"
     ] = "";
     this.$router.push('/signin');
+
+    location.reload();
   },
   setProfile(state, item) {
     if (item) {

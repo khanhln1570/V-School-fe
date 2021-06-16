@@ -179,9 +179,8 @@ export default {
             messageRef.onSnapshot((querySnapshot) => {
               var noti = [];
               querySnapshot.forEach((doc) => {
-                noti.unshift(doc.data());
+                noti.unshift({...doc.data(), id: doc.id});
               });
-              console.log("get noti", noti);
 
               if (this.notifications.length !== noti.length) {
                 this.$nuxt?.$toast?.success("Bạn có thông báo mới !", {

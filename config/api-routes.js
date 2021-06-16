@@ -16,5 +16,8 @@ export default {
 
     //student
     getStudentsByPhone: "/students/phone/:phone",
+
+    //notification
+    setNotificationRead: "/notifications"
   }
 }

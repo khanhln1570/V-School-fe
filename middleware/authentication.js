@@ -22,7 +22,6 @@ export default async function ({ isHMR, app, store, route, redirect }) {
     ] = isLoggedIn;
 
     if (!currentUser.id && isLoggedIn) {
-      console.log("object");
       await store.dispatch('auth/getProfile');
     }
     if (excludeRoutes.includes(route.name)) {

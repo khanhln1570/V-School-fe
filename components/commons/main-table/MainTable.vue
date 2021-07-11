@@ -37,6 +37,14 @@
       @update:sort-by="handleSortClick($event)"
       @update:sort-desc="handleSortClick($event)"
     >
+      <template
+        v-for="keyname in headers"
+        v-slot:[getToKeyHeader(keyname.value)]="{ header }"
+      >
+        <slot :name="`header-${keyname.value}`" :header="header">
+          {{ header.text }}
+        </slot>
+      </template>
       <template v-slot:top>
         <slot name="top"></slot>
       </template>
@@ -202,6 +210,9 @@ export default {
       return parseInt(value, 10);
     },
     getToKey(value, prefix = "item.") {
+      return toString(prefix + value);
+    },
+    getToKeyHeader(value, prefix = "header.") {
       return toString(prefix + value);
     },
     setPage(page, fetch = true) {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="input-header d-flex justify-space-between">
+    <div class="input-header d-flex justify-space-between mb-1">
       <label :for="name" v-if="label">
         {{ label }} <span v-if="subLabel" class="font-italic txt-gray--text">{{subLabel}}</span>
       </label>
@@ -16,15 +16,16 @@
       :placeholder="placeholder"
       :value="value"
       @input="emitInputEvent"
-      class="rounded-lg"
       solo
       :clearable="clearable"
       :error-messages="errors"
       :disabled="disabled"
+      outlined
+      flat
       dense
     />
     <v-text-field
-      v-if="type === 'password'"
+      v-else-if="type === 'password'"
       :id="name"
       :placeholder="placeholder"
       :value="value"

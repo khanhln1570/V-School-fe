@@ -1,3 +1,7 @@
+.cusIconTextBtn:hover {
+  background-color: #ECECEC;
+}
+
 .cusIconTextBtn {
   padding: .3rem .7rem;
   border-radius: 10px 10px 0 0;
@@ -9,8 +13,26 @@
   p {
     @include font-medium;
   }
+
+  &--depressed {
+    :hover {
+      background-color: #ececec00 !important;
+    }
+
+    background-color: #ececec00 !important;
+  }
+
+  &--new {
+    position: relative;
+
+    ::after {
+      content: "";
+      background-color: var(--error);
+      padding: .3rem;
+      border-radius: 50%;
+      position: absolute;
+      right: 0%;
+    }
+  }
 }
 
-.cusIconTextBtn:hover {
-  background-color: #ECECEC;
-}

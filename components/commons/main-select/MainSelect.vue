@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex align-center">
-    <label :for="id" class="mr-3" v-if="label">{{label}}</label>
+  <div class="">
+    <label :for="id" class="mb-1" v-if="label">{{label}}</label>
     <v-select
       v-if="items"
       :value="value"
@@ -12,7 +12,6 @@
       outlined
       :id="id"
       class="main__select"
-      @change="$emit('input', $event)"
       :style="{
         maxWidth: `${maxWidth}px`
       }"
@@ -20,6 +19,7 @@
       :clearable="clearable"
       :return-object="returnObject"
       @click:clear="$emit('clear')"
+      @change="$emit('input', $event)"
     ></v-select>
   </div>
 </template>

@@ -8,4 +8,23 @@
   &__input:focus {
     outline: none;
   }
+
+  &__notifications {
+    &--new {
+
+      position: relative;
+
+      .header__notifications::after {
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: red;
+        padding: 1rem;
+      }
+    }
+  }
+
+  &__divider {
+  }
 }

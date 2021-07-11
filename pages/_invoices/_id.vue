@@ -1,32 +1,37 @@
 <template>
   <div>
     <v-container>
-      <page-header title="Cài đặt tài khoản">
+      <page-header title="Phí thu" :backTo="currentUser.role === 'school' ? '/invoicesSchool': '/invoices/' ">
         <template #titleIcon></template>
         <template #subTitle></template>
       </page-header>
       <main-tabs :items="items">
         <template #personal>
+<<<<<<< HEAD
           <v-card outlined class="rounded-lg mt-6 px-10 py-4">
+=======
+          <v-card outlined class="rounded-lg mt-6 px-10 py-4" v-if="invoice">
+>>>>>>> 21989337772728326341e992db0f348c191aab39
             <div class="d-flex justify-space-between">
               <div class="col-6 pa-0">
                 <h2 class="font-weight-medium">
-                  {{ invoices.name }} -
-                  <span class="blue--text">{{ invoices.time }}</span>
+                  {{ invoice.description }} -
+                  <span class="blue--text">{{ invoice.unit }}</span>
                 </h2>
-                <p class="blue--text">{{ invoices.expiry }}</p>
+                <!-- <p class="blue--text">{{ invoice.expiry }}</p> -->
                 <div>
                   <span class="font-weight-medium">Hoá đơn số: </span
-                  ><span>{{ invoices.invoice }}</span>
+                  ><span>{{ invoice.id }}</span>
                 </div>
                 <p class="mt-4">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.zaZaQA
                   Adipisci necessitatibus voluptate praesentium distinctio quod
                   esse inventore fugit quisquam fuga libero! Earum natus cum
                   veritatis molestiae. Nisi labore hic assumenda praesentium?
                 </p>
               </div>
 
+<<<<<<< HEAD
               <div
                 class="col-3 pa-0 font-weight-medium text-right orange--text"
               >
@@ -51,12 +56,26 @@
                   ><span class="text-uppercase">B</span>áo cáo nhầm lẫn</v-btn
                 >
                 
+=======
+              <div v-if="invoice.status === 'PENDING'" class="col-3 pa-0 font-weight-medium text-right orange--text">
+                Chưa thanh toán
+              </div>
+              <div v-if="invoice.status === 'SUCCESS'" class="col-3 pa-0 font-weight-medium text-right success--text">
+                Đã thanh toán
+>>>>>>> 21989337772728326341e992db0f348c191aab39
               </div>
               <h3 class="text-right col-4">
                 <span class="font-weight-medium align-center">Tổng cộng: </span>
                 <span class="font-weight-regular">{{ invoices.total }} (VND)</span>
               </h3>
             </div>
+<<<<<<< HEAD
+=======
+            <div class="text-right">
+              <span class="font-weight-medium">Tổng cộng: </span>
+              {{ numberToMoney(invoice.amount) }}
+            </div>
+>>>>>>> 21989337772728326341e992db0f348c191aab39
           </v-card>
         </template>
       </main-tabs>
@@ -65,27 +84,37 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import { numberToMoney } from '@/helpers/utils.helper';
+
 export default {
   components: {
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
     MainTabs: () => import("@/components/commons/main-tabs/MainTabs"),
   },
+  computed: {
+    ...mapGetters({
+      getInvoiceById: "invoice/getInvoiceById",
+      currentUser: "auth/getCurrentUser",
+    }),
+  },
   data() {
     return {
       items: [
         {
-          label: "Thanh toán thu phí",
+          label: "Chi tiết phí thu",
           value: "personal",
         },
       ],
-      invoices: {
-        name: "Phụ đạo tiếng anh",
-        time: "1 tháng",
-        expiry: "7/2021",
-        invoice: "DE3847D",
-        total: "320.000",
-      },
+      invoice: {},
     };
+  },
+  fetch() {
+    console.log(this.getInvoiceById(Number.parseInt(this.$route.params.id)));
+    this.invoice = this.getInvoiceById(Number.parseInt(this.$route.params.id));
+  },
+  methods: {
+    numberToMoney: numberToMoney,
   },
 };
 </script>

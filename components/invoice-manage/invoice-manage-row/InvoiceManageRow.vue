@@ -2,21 +2,26 @@
   <div>
     <v-sheet elevation="0" class="invoiceManageRow mb-2 px-5 py-3">
       <v-container>
-      <v-row>
-        <v-col
-          v-for="(item, index) in headers"
-          :key="index"
-          class="pa-0 d-flex align-center"
-          :class="{
-            'd-flex justify-end': index === headers.length - 1,
-          }"
-        >
-          <slot :name="item.value" :value="invoice[item.value]" :item="invoice">
-            {{ invoice[item.value] }}
-          </slot>
-        </v-col>
-      </v-row>
-    </v-container>
+        <v-row>
+          <v-col
+            v-for="(item, index) in headers"
+            :key="index"
+            class="pa-0 d-flex align-center"
+            :class="{
+              'd-flex justify-start': index === headers.length - 1,
+            }"
+          >
+            <slot
+              :name="item.value"
+              :value="invoice[item.value]"
+              :item="invoice"
+            >
+              {{ invoice[item.value] }}
+            </slot>
+          </v-col>
+          <v-icon medium>mdi-chevron-right</v-icon>
+        </v-row>
+      </v-container>
     </v-sheet>
   </div>
 </template>

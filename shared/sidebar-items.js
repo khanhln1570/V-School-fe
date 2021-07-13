@@ -49,6 +49,10 @@ const sidebarItems = [
           title: "Cài đặt",
           to: "/settings",
         },
+        {
+          title: "Về chúng tôi",
+          to: "/lp",
+        },
       ]
     }
   },

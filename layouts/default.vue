@@ -169,6 +169,7 @@ export default {
     },
     currentUser: {
       handler: async function (value) {
+        // console.log("change", value);
         if (value.id) {
           //get notification
           //this.$store.state.auth.currentUser.userId
@@ -193,7 +194,7 @@ export default {
             //get your child
             if(value.role === "PARENT") {
               await this.$store.dispatch(GET_CHILD_ACTION, 
-                value.parent.phone
+                value.phone
               );
             }
           } catch (e) {

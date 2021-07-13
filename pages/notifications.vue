@@ -12,7 +12,7 @@
       "
     >
     <text-button color="primary" @click.native="modalNotificationReadAll = !modalNotificationReadAll" class="mb-2"
-          >Đánh dấu tất cả đả xem</text-button
+          >Đánh dấu tất cả đã xem</text-button
         >
       <v-sheet
         class="

@@ -19,10 +19,9 @@ export default {
     // commit("setAuth", { token: 'fakeToken' });
     try {
       const response = await this.$api.auth.getProfile(payload);
-
       if (response.data.ok) {
         commit(SET_PROFILE_MUTATION, { ...response.data.data });
-        this.$toast.success(`Xin chào ${response.data.data?.user?.name}!`, {
+        this.$toast.success(`Xin chào ${response.data.data?.name}!`, {
           duration: 3000
         });
       }

@@ -73,7 +73,6 @@ export default {
     },
   },
   methods: {
-    numberToMoney: numberToMoney
   }
 };
 </script>

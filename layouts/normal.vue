@@ -20,7 +20,7 @@
 
     <v-main class="white mt-10">
       <v-lazy>
-        <nuxt class="mb-15 py-5 px-10" />
+        <nuxt class="" />
       </v-lazy>
     </v-main>
 

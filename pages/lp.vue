@@ -159,6 +159,7 @@
 
 <script>
 export default {
+  layout: "normal",
   data: () => ({
     links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
     items: [

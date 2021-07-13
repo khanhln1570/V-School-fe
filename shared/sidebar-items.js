@@ -31,11 +31,6 @@ const sidebarItems = [
           to: "/invoicesSchool",
           role: "SCHOOL"
         },
-        // {
-        //   title: "Phụ huynh",
-        //   to: "/parents",
-        //   role: "SCHOOL"
-        // },
         {
           title: "Trường học",
           to: "/schools",
@@ -53,6 +48,10 @@ const sidebarItems = [
         {
           title: "Cài đặt",
           to: "/settings",
+        },
+        {
+          title: "Về chúng tôi",
+          to: "/lp",
         },
       ]
     }

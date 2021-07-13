@@ -100,7 +100,6 @@ export default {
   computed: {
     ...mapGetters({
       invoices: "invoice/getInvoices",
-      count: "invoice/getCountSchool",
       invoiceTypes: "invoice/getInvoiceTypes",
       getInvoiceByType: "invoice/getInvoiceByType",
     }),

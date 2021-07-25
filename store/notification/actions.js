@@ -11,4 +11,17 @@ export default {
       errorHandle(e);
     }
   },
+
+  async addNotificationRead({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.notification.addNotificationRead(payload);
+      if (response.data.ok) {
+        this.$toast.success(response.data.message, {
+          duration: 3000
+        });
+      }
+    } catch (e) {
+      errorHandle(e);
+    }
+  },
 };

@@ -9,7 +9,7 @@
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
         <cus-icon-text-button
-          @click.native="selected.length ? modalSendNotification = modalSendNotification :''"
+          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
         >
           <template #icon>
             <img
@@ -41,7 +41,7 @@
         <main-table
           :showSearch="false"
           :headers="headers"
-          :items="invoices"
+          :items="yourChild"
           :count="count"
           :showPagination="true"
           @selected-items="getSelectedItem"
@@ -74,84 +74,32 @@
                 :value="item.id"
               ></v-checkbox>
               <div>
-                <p class="mb-1">{{ value }}</p>
+                <p class="mb-1">{{ item.name }}</p>
                 <span class="font-italic txt-secondary--text"
                   >id: {{ item.id }}</span
                 >
               </div>
             </div>
           </template>
-          <template #type="{ value }">
+          <template #BHYT="{ item }">
             <p class="mb-0 txt-active--text font-weight-medium">
-              {{ value.label }}
+              {{ item.BHYT }}
             </p>
           </template>
-          <template #amount="{ value }">
+          <template #classcode="{ value }">
             <p class="mb-0 font-weight-medium">
-              {{ numberToMoney(value) }}
+            {{value}}
             </p>
-          </template>
-          <template #unit="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
           </template>
 
-          <template #action="{ item }">
+          <!-- <template #action="{ item }">
             <text-button
               @click.native="handleViewClick(item)"
               :to="`/invoices/${item.id}`"
             >
               <p class="mb-0 font-weight-medium">View</p>
             </text-button>
-          </template>
-        </main-table>
-      </template>
-
-      <template #history>
-        <main-table
-          :showSearch="false"
-          :headers="headers"
-          :items="invoices"
-          :count="count"
-          :showPagination="true"
-          @selected-items="getSelectedItem"
-          :fetchItems="fetchItems"
-          :search="search"
-          searchLabel="Search name or ID"
-          :status="status"
-        >
-          <template #studentName="{ value, item }">
-            <div class="d-flex">
-              <v-checkbox
-                v-model="selected"
-                dense
-                hide-details
-                :value="item.id"
-              ></v-checkbox>
-              <div>
-                <p class="mb-1">{{ value }}</p>
-                <span class="font-italic txt-secondary--text"
-                  >id: {{ item.id }}</span
-                >
-              </div>
-            </div>
-          </template>
-          <template #type="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">
-              {{ value.label }}
-            </p>
-          </template>
-          <template #unit="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
-          </template>
-
-          <template #action="{ item }">
-            <text-button
-              @click.native="handleViewClick(item)"
-              :to="`/schools/${item.id}`"
-            >
-              <p class="mb-0 font-weight-medium">View</p>
-            </text-button>
-          </template>
+          </template> -->
         </main-table>
       </template>
     </main-tabs>
@@ -178,6 +126,7 @@
             v-show="notificationObject.type"
             label="Nội dung thông báo"
             type="textarea"
+            v-model.trim="notificationObject.content"
           ></main-input>
         </v-lazy>
       </template>
@@ -188,6 +137,8 @@
 <script>
 import { mapGetters } from "vuex";
 import { numberToMoney } from "@/helpers/utils.helper";
+import { GET_CHILD_BY_MST_ACTION } from "~/store/yourChild/yourChild.constants";
+import { ADD_ACTION } from "~/store/notification/notification.constants";
 
 export default {
   components: {
@@ -214,20 +165,16 @@ export default {
           sortable: false,
         },
         {
-          text: "Loại phí",
-          value: "type",
+          text: "BHYT",
+          value: "BHYT",
         },
         {
-          text: "Số tiền",
-          value: "amount",
+          text: "Lớp",
+          value: "classcode",
         },
         {
-          text: "Nội dung",
-          value: "description",
-        },
-        {
-          text: "Đơn vị",
-          value: "unit",
+          text: "Số phụ huynh",
+          value: "parentPhone",
         },
         {
           text: "",
@@ -236,12 +183,8 @@ export default {
       ],
       tabItem: [
         {
-          label: "Chưa thu",
+          label: "Tất cả",
           value: "incoming",
-        },
-        {
-          label: "Đã  thu",
-          value: "history",
         },
       ],
       selected: [],
@@ -251,20 +194,29 @@ export default {
       isSelectAll: false,
       modalSendNotification: false,
       notificationObject: {
-        type: null,
+        type: "TUITION",
       },
     };
   },
   computed: {
     ...mapGetters({
-      count: "invoice/getCountInvoice",
-      invoices: "invoice/getInvoices",
+      count: "invoice/getCountInvoice", 
+      invoices: "invoice/getInvoices",  
       getInvoiceTypes: "invoice/getInvoiceTypes",
+      yourChild: "yourChild/getYourChild",
+      currentUser: "auth/getCurrentUser",
     }),
   },
   // fetch() {
   //   this.$route.query.status = this.tabItem[0].value;
   // },
+  async created() {
+    // this.$store.dispatch(GET_PROFILE_ACTION);
+    await this.$store.dispatch(
+      GET_CHILD_BY_MST_ACTION,
+      this.currentUser.MST
+    );
+  },
   methods: {
     getSelectedItem(items) {
       console.log(items);
@@ -284,8 +236,8 @@ export default {
     handleSelectAll() {
       this.selected = [];
       if (this.isSelectAll) {
-        this.invoices.map((invoice) => {
-          this.selected.push(invoice.id);
+        this.yourChild.map((child) => {
+          this.selected.push(child.id);
         });
       } else {
       }
@@ -294,15 +246,21 @@ export default {
     // handleCloseClick() {
 
     // },
-    handleNextClick() {
+    async handleNextClick() {
       this.modalSendNotification = !this.modalSendNotification;
-      this.notificationObject = {
-        type: null,
-      };
-      this.selected = [];
-      return this.$nuxt?.$toast?.success("Gửi thông báo thành cồng !", {
-        duration: 3000,
+
+      //For now, the notification type is "TUITION" ONLY and to parant "Khanh" ONLY
+      this.notificationObject.to = ["1"];
+      //handle add notification
+      this.selected.forEach(async selection => {
+        await this.$store.dispatch(
+          ADD_ACTION,
+          this.notificationObject
+        );
       });
+      
+      this.selected = [];
+      this.isSelectAll = false;
     },
     handleSelectClick(invoiceNotificationTypeId) {
       this.notificationObject.type = invoiceNotificationTypeId;

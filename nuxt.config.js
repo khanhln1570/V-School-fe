@@ -116,8 +116,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
-  ,
+  },
+  loading: {
+    color: 'blue',
+  },
   server: {
     port: 3000,
     host: `0.0.0.0`,

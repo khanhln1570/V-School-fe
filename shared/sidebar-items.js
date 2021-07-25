@@ -27,8 +27,13 @@ const sidebarItems = [
           role: "PARENT"
         },
         {
-          title: "Phí thu",
+          title: "Phí thu (incoming)",
           to: "/invoicesSchool",
+          role: "SCHOOL"
+        },
+        {
+          title: "Học sinh",
+          to: "/students",
           role: "SCHOOL"
         },
         {

@@ -16,8 +16,10 @@ export default {
 
     //student
     getStudentsByPhone: "/students/phone/:phone",
+    getStudentsByMST: "/students/MST/:mst",
 
     //notification
-    setNotificationRead: "/notifications"
+    setNotificationRead: "/notifications",
+    addNotificationRead: "/notifications",
   }
 }

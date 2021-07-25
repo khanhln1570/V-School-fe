@@ -96,7 +96,7 @@ export default {
       return `/students/${this.currentChild.id}/billReview?invoices=${string}`;
     },
   },
-  async beforeCreate() {
+  async created() {
     await this.$store.dispatch(
       "yourChild/setCurrentChild",
       this.$route.params.id

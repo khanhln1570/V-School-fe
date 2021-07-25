@@ -14,6 +14,18 @@ export default {
     }
   },
 
+  async getStudentsByMST({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.yourChild.getStudentsByMST(payload);
+
+      if (response.data.ok) {
+        commit(SET_CHILD_MUTATION, response.data.data);
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
   async setCurrentChild({ commit, sdispatch, state }, payload) {
     commit("setCurrentChild", state.yourChild.find(child => child.id === Number.parseInt(payload)));
     // try {

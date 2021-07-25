@@ -152,6 +152,9 @@ export default {
   methods: {
     handleNextClick() {
       this.modalNotification = !this.modalNotification;
+
+      //simulator for next action
+      this.$router.push('/students/1');
       return this.$nuxt?.$toast?.success("Thực hiện yêu cầu thành công", {
         duration: 3000,
       });

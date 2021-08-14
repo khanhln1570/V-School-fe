@@ -13,10 +13,12 @@
   
           .expansion__body__item__title {
             @include font-bold;
-  
           }
         }
-  
+        &__title {
+          line-height: 1.25rem !important;
+          font-family: "Nunito Sans";
+        }
       }
     }  
 

@@ -8,7 +8,7 @@
       ><img src="@/assets/images/back.svg" alt="back" /> Trở lại</nuxt-link
     >
     <div class="d-flex justify-start align-center">
-      <h2 class="title pageHeader__title txt-secondary--text mr-2 d-inline">
+      <h2 class="title pageHeader__title font-weight-bold mr-2 d-inline">
         {{ title }}
       </h2>
       <slot name="titleIcon"></slot>

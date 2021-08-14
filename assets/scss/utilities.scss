@@ -118,8 +118,27 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
+.v-data-table__wrapper > table > tbody > tr {
+  padding: .5rem 0rem;
+}
+
+.v-data-table__wrapper > table > tbody > tr > td:last-child{
+  a {
+    opacity: 0;
+  }
+}
+
+.v-data-table__wrapper > table > tbody > tr:hover > td:last-child{
+  a {
+    opacity: 1;
+  }
+}
+
+
 // END OF CUSTOM DATA-TABLE
 
 .v-input--selection-controls {
   margin-top: 0px !important;
+  align-items: center;
 }

@@ -1,3 +1,22 @@
+@mixin font-bold {
+  font-weight: 700;
+}
+
+@mixin font-semi-bold {
+  font-weight: 600;
+}
+
+@mixin font-medium {
+  font-weight: 500;
+}
+
+@mixin font-light {
+  font-weight: 300;
+}
+
+@mixin font-regular {
+  font-weight: 400;
+}
 
 /* Character Styles */
 @mixin text-size-1-25rem($font-weight: normal) {
@@ -17,6 +36,9 @@
 }
 
 @mixin text-size-1rem($font-weight: normal) {
+  @if $font-weight == normal {
+    @include font-regular;
+  }
   @if $font-weight == bold {
     @include font-bold;
   }
@@ -49,28 +71,3 @@
 }
 
 
-
-@mixin font-bold {
-  font-family: "Montserrat Bold" !important;
-  font-weight: 700;
-}
-
-@mixin font-semi-bold {
-  font-family: "Montserrat Semi Bold" !important;
-  font-weight: 600;
-}
-
-@mixin font-medium {
-  font-family: "Montserrat Medium" !important;
-  font-weight: 500;
-}
-
-@mixin font-light {
-  font-family: "Montserrat Light" !important;
-  font-weight: 300;
-}
-
-@mixin font-regular {
-  font-family: "Montserrat" ;
-  font-weight: 400;
-}

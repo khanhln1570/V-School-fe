@@ -1,11 +1,15 @@
 <template>
-  <v-app>
+  <v-app class="oo">
     <v-main>
       <v-container fluid class="pa-0">
         <div class="bg-color">
           <div>
             <img
-              src="../assets/images/login/bg-login-mountain.svg"
+              src="../assets/images/login/bg-login-logo.svg"
+              class="overlay-logo"
+            />
+            <img
+              src="../assets/images/Group 2976.svg"
               class="overlay"
             />
             <img
@@ -19,49 +23,32 @@
                 'd-none ': $vuetify.breakpoint.mobile,
               }"
             />
-            <img
-              src="../assets/images/login/bg-login-tree.svg"
-              class="overlay-tree"
-            />
           </div>
-
-          
-
           <div>
             <div
-              class="signin-container d-flex justify-center align-center flex-column-reverse flex-md-row-reverse"
+              class="signin-container d-flex justify-center flex-column-reverse flex-md-row-reverse"
             >
-              <div></div>
-              <div class="col-md-4 col-xl-4 px-xl-10 pt-md-15 h-100">
-                <div
-                  class="d-flex justify-space-around align-center flex-column h-100"
-                  style="padding-bottom: 15rem"
+              <div class="col-md-4 col-xl-4 px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column">
+                <v-card
+                class="card rounded-lg signin-left py-xl-10 px-md-8 py-md-8"
+                elevation="11"
+                :class="{
+                  'pa-8 ': $vuetify.breakpoint.mobile,
+                }"
+                width="500px"
                 >
-                  <img
-                    src="../assets/images/login/bg-login-logo.svg"
-                    class="overlay-logo mb-xl-5 mt-5 mb-md-10"
-                  />
-                  <v-card
-                    class="card rounded-lg signin-left py-xl-10 px-md-8 py-md-8"
-                    elevation="11"
-                    :class="{
-                      'pa-8 ': $vuetify.breakpoint.mobile,
-                    }"
-                    width="500px"
-                  >
-                    <div class="d-flex justify-center align-center text-right">
-                      <div class="">
-                        <div class="display-2 font-weight-normal">V-School</div>
-                        <div>
-                          <small>beta</small>
-                        </div>
+                  <div class="d-flex justify-center align-center text-right">
+                    <div class="">
+                      <div class="display-2 font-weight-normal logo-text">V-School</div>
+                      <div>
+                        <small>beta</small>
                       </div>
                     </div>
-                    <nuxt />
-                  </v-card>
-                </div>
+                  </div>
+                  <nuxt />
+                </v-card>
+                </v-row>
               </div>
-              <div></div>
             </div>
           </div>
 
@@ -82,5 +69,5 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "../pages/__styles/signin.scss";
+@import "../pages/__styles/auth.scss";
 </style>

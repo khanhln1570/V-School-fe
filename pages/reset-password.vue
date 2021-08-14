@@ -1,57 +1,60 @@
 <template>
-<div class="signin-container d-flex justify-end flex-column-reverse flex-md-row-reverse">
-  <v-card width="100%" class="signin-left px-16 py-16 my-auto" elevation="0">
-    <v-card-title class="pa-0 mb-5">
-      <h2>Forgotten Password ?</h2>
-      <h3>Enter your email to reset your password</h3>
-    </v-card-title>
-    <group-validator :validation="$v.form.email">
-      <template  slot-scope="{errors}">
-        <main-input label="Email" name="email" type="email" v-model.trim="$v.form.email.$model" :errors="errors" />
+  <div>
+    <group-validator
+      class="mt-md-3 mt-xl-10 px-xl-8"
+      :validation="$v.form.email"
+    >
+      <template slot-scope="{ errors }">
+        <label >Tên đăng nhập <span class="red--text">*</span></label>
+        <main-input
+          placeholder=""
+          name="email"
+          type="email"
+          v-model.trim="$v.form.email.$model"
+          :errors="errors"
+        />
       </template>
     </group-validator>
-    <v-card-actions class="pa-0 mb-5">
-      <v-btn @click="onSubmit" color="primary" :ripple="false" width="50%">Submit</v-btn>
-      <v-btn @click="onCancel" color="primary" outlined :ripple="false" width="50%">Cancel</v-btn>
-    </v-card-actions>
-  </v-card>
-  <v-sheet
-      class="signin-left d-flex justify-center align-center bg-dark"
-      color=""
-      elevation="0"
-      min-height="100vh"
-      min-width="50vw"
-    >
-      <div>
-      </div>
-    </v-sheet>
-</div>
+    <div class="px-xl-8 pt-5">
+      <text-button :elevation="1" block large :text="false" @click.native="onSubmit">Đặt lại mật khẩu</text-button>
+    </div>
+    <div class="mt-1 text-right">
+      <nuxt-link to="/sign-in" class="txt-secondary--text"
+        ><small class="reset-password px-xl-8">Đăng nhập?</small></nuxt-link
+      >
+    </div>
+  </div>
 </template>
 
 <script>
-import {
-  forgotPassword
-} from "~/validations/auth/auth.validate";
-import {
-  SIGN_IN_ACTION
-} from '~/store/auth/auth.constants';
+import { signIn } from "~/validations/auth/auth.validate";
+import { LOG_IN_ACTION, GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
 export default {
   layout: "auth",
   middleware: "",
   components: {
-    MainInput: () => import('@/components/commons/main-input/MainInput'),
-    GroupValidator: () => import('@/components/commons/group-validator/GroupValidator'),
+    MainInput: () => import("@/components/commons/main-input/MainInput"),
+    GroupValidator: () =>
+      import("@/components/commons/group-validator/GroupValidator"),
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
   data() {
     return {
       form: {
         email: null,
+        password: null,
       },
       loading: false,
+      message: null,
     };
   },
+  validations: {
+    form: signIn,
+  },
+
   methods: {
-    onSubmit() {
+    async onSubmit() {
       this.$v.$touch();
 
       if (this.$v.$invalid) {
@@ -60,20 +63,21 @@ export default {
 
       // do your submit logic here
       this.loading = true;
-      // await this.$store.dispatch(SIGN_IN_ACTION, {
-      //   ...this.form,
-      // });
-      this.loading = false;
+      try {
+        await this.$store.dispatch(LOG_IN_ACTION, {
+          ...this.form,
+        });
+        // await this.$store.dispatch(GET_PROFILE_ACTION);
+      } catch (error) {
+        this.message = "";
+      } finally {
+        this.loading = false;
+      }
     },
-    onCancel() {
-      this.$router.push('back');
-    }
-  },
-  validations: {
-    form: forgotPassword,
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "./__styles/auth.scss";
 </style>

@@ -8,8 +8,9 @@
 
 .overlay {
     position: fixed;
-    top: 41%;
+    bottom: -5%;
     left: 0;
+    width: 100%;
 }
 
 .overlay-book {
@@ -31,6 +32,15 @@
     height: 400px;
     top: 42%;
     left: 10%;
+}
+
+.overlay-logo {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    max-width: 120px;
 }
 
 .rules {

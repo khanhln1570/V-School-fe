@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    :color="buttonColor"
+    color="primary"
     :disabled="disabled"
     :loading="loading"
     :text="text"
@@ -9,6 +9,10 @@
     :ripple="ripple"
     :min-width="minWidth"
     :outlined="outlined"
+    :block="block"
+    :large="large"
+    :small="small"
+    :class="large ? 'btn-font' : ''"
   >
     <slot> </slot>
   </v-btn>
@@ -53,6 +57,18 @@ export default {
       type: Boolean,
       default: false,
     },
+    block: {
+      type: Boolean,
+      default: false,
+    },
+    large: {
+      type: Boolean,
+      default: false,
+    },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => {
     return {
@@ -81,3 +97,7 @@ export default {
   // }
 };
 </script>
+
+<style lang="scss" scoped>
+@import "./TextButton.scss"
+</style>

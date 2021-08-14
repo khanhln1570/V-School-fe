@@ -56,15 +56,6 @@ export default {
   toast: {
     position: 'bottom-right',
   },
-  styleResources: {
-    scss: [
-      './assets/scss/fonts.scss',
-      './assets/scss/reset.scss',
-      './assets/scss/_mixins.scss',
-      './assets/scss/customs.scss',
-      './assets/scss/utilities.scss',
-    ],
-  },
   router: {
     middleware: [
       'authentication'
@@ -92,30 +83,46 @@ export default {
         // },
         light: {
           'bg-sidebar': "#031B4D",
+          'bg-logo': "#2A294E",
           primary: "#0956C6",
           'txt-secondary': "#677694",
           'txt-warning': "#FF9D00",
           'txt-error': "#E63946",
           'txt-success': "#1FBC67",
           'txt-active': "#0080FF",
+          'txt-logo': "#34315D",
           'icon-active': "#0080FF",
           'icon-light': "#CECECE",
           'icon-secondary': "#677694",
           'color-warning': "#FFCE00",
           'color-success': "#1FBC67",
+          'border-primary': "#707070",
         }
       }
     },
     defaultAssets: {
       font: {
-        family: "Montserrat",
+        family: "Sarabun",
       },
       icons: "mdi",
     },
   },
-
+  css: [
+    // {src: join(__dirname, 'assets/scss/mixins/_mixins.scss'), lang: 'scss'},
+    // '@/assets/scss/mixins/_mixins.scss',
+    { src: '~assets/scss/reset.scss', lang: 'scss' },
+    { src: '~assets/scss/custom.scss', lang: 'scss' },
+    // '@/assets/css/utilities.min.css'
+  ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    styleResources: {
+      scss: [
+        './assets/scss/fonts.scss',
+        './assets/scss/_mixins.scss',
+        './assets/scss/utilities.scss',
+      ],
+    },
   },
   loading: {
     color: 'blue',

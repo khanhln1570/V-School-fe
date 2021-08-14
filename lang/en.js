@@ -6,7 +6,7 @@ export default {
   // every page is a ojbect...
   validation: {
     email: 'You have entered an invalid email.',
-    required: 'This is a required field.',
+    required: 'Xin mời điền đầy đủ thông tin.',
     password: 'Password should be at least 6 characters.',
     confirmPassword: 'Must be the same',
     alpha: 'Field accepts only character.',

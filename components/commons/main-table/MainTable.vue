@@ -42,7 +42,9 @@
         v-slot:[getToKeyHeader(keyname.value)]="{ header }"
       >
         <slot :name="`header-${keyname.value}`" :header="header">
-          {{ header.text }}
+          <span class="font-weight-regular">
+            {{ header.text }}
+          </span>
         </slot>
       </template>
       <template v-slot:top>

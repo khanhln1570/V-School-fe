@@ -115,8 +115,10 @@ export default {
         border-radius: 0;
         box-shadow: none;
 
+        font-family: "Nunito Sans";
+
         &--active {
-        border-radius: 10px;
+          border-radius: 10px;
         }
       }
     }

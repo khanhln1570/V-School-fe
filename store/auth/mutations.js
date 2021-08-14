@@ -11,7 +11,7 @@ export default {
       this.$cookies.set(AUTH_TOKEN_KEY, item.token, { maxAge: setMaxAge, path: '/' });
       state.isLoggedIn = true;
       // state.currentUser = item.currentUser;
-      this.$router.push('/');
+      // this.$router.push('/');
     }
   },
   clearAuth(state) {
@@ -30,6 +30,11 @@ export default {
       state.currentUser = item;
       if (item.accRole && !state.currentUser.role) {
         state.currentUser.role = item.accRole;
+      }
+      if (state.currentUser.accRole === "PARENT") {
+        this.$router.push('/your-child');
+      } else {
+        this.$router.push('/');
       }
     }
   },

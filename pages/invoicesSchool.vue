@@ -7,36 +7,6 @@
     </page-header>
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
-      <template #tabRight>
-        <cus-icon-text-button
-          @click.native="selected.length ? modalSendNotification = modalSendNotification :''"
-        >
-          <template #icon>
-            <img
-              src="@/assets/images/sendNotification.svg"
-              alt="sendNotification"
-              class="mr-2"
-            />
-            <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
-          </template>
-        </cus-icon-text-button>
-        <cus-icon-text-button>
-          <template #icon>
-            <img
-              src="@/assets/images/excelExport.svg"
-              alt="excelExport"
-              class="mr-2"
-            />
-            <p class="mb-0 d-flex align-center black--text">Xuất excel</p>
-          </template>
-        </cus-icon-text-button>
-        <table-search
-          :search.sync="search"
-          placeHolder="Hãy nhập gì đó …"
-          @searchChange="handleChangeSearch"
-        ></table-search>
-      </template>
-
       <template #incoming>
         <main-table
           :showSearch="false"
@@ -59,7 +29,7 @@
               @change="handleSelectAll"
             >
               <template #label>
-                <p class="mb-1 body-1 black--text font-weight-medium">
+                <p class="mb-1 body-1 black--text">
                   {{ header.text }}
                 </p>
               </template>
@@ -74,7 +44,7 @@
                 :value="item.id"
               ></v-checkbox>
               <div>
-                <p class="mb-1">{{ value }}</p>
+                <p class="mb-1 font-weight-bold">{{ value }}</p>
                 <span class="font-italic txt-secondary--text"
                   >id: {{ item.id }}</span
                 >
@@ -82,25 +52,26 @@
             </div>
           </template>
           <template #type="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">
+            <p class="mb-0 txt-active--text font-weight-regular">
               {{ value.label }}
             </p>
           </template>
           <template #amount="{ value }">
-            <p class="mb-0 font-weight-medium">
+            <p class="mb-0 font-weight-regular">
               {{ numberToMoney(value) }}
             </p>
           </template>
-          <template #unit="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
+          <template #description="{ value }">
+            <p class="mb-0 txt-success--text font-weight-regular">{{ value }}</p>
           </template>
 
           <template #action="{ item }">
             <text-button
               @click.native="handleViewClick(item)"
               :to="`/invoices/${item.id}`"
+              small
             >
-              <p class="mb-0 font-weight-medium">View</p>
+              <p class="mb-0">Chi tiết</p>
             </text-button>
           </template>
         </main-table>

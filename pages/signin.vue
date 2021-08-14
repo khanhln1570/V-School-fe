@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="px-xl-8">
     <group-validator
-      class="mt-md-3 mt-xl-10 px-xl-8"
+      class="mt-md-3 mt-xl-10 "
       :validation="$v.form.email"
     >
       <template slot-scope="{ errors }">
-        <label>Tên đăng nhập <span class="red--text">*</span></label>
+        <label >Tên đăng nhập <span class="red--text">*</span></label>
         <main-input
           placeholder=""
           name="email"
@@ -15,7 +15,7 @@
         />
       </template>
     </group-validator>
-    <group-validator class="mt-xl-1 px-xl-8" :validation="$v.form.password">
+    <group-validator class="mt-xl-1 " :validation="$v.form.password">
       <template slot-scope="{ errors }">
         <label>Mật khẩu <span class="red--text">*</span></label>
         <main-input
@@ -27,19 +27,12 @@
         />
       </template>
     </group-validator>
-    <div class="px-xl-8">
-      <v-btn
-        class="mt-md-4 mt-xl-12"
-        block
-        large
-        color="primary"
-        @click="onSubmit"
-        >Đăng nhập</v-btn
-      >
+    <div class=" pt-5">
+      <text-button :elevation="1" block large :text="false" @click.native="onSubmit">Đăng nhập</text-button>
     </div>
     <div class="mt-1 text-right">
       <nuxt-link to="reset-password" class="txt-secondary--text"
-        ><small class="reset-password px-xl-8">Quên mật khẩu?</small></nuxt-link
+        ><small class="reset-password ">Quên mật khẩu?</small></nuxt-link
       >
     </div>
   </div>
@@ -55,6 +48,8 @@ export default {
     MainInput: () => import("@/components/commons/main-input/MainInput"),
     GroupValidator: () =>
       import("@/components/commons/group-validator/GroupValidator"),
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
   data() {
     return {
@@ -96,5 +91,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./__styles/signin.scss";
+@import "./__styles/auth.scss";
 </style>

@@ -20,6 +20,7 @@
               :key="i"
               active-class="expansion__body__item--active"
               v-show="subItem.role ? subItem.role === currentUser.role : true"
+              :ripple="false"
             >
               <v-list-item-content>
                 <v-list-item-title
@@ -39,6 +40,7 @@
             :to="item.to"
             active-class="itemNoGroup--active bg-sidebar white--text  "
             class="bg-sidebar"
+            :ripple="false"
           >
             <v-list-item-content>
               <v-list-item-title

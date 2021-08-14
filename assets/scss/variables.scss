@@ -1,5 +1,5 @@
 :root {
-  --base-font-size: 14px;
+  --base-font-size: 16px;
   --base-height-header: 6rem;
   --base-separator: rgba(0, 0, 0, 0.12);
   // Light
@@ -23,8 +23,8 @@
   --error: #E63946;
 
   /* Font/text values */
-  --font-family-montserrat-medium: Montserrat-Medium;
-  --font-family-montserrat-light: Montserrat-Light;
+  // --font-family-montserrat-medium: Montserrat-Medium;
+  // --font-family-montserrat-light: Montserrat-Light;
   --font-style-normal: normal;
   --font-weight-300: 300px;
   --font-weight-medium: medium;
@@ -39,7 +39,7 @@
 
 @media screen and (min-width: 1920px) {
   :root {
-    --base-font-size: 16px;
+    --base-font-size: 18px;
   }
 }
 

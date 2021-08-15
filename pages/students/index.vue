@@ -9,6 +9,7 @@
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
         <cus-icon-text-button
+          smallIcon
           @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
         >
           <template #icon>
@@ -20,16 +21,37 @@
             <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
           </template>
         </cus-icon-text-button>
-        <cus-icon-text-button>
+        <download-excel
+          :data="yourChild"
+          :fields="json_fields"
+          name="Students.xls"
+        >
+          <cus-icon-text-button>
+            <template #icon>
+              <img
+                src="@/assets/images/excelExport.svg"
+                alt="excelExport"
+                class="mr-2"
+              />
+              <p class="mb-0 d-flex align-center black--text">Xuất excel</p>
+            </template>
+          </cus-icon-text-button>
+        </download-excel>
+        <cus-icon-text-button
+          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
+        >
           <template #icon>
+          <label for="excelUpload" class="d-flex">
             <img
-              src="@/assets/images/excelExport.svg"
-              alt="excelExport"
+              src="@/assets/images/excelImport.svg"
+              alt="sendNotification"
               class="mr-2"
             />
-            <p class="mb-0 d-flex align-center black--text">Xuất excel</p>
+            <p class="mb-0 d-flex align-center black--text">Nhập excel</p>
+          </label>
           </template>
         </cus-icon-text-button>
+        <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles">
         <table-search
           :search.sync="search"
           placeHolder="Hãy nhập gì đó …"
@@ -42,13 +64,12 @@
           :showSearch="false"
           :headers="headers"
           :items="yourChild"
-          :count="count"
+          :count="yourChild.length"
           :showPagination="true"
           @selected-items="getSelectedItem"
           :fetchItems="fetchItems"
           :search="search"
           searchLabel="Search name or ID"
-          :status="status"
         >
           <template #header-studentName="{ header }">
             <v-checkbox
@@ -74,7 +95,7 @@
                 :value="item.id"
               ></v-checkbox>
               <div>
-                <p class="mb-1">{{ item.name }}</p>
+                <p class="mb-1 font-weight-bold">{{ item.name }}</p>
                 <span class="font-italic txt-secondary--text"
                   >id: {{ item.id }}</span
                 >
@@ -82,24 +103,25 @@
             </div>
           </template>
           <template #BHYT="{ item }">
-            <p class="mb-0 txt-active--text font-weight-medium">
+            <p class="mb-0 txt-active--text">
               {{ item.BHYT }}
             </p>
           </template>
           <template #classcode="{ value }">
-            <p class="mb-0 font-weight-medium">
-            {{value}}
+            <p class="mb-0 font-weight-regular">
+              {{value}}
             </p>
           </template>
 
-          <!-- <template #action="{ item }">
+          <template #action="{ item }">
             <text-button
+              small
               @click.native="handleViewClick(item)"
-              :to="`/invoices/${item.id}`"
+              :to="`/students/${item.id}`"
             >
-              <p class="mb-0 font-weight-medium">View</p>
+              <p class="mb-0 font-weight-medium">Chi tiết</p>
             </text-button>
-          </template> -->
+          </template>
         </main-table>
       </template>
     </main-tabs>
@@ -136,8 +158,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { numberToMoney } from "@/helpers/utils.helper";
 import { GET_CHILD_BY_MST_ACTION } from "~/store/yourChild/yourChild.constants";
+import XLSX from "xlsx";
 import { ADD_ACTION } from "~/store/notification/notification.constants";
 
 export default {
@@ -189,19 +211,23 @@ export default {
       ],
       selected: [],
       search: "",
-      invoicesStatus: ["SUCCESS", "PENDING"],
-      status: "SUCCESS",
       isSelectAll: false,
       modalSendNotification: false,
       notificationObject: {
         type: "TUITION",
       },
+      json_fields: {
+        STT: "id",
+        "Họ và tên": "name",
+        "Lớp": "classcode",
+        "Số điện thoại phụ huynh": "parentPhone",
+        BHYT: "BHYT",
+        "Giới tính": "gender",
+      },
     };
   },
   computed: {
     ...mapGetters({
-      count: "invoice/getCountInvoice", 
-      invoices: "invoice/getInvoices",  
       getInvoiceTypes: "invoice/getInvoiceTypes",
       yourChild: "yourChild/getYourChild",
       currentUser: "auth/getCurrentUser",
@@ -242,10 +268,6 @@ export default {
       } else {
       }
     },
-    numberToMoney: numberToMoney,
-    // handleCloseClick() {
-
-    // },
     async handleNextClick() {
       this.modalSendNotification = !this.modalSendNotification;
 
@@ -265,15 +287,30 @@ export default {
     handleSelectClick(invoiceNotificationTypeId) {
       this.notificationObject.type = invoiceNotificationTypeId;
     },
+    previewFiles(e) {
+      var files = e.target.files, f = files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var data = new Uint8Array(e.target.result);
+        var workbook = XLSX.read(data, {type: 'array'});
+        let sheetName = workbook.SheetNames[0]
+        /* DO SOMETHING WITH workbook HERE */
+        // console.log("workbook", workbook);
+        let worksheet = workbook.Sheets[sheetName];
+        let jsonData = XLSX.utils.sheet_to_json(worksheet)
+        console.log(JSON.stringify(jsonData));
+      };
+      reader.readAsArrayBuffer(f);
+    }
   },
   watch: {
-    "$route.query.tab": {
-      handler: function (value) {
-        this.status = this.invoicesStatus[value];
-      },
-      deep: true,
-      immediate: true,
-    },
+    // "$route.query.tab": {
+    //   handler: function (value) {
+    //     this.status = this.invoicesStatus[value];
+    //   },
+    //   deep: true,
+    //   immediate: true,
+    // },
   },
 };
 </script>

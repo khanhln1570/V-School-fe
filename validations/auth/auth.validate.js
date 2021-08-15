@@ -34,13 +34,15 @@ const phoneNumber = (val) => {
 }
 
 export const signIn = {
-  email: {
+  username: {
     required,
-    email,
   },
   password: {
     required,
     password: minLength(6),
+	},
+	role: {
+    required,
   }
 };
 

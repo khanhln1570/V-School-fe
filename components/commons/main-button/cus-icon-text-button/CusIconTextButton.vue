@@ -1,7 +1,8 @@
 <template>
   <div class="d-flex cusIconTextBtn" :class="{
     'cusIconTextBtn--depressed' : depressed,
-    'cusIconTextBtn--new' : dot
+    'cusIconTextBtn--new' : dot,
+    'cusIconTextBtn--small_icon' : smallIcon,
   }">
     <slot name="icon"></slot>
   </div>
@@ -17,7 +18,11 @@
       dot: {
         type: Boolean,
         default: false
-      }
+      },
+      smallIcon: {
+        type: Boolean,
+        default: false
+      },
     }
   }
 </script>

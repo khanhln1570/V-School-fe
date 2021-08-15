@@ -2,7 +2,7 @@
   <div>
     <group-validator
       class="mt-md-3 mt-xl-10 px-xl-8"
-      :validation="$v.form.email"
+      :validation="$v.form.username"
     >
       <template slot-scope="{ errors }">
         <label >Tên đăng nhập <span class="red--text">*</span></label>
@@ -10,7 +10,7 @@
           placeholder=""
           name="email"
           type="email"
-          v-model.trim="$v.form.email.$model"
+          v-model.trim="$v.form.username.$model"
           :errors="errors"
         />
       </template>
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       form: {
-        email: null,
+        username: null,
         password: null,
       },
       loading: false,

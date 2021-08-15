@@ -11,7 +11,7 @@
         <slot name="tabRight"></slot>
       </div>
     </v-tabs>
-    <v-tabs-items v-model="tab">
+    <v-tabs-items v-model="tab" class="mt-10">
       <v-tab-item v-for="(item, index) in items" :key="index">
           <slot :name="items[index].value"></slot>
       </v-tab-item>

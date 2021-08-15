@@ -29,7 +29,7 @@
               @change="handleSelectAll"
             >
               <template #label>
-                <p class="mb-1 body-1 black--text">
+                <p class="mb-1 body-1 black--text font-weight-medium">
                   {{ header.text }}
                 </p>
               </template>

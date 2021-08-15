@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    color="primary"
+    :color="buttonColor"
     :disabled="disabled"
     :loading="loading"
     :text="text"

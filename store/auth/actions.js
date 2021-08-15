@@ -32,27 +32,4 @@ export default {
     }
   },
 
-  // async signup({ commit, dispatch }, payload) {
-  //   try {
-  //     const response = await this.$api.auth.signup(payload);
-  //     if (response.data.ok) {
-  //       const setMaxAge = setExpireTime();
-
-  //       this.$cookies.set(AUTH_TOKEN_KEY, response.data.data.token, {
-  //         maxAge: setMaxAge,
-  //         path: "/",
-  //       });
-  //       location.reload();
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     commit(
-  //       this.$alert.ADD_ERROR_ALERT_MUTATION,
-  //       { message: error.response.data.message },
-  //       { root: true }
-  //     );
-  //   }
-  // },
-
-
 };

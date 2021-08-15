@@ -11,7 +11,7 @@
       :hide-details="errors ? false : true"
       outlined
       :id="id"
-      class="main__select"
+      class="main__select rounded-lg"
       :style="{
         maxWidth: `${maxWidth}px`
       }"

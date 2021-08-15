@@ -40,6 +40,7 @@
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       :type="showPassword ? 'text' : 'password'"
       @click:append="showPassword = !showPassword"
+      flat
       dense
     />
     <v-text-field
@@ -56,6 +57,7 @@
       :clearable="clearable"
       :error-messages="errors"
       :disabled="disabled"
+      flat
       dense
     />
   </div>

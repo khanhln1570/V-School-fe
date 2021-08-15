@@ -1,5 +1,7 @@
 .tab {
   .v-tabs {
+    font-family: 'Nunito sans';
+    
     .v-tab {
 
       @include text-size-1rem(normal);

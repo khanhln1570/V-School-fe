@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container v-if="currentChild">
-      <page-header :title="currentChild.name">
+      <page-header :title="currentChild.name" :backTo="currentUser.accRole === 'PARENT' ? '/your-child' : '/students'">
         <template #titleIcon>
           <img
             src="@/assets/images/woman.svg"
@@ -25,6 +25,7 @@
       <main-tabs :items="items">
         <template #tabRight>
           <nuxt-link
+            v-if="currentUser.accRole === 'PARENT'"
             class="d-flex align-center"
             :class="
               selectedInvoiceId.length
@@ -80,6 +81,7 @@ export default {
       invoiceTypes: "invoice/getInvoiceTypes",
       currentChild: "yourChild/getCurrentChild",
       getCurrentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
+      currentUser: "auth/getCurrentUser",
     }),
     // invoices() {
     //   return this.$store.state.invoices.invoices;

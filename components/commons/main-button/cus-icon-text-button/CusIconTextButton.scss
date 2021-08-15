@@ -5,6 +5,7 @@
 .cusIconTextBtn {
   padding: .3rem .7rem;
   border-radius: 10px 10px 0 0;
+  font-family: 'Nunito Sans';
 
   height: 100%;
   cursor: pointer;
@@ -20,6 +21,12 @@
     }
 
     background-color: #ececec00 !important;
+  }
+
+  &--small_icon {
+    img { 
+      padding: .2rem;
+    }
   }
 
   &--new {

@@ -14,7 +14,8 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: []
   },
   plugins: [
     '~plugins/config',
@@ -23,6 +24,7 @@ export default {
     '~plugins/api',
     '~plugins/vuelidate',
     '~plugins/vue-notify',
+    '~plugins/vue-json-csv',
   ],
   components: false,
   buildModules: [

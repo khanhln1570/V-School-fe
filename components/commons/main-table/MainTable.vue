@@ -24,15 +24,16 @@
     <v-data-table
       v-show="!firstLoad"
       v-model="selected"
+      disable-pagination
+      hide-default-footer
+      class="mb-5"
       :show-select="selectItem"
       :headers="headers"
       :items="items"
       :header-props="{ 'sort-icon': 'mdi-arrow-up' }"
-      @input="setSelectedItem"
-      disable-pagination
-      hide-default-footer
       :loading="loading"
       :server-items-length="pageCount"
+      @input="setSelectedItem"
       @click:row="rowClick"
       @update:sort-by="handleSortClick($event)"
       @update:sort-desc="handleSortClick($event)"
@@ -42,7 +43,7 @@
         v-slot:[getToKeyHeader(keyname.value)]="{ header }"
       >
         <slot :name="`header-${keyname.value}`" :header="header">
-          <span class="font-weight-regular">
+          <span class="font-weight-medium">
             {{ header.text }}
           </span>
         </slot>
@@ -55,7 +56,9 @@
         v-slot:[getToKey(keyname.value)]="{ item, value }"
       >
         <slot :name="keyname.value" :item="item" :value="value">
-          {{ value }}
+          <span class="font-weight-regular">
+            {{ value }}
+          </span>
         </slot>
       </template>
     </v-data-table>

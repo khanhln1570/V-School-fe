@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
 
 export default {
@@ -86,24 +87,31 @@ export default {
     MiniStatistic: () => import('@/components/themes/widgets/mini-statistic/MiniStatistic'),
     PageHeading: () => import('@/components/themes/widgets/page-heading/PageHeading')
   },
+  computed: {
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+      yourChild: "yourChild/getYourChild",
+      countChild: "yourChild/getCountChild",
+    }),
+  },
   data() {
     return {
       stisticCollections: [
         {
-          label: 'Total student',
-          count: 192
+          label: 'Học sinh',
+          count: this.countChild || 590
         },
         {
-          label: 'Parents',
-          count: 500
+          label: 'Phụ huynh',
+          count: 485
         },
         {
-          label: 'Incoming Tuition',
-          count: 10
+          label: 'Hoá đơn chưa nộp',
+          count: 5
         },
         {
-          label: 'Incoming Tuition',
-          count: 10
+          label: 'Tổng số phụ huynh',
+          count: 485
         },
       ],
       accumulated: [

@@ -12,7 +12,7 @@
     :block="block"
     :large="large"
     :small="small"
-    :class="large ? 'btn-font' : ''"
+    :class="[large ? 'btn-font' : '', dark ? 'white--text' : '']"
   >
     <slot> </slot>
   </v-btn>
@@ -66,6 +66,10 @@ export default {
       default: false,
     },
     small: {
+      type: Boolean,
+      default: false,
+    },
+    dark: {
       type: Boolean,
       default: false,
     },

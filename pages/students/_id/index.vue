@@ -16,8 +16,7 @@
         </template>
         <template #subTitle>
           <p class="txt-secondary--text">
-            {{ currentChild.classcode }}, 
-            Tiểu Học Bạch Đằng
+            {{ currentChild.classcode }}
             <!-- {{ currentChild.schoolId }} -->
           </p>
         </template>

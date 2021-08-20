@@ -41,7 +41,7 @@
           @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
         >
           <template #icon>
-          <label for="excelUpload" class="d-flex">
+          <label for="excelUpload" class="d-flex cursor-pointer">
             <img
               src="@/assets/images/excelImport.svg"
               alt="sendNotification"
@@ -51,7 +51,7 @@
           </label>
           </template>
         </cus-icon-text-button>
-        <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles">
+        <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles" ref="inputFile">
         <table-search
           :search.sync="search"
           placeHolder="Hãy nhập gì đó …"
@@ -64,7 +64,7 @@
           :showSearch="false"
           :headers="headers"
           :items="yourChild"
-          :count="yourChild.length"
+          :count="countChild"
           :showPagination="true"
           @selected-items="getSelectedItem"
           :fetchItems="fetchItems"
@@ -153,13 +153,63 @@
         </v-lazy>
       </template>
     </main-modal>
+
+    <main-modal
+      :modal="uploadFile.uploading"
+      @closeClick="uploadFile.uploading = false"
+      persistent
+      hideAction
+    >
+      <template #modalHeader>
+        <h4 class="mb-0 subtitle">Nhập Excel</h4>
+      </template>
+      <template #modalBody>
+        <v-lazy class="py-5">
+        <v-row justify="center" align="center" class="flex-column">
+          <v-progress-circular
+            :size="50"
+            color="primary"
+            indeterminate
+            class="d-block"
+            v-if="uploadFile.uploading && !uploadFile.response"
+          ></v-progress-circular>
+          <v-icon
+            size="50"
+            color="blue darken-2"
+            v-show="uploadFile.response && uploadFile.response.listFailed && !uploadFile.response.listFailed.length"
+          >
+            mdi-account-multiple-check
+          </v-icon>
+          <v-icon
+            size="50"
+            color="yellow darken-2"
+            v-show="uploadFile.response && uploadFile.response.listFailed && uploadFile.response.listFailed.length || uploadFile.response && !uploadFile.response.ok"
+          >
+            mdi-account-multiple-remove
+          </v-icon>
+          <p class="mt-5 font-weight-bold text-center mx-15">
+            {{ uploadFile.response && uploadFile.response.message || 'Xin vui lòng chờ giây lát, file đang được xử lý ...'}}
+          </p>
+
+          <div 
+            v-if="uploadFile.response && uploadFile.response.listFailed" 
+            class="mt-5 d-flex flex-column justify-content-center align-items-center"
+          >
+            <p class="mt-2 font-weight-regular text-center" v-for="(student, index) in uploadFile.response.listFailed">
+              {{`${student.name} - ${student.BHYT}`}}
+            </p>
+          </div>
+          <text-button :text="false" class="white--text mt-10" color="red" @click.native="uploadFile.uploading = false">Đóng</text-button>
+        </v-row>
+        </v-lazy>
+      </template>
+    </main-modal>
   </v-container>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { GET_CHILD_BY_MST_ACTION } from "~/store/yourChild/yourChild.constants";
-import XLSX from "xlsx";
+import { GET_CHILD_BY_MST_ACTION, ADD_STUDENT_BY_EXCEL } from "~/store/yourChild/yourChild.constants";
 import { ADD_ACTION } from "~/store/notification/notification.constants";
 
 export default {
@@ -209,27 +259,33 @@ export default {
           value: "incoming",
         },
       ],
-      selected: [],
-      search: "",
-      isSelectAll: false,
-      modalSendNotification: false,
       notificationObject: {
         type: "TUITION",
       },
       json_fields: {
         STT: "id",
-        "Họ và tên": "name",
-        "Lớp": "classcode",
-        "Số điện thoại phụ huynh": "parentPhone",
+        name: "name",
+        classcode: "classcode",
+        parentPhone: "parentPhone",
         BHYT: "BHYT",
-        "Giới tính": "gender",
+        gender: "gender",
+        schoolId: "schoolId",
       },
+      selected: [],
+      search: "",
+      isSelectAll: false,
+      modalSendNotification: false,
+      uploadFile: {
+        uploading: false,
+        response: null,
+      }
     };
   },
   computed: {
     ...mapGetters({
       getInvoiceTypes: "invoice/getInvoiceTypes",
       yourChild: "yourChild/getYourChild",
+      countChild: "yourChild/getCountChild",
       currentUser: "auth/getCurrentUser",
     }),
   },
@@ -240,7 +296,10 @@ export default {
     // this.$store.dispatch(GET_PROFILE_ACTION);
     await this.$store.dispatch(
       GET_CHILD_BY_MST_ACTION,
-      this.currentUser.MST
+      {mst: this.currentUser.MST, param: {
+        limit: 10,
+        page: 1,
+      }}
     );
   },
   methods: {
@@ -248,7 +307,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch("invoice/getInvoices", params);
+      await this.$store.dispatch(GET_CHILD_BY_MST_ACTION, {mst: this.currentUser.MST, params: {page: params.page, limit: params.size}});
     },
     handleChangeSearch(event) {
       this.search = event.target.value;
@@ -287,21 +346,17 @@ export default {
     handleSelectClick(invoiceNotificationTypeId) {
       this.notificationObject.type = invoiceNotificationTypeId;
     },
-    previewFiles(e) {
+    async previewFiles(e) {
+      let data;
       var files = e.target.files, f = files[0];
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        var data = new Uint8Array(e.target.result);
-        var workbook = XLSX.read(data, {type: 'array'});
-        let sheetName = workbook.SheetNames[0]
-        /* DO SOMETHING WITH workbook HERE */
-        // console.log("workbook", workbook);
-        let worksheet = workbook.Sheets[sheetName];
-        let jsonData = XLSX.utils.sheet_to_json(worksheet)
-        console.log(JSON.stringify(jsonData));
-      };
-      reader.readAsArrayBuffer(f);
-    }
+      
+      this.uploadFile.uploading = true;
+      let formData = new FormData();
+      console.log(f);
+      formData.append('students', f);
+      this.uploadFile.response = await this.$store.dispatch(ADD_STUDENT_BY_EXCEL, formData);
+      this.$refs.inputFile.value = null;
+    },
   },
   watch: {
     // "$route.query.tab": {

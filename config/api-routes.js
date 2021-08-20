@@ -17,6 +17,7 @@ export default {
     //student
     getStudentsByPhone: "/students/phone/:phone",
     getStudentsByMST: "/students/MST/:mst",
+    addStudentsByExcel: "/students",
 
     //notification
     setNotificationRead: "/notifications",

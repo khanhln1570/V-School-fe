@@ -9,8 +9,8 @@
       </div>
       <v-card-actions class="justify-end">
         <slot name="modalActions">
-          <text-button color="red" @click.native="$emit('closeClick')">Đóng</text-button>
-          <text-button @click.native="$emit('nextClick')">Tiếp tục</text-button>
+          <text-button dark :text="false" color="red" @click.native="$emit('closeClick')" v-if="!hideAction">Đóng</text-button>
+          <text-button @click.native="$emit('nextClick')" v-if="!hideAction">Tiếp tục</text-button>
         </slot>
       </v-card-actions>
     </v-card>
@@ -26,20 +26,24 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 500,
+      default: 500
     },
     modal: {
       type: Boolean,
-      default: false,
+      default: false
     },
     transition: {
       type: String,
-      default: null,
+      default: null
     },
     persistent: {
       type: Boolean,
-      default: true,
+      default: true
     },
+    hideAction: {
+      type: Boolean,
+      default: false
+    }
   },
 };
 </script>

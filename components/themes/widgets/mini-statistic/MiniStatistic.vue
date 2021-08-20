@@ -1,7 +1,7 @@
 <template>
   <div class="mini__statistic">
     <slot name="header" :label="label">
-      <v-subheader v-if="label" class="px-0">{{ label }}</v-subheader>
+      <v-subheader v-if="label" class="px-0 font-weight-bold">{{ label }}</v-subheader>
     </slot>
 
     <v-card>

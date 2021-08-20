@@ -31,6 +31,7 @@ export default () => ({
         //     isActive: false,
         // },
     ],
+    countChild: 0,
     currentChild: null,
     currentChildInvoices: [
         {

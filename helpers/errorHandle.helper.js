@@ -1,4 +1,4 @@
-const errorHandle = (err) => {
+const errorHandle = (err, duration = 3000) => {
   if (process.server) {
     return
   }
@@ -11,7 +11,7 @@ const errorHandle = (err) => {
   console.log("err", err.response);
 
   return $nuxt?.$toast?.error(errorMessage, {
-    duration: 3000
+    duration: duration
   });
 }
 

@@ -8,21 +8,23 @@
       <template #personal>
         <main-card>
           <template #imgContent>
-            <img
-              src="@/assets/images/parentAvatar.svg"
-              v-if="currentUser.role === 'PARENT'"
-              alt="parent"
-            />
-            <img
-              src="@/assets/images/schoolAvatar.svg"
-              v-if="currentUser.role === 'SCHOOL'"
-              alt="school"
-            />
-            <img
-              src="@/assets/images/superAdminAvatar.svg"
-              v-if="currentUser.role === 'SUPERADMIN'"
-              alt="superAdmin"
-            />
+            <div class="mt-5">
+              <img
+                src="@/assets/images/parentAvatar.svg"
+                v-if="currentUser.role === 'PARENT'"
+                alt="parent"
+              />
+              <img
+                src="@/assets/images/schoolAvatar.svg"
+                v-if="currentUser.role === 'SCHOOL'"
+                alt="school"
+              />
+              <img
+                src="@/assets/images/superAdminAvatar.svg"
+                v-if="currentUser.role === 'SUPERADMIN'"
+                alt="superAdmin"
+              />
+            </div>
           </template>
           <template #contentCard>
             <div class="ml-xl-5 ml-md-12">
@@ -30,11 +32,11 @@
                 {{ currentUser.name }}
               </h2>
               <div class="mt-5">
-                <p class="font-weight-medium mb-1">
-                  {{ currentUser.phone }}
+                <p class="font-weight-medium mb-1" v-if="currentUser.role !== 'PARENT'">
+                  Số điện thoại: {{ currentUser.phone }}
                 </p>
-                <p class="font-weight-medium mb-1">
-                  {{ currentUser.id }}
+                <p class="font-weight-medium mb-1" v-if="currentUser.role === 'SCHOOL'">
+                  Mã số thuế: {{ currentUser.MST }}
                 </p>
                 <p class="text--secondary mb-1">
                   {{ currentUser.address }}
@@ -42,24 +44,17 @@
                 <p class="text--secondary mb-1">
                   {{ currentUser.email }}
                 </p>
-                <p>
-                  <img src="../assets/images/children.svg" />
+                <p class="d-flex align-center">
+                  <img src="../assets/images/children.svg" class="mr-2"/>
                   <slot name="sub-5">{{ currentUser.totalChild }}</slot>
                 </p>
               </div>
             </div>
           </template>
           <template #btn-right-1>
-            <v-btn
-              elevation="0"
-              block
-              large
-              class="text-lowercase rounded-lg"
-              style="color: #677694"
-              @click="modalUpdateProfile = !modalUpdateProfile"
-              ><span class="text-uppercase"> T</span>hay đổi thông tin cá
-              nhân</v-btn
-            >
+            <text-button class="" @click.native="modalUpdateProfile = !modalUpdateProfile" color="primary" :text="false">
+              Đổi thông tin cá nhân
+            </text-button>
           </template>
         </main-card>
       </template>
@@ -94,6 +89,8 @@ export default {
     MainCard: () => import("@/components/commons/main-card/MainCard"),
     MainModal: () => import("@/components/commons/main-modal/MainModal"),
     MainInput: () => import("@/components/commons/main-input/MainInput"),
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
   },
   data() {
     return {

@@ -5,6 +5,9 @@ export default {
   setYourChild(state, child) {
     state.yourChild = child;
   },
+  setCountChild(state, totalChild) {
+    state.countChild = totalChild;
+  },
   setCurrentChild(state, child) {
     state.currentChild = child;
   },

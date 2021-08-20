@@ -2,6 +2,9 @@ export default {
   getYourChild(state) {
     return state.yourChild;
   },
+  getCountChild(state) {
+    return state.countChild;
+  },
   getCurrentChild(state) {
     return state.currentChild;
   },

@@ -77,7 +77,7 @@ export default (axios, resource) => ({
     }
 
     const count = items.length;
-    console.log(items);
+    // console.log(items);
 
     items = items.slice((params.page - 1) * params.size, params.page * params.size);
 

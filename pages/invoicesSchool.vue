@@ -20,7 +20,7 @@
           searchLabel="Search name or ID"
           :status="status"
         >
-          <template #header-studentName="{ header }">
+          <template #header-description="{ header }">
             <v-checkbox
               v-model="isSelectAll"
               dense
@@ -35,7 +35,7 @@
               </template>
             </v-checkbox>
           </template>
-          <template #studentName="{ value, item }">
+          <template #description="{ value, item }">
             <div class="d-flex">
               <v-checkbox
                 v-model="selected"
@@ -51,18 +51,15 @@
               </div>
             </div>
           </template>
-          <template #type="{ value }">
-            <p class="mb-0 txt-active--text font-weight-regular">
-              {{ value.label }}
+          <template mplate te #BHYT="{ value, item }">
+            <p class="mb-0 txt-active--text">
+              {{ item.BHYT }}
             </p>
           </template>
-          <template #amount="{ value }">
-            <p class="mb-0 font-weight-regular">
+          <template #ammount="{ value }">
+            <p class="mb-0 txt-success--text">
               {{ numberToMoney(value) }}
             </p>
-          </template>
-          <template #description="{ value }">
-            <p class="mb-0 txt-success--text font-weight-regular">{{ value }}</p>
           </template>
 
           <template #action="{ item }">
@@ -90,7 +87,7 @@
           searchLabel="Search name or ID"
           :status="status"
         >
-          <template #studentName="{ value, item }">
+          <template #description="{ value, item }">
             <div class="d-flex">
               <v-checkbox
                 v-model="selected"
@@ -106,14 +103,12 @@
               </div>
             </div>
           </template>
-          <template #type="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">
-              {{ value.label }}
+          <template #BHYT="{ value, item }">
+            <p class="mb-0 txt-active--text">
+              {{ item.BHYT }}
             </p>
           </template>
-          <template #unit="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
-          </template>
+
 
           <template #action="{ item }">
             <text-button
@@ -159,6 +154,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { numberToMoney } from "@/helpers/utils.helper";
+import { GET_ALL_INVOICES_ACTION } from "~/store/invoice/invoice.constants.js";
 
 export default {
   components: {
@@ -180,29 +176,30 @@ export default {
     return {
       headers: [
         {
-          text: "Tên học sinh",
-          value: "studentName",
+          text: "Tiêu đề phí thu",
+          value: "description",
           sortable: false,
         },
         {
-          text: "Loại phí",
-          value: "type",
+          text: "Tháng",
+          value: "month",
         },
         {
           text: "Số tiền",
-          value: "amount",
+          value: "ammount",
         },
         {
-          text: "Nội dung",
-          value: "description",
+          text: "BHYT",
+          value: "BHYT",
         },
         {
-          text: "Đơn vị",
-          value: "unit",
+          text: "Lớp",
+          value: "classCode",
         },
         {
           text: "",
           value: "action",
+          sortable: false,
         },
       ],
       tabItem: [
@@ -241,7 +238,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch("invoice/getInvoices", params);
+      await this.$store.dispatch(GET_ALL_INVOICES_ACTION, {params: { page: params.page, limit: params.size }});
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

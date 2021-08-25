@@ -19,4 +19,5 @@ export default () => ({
   ],
   countInvoice: 0,
   invoices: [],
+  currentInvoice: null,
 });

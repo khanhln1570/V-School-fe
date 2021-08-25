@@ -27,6 +27,19 @@ export default {
     }
   },
 
+  async getAllStudents({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.yourChild.getAllStudents(payload);
+
+      if (response.data.ok) {
+        commit(SET_CHILD_MUTATION, response.data.data);
+        commit(SET_COUNT_CHILD_MUTATION, response.data.count);
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
   async addStudentsByExcel({ commit, dispatch }, payload) {
     try {
       const response = await this.$api.yourChild.addStudentsByExcel(payload);

@@ -6,6 +6,9 @@ export default (axios, resource) => ({
     console.log(payload);
     return axios.get(resource.getStudentsByMST.replace(":mst", payload.mst), {params: payload.params});
   },
+  getAllStudents(payload) {
+    return axios.get(resource.getAllStudents, {params: payload.params});
+  },
   addStudentsByExcel(payload) {
     return axios.post(resource.addStudentsByExcel, payload, {
       headers: {

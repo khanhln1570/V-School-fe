@@ -9,6 +9,7 @@ export default {
     getProfile: "/profile",
     getInvoiceById:"/invoices/:id",
     getAllInvoices:"/invoices",
+    getAllInvoicesByChild:"/invoices",
 
 
     //school
@@ -21,6 +22,7 @@ export default {
     getStudentsByMST: "/students/MST/:mst",
     getAllStudents: "/students",
     addStudentsByExcel: "/students",
+    getStudentById: "/students/:id",
 
     //notification
     setNotificationRead: "/notifications",

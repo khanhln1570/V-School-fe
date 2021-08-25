@@ -14,15 +14,27 @@ export default {
     }
   },
 
-  async getStudentsByMST({ commit, dispatch }, payload) {
+  async getStudentById({ commit, dispatch }, payload) {
     try {
-      const response = await this.$api.yourChild.getStudentsByMST(payload);
+      const response = await this.$api.yourChild.getStudentById(payload);
 
       if (response.data.ok) {
-        commit(SET_CHILD_MUTATION, response.data.data);
-        commit(SET_COUNT_CHILD_MUTATION, response.data.count);
+        commit('setCurrentChild', response.data.data);
       }
     } catch (error) {
+      errorHandle(error);
+    }
+  },
+
+  async getCurrentChildInvoices({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.yourChild.getAllInvoicesByChild(payload);
+
+      if (response.data.ok) {
+        commit('setCurrentChildInvoices', response.data.data);
+      }
+    } catch (error) {
+      console.log("getCurrentChildInvoices");
       errorHandle(error);
     }
   },
@@ -54,19 +66,5 @@ export default {
       // console.log(error.response.data);
       return error.response.data;
     }
-  },
-
-  
-
-  async setCurrentChild({ commit, sdispatch, state }, payload) {
-    commit("setCurrentChild", state.yourChild.find(child => child.id === Number.parseInt(payload)));
-    // try {
-    //   const response = await this.$api.auth.login(payload);
-    //   if (response.data.ok) {
-    //     commit("setAuth", { ...response.data.data });
-    //   }
-    // } catch (error) {
-    //   throw error;
-    // }
   },
 };

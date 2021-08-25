@@ -15,5 +15,11 @@ export default (axios, resource) => ({
         'Content-Type': 'multipart/form-data'
       }
     });
-  }
+  },
+  getStudentById(payload) {
+    return axios.get(resource.getStudentById.replace(":id", payload.id));
+  },
+  getAllInvoicesByChild(payload) {
+    return axios.get(resource.getAllInvoicesByChild, {params: payload.params});
+  },
 });

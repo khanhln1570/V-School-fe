@@ -2,7 +2,7 @@ const sidebarItems = [
   {
     role: 'all',
     title: "Summary",
-    to: "/",
+    to: "/dashboard",
     id: "summary"
   },
   {

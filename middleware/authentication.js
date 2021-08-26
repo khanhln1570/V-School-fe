@@ -6,6 +6,12 @@ export default async function ({ isHMR, app, store, route, redirect }) {
     return;
   }
 
+  //pass public routes
+  // const publicRoutes = ['index'];
+  // if (publicRoutes.includes(route.name)) {
+  //   return true;
+  // }
+
   const isLoggedIn = app.$cookies.get(AUTH_TOKEN_KEY);
   const currentUser = store.state.auth.currentUser;
   const excludeRoutes = ['signin', 'reset-password', 'reset-password-token'];
@@ -31,7 +37,7 @@ export default async function ({ isHMR, app, store, route, redirect }) {
     // } else
     if (excludeRoutes.includes(route.name)) {
       return redirect(
-        '/'
+        '/dashboard'
       )
     }
     return true;

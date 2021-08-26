@@ -5,11 +5,12 @@
         v-for="(item, index) in headersAfter"
         :key="index"
         class="invoiceGroup__header__item mb-3"
+        :cols="index === headersAfter.length - 1 ? 1 : null"
       >
         <span :class="{ 'ml-3': index === 1 }">
           {{ item.text }}
         </span>
-        <span v-if="index === 0">({{ invoices.length }})</span>
+        <span v-if="index === 0 && invoices">({{ invoices.length }})</span>
       </v-col>
     </v-row>
     <invoice-row
@@ -17,16 +18,16 @@
       :invoice="item"
       :key="index"
       :headers="headersAfter"
-    >
-      <template #title="{ value, item }">
+      >
+      <template #description="{ value, item }">
         <div
           class="pa-1 mr-1 rounded-circle d-inline-block"
-          :class="item.status === 'PENDING' ? 'color-warning' : 'color-success'"
+          :class="item.bank ? 'color-success' : 'color-warning'"
         ></div>
         <span>{{ value }}</span>
       </template>
-      <template #total="{ value, item }">
-        <span>{{ numberToMoney(value) }}</span>
+      <template #ammount="{ value, item }">
+        <span class="txt-active--text">{{ numberToMoney(value) }}</span>
       </template>
       <template #action="{ item }">
           <v-checkbox
@@ -35,12 +36,12 @@
           hide-details
           dense
           :ripple="false"
-          v-if="item.status !== 'SUCCESS'"
+          v-if="item.status !== 'SUCCESS' && currentUser && currentUser.role === 'PARENT'"
         ></v-checkbox>
-        <p class="mb-0 txt-success--text font-weight-bold" v-else>Đã thu</p>
-        <text-button :to="`/invoices/${item.id}`" class="ml-2">
+        <p class="mb-0 txt-success--text font-weight-bold" v-else-if="currentUser.role === 'PARENT'">Đã thu</p>
+        <text-button small :to="`/invoices/${item.id}`" class="ml-2">
           <p class="mb-0 font-weight-medium">
-            View
+            Chi tiết
           </p>
         </text-button>
       </template>
@@ -50,6 +51,7 @@
 
 <script>
 import { numberToMoney } from '@/helpers/utils.helper';
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -81,11 +83,14 @@ export default {
       return [
         {
           text: this.invoiceType.label,
-          value: "title",
+          value: "description",
         },
         ...this.headers,
       ];
     },
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
   },
   methods: {
     numberToMoney: numberToMoney

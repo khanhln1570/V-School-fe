@@ -7,6 +7,14 @@
     </page-header>
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
+      <template #tabRight>
+        <table-search
+          :search.sync="search"
+          placeHolder="Nhập tiêu đề, BHTY, lớp …"
+          @searchChange="handleChangeSearch"
+        ></table-search>
+      </template>
+
       <template #incoming>
         <main-table
           :showSearch="false"

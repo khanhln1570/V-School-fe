@@ -50,10 +50,9 @@
         <template #invoices>
           <div class="mt-10" v-if="invoiceTypes">
             <div v-for="(type, index) in invoiceTypes" :key="index">
-            {{invoiceTypes}}
               <invoice-group
                 :invoiceType="type"
-                :invoices="getCurrentChildInvoicesByType(type.id)"
+                :invoices="getCurrentChildInvoices"
                 :headers="headers"
                 @selected="handleSelectedChange"
               ></invoice-group>
@@ -83,7 +82,7 @@ export default {
     ...mapGetters({
       invoiceTypes: "invoice/getInvoiceTypes",
       currentChild: "yourChild/getCurrentChild",
-      getCurrentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
+      getCurrentChildInvoices: "yourChild/getCurrentChildInvoices",
       currentUser: "auth/getCurrentUser",
     }),
     // invoices() {
@@ -133,11 +132,11 @@ export default {
       headers: [
         {
           text: "Số tiền",
-          value: "total",
+          value: "ammount",
         },
         {
-          text: "Ghi chú",
-          value: "note",
+          text: "Tháng",
+          value: "month",
         },
         {
           text: "",

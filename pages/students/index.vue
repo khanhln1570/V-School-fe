@@ -41,7 +41,7 @@
         <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles" ref="inputFile">
         <table-search
           :search.sync="search"
-          placeHolder="Hãy nhập gì đó …"
+          placeHolder="Nhập tên, BHTY, lớp …"
           @searchChange="handleChangeSearch"
         ></table-search>
       </template>

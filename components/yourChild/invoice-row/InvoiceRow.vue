@@ -9,6 +9,7 @@
           :class="{
             'd-flex justify-end': index === headers.length - 1,
           }"
+          :cols="index === headers.length - 1 ? 1 : null"
         >
           <slot :name="item.value" :value="invoice[item.value]" :item="invoice">
             {{ invoice[item.value] }}

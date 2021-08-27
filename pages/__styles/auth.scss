@@ -1,5 +1,5 @@
 .signin-container {
-    height: 100vh;
+    min-height: 100vh;
 }
 .bg-color {
     position: relative;
@@ -55,3 +55,13 @@
     text-decoration: underline;
 }
 
+/* Using SCSS variables to store breakpoints */
+$breakpoint-mobile: 600px;
+@media (max-width: $breakpoint-mobile) {
+    .overlay-book {
+        position: fixed;
+        height: 40%;
+        top: 61%;
+        left: 51%;
+    }
+}

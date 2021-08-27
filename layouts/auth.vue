@@ -28,14 +28,17 @@
             <div
               class="signin-container d-flex justify-center flex-column-reverse flex-md-row-reverse"
             >
-              <div class="col-md-4 col-xl-4 px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column">
+              <div 
+                class="px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column" 
+                style="min-height: 100vh;"
+                >
                 <v-card
                 class="card rounded-lg signin-left py-xl-10 px-md-8 py-md-8"
                 elevation="11"
                 :class="{
                   'pa-8 ': $vuetify.breakpoint.mobile,
                 }"
-                width="500px"
+                min-width="500px"
                 >
                   <div class="d-flex justify-center align-center text-right">
                     <div class="">
@@ -47,7 +50,6 @@
                   </div>
                   <nuxt />
                 </v-card>
-                </v-row>
               </div>
             </div>
           </div>

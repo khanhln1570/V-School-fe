@@ -2,32 +2,32 @@
   <div class="px-xl-8">
     <group-validator
       class="mt-md-3 mt-xl-10 "
-      :validation="$v.form.username"
+      :validation="$v.form.BHYT"
     >
       <template slot-scope="{ errors }">
-        <label >Tên đăng nhập <span class="red--text">*</span></label>
+        <label >Mã Bảo Hiểm Y Tế của con bạn<span class="red--text">*</span></label>
         <main-input
           placeholder=""
-          name="username"
+          name="BHYT"
           type="text"
-          v-model.trim="$v.form.username.$model"
+          v-model.trim="$v.form.BHYT.$model"
           :errors="errors"
         />
       </template>
     </group-validator>
     <div class="mt-4 mt-xl-10">
-      <text-button :text="false" block large @click.native="onSubmit">Đăng nhập</text-button>
+      <text-button :text="false" block large @click.native="onSubmit">Tra cứu hoá đơn</text-button>
     </div>
     <div class="mt-1 text-right">
       <nuxt-link to="reset-password" class="txt-secondary--text"
-        ><small class="reset-password ">Quên mật khẩu?</small></nuxt-link
+        ><small class="reset-password">Quên mã BHYT?</small></nuxt-link
       >
     </div>
   </div>
 </template>
 
 <script>
-import { signIn } from "~/validations/auth/auth.validate";
+import { bhyt } from "~/validations/invoice/invoice.validate";
 import { LOG_IN_ACTION, GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
 export default {
   layout: "auth",
@@ -42,17 +42,18 @@ export default {
   data() {
     return {
       form: {
-        username: null,
-        password: null,
-        role: null,
+        BHYT: null,
       },
       loading: false,
       message: null,
     };
   },
   validations: {
-    form: signIn,
+    form: bhyt,
   },
+  // beforeCreate() {
+  //   // this.$router.push('/signin')
+  // },
   methods: {
     async onSubmit() {
       this.$v.$touch();
@@ -63,16 +64,18 @@ export default {
 
       // do your submit logic here
       this.loading = true;
-      try {
-        await this.$store.dispatch(LOG_IN_ACTION, {
-          ...this.form,
-        });
-        // await this.$store.dispatch(GET_PROFILE_ACTION);
-      } catch (error) {
-        this.message = "";
-      } finally {
-        this.loading = false;
-      }
+      // try {
+      //   await this.$store.dispatch(LOG_IN_ACTION, {
+      //     ...this.form,
+      //   });
+      //   // await this.$store.dispatch(GET_PROFILE_ACTION);
+      // } catch (error) {
+      //   this.message = "";
+      // } finally {
+      //   this.loading = false;
+      // }
+      this.loading = false;
+      this.$router.push('/payment');
     },
   },
 };

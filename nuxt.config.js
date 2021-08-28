@@ -49,7 +49,6 @@ export default {
     '~plugins/axios',
     '~plugins/api',
     '~plugins/vuelidate',
-    '~plugins/vue-notify',
     '~plugins/vue-json-csv',
   ],
   components: false,
@@ -83,6 +82,7 @@ export default {
   ],
   toast: {
     position: 'bottom-right',
+    closeOnSwipe: false,
   },
   router: {
     middleware: [

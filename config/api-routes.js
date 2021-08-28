@@ -18,7 +18,7 @@ export default {
 
 
     //student
-    getStudentsByPhone: "/students/phone/:phone",
+    getStudentsByPhone: "/students",
     getStudentsByMST: "/students/MST/:mst",
     getAllStudents: "/students",
     addStudentsByExcel: "/students",

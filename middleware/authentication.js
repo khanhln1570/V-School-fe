@@ -1,5 +1,5 @@
 import { AUTH_TOKEN_KEY } from "../store/auth/auth.constants";
-
+import { publicRoutes } from '../shared/publicRoutes';
 export default async function ({ isHMR, app, store, route, redirect }) {
   // If middleware is called from hot module replacement, ignore it
   if (isHMR) {
@@ -7,7 +7,6 @@ export default async function ({ isHMR, app, store, route, redirect }) {
   }
 
   // pass public routes
-  const publicRoutes = ['index', 'payment'];
   if (publicRoutes.includes(route.name)) {
     return true;
   }

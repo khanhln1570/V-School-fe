@@ -4,7 +4,7 @@ import errorHandle from '@/helpers/errorHandle.helper';
 export default {
   async getStudentsByPhone({ commit, dispatch }, payload) {
     try {
-      const response = await this.$api.yourChild.getStudentsByPhone(payload);
+      const response = await this.$api.yourChild.getAllStudents(payload);
 
       if (response.data.ok) {
         commit(SET_CHILD_MUTATION, response.data.data);

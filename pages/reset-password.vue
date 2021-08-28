@@ -1,29 +1,31 @@
 <template>
-  <div>
-    <group-validator
-      class="mt-md-3 mt-xl-10 px-xl-8"
-      :validation="$v.form.username"
-    >
-      <template slot-scope="{ errors }">
-        <label >Tên đăng nhập <span class="red--text">*</span></label>
-        <main-input
-          placeholder=""
-          name="email"
-          type="email"
-          v-model.trim="$v.form.username.$model"
-          :errors="errors"
-        />
-      </template>
-    </group-validator>
-    <div class="px-xl-8 pt-5">
-      <text-button :elevation="1" block large :text="false" @click.native="onSubmit">Đặt lại mật khẩu</text-button>
-    </div>
-    <div class="mt-1 text-right">
-      <nuxt-link to="/sign-in" class="txt-secondary--text"
-        ><small class="reset-password px-xl-8">Đăng nhập?</small></nuxt-link
+  <auth-card>
+    <div>
+      <group-validator
+        class="mt-md-3 mt-xl-10 px-xl-8"
+        :validation="$v.form.username"
       >
+        <template slot-scope="{ errors }">
+          <label >Tên đăng nhập <span class="red--text">*</span></label>
+          <main-input
+            placeholder=""
+            name="email"
+            type="email"
+            v-model.trim="$v.form.username.$model"
+            :errors="errors"
+          />
+        </template>
+      </group-validator>
+      <div class="px-xl-8 pt-5">
+        <text-button :elevation="1" block large :text="false" @click.native="onSubmit">Đặt lại mật khẩu</text-button>
+      </div>
+      <div class="mt-1 text-right">
+        <nuxt-link to="/sign-in" class="txt-secondary--text"
+          ><small class="reset-password px-xl-8">Đăng nhập?</small></nuxt-link
+        >
+      </div>
     </div>
-  </div>
+  </auth-card>
 </template>
 
 <script>
@@ -38,6 +40,8 @@ export default {
       import("@/components/commons/group-validator/GroupValidator"),
     TextButton: () =>
       import("@/components/commons/main-button/text-button/TextButton"),
+    AuthCard: () =>
+      import("@/components/auth-card/AuthCard.vue"),
   },
   data() {
     return {

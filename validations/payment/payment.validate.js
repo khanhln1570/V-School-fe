@@ -24,6 +24,7 @@ const minAge = (val) => {
 }
 
 const phoneNumber = (val) => {
+	if (!val) return false;
 	// if (val.slice(0, 3) !== '+60') return false;
 	// const phoneRegex = /^[0-9]*$/;
 	// const phoneWithoutCode = val.replace('+60', '');

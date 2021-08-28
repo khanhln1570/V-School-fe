@@ -1,5 +1,5 @@
 <template>
-  <auth-card>
+  <auth-card v-if="getCurrentCustomer">
     <div class="px-xl-8">
       <v-stepper
       :elevation="0"
@@ -38,7 +38,7 @@
             </div>
             <div class="d-flex justify-space-between">
               <p class="mr-3 mb-0">Tên trường học: </p>
-              <p class="font-weight-bold text-right mb-0">{{getCurrentCustomer.school.name}}</p>
+              <p class="font-weight-bold text-right mb-0">{{getCurrentCustomer.school.account ? getCurrentCustomer.school.account.name : ''}}</p>
             </div>
           </v-card>
           <text-button
@@ -48,6 +48,13 @@
             :text="false"
           >
             Tiếp tục
+          </text-button>
+          <text-button 
+            @click.native="handleCancelClick" 
+            color="red" 
+            small
+            >
+            Huỷ giao dịch
           </text-button>
         </v-stepper-content>
 
@@ -92,6 +99,7 @@
                 </text-button>
               </template>
             </invoice-row>
+            <p>Tổng tiền thanh toán: {{total}}</p>
           </v-card>
           <text-button
             color="primary"
@@ -190,7 +198,7 @@
             @click.native="step = 4"
             small
             :text="false"
-            :disabled="form.phone ? false : true"
+            :disabled="$v.form.$invalid ? true : false"
           >
             Thanh toán
           </text-button>
@@ -261,7 +269,21 @@ export default {
       getCurrentCustomer: "payment/getCurrentCustomer",
     }),
     invoices() {
-      return this.getCurrentCustomer?.invoices;
+      return this.getCurrentCustomer?.invoice_mapping;
+    },
+    total() {
+      // console.log('this.selectedInvoices', this.selectedInvoices);
+      // console.log('this.invoices', this.invoices);
+      let checkedInvoices = [];
+      this.invoices.filter((item) => {
+        this.selectedInvoices.map(selectedId => {
+          if(selectedId === item.id) {
+            checkedInvoices.push(item);
+          }
+        })
+      })
+      // console.log('checkedInvoices', checkedInvoices);
+      return checkedInvoices;
     }
   },
   data() {
@@ -294,9 +316,11 @@ export default {
   validations: {
     form: payment,
   },
-  // beforeCreate() {
-  //   // this.$router.push('/signin')
-  // },
+  created() {
+    if(!this.getCurrentCustomer) {
+      this.$router.push('/');
+    }
+  },
   methods: {
     async onSubmit() {
       this.$v.$touch();
@@ -319,6 +343,9 @@ export default {
       // }
       this.loading = false;
       this.$router.push('/payment');
+    },
+    handleCancelClick() {
+      this.$router.push('/')
     },
     numberToMoney: numberToMoney
   },

@@ -30,7 +30,7 @@
 
 <script>
 import { bhyt } from "~/validations/invoice/invoice.validate";
-import { LOG_IN_ACTION, GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
+import { GET_CUSTOMER_DETAILS_ACTION } from "~/store/payment/payment.constants";
 export default {
   layout: "auth",
   components: {
@@ -68,18 +68,18 @@ export default {
 
       // do your submit logic here
       this.loading = true;
-      // try {
-      //   await this.$store.dispatch(LOG_IN_ACTION, {
-      //     ...this.form,
-      //   });
-      //   // await this.$store.dispatch(GET_PROFILE_ACTION);
-      // } catch (error) {
-      //   this.message = "";
-      // } finally {
-      //   this.loading = false;
-      // }
-      this.loading = false;
-      this.$router.push('/payment');
+      try {
+        await this.$store.dispatch(GET_CUSTOMER_DETAILS_ACTION, {
+          ...this.form,
+        });
+        this.$router.push('/payment');
+      } catch (error) {
+        this.message = "";
+      } finally {
+        this.loading = false;
+      }
+      // this.loading = false;
+      // this.$router.push('/payment');
     },
   },
 };

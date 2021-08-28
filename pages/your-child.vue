@@ -31,6 +31,10 @@ import { mapGetters } from "vuex";
 
 export default {
   layout: "auth",
+  components: {
+    AuthCard: () =>
+      import("@/components/auth-card/AuthCard.vue"),
+  },
   computed: {
     children() {
       return this.$store.state.yourChild.children;

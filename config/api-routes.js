@@ -27,5 +27,8 @@ export default {
     //notification
     setNotificationRead: "/notifications",
     addNotificationRead: "/notifications",
+
+    //payment
+    getCustomer: "/students/noToken/:BHYT",
   }
 }

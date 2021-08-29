@@ -40,3 +40,16 @@ export const payment = {
     phoneNumber,
   },
 };
+
+export const searchBHYT = {
+  schoolId: {
+    required,
+	},
+	classCode: {
+    required,
+	},
+	name: {
+    required,
+  },
+};
+

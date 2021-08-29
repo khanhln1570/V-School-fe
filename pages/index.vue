@@ -20,7 +20,7 @@
         <text-button :text="false" block large @click.native="onSubmit">Tra cứu hoá đơn</text-button>
       </div>
       <div class="mt-1 text-right">
-        <nuxt-link to="" class="txt-secondary--text"
+        <nuxt-link to="/whatMybhyt" class="txt-secondary--text"
           ><small class="reset-password">Quên mã BHYT?</small></nuxt-link
         >
       </div>

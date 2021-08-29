@@ -99,6 +99,11 @@
               {{value}}
             </p>
           </template>
+          <template #parentPhone="{ item }">
+          <p class="mb-0 txt-success--text">
+              {{ item.parent.phone }}
+            </p>
+          </template>
 
           <template #action="{ item }">
             <text-button

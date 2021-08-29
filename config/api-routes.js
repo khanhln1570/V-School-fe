@@ -30,5 +30,7 @@ export default {
 
     //payment
     getCustomer: "/students/noToken/:BHYT",
+    getPublicSchool: "/schools/public/noToken",
+    getPublicStudentBHYT: "/students/public/noToken",
   }
 }

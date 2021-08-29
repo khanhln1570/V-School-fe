@@ -70,10 +70,11 @@
           <v-card
             class="mb-10"
             flat
+            v-if="invoices.length"
             >
             <invoice-row
               v-for="(item, index) in invoices"
-              :invoice="item"
+              :invoice="item.invoice"
               :key="index"
               :headers="headers"
               >
@@ -99,7 +100,14 @@
                 </text-button>
               </template>
             </invoice-row>
-            <p>Tổng tiền thanh toán: {{total}}</p>
+            <p>Tổng tiền thanh toán: <span class="font-weight-bold txt-active--text">{{numberToMoney(total)}}</span></p>
+          </v-card>
+          <v-card
+            class="mb-10"
+            flat
+            v-else
+            >
+            <p>Hiện tại học sinh không có hoá đơn nào cần thanh toán !</p>
           </v-card>
           <text-button
             color="primary"
@@ -277,13 +285,15 @@ export default {
       let checkedInvoices = [];
       this.invoices.filter((item) => {
         this.selectedInvoices.map(selectedId => {
-          if(selectedId === item.id) {
-            checkedInvoices.push(item);
+          if(selectedId === item.invoice.id) {
+            checkedInvoices.push(item.invoice);
           }
         })
       })
       // console.log('checkedInvoices', checkedInvoices);
-      return checkedInvoices;
+      return checkedInvoices.reduce((prev, current) => {
+        return prev + parseInt(current.ammount);
+      }, 0);
     }
   },
   data() {

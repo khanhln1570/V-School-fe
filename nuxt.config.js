@@ -9,8 +9,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Dịch vụ chia sẻ thông tin nhà trường phụ huynh, sổ liên lạc điện tử, thanh toán học phí trực tuyến' },
-      { name: 'keywords', content: 'Nhà trường, phụ huynh, học sinh, chia sẻ thông tin nhà trường phụ huynh, sổ liên lạc điện tử, kết quả học tập, thanh toán học phí online, thanh toán học phí trực tuyến, download sổ liên lạc điện tử, thông tin học sinh, trao đổi với giáo viên, trao đổi với phụ huynh' },
+      { hid: 'description', name: 'description', content: 'V-school dịch vụ chia sẻ thông tin nhà trường phụ huynh, sổ liên lạc điện tử, thanh toán học phí trực tuyến' },
+      { name: 'keywords', content: 'V-school, Nhà trường, phụ huynh, học sinh, chia sẻ thông tin nhà trường phụ huynh, sổ liên lạc điện tử, kết quả học tập, thanh toán học phí online, thanh toán học phí trực tuyến, download sổ liên lạc điện tử, thông tin học sinh, trao đổi với giáo viên, trao đổi với phụ huynh' },
     ],
     link: [
       {

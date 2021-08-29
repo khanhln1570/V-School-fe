@@ -26,16 +26,18 @@
                 </p>
               </div>
 
-              <div v-if="currentInvoice.status === 'PENDING'" class="col-3 pa-0 font-weight-medium text-right orange--text">
-                Chưa thanh toán
+              <div class="col-4 d-flex flex-column justify-space-between">
+                <h3 class="text-right">
+                  <span class="font-weight-medium align-center">Tổng cộng: </span>
+                  <span class="font-weight-regular txt-success--text">{{ numberToMoney(currentInvoice.ammount) }} (VND)</span>
+                </h3>
+                <v-chip color="orange" v-if="!currentInvoice.bank" class="font-weight-medium white--text ml-auto">
+                  Chưa thanh toán
+                </v-chip>
+                <v-chip color="green" v-else-if="currentInvoice.bank" class="font-weight-medium white--text ml-auto">
+                  Đã thanh toán
+                </v-chip>
               </div>
-              <div v-if="currentInvoice.status === 'SUCCESS'" class="col-3 pa-0 font-weight-medium text-right success--text">
-                Đã thanh toán
-              </div>
-              <h3 class="text-right col-4">
-                <span class="font-weight-medium align-center">Tổng cộng: </span>
-                <span class="font-weight-regular txt-success--text">{{ numberToMoney(currentInvoice.ammount) }} (VND)</span>
-              </h3>
             </div>
           </v-card>
         </template>

@@ -2,8 +2,8 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   head: {
-    titleTemplate: 'V-school',
-    title: 'V-school',
+    titleTemplate: 'Nacelle',
+    title: 'Nacelle',
     htmlAttrs: {
       lang: 'en'
     },
@@ -24,7 +24,6 @@ export default {
     '~plugins/api',
     '~plugins/vuelidate',
     '~plugins/vue-notify',
-    '~plugins/vue-json-csv',
   ],
   components: false,
   buildModules: [
@@ -37,23 +36,23 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
-    [
-      "@nuxtjs/firebase",
-      {
-        config: {
-          apiKey: "AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA",
-          authDomain: "notifications-vschool.firebaseapp.com",
-          projectId: "notifications-vschool",
-          storageBucket: "notifications-vschool.appspot.com",
-          messagingSenderId: "131725339638",
-          appId: "1:131725339638:web:6fe70ff2eca617f7a875d7",
-          measurementId: "G-RCZG21NREZ"
-        },
-        services: {
-          firestore: true,
-        },
-      },
-    ],
+    // [
+    //   "@nuxtjs/firebase",
+    //   {
+    //     config: {
+    //       apiKey: "AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA",
+    //       authDomain: "notifications-vschool.firebaseapp.com",
+    //       projectId: "notifications-vschool",
+    //       storageBucket: "notifications-vschool.appspot.com",
+    //       messagingSenderId: "131725339638",
+    //       appId: "1:131725339638:web:6fe70ff2eca617f7a875d7",
+    //       measurementId: "G-RCZG21NREZ"
+    //     },
+    //     services: {
+    //       firestore: true,
+    //     },
+    //   },
+    // ],
   ],
   toast: {
     position: 'bottom-right',
@@ -63,12 +62,9 @@ export default {
       'authentication'
     ]
   },
-
   axios: {},
-
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    treeShake: true,
     customVariables: ['~/assets/scss/variables.scss'],
     treeShake: true,
     theme: {
@@ -110,11 +106,8 @@ export default {
     },
   },
   css: [
-    // {src: join(__dirname, 'assets/scss/mixins/_mixins.scss'), lang: 'scss'},
-    // '@/assets/scss/mixins/_mixins.scss',
     { src: '~assets/scss/reset.scss', lang: 'scss' },
     { src: '~assets/scss/custom.scss', lang: 'scss' },
-    // '@/assets/css/utilities.min.css'
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

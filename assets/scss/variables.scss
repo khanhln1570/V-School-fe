@@ -1,5 +1,5 @@
 :root {
-  --base-font-size: 16px;
+  --base-font-size: 14px;
   --base-height-header: 6rem;
   --base-separator: rgba(0, 0, 0, 0.12);
   // Light
@@ -21,25 +21,11 @@
 
   //status
   --error: #E63946;
-
-  /* Font/text values */
-  // --font-family-montserrat-medium: Montserrat-Medium;
-  // --font-family-montserrat-light: Montserrat-Light;
-  --font-style-normal: normal;
-  --font-weight-300: 300px;
-  --font-weight-medium: medium;
-  --font-size-08125rem: 0.8125rem;
-  --font-size-0875rem: 0.875rem;
-  --font-size-1rem: 1rem;
-  --font-size-1-25rem: 1.25rem;
-  --line-spacing-1rem: 1rem;
-  --line-spacing-1-25rem: 1.25rem;
-  --line-spacing-1-5rem: 1.5rem;
 }
 
 @media screen and (min-width: 1920px) {
   :root {
-    --base-font-size: 18px;
+    --base-font-size: 16px;
   }
 }
 

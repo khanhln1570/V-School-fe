@@ -1,13 +1,12 @@
-.min-auto {
-  min-width: auto !important;
-}
 
-.max-h-100 {
-  max-height: 100% !important;
-}
+@media only screen and (max-width: 1920px) {
+  .container {
+    max-width: 1200px !important;
+  }
 
-.pointer {
-  cursor: pointer;
+  .container--fluid {
+    max-width: 100% !important;
+  }
 }
 
 .separator {
@@ -61,18 +60,8 @@
   background-color: #eaecef00 !important;
 }
 
-    .custom-container {
-      max-width: 1200px !important;
-    }
-
-@media only screen and (max-width: 1920px) {
-  .container {
-    max-width: 1200px !important;
-  }
-
-  .container--fluid {
-    max-width: 100% !important;
-  }
+.custom-container {
+  max-width: 1200px !important;
 }
 
 .v-toolbar__extension {
@@ -85,13 +74,10 @@
 
 .v-application .title {
   font-size: 1.8125rem !important;
-  @include font-medium;
 }
 
 //NOTE CUSTOM DATA-TABLE
 .v-data-table > .v-data-table__wrapper > table > thead > tr > th {
-  @include text-size-1rem;
-  @include font-medium;
   color: black !important;
   transition: color ease-in-out 0.3s;
 }

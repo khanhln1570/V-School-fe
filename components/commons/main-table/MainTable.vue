@@ -168,11 +168,12 @@ export default {
     rowClick(response) {
       return this.$emit("click:row", response);
     },
-    getRequestParams(searchTitle, page, pageSize, status) {
+    getRequestParams(search, page, pageSize, status) {
       let params = {};
-
-      if (searchTitle) {
-        params["search"] = searchTitle;
+      
+      params["search"] = "";
+      if (search) {
+        params["search"] = search;
       }
 
       if (page) {

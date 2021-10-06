@@ -54,7 +54,6 @@ export default {
       import(
         "@/components/invoice-manage/invoice-manage-group/InvoiceManageGroup"
       ),
-
     MainTable: () => import("@/components/commons/main-table/MainTable"),
     TableSearch: () => import("@/components/commons/main-table/TableSearch"),
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),
@@ -120,7 +119,7 @@ export default {
     // await this.$store.dispatch(GET_INVOICES_ACTION);
   },
   async created() {
-    await this.$store.dispatch("invoice/getInvoices");
+    await this.$store.dispatch("invoice/getInvoicesByToken");
   },
 };
 </script>

@@ -11,33 +11,26 @@
             <div class="d-flex justify-space-between">
               <div class="col-6 pa-0">
                 <h2 class="font-weight-medium">
-                  {{ currentInvoice.description }} - <span class="blue--text">Tháng {{ currentInvoice.month }}</span>
+                  {{ currentInvoice.description }}
                 </h2>
-                <!-- <p class="blue--text">{{ invoice.expiry }}</p> -->
-                <div>
-                  <span class="font-weight-medium">Hoá đơn số: </span
-                  ><span>{{ currentInvoice.id }}</span>
+                <!-- <p class="blue--text">{{ currentInvoice.expiry }}</p> -->
+                <div class="d-flex flex-column">
+                  <span class="">Hoá đơn số: {{ currentInvoice.id }}</span>
+                  <span class="">Họ và tên học sinh: {{ currentInvoice.name }}</span>
+                  <span class="blue--text">BHYT: {{ currentInvoice.BHYT }}</span>
                 </div>
-                <p class="mt-4">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.zaZaQA
-                  Adipisci necessitatibus voluptate praesentium distinctio quod
-                  esse inventore fugit quisquam fuga libero! Earum natus cum
-                  veritatis molestiae. Nisi labore hic assumenda praesentium?
-                </p>
               </div>
 
-              <div class="col-4 d-flex flex-column justify-space-between">
-                <h3 class="text-right">
-                  <span class="font-weight-medium align-center">Tổng cộng: </span>
-                  <span class="font-weight-regular txt-success--text">{{ numberToMoney(currentInvoice.ammount) }} (VND)</span>
-                </h3>
-                <v-chip color="orange" v-if="!currentInvoice.bank" class="font-weight-medium white--text ml-auto">
-                  Chưa thanh toán
-                </v-chip>
-                <v-chip color="green" v-else-if="currentInvoice.bank" class="font-weight-medium white--text ml-auto">
-                  Đã thanh toán
-                </v-chip>
+              <div v-if="currentInvoice.status === 'PENDING'" class="col-3 pa-0 font-weight-medium text-right orange--text">
+                Chưa thanh toán
               </div>
+              <div v-if="currentInvoice.status === 'SUCCESS'" class="col-3 pa-0 font-weight-medium text-right success--text">
+                Đã thanh toán
+              </div>
+              <h3 class="text-right col-4">
+                <span class="font-weight-medium align-center">Tổng cộng: </span>
+                <span class="font-weight-regular">{{ numberToMoney(currentInvoice.ammount) }} (VND)</span>
+              </h3>
             </div>
           </v-card>
         </template>
@@ -74,8 +67,10 @@ export default {
     };
   },
   async fetch() {
-    // console.log(this.getInvoiceById(Number.parseInt(this.$route.params.id)));
-    await this.$store.dispatch(GET_INVOICE_BY_ID, {id: this.$route.params.id});
+    await this.$store.dispatch(
+      "invoice/getCurrentInvoice",
+      {id: this.$route.params.id}
+    );
   },
   methods: {
     numberToMoney: numberToMoney,

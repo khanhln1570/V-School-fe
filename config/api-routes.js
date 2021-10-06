@@ -6,6 +6,8 @@ export default {
 
     //invoice
     getInvoices: "/invoices",
+    getCurrentInvoice: "/invoices/:id",
+    getInvoicesByToken: "/invoices",
     getProfile: "/profile",
     getInvoiceById:"/invoices/:id",
     getAllInvoices:"/invoices",

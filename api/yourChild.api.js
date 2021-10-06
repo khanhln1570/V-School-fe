@@ -4,7 +4,7 @@ export default (axios, resource) => ({
   },
   getStudentsByMST(payload) {
     console.log(payload);
-    return axios.get(resource.getStudentsByMST.replace(":mst", payload.mst), {params: payload.params});
+    return axios.get(resource.getStudentsByMST, {params: payload.params});
   },
   getAllStudents(payload) {
     return axios.get(resource.getAllStudents, {params: payload.params});

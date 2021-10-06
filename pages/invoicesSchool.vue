@@ -59,13 +59,13 @@
               </div>
             </div>
           </template>
-          <template mplate te #BHYT="{ value, item }">
-            <p class="mb-0 txt-active--text">
-              {{ item.BHYT }}
+          <template #BHYT="{ value }">
+            <p class="mb-0 txt-active--text font-weight-regular">
+              {{ value }}
             </p>
           </template>
           <template #ammount="{ value }">
-            <p class="mb-0 txt-success--text">
+            <p class="mb-0 font-weight-regular">
               {{ numberToMoney(value) }}
             </p>
           </template>
@@ -111,12 +111,14 @@
               </div>
             </div>
           </template>
-          <template #BHYT="{ value, item }">
-            <p class="mb-0 txt-active--text">
-              {{ item.BHYT }}
+          <template #BHYT="{ value }">
+            <p class="mb-0 txt-active--text font-weight-medium">
+              {{ value }} {{ value }}
             </p>
           </template>
-
+          <template #ammount="{ value }">
+            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
+          </template>
 
           <template #action="{ item }">
             <text-button
@@ -184,13 +186,13 @@ export default {
     return {
       headers: [
         {
-          text: "Tiêu đề phí thu",
-          value: "description",
+          text: "Tên học sinh",
+          value: "name",
           sortable: false,
         },
         {
-          text: "Tháng",
-          value: "month",
+          text: "BHYT",
+          value: "BHYT",
         },
         {
           text: "Số tiền",
@@ -199,10 +201,6 @@ export default {
         {
           text: "BHYT",
           value: "BHYT",
-        },
-        {
-          text: "Lớp",
-          value: "classCode",
         },
         {
           text: "",
@@ -246,7 +244,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch(GET_ALL_INVOICES_ACTION, {params: { page: params.page, limit: params.size }});
+      await this.$store.dispatch("invoice/getInvoicesByToken", params);
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

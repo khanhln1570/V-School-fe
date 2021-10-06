@@ -122,7 +122,7 @@
       @closeClick="modalSendNotification = false"
       @nextClick="handleNextClick"
       persistent
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Gủi thông báo phí thu</h4>
       </template>
@@ -151,7 +151,7 @@
       @closeClick="uploadFile.uploading = false"
       persistent
       hideAction
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Nhập Excel</h4>
       </template>
@@ -286,14 +286,21 @@ export default {
   // },
   async created() {
     // this.$store.dispatch(GET_PROFILE_ACTION);
-    await this.$store.dispatch(GET_ALL_CHILD, {params: {page: 1, limit: 10, search: ''}});
+    await this.$store.dispatch(
+      GET_CHILD_BY_MST_ACTION,
+      {param: {
+        limit: 10,
+        page: 1,
+        search: '',
+      }}
+    );
   },
   methods: {
     getSelectedItem(items) {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch(GET_ALL_CHILD, {params: {page: params.page, limit: params.size, search: params.search || ''}});
+      await this.$store.dispatch(GET_CHILD_BY_MST_ACTION, {mst: this.currentUser.MST, params: {page: params.page, limit: params.size, search: params.search}});
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

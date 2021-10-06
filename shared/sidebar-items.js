@@ -2,7 +2,7 @@ const sidebarItems = [
   {
     role: 'all',
     title: "Summary",
-    to: "/",
+    to: "/dashboard",
     id: "summary"
   },
   {
@@ -27,7 +27,7 @@ const sidebarItems = [
           role: "PARENT"
         },
         {
-          title: "Phí thu (incoming)",
+          title: "Phí thu",
           to: "/invoicesSchool",
           role: "SCHOOL"
         },

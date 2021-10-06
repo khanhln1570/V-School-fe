@@ -1,5 +1,5 @@
 .signin-container {
-    height: 100vh;
+    min-height: 100vh;
 }
 .bg-color {
     position: relative;
@@ -55,3 +55,46 @@
     text-decoration: underline;
 }
 
+.fixed__btn {
+    position: fixed;
+    right: 20%;
+    top: 10%;
+    animation: float 6s ease-in-out infinite;
+
+    box-sizing: border-box;
+	border: 5px white solid;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+}
+
+/* Using SCSS variables to store breakpoints */
+$breakpoint-mobile: 600px;
+@media (max-width: $breakpoint-mobile) {
+    .overlay-book {
+        position: fixed;
+        height: 40%;
+        top: 61%;
+        left: 51%;
+    }
+
+    .fixed__btn {
+        position: fixed;
+        right: 5%;
+        top: 90% !important;
+    }
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}

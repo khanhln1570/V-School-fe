@@ -28,30 +28,16 @@
             <div
               class="signin-container d-flex justify-center flex-column-reverse flex-md-row-reverse"
             >
-              <div class="col-md-4 col-xl-4 px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column">
-                <v-card
-                class="card rounded-lg signin-left py-xl-10 px-md-8 py-md-8"
-                elevation="11"
-                :class="{
-                  'pa-8 ': $vuetify.breakpoint.mobile,
-                }"
-                width="500px"
+              <div 
+                class="px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column" 
+                style="min-height: 100vh;"
                 >
-                  <div class="d-flex justify-center align-center text-right">
-                    <div class="">
-                      <div class="display-2 font-weight-normal logo-text">V-School</div>
-                      <div>
-                        <small>beta</small>
-                      </div>
-                    </div>
-                  </div>
+                <v-lazy min-width='100%'>
                   <nuxt />
-                </v-card>
-                </v-row>
+                </v-lazy>
               </div>
             </div>
           </div>
-
           <div class="rules pa-2">
             <span class="pr-5 white--text" style="border-right: 1px solid"
               >Chính sách</span
@@ -61,11 +47,61 @@
         </div>
       </v-container>
     </v-main>
+    <text-button :elevation="5" :text="false" :to="btn.to" class="fixed__btn pa-5 " :color="btn.color" :dark="btn.dark" v-if="btn.show"> 
+      <span class="text-capitalize font-weight-bold">{{btn.title}}</span>
+    </text-button>
   </v-app>
 </template>
 
 <script>
-export default {};
+import { publicRoutes } from '../shared/publicRoutes';
+
+export default {
+  components: {
+    AuthCard: () =>
+      import("@/components/auth-card/AuthCard.vue"),
+    TextButton: () =>
+      import("@/components/commons/main-button/text-button/TextButton"),
+  },
+  data() {
+    return {
+      btn : {
+        title: null,
+        to: null,
+        color: null,
+        dark: false,
+        show: true,
+        srcImg: null,
+      }
+    }
+  },
+  watch: {
+    "$route.name": {
+      handler: function (name) {
+        console.log("name", name);
+        if (name === 'payment') {
+          this.btn.show = false
+        }
+        else if (publicRoutes.includes(name)) {
+          this.btn.show = true
+          this.btn.title = 'Đăng nhập'
+          this.btn.color = 'black'
+          this.btn.dark = true
+          this.btn.to = '/signin'
+          this.btn.srcImg= '../assets/images/Logo-white.svg'
+        } else {
+          this.btn.show = true
+          this.btn.title = 'Thanh toán học phí'
+          this.btn.color = 'color-warning'
+          this.btn.dark = false
+          this.btn.to = '/'
+        }
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,9 @@ export default {
     //invoice
     getInvoices: "/invoices",
     getProfile: "/profile",
+    getInvoiceById:"/invoices/:id",
+    getAllInvoices:"/invoices",
+    getAllInvoicesByChild:"/invoices",
 
 
     //school
@@ -15,12 +18,19 @@ export default {
 
 
     //student
-    getStudentsByPhone: "/students/phone/:phone",
+    getStudentsByPhone: "/students",
     getStudentsByMST: "/students/MST/:mst",
+    getAllStudents: "/students",
     addStudentsByExcel: "/students",
+    getStudentById: "/students/:id",
 
     //notification
     setNotificationRead: "/notifications",
     addNotificationRead: "/notifications",
+
+    //payment
+    getCustomer: "/students/noToken/:BHYT",
+    getPublicSchool: "/schools/public/noToken",
+    getPublicStudentBHYT: "/students/public/noToken",
   }
 }

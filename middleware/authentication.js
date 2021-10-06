@@ -1,9 +1,14 @@
 import { AUTH_TOKEN_KEY } from "../store/auth/auth.constants";
-
+import { publicRoutes } from '../shared/publicRoutes';
 export default async function ({ isHMR, app, store, route, redirect }) {
   // If middleware is called from hot module replacement, ignore it
   if (isHMR) {
     return;
+  }
+
+  // pass public routes
+  if (publicRoutes.includes(route.name)) {
+    return true;
   }
 
   const isLoggedIn = app.$cookies.get(AUTH_TOKEN_KEY);
@@ -31,7 +36,7 @@ export default async function ({ isHMR, app, store, route, redirect }) {
     // } else
     if (excludeRoutes.includes(route.name)) {
       return redirect(
-        '/'
+        '/dashboard'
       )
     }
     return true;

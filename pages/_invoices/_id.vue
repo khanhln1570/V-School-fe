@@ -1,23 +1,22 @@
 <template>
   <div>
     <v-container>
-      <page-header title="Phí thu" :backTo="currentUser.role === 'school' ? '/invoicesSchool': '/invoices/' ">
+      <page-header title="Phí thu" :backTo="currentUser.role === 'SCHOOL' ? '/invoicesSchool': '/invoices/' ">
         <template #titleIcon></template>
         <template #subTitle></template>
       </page-header>
       <main-tabs :items="items">
         <template #personal>
-          <v-card outlined class="rounded-lg mt-6 px-10 py-4" v-if="invoice">
+          <v-card outlined class="rounded-lg mt-6 px-10 py-4" v-if="currentInvoice">
             <div class="d-flex justify-space-between">
               <div class="col-6 pa-0">
                 <h2 class="font-weight-medium">
-                  {{ invoice.description }} -
-                  <span class="blue--text">{{ invoice.unit }}</span>
+                  {{ currentInvoice.description }} - <span class="blue--text">Tháng {{ currentInvoice.month }}</span>
                 </h2>
                 <!-- <p class="blue--text">{{ invoice.expiry }}</p> -->
                 <div>
                   <span class="font-weight-medium">Hoá đơn số: </span
-                  ><span>{{ invoice.id }}</span>
+                  ><span>{{ currentInvoice.id }}</span>
                 </div>
                 <p class="mt-4">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.zaZaQA
@@ -27,20 +26,18 @@
                 </p>
               </div>
 
-              <div v-if="invoice.status === 'PENDING'" class="col-3 pa-0 font-weight-medium text-right orange--text">
-                Chưa thanh toán
+              <div class="col-4 d-flex flex-column justify-space-between">
+                <h3 class="text-right">
+                  <span class="font-weight-medium align-center">Tổng cộng: </span>
+                  <span class="font-weight-regular txt-success--text">{{ numberToMoney(currentInvoice.ammount) }} (VND)</span>
+                </h3>
+                <v-chip color="orange" v-if="!currentInvoice.bank" class="font-weight-medium white--text ml-auto">
+                  Chưa thanh toán
+                </v-chip>
+                <v-chip color="green" v-else-if="currentInvoice.bank" class="font-weight-medium white--text ml-auto">
+                  Đã thanh toán
+                </v-chip>
               </div>
-              <div v-if="invoice.status === 'SUCCESS'" class="col-3 pa-0 font-weight-medium text-right success--text">
-                Đã thanh toán
-              </div>
-              <h3 class="text-right col-4">
-                <span class="font-weight-medium align-center">Tổng cộng: </span>
-                <span class="font-weight-regular">{{ invoices.total }} (VND)</span>
-              </h3>
-            </div>
-            <div class="text-right">
-              <span class="font-weight-medium">Tổng cộng: </span>
-              {{ numberToMoney(invoice.amount) }}
             </div>
           </v-card>
         </template>
@@ -52,6 +49,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { numberToMoney } from '@/helpers/utils.helper';
+import { GET_INVOICE_BY_ID } from "~/store/invoice/invoice.constants.js";
 
 export default {
   components: {
@@ -62,6 +60,7 @@ export default {
     ...mapGetters({
       getInvoiceById: "invoice/getInvoiceById",
       currentUser: "auth/getCurrentUser",
+      currentInvoice: "invoice/getCurrentInvoice",
     }),
   },
   data() {
@@ -72,12 +71,11 @@ export default {
           value: "personal",
         },
       ],
-      invoice: {},
     };
   },
-  fetch() {
-    console.log(this.getInvoiceById(Number.parseInt(this.$route.params.id)));
-    this.invoice = this.getInvoiceById(Number.parseInt(this.$route.params.id));
+  async fetch() {
+    // console.log(this.getInvoiceById(Number.parseInt(this.$route.params.id)));
+    await this.$store.dispatch(GET_INVOICE_BY_ID, {id: this.$route.params.id});
   },
   methods: {
     numberToMoney: numberToMoney,

@@ -10,7 +10,7 @@ export default {
     password: 'Password should be at least 6 characters.',
     confirmPassword: 'Must be the same',
     alpha: 'Field accepts only character.',
-    phoneNumber: 'Invalid mobile number. Please make sure the mobile number consist of at least 10 numbers.',
+    phoneNumber: 'Số điện thoại không hợp lệ.',
     validNric: 'Please enter a valid NRIC number.',
     minAmount: 'Invalid Amount.',
     maxLengthAmount: 'Invalid Amount.',

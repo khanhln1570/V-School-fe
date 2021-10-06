@@ -37,24 +37,11 @@
             </template>
           </cus-icon-text-button>
         </download-excel>
-        <cus-icon-text-button
-          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
-        >
-          <template #icon>
-          <label for="excelUpload" class="d-flex cursor-pointer">
-            <img
-              src="@/assets/images/excelImport.svg"
-              alt="sendNotification"
-              class="mr-2"
-            />
-            <p class="mb-0 d-flex align-center black--text">Nhập excel</p>
-          </label>
-          </template>
-        </cus-icon-text-button>
+        
         <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles" ref="inputFile">
         <table-search
           :search.sync="search"
-          placeHolder="Hãy nhập gì đó …"
+          placeHolder="Nhập tên, BHTY, lớp …"
           @searchChange="handleChangeSearch"
         ></table-search>
       </template>
@@ -110,6 +97,11 @@
           <template #classcode="{ value }">
             <p class="mb-0 font-weight-regular">
               {{value}}
+            </p>
+          </template>
+          <template #parentPhone="{ item }">
+          <p class="mb-0 txt-success--text">
+              {{ item.parent.phone }}
             </p>
           </template>
 
@@ -209,7 +201,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { GET_CHILD_BY_MST_ACTION, ADD_STUDENT_BY_EXCEL } from "~/store/yourChild/yourChild.constants";
+import { GET_CHILD_BY_MST_ACTION, ADD_STUDENT_BY_EXCEL, GET_ALL_CHILD } from "~/store/yourChild/yourChild.constants";
 import { ADD_ACTION } from "~/store/notification/notification.constants";
 
 export default {
@@ -294,20 +286,14 @@ export default {
   // },
   async created() {
     // this.$store.dispatch(GET_PROFILE_ACTION);
-    await this.$store.dispatch(
-      GET_CHILD_BY_MST_ACTION,
-      {mst: this.currentUser.MST, param: {
-        limit: 10,
-        page: 1,
-      }}
-    );
+    await this.$store.dispatch(GET_ALL_CHILD, {params: {page: 1, limit: 10, search: ''}});
   },
   methods: {
     getSelectedItem(items) {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch(GET_CHILD_BY_MST_ACTION, {mst: this.currentUser.MST, params: {page: params.page, limit: params.size}});
+      await this.$store.dispatch(GET_ALL_CHILD, {params: {page: params.page, limit: params.size, search: params.search || ''}});
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

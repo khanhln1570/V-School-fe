@@ -2,18 +2,44 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   head: {
-    titleTemplate: 'Nacelle',
-    title: 'Nacelle',
+    title: 'V-school kết nối gia đình và nhà trường',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'V-school dịch vụ chia sẻ thông tin nhà trường phụ huynh, sổ liên lạc điện tử, thanh toán học phí trực tuyến' },
+      { name: 'keywords', content: 'V-school, Nhà trường, phụ huynh, học sinh, chia sẻ thông tin nhà trường phụ huynh, sổ liên lạc điện tử, kết quả học tập, thanh toán học phí online, thanh toán học phí trực tuyến, download sổ liên lạc điện tử, thông tin học sinh, trao đổi với giáo viên, trao đổi với phụ huynh' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {
+        rel: 'apple-touch-icon',
+        sizes: "180x180",
+        href: '/apple-touch-icon.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: "32x32",
+        href: '/favicon-32x32.png'
+      },
+
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: "16x16",
+        href: '/favicon-16x16.png'
+      },
+      {
+        rel: 'manifest',
+        href: '/site.webmanifest'
+      },
+      {
+        rel: 'mask-icon',
+        href: '/safari-pinned-tab.svg',
+        color: "#03306b"
+      },
     ],
     script: []
   },
@@ -23,7 +49,6 @@ export default {
     '~plugins/axios',
     '~plugins/api',
     '~plugins/vuelidate',
-    '~plugins/vue-notify',
   ],
   components: false,
   buildModules: [
@@ -56,6 +81,7 @@ export default {
   ],
   toast: {
     position: 'bottom-right',
+    closeOnSwipe: false,
   },
   router: {
     middleware: [

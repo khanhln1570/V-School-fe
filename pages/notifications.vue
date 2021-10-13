@@ -72,7 +72,7 @@
         <h4 class="">Bạn chưa có thông báo nào !</h4>
         <p>
           Chúng tôi sẽ thông báo cho bạn khi có những nâng cấp và các vấn đề
-          liên quan đến tài khoản .
+          liên quan đến tài khoản.
         </p>
       </div>
     </main-card>

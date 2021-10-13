@@ -197,8 +197,8 @@ export default {
 
             //get your child
             if(value.role === "PARENT") {
-              await this.$store.dispatch(GET_CHILD_ACTION, 
-                value.phone
+              await this.$store.dispatch(GET_CHILD_ACTION,
+                {params: {search: ''}}
               );
             }
           } catch (e) {

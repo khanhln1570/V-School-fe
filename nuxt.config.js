@@ -41,6 +41,10 @@ export default {
         href: '/safari-pinned-tab.svg',
         color: "#03306b"
       },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true},
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap' },
     ],
     script: []
   },
@@ -57,28 +61,29 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources',
     '@nuxtjs/toast',
+    '@nuxtjs/google-fonts',
   ],
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'cookie-universal-nuxt',
-    // [
-    //   "@nuxtjs/firebase",
-    //   {
-    //     config: {
-    //       apiKey: "AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA",
-    //       authDomain: "notifications-vschool.firebaseapp.com",
-    //       projectId: "notifications-vschool",
-    //       storageBucket: "notifications-vschool.appspot.com",
-    //       messagingSenderId: "131725339638",
-    //       appId: "1:131725339638:web:6fe70ff2eca617f7a875d7",
-    //       measurementId: "G-RCZG21NREZ"
-    //     },
-    //     services: {
-    //       firestore: true,
-    //     },
-    //   },
-    // ],
+    [
+      "@nuxtjs/firebase",
+      {
+        config: {
+          apiKey: "AIzaSyDaEON2EjWbGPuZEZnp7QRvcS1DecB7gqA",
+          authDomain: "notifications-vschool.firebaseapp.com",
+          projectId: "notifications-vschool",
+          storageBucket: "notifications-vschool.appspot.com",
+          messagingSenderId: "131725339638",
+          appId: "1:131725339638:web:6fe70ff2eca617f7a875d7",
+          measurementId: "G-RCZG21NREZ"
+        },
+        services: {
+          firestore: true,
+        },
+      },
+    ],
   ],
   toast: {
     position: 'bottom-right',

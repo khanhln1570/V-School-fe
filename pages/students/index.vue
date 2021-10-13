@@ -8,19 +8,6 @@
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
-        <cus-icon-text-button
-          smallIcon
-          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
-        >
-          <template #icon>
-            <img
-              src="@/assets/images/sendNotification.svg"
-              alt="sendNotification"
-              class="mr-2"
-            />
-            <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
-          </template>
-        </cus-icon-text-button>
         <download-excel
           :data="yourChild"
           :fields="json_fields"
@@ -202,7 +189,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { GET_CHILD_BY_MST_ACTION, ADD_STUDENT_BY_EXCEL, GET_ALL_CHILD } from "~/store/yourChild/yourChild.constants";
-import { ADD_ACTION } from "~/store/notification/notification.constants";
+import { ADD_NOTI_ACTION } from "~/store/notification/notification.constants";
 
 export default {
   components: {
@@ -328,7 +315,7 @@ export default {
       //handle add notification
       this.selected.forEach(async selection => {
         await this.$store.dispatch(
-          ADD_ACTION,
+          ADD_NOTI_ACTION,
           this.notificationObject
         );
       });

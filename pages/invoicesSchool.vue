@@ -41,9 +41,9 @@
           searchLabel="Search name or ID"
           :status="status"
         >
-          <template #header-name="{ header }">
+          <template #header-description="{ header }">
             <v-checkbox
-              v-model="isSelec50tAll"
+              v-model="isSelectAll"
               dense
               hide-details
               class="ma-0"
@@ -65,7 +65,7 @@
                 :value="item.id"
               ></v-checkbox>
               <div>
-                <p class="mb-1 font-weight-bold">{{ value }}</p>
+                <p class="mb-1 font-weight-bold">{{ item.description }}</p>
                 <span class="font-italic txt-secondary--text"
                   >id: {{ item.id }}</span
                 >
@@ -161,12 +161,14 @@
           itemValue="id"
           class="mb-5"
           @input="handleSelectClick"
+          v-model="notificationObject.type"
         ></main-select>
         <v-lazy>
           <main-input
             v-show="notificationObject.type"
             label="Nội dung thông báo"
             type="textarea"
+            v-model.trim="notificationObject.note"
           ></main-input>
         </v-lazy>
       </template>
@@ -178,6 +180,7 @@
 import { mapGetters } from "vuex";
 import { numberToMoney } from "@/helpers/utils.helper";
 import { GET_ALL_INVOICES_ACTION } from "~/store/invoice/invoice.constants.js";
+import { ADD_NOTI_ACTION } from "~/store/notification/notification.constants";
 
 export default {
   components: {
@@ -199,9 +202,13 @@ export default {
     return {
       headers: [
         {
+          text: "",
+          value: "description",
+          sortable: false,
+        },
+        {
           text: "Tên học sinh",
           value: "name",
-          sortable: false,
         },
         {
           text: "BHYT",
@@ -239,6 +246,7 @@ export default {
       modalSendNotification: false,
       notificationObject: {
         type: null,
+        note: null,
       },
       modalSendNotification: false,
     };
@@ -282,15 +290,27 @@ export default {
     // handleCloseClick() {
 
     // },
-    handleNextClick() {
+    async handleNextClick() {
       this.modalSendNotification = !this.modalSendNotification;
-      this.notificationObject = {
-        type: null,
-      };
+
+      //For now, the notification type is "TUITION" ONLY and to parant "Khanh" ONLY
+      this.notificationObject.to = ["1"];
+      //handle add notification
+      await this.$store.dispatch(
+        ADD_NOTI_ACTION,
+        {
+          invoiceIds: this.selected,
+          type: this.notificationObject.type,
+          content: this.notificationObject.note,
+        }
+      );
+
       this.selected = [];
-      return this.$nuxt?.$toast?.success("Gửi thông báo thành cồng !", {
-        duration: 3000,
-      });
+      this.isSelectAll = false;
+
+      // this.$nuxt?.$toast?.success("Gửi thông báo thành cồng !", {
+      //   duration: 3000,
+      // });
     },
     handleSelectClick(invoiceNotificationTypeId) {
       this.notificationObject.type = invoiceNotificationTypeId;

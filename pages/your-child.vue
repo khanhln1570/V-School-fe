@@ -1,26 +1,28 @@
 <template>
-  <div class="px-xl-8">
-    <h6 class="my-5 display-6">Con của bạn:</h6>
-    <v-alert
-      v-for="(child, index) in yourChild"
-      :key="index"
-      outlined
-      class="mt-xl-5 mt-md-3 child-container pa-0 cursor-pointer"
-    >
-      <nuxt-link class="pa-4 d-block" :to="`students/${child.id}`">
-        <div class="d-flex justify-space-between">
-          <div class="ml-1 display-6 black--text">
-            <span
-              class="dot mr-2"
-              :class="child ? 'green' : 'red'"
-            ></span>
-            {{ child.name }}
+  <auth-card>
+    <div class="px-xl-8">
+      <h6 class="my-5 display-6">Con của bạn:</h6>
+      <v-alert
+        v-for="(child, index) in yourChild"
+        :key="index"
+        outlined
+        class="mt-xl-5 mt-md-3 child-container pa-0 cursor-pointer"
+      >
+        <nuxt-link class="pa-4 d-block" :to="`students/${child.id}`">
+          <div class="d-flex justify-space-between">
+            <div class="ml-1 display-6 black--text">
+              <span
+                class="dot mr-2"
+                :class="child ? 'green' : 'red'"
+              ></span>
+              {{ child.name }}
+            </div>
+            <span>{{ child.classcode }}</span>
           </div>
-          <span>{{ child.classcode }}</span>
-        </div>
-      </nuxt-link>
-    </v-alert>
-  </div>
+        </nuxt-link>
+      </v-alert>
+    </div>
+  </auth-card>
 </template>
 <script>
 import { GET_CHILD_ACTION } from "~/store/yourChild/yourChild.constants";
@@ -29,6 +31,10 @@ import { mapGetters } from "vuex";
 
 export default {
   layout: "auth",
+  components: {
+    AuthCard: () =>
+      import("@/components/auth-card/AuthCard.vue"),
+  },
   computed: {
     children() {
       return this.$store.state.yourChild.children;
@@ -47,10 +53,8 @@ export default {
           //this.$store.state.auth.currentUser.userId
           try {
             //get your child
-            if(value.accRole === "PARENT") {
-              await this.$store.dispatch(GET_CHILD_ACTION, 
-                value.phone
-              );
+            if(value.role === "PARENT") {
+              await this.$store.dispatch(GET_CHILD_ACTION, {params: {search: ''}});
             }
           } catch (e) {
             // console.log(e);

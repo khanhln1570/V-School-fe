@@ -7,6 +7,27 @@
     </page-header>
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
+      <template #tabRight>
+          <cus-icon-text-button
+            smallIcon
+            @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
+          >
+            <template #icon>
+              <img
+                src="@/assets/images/sendNotification.svg"
+                alt="sendNotification"
+                class="mr-2"
+              />
+              <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
+            </template>
+          </cus-icon-text-button>
+        <table-search
+          :search.sync="search"
+          placeHolder="Nhập tiêu đề, BHTY, lớp …"
+          @searchChange="handleChangeSearch"
+        ></table-search>
+      </template>
+
       <template #incoming>
         <main-table
           :showSearch="false"
@@ -20,22 +41,22 @@
           searchLabel="Search name or ID"
           :status="status"
         >
-          <template #header-studentName="{ header }">
+          <template #header-name="{ header }">
             <v-checkbox
-              v-model="isSelectAll"
+              v-model="isSelec50tAll"
               dense
               hide-details
               class="ma-0"
               @change="handleSelectAll"
             >
               <template #label>
-                <p class="mb-1 body-1 black--text font-weight-medium">
+                <span class="mb-1 black--text font-weight-medium">
                   {{ header.text }}
-                </p>
+                </span>
               </template>
             </v-checkbox>
           </template>
-          <template #studentName="{ value, item }">
+          <template #description="{ value, item }">
             <div class="d-flex">
               <v-checkbox
                 v-model="selected"
@@ -51,18 +72,15 @@
               </div>
             </div>
           </template>
-          <template #type="{ value }">
+          <template #BHYT="{ value }">
             <p class="mb-0 txt-active--text font-weight-regular">
-              {{ value.label }}
+              {{ value }}
             </p>
           </template>
-          <template #amount="{ value }">
+          <template #ammount="{ value }">
             <p class="mb-0 font-weight-regular">
               {{ numberToMoney(value) }}
             </p>
-          </template>
-          <template #description="{ value }">
-            <p class="mb-0 txt-success--text font-weight-regular">{{ value }}</p>
           </template>
 
           <template #action="{ item }">
@@ -90,7 +108,7 @@
           searchLabel="Search name or ID"
           :status="status"
         >
-          <template #studentName="{ value, item }">
+          <template #description="{ value, item }">
             <div class="d-flex">
               <v-checkbox
                 v-model="selected"
@@ -106,12 +124,12 @@
               </div>
             </div>
           </template>
-          <template #type="{ value }">
+          <template #BHYT="{ value }">
             <p class="mb-0 txt-active--text font-weight-medium">
-              {{ value.label }}
+              {{ value }} {{ value }}
             </p>
           </template>
-          <template #unit="{ value }">
+          <template #ammount="{ value }">
             <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
           </template>
 
@@ -159,6 +177,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { numberToMoney } from "@/helpers/utils.helper";
+import { GET_ALL_INVOICES_ACTION } from "~/store/invoice/invoice.constants.js";
 
 export default {
   components: {
@@ -181,28 +200,25 @@ export default {
       headers: [
         {
           text: "Tên học sinh",
-          value: "studentName",
+          value: "name",
           sortable: false,
         },
         {
-          text: "Loại phí",
-          value: "type",
+          text: "BHYT",
+          value: "BHYT",
         },
         {
           text: "Số tiền",
-          value: "amount",
+          value: "ammount",
         },
         {
-          text: "Nội dung",
-          value: "description",
-        },
-        {
-          text: "Đơn vị",
-          value: "unit",
+          text: "Lớp",
+          value: "className",
         },
         {
           text: "",
           value: "action",
+          sortable: false,
         },
       ],
       tabItem: [
@@ -224,6 +240,7 @@ export default {
       notificationObject: {
         type: null,
       },
+      modalSendNotification: false,
     };
   },
   computed: {
@@ -241,7 +258,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch("invoice/getInvoices", params);
+      await this.$store.dispatch("invoice/getInvoicesByToken", params);
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

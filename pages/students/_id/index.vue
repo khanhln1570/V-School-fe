@@ -15,16 +15,19 @@
           />
         </template>
         <template #subTitle>
-          <p class="txt-secondary--text">
+          <p class="txt-secondary--text mb-0">
             {{ currentChild.classcode }}
             <!-- {{ currentChild.schoolId }} -->
+          </p>
+          <p class="txt-active--text">
+            BHYT: {{ currentChild.BHYT }}
           </p>
         </template>
       </page-header>
       <main-tabs :items="items">
         <template #tabRight>
           <nuxt-link
-            v-if="currentUser.accRole === 'PARENT'"
+            v-if="currentUser.role === 'PARENT'"
             class="d-flex align-center"
             :class="
               selectedInvoiceId.length
@@ -45,14 +48,13 @@
         </template>
 
         <template #invoices>
-          <div class="mt-10">
+          <div class="mt-10" v-if="invoiceTypes">
             <div v-for="(type, index) in invoiceTypes" :key="index">
               <invoice-group
                 :invoiceType="type"
-                :invoices="getCurrentChildInvoicesByType(type.id)"
+                :invoices="getCurrentChildInvoices"
                 :headers="headers"
                 @selected="handleSelectedChange"
-                v-if="getCurrentChildInvoicesByType(type.id).length"
               ></invoice-group>
             </div>
           </div>
@@ -67,6 +69,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { arrayToQuery } from "@/helpers/utils.helper";
+import { GET_CHILD_BY_ID, GET_ALL_INVOICES_OF_CHILD } from "~/store/yourChild/yourChild.constants";
 
 export default {
   components: {
@@ -79,18 +82,19 @@ export default {
     ...mapGetters({
       invoiceTypes: "invoice/getInvoiceTypes",
       currentChild: "yourChild/getCurrentChild",
-      getCurrentChildInvoicesByType: "yourChild/getCurrentChildInvoicesByType",
+      getCurrentChildInvoices: "yourChild/getCurrentChildInvoices",
       currentUser: "auth/getCurrentUser",
     }),
     // invoices() {
     //   return this.$store.state.invoices.invoices;
     // },
     selectedInvoiceId() {
-      return this.selectedInvoice.reduce((accumulator, currentValue) => {
-        currentValue.values.forEach((id) => accumulator.push(id));
-        // return accumulator + currentValue.values.length
-        return accumulator;
-      }, []);
+      // return this.selectedInvoice.reduce((accumulator, currentValue) => {
+      //   currentValue.values.forEach((id) => accumulator.push(id));
+      //   // return accumulator + currentValue.values.length
+      //   return accumulator;
+      // }, []);
+      return [];
     },
     handleCheckoutSelect() {
       let string = arrayToQuery(this.selectedInvoiceId);
@@ -99,8 +103,12 @@ export default {
   },
   async created() {
     await this.$store.dispatch(
-      "yourChild/setCurrentChild",
-      this.$route.params.id
+      GET_CHILD_BY_ID,
+      {id: this.$route.params.id}
+    );
+    await this.$store.dispatch(
+      GET_ALL_INVOICES_OF_CHILD,
+      { params: {bhyt: this.currentChild.BHYT} }
     );
   },
   data() {
@@ -124,11 +132,11 @@ export default {
       headers: [
         {
           text: "Số tiền",
-          value: "total",
+          value: "ammount",
         },
         {
-          text: "Ghi chú",
-          value: "note",
+          text: "Tháng",
+          value: "month",
         },
         {
           text: "",

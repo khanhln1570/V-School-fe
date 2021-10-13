@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #677694;
+        stroke-width: 5px;
+      }
+
+      .cls-2 {
+        fill: #677694;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_2867" data-name="Group 2867" transform="translate(-396.664 -553)">
+    <g id="Rectangle_16166" data-name="Rectangle 16166" class="cls-1" transform="translate(396.664 553)">
+      <rect class="cls-3" width="180" height="180" rx="90"/>
+      <rect class="cls-4" x="2.5" y="2.5" width="175" height="175" rx="87.5"/>
+    </g>
+    <g id="school" transform="translate(426.664 573)">
+      <g id="Group_2899" data-name="Group 2899">
+        <g id="Group_2898" data-name="Group 2898">
+          <path id="Path_3341" data-name="Path 3341" class="cls-2" d="M118,48H84V42a2,2,0,0,0-.824-1.618L62,24.982V18H84a2,2,0,0,0,2-2V4a2,2,0,0,0-2-2H62a2,2,0,0,0-4,0V24.982l-21.176,15.4A2,2,0,0,0,36,42v6H2a2,2,0,0,0-2,2v68a2,2,0,0,0,2,2H118a2,2,0,0,0,2-2V50A2,2,0,0,0,118,48ZM62,6H82v8H62ZM36,116H4V52H36Zm32,0H52V96H68Zm12,0H72V94a2,2,0,0,0-2-2H50a2,2,0,0,0-2,2v22H40V43.018L60,28.472,80,43.018Zm36,0H84V52h32Z"/>
+          <rect id="Rectangle_16167" data-name="Rectangle 16167" class="cls-2" width="8" height="4" transform="translate(10 58)"/>
+          <rect id="Rectangle_16168" data-name="Rectangle 16168" class="cls-2" width="8" height="4" transform="translate(22 58)"/>
+          <rect id="Rectangle_16169" data-name="Rectangle 16169" class="cls-2" width="8" height="4" transform="translate(10 66)"/>
+          <rect id="Rectangle_16170" data-name="Rectangle 16170" class="cls-2" width="8" height="4" transform="translate(22 66)"/>
+          <rect id="Rectangle_16171" data-name="Rectangle 16171" class="cls-2" width="8" height="4" transform="translate(10 74)"/>
+          <rect id="Rectangle_16172" data-name="Rectangle 16172" class="cls-2" width="8" height="4" transform="translate(22 74)"/>
+          <rect id="Rectangle_16173" data-name="Rectangle 16173" class="cls-2" width="8" height="4" transform="translate(10 82)"/>
+          <rect id="Rectangle_16174" data-name="Rectangle 16174" class="cls-2" width="8" height="4" transform="translate(22 82)"/>
+          <rect id="Rectangle_16175" data-name="Rectangle 16175" class="cls-2" width="8" height="4" transform="translate(10 90)"/>
+          <rect id="Rectangle_16176" data-name="Rectangle 16176" class="cls-2" width="8" height="4" transform="translate(22 90)"/>
+          <rect id="Rectangle_16177" data-name="Rectangle 16177" class="cls-2" width="8" height="4" transform="translate(90 58)"/>
+          <rect id="Rectangle_16178" data-name="Rectangle 16178" class="cls-2" width="8" height="4" transform="translate(102 58)"/>
+          <rect id="Rectangle_16179" data-name="Rectangle 16179" class="cls-2" width="8" height="4" transform="translate(90 66)"/>
+          <rect id="Rectangle_16180" data-name="Rectangle 16180" class="cls-2" width="8" height="4" transform="translate(102 66)"/>
+          <rect id="Rectangle_16181" data-name="Rectangle 16181" class="cls-2" width="8" height="4" transform="translate(90 74)"/>
+          <rect id="Rectangle_16182" data-name="Rectangle 16182" class="cls-2" width="8" height="4" transform="translate(102 74)"/>
+          <rect id="Rectangle_16183" data-name="Rectangle 16183" class="cls-2" width="8" height="4" transform="translate(90 82)"/>
+          <rect id="Rectangle_16184" data-name="Rectangle 16184" class="cls-2" width="8" height="4" transform="translate(102 82)"/>
+          <rect id="Rectangle_16185" data-name="Rectangle 16185" class="cls-2" width="8" height="4" transform="translate(90 90)"/>
+          <rect id="Rectangle_16186" data-name="Rectangle 16186" class="cls-2" width="8" height="4" transform="translate(102 90)"/>
+          <path id="Path_3342" data-name="Path 3342" class="cls-2" d="M184,198a14,14,0,1,0,14-14A14.016,14.016,0,0,0,184,198Zm24,0a10,10,0,1,1-10-10A10,10,0,0,1,208,198Z" transform="translate(-138 -138)"/>
+          <path id="Path_3343" data-name="Path 3343" class="cls-2" d="M220,214h-4v4h8V208h-4Z" transform="translate(-162 -156)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

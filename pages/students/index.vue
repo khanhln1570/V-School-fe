@@ -37,24 +37,11 @@
             </template>
           </cus-icon-text-button>
         </download-excel>
-        <cus-icon-text-button
-          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
-        >
-          <template #icon>
-          <label for="excelUpload" class="d-flex cursor-pointer">
-            <img
-              src="@/assets/images/excelImport.svg"
-              alt="sendNotification"
-              class="mr-2"
-            />
-            <p class="mb-0 d-flex align-center black--text">Nhập excel</p>
-          </label>
-          </template>
-        </cus-icon-text-button>
+
         <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles" ref="inputFile">
         <table-search
           :search.sync="search"
-          placeHolder="Hãy nhập gì đó …"
+          placeHolder="Nhập tên, BHTY, lớp …"
           @searchChange="handleChangeSearch"
         ></table-search>
       </template>
@@ -80,9 +67,9 @@
               @change="handleSelectAll"
             >
               <template #label>
-                <p class="mb-1 body-1 black--text font-weight-medium">
+                <span class="mb-1 black--text font-weight-medium">
                   {{ header.text }}
-                </p>
+                </span>
               </template>
             </v-checkbox>
           </template>
@@ -112,6 +99,11 @@
               {{value}}
             </p>
           </template>
+          <template #parentPhone="{ item }">
+          <p class="mb-0 txt-success--text">
+              {{ item.parent.phone }}
+            </p>
+          </template>
 
           <template #action="{ item }">
             <text-button
@@ -130,7 +122,7 @@
       @closeClick="modalSendNotification = false"
       @nextClick="handleNextClick"
       persistent
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Gủi thông báo phí thu</h4>
       </template>
@@ -159,7 +151,7 @@
       @closeClick="uploadFile.uploading = false"
       persistent
       hideAction
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Nhập Excel</h4>
       </template>
@@ -191,8 +183,8 @@
             {{ uploadFile.response && uploadFile.response.message || 'Xin vui lòng chờ giây lát, file đang được xử lý ...'}}
           </p>
 
-          <div 
-            v-if="uploadFile.response && uploadFile.response.listFailed" 
+          <div
+            v-if="uploadFile.response && uploadFile.response.listFailed"
             class="mt-5 d-flex flex-column justify-content-center align-items-center"
           >
             <p class="mt-2 font-weight-regular text-center" v-for="(student, index) in uploadFile.response.listFailed">
@@ -209,7 +201,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { GET_CHILD_BY_MST_ACTION, ADD_STUDENT_BY_EXCEL } from "~/store/yourChild/yourChild.constants";
+import { GET_CHILD_BY_MST_ACTION, ADD_STUDENT_BY_EXCEL, GET_ALL_CHILD } from "~/store/yourChild/yourChild.constants";
 import { ADD_ACTION } from "~/store/notification/notification.constants";
 
 export default {
@@ -296,9 +288,10 @@ export default {
     // this.$store.dispatch(GET_PROFILE_ACTION);
     await this.$store.dispatch(
       GET_CHILD_BY_MST_ACTION,
-      {mst: this.currentUser.MST, param: {
+      {param: {
         limit: 10,
         page: 1,
+        search: '',
       }}
     );
   },
@@ -307,7 +300,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch(GET_CHILD_BY_MST_ACTION, {mst: this.currentUser.MST, params: {page: params.page, limit: params.size}});
+      await this.$store.dispatch(GET_CHILD_BY_MST_ACTION, {mst: this.currentUser.MST, params: {page: params.page, limit: params.size, search: params.search}});
     },
     handleChangeSearch(event) {
       this.search = event.target.value;
@@ -339,7 +332,7 @@ export default {
           this.notificationObject
         );
       });
-      
+
       this.selected = [];
       this.isSelectAll = false;
     },
@@ -349,7 +342,7 @@ export default {
     async previewFiles(e) {
       let data;
       var files = e.target.files, f = files[0];
-      
+
       this.uploadFile.uploading = true;
       let formData = new FormData();
       console.log(f);

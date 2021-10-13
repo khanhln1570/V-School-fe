@@ -52,8 +52,6 @@
 }
 
 .v-list--dense .v-list-item .v-list-item__title {
-  @include text-size-1rem;
-  @include font-regular;
 }
 
 .v-list-item--link:before {
@@ -91,8 +89,6 @@
 }
 
 .v-data-table > .v-data-table__wrapper > table > tbody > tr > td {
-  @include text-size-1rem;
-  @include font-medium;
 }
 
 .v-data-table > .v-data-table__wrapper > table > tbody > tr > td:first-child {

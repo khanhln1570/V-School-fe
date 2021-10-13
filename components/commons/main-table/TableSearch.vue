@@ -53,7 +53,6 @@ export default {
 .tableSearch {
   &__input {
     padding: 0 0.5rem;
-    @include font-medium;
     border-left: 1px solid #76839e;
   }
 

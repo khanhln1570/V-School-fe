@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5.935" height="10.136" viewBox="0 0 5.935 10.136">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0080ff;
+      }
+    </style>
+  </defs>
+  <g id="back" transform="translate(-54.113 0.067)">
+    <path id="Chevron_Right" class="cls-1" d="M54.259,5.358l4.5,4.5s.7.484,1.089,0a.621.621,0,0,0,0-.857L55.971,4.984l3.875-3.89a.666.666,0,0,0,0-.945c-.456-.486-1.09,0-1.09,0l-4.5,4.5A.51.51,0,0,0,54.259,5.358Z" transform="translate(0)"/>
+  </g>
+</svg>

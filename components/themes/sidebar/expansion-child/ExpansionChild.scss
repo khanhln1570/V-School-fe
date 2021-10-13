@@ -1,7 +1,6 @@
 .expansion {
 
     &__title {
-      @include font-semi-bold;
       color: #677694;
     }
   
@@ -12,7 +11,6 @@
           color: white;
   
           .expansion__body__item__title {
-            @include font-bold;
           }
         }
         &__title {
@@ -27,7 +25,6 @@
         background-color: rgb(55,74,114) !important;
 
         .v-list-item__title {
-          @include font-bold;
         }
       }
     }

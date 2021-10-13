@@ -2,7 +2,7 @@ const sidebarItems = [
   {
     role: 'all',
     title: "Summary",
-    to: "/",
+    to: "/dashboard",
     id: "summary"
   },
   {
@@ -21,13 +21,13 @@ const sidebarItems = [
       title: 'Quản Lý',
       id: 'management',
       items: [
+        // {
+        //   title: "Phí thu",
+        //   to: "/invoices",
+        //   role: "PARENT"
+        // },
         {
           title: "Phí thu",
-          to: "/invoices",
-          role: "PARENT"
-        },
-        {
-          title: "Phí thu (incoming)",
           to: "/invoicesSchool",
           role: "SCHOOL"
         },

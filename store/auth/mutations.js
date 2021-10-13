@@ -34,7 +34,7 @@ export default {
       if (state.currentUser.accRole === "PARENT") {
         this.$router.push('/your-child');
       } else {
-        this.$router.push('/');
+        this.$router.push('/dashboard');
       }
     }
   },

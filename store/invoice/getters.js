@@ -20,4 +20,7 @@ export default {
   getPendingInvoice(state) {
     return state.invoices.filter(invoice => invoice.status === 'PENDING');
   },
+  getCurrentInvoice(state) {
+    return state.currentInvoice;
+  }, 
 };

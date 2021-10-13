@@ -4,7 +4,7 @@ import errorHandle from '@/helpers/errorHandle.helper';
 export default {
   async getStudentsByPhone({ commit, dispatch }, payload) {
     try {
-      const response = await this.$api.yourChild.getStudentsByPhone(payload);
+      const response = await this.$api.yourChild.getAllStudents(payload);
 
       if (response.data.ok) {
         commit(SET_CHILD_MUTATION, response.data.data);
@@ -14,9 +14,34 @@ export default {
     }
   },
 
-  async getStudentsByMST({ commit, dispatch }, payload) {
+  async getStudentById({ commit, dispatch }, payload) {
     try {
-      const response = await this.$api.yourChild.getStudentsByMST(payload);
+      const response = await this.$api.yourChild.getStudentById(payload);
+
+      if (response.data.ok) {
+        commit('setCurrentChild', response.data.data);
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
+  async getCurrentChildInvoices({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.yourChild.getAllInvoicesByChild(payload);
+
+      if (response.data.ok) {
+        commit('setCurrentChildInvoices', response.data.data);
+      }
+    } catch (error) {
+      console.log("getCurrentChildInvoices");
+      errorHandle(error);
+    }
+  },
+
+  async getAllStudents({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.yourChild.getAllStudents(payload);
 
       if (response.data.ok) {
         commit(SET_CHILD_MUTATION, response.data.data);
@@ -41,19 +66,5 @@ export default {
       // console.log(error.response.data);
       return error.response.data;
     }
-  },
-
-  
-
-  async setCurrentChild({ commit, sdispatch, state }, payload) {
-    commit("setCurrentChild", state.yourChild.find(child => child.id === Number.parseInt(payload)));
-    // try {
-    //   const response = await this.$api.auth.login(payload);
-    //   if (response.data.ok) {
-    //     commit("setAuth", { ...response.data.data });
-    //   }
-    // } catch (error) {
-    //   throw error;
-    // }
   },
 };

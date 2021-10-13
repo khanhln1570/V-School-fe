@@ -12,7 +12,6 @@
   transition: background-color ease-in-out .3s;
 
   p {
-    @include font-medium;
   }
 
   &--depressed {

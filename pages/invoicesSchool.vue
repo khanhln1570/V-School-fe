@@ -8,6 +8,19 @@
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
+          <cus-icon-text-button
+            smallIcon
+            @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
+          >
+            <template #icon>
+              <img
+                src="@/assets/images/sendNotification.svg"
+                alt="sendNotification"
+                class="mr-2"
+              />
+              <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
+            </template>
+          </cus-icon-text-button>
         <table-search
           :search.sync="search"
           placeHolder="Nhập tiêu đề, BHTY, lớp …"
@@ -28,18 +41,18 @@
           searchLabel="Search name or ID"
           :status="status"
         >
-          <template #header-description="{ header }">
+          <template #header-name="{ header }">
             <v-checkbox
-              v-model="isSelectAll"
+              v-model="isSelec50tAll"
               dense
               hide-details
               class="ma-0"
               @change="handleSelectAll"
             >
               <template #label>
-                <p class="mb-1 body-1 black--text font-weight-medium">
+                <span class="mb-1 black--text font-weight-medium">
                   {{ header.text }}
-                </p>
+                </span>
               </template>
             </v-checkbox>
           </template>
@@ -199,8 +212,8 @@ export default {
           value: "ammount",
         },
         {
-          text: "BHYT",
-          value: "BHYT",
+          text: "Lớp",
+          value: "className",
         },
         {
           text: "",
@@ -227,6 +240,7 @@ export default {
       notificationObject: {
         type: null,
       },
+      modalSendNotification: false,
     };
   },
   computed: {

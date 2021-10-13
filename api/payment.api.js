@@ -8,4 +8,7 @@ export default (axios, resource) => ({
   getPublicStudentBHYT(payload) {
     return axios.get(resource.getPublicStudentBHYT, {params: payload.params});
   },
+  addBillPublic(payload) {
+    return axios.post(resource.addBillPublic, payload);
+  }
 });

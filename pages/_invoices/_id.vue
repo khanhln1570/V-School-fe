@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <page-header title="Phí thu" :backTo="currentUser.role === 'SCHOOL' ? '/invoicesSchool': '/invoices/' ">
+      <page-header title="Phí thu" :backTo="currentUser.role === 'SCHOOL' ? '/invoicesSchool' : ''">
         <template #titleIcon></template>
         <template #subTitle></template>
       </page-header>
@@ -64,6 +64,7 @@ export default {
           value: "personal",
         },
       ],
+      from: '',
     };
   },
   async fetch() {
@@ -71,7 +72,18 @@ export default {
       "invoice/getCurrentInvoice",
       {id: this.$route.params.id}
     );
+    console.log(this);
+    this.form = this.prevRoute.path;
   },
+  beforeRouteEnter(to, from, next) {
+    console.log(from);
+    next(vm => {
+      vm.prevRoute = from
+    })
+  },
+  // mounted() {
+  //   console.log("route", this.$route);
+  // },
   methods: {
     numberToMoney: numberToMoney,
   },

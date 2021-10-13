@@ -4,7 +4,7 @@
       <h3 class="mb-5">Thanh toán hoá đơn thành công</h3>
       <img width="100px" src="@/assets/images/checked.svg" alt="checked">
     </div>
-    <div class="d-flex flex-column justify-center align-center mt-5" v-else>
+    <div class="d-flex flex-column justify-center align-center mt-5" v-else-if="$route.query.status=== 'fail'">
       <h3 class="mb-5">Thanh toán hoá đơn thất bại</h3>
       <img width="100px" src="@/assets/images/cancel.svg" alt="cancel">
     </div>
@@ -15,21 +15,27 @@
 <script>
 export default {
   layout: "auth",
-  middleware: "",
   components: {
   },
   data() {
     return {
+      data: ''
     };
   },
   methods: {
   },
+  mounted() {
+    console.log('okay');
+  },
+  created() {
+    console.log('okay', this.$route);
+    console.log('okay', this.data);
+  },
   fetch() {
-    console.log(this.$route.query.status);
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../__styles/auth.scss";
+@import "../../__styles/auth.scss";
 </style>

@@ -28,8 +28,8 @@
             <div
               class="signin-container d-flex justify-center flex-column-reverse flex-md-row-reverse"
             >
-              <div 
-                class="px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column" 
+              <div
+                class="px-xl-10 pt-md-15 h-100 d-flex justify-space-around align-center flex-column"
                 style="min-height: 100vh;"
                 >
                 <v-lazy min-width='100%'>
@@ -47,7 +47,7 @@
         </div>
       </v-container>
     </v-main>
-    <text-button :elevation="5" :text="false" :to="btn.to" class="fixed__btn pa-5 " :color="btn.color" :dark="btn.dark" v-if="btn.show"> 
+    <text-button :elevation="5" :text="false" :to="btn.to" class="fixed__btn pa-5 " :color="btn.color" :dark="btn.dark" v-if="btn.show">
       <span class="text-capitalize font-weight-bold">{{btn.title}}</span>
     </text-button>
   </v-app>
@@ -78,7 +78,7 @@ export default {
   watch: {
     "$route.name": {
       handler: function (name) {
-        console.log("name", name);
+        // console.log("name", name);
         if (name === 'payment') {
           this.btn.show = false
         }

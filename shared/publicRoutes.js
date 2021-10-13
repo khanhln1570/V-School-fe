@@ -1,1 +1,1 @@
-export const publicRoutes = ['index', 'payment', 'whatMybhyt'];
+export const publicRoutes = ['index', 'payment', 'whatMybhyt', 'payment-result'];

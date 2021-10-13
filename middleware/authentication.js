@@ -7,13 +7,14 @@ export default async function ({ isHMR, app, store, route, redirect }) {
   }
 
   // pass public routes
+  // console.log('route.name', route.name);
   if (publicRoutes.includes(route.name)) {
     return true;
   }
 
   const isLoggedIn = app.$cookies.get(AUTH_TOKEN_KEY);
   const currentUser = store.state.auth.currentUser;
-  console.log(route);
+  // console.log(route);
   const excludeRoutes = ['signin', 'reset-password', 'reset-password-token', 'payment-result'];
   if (!isLoggedIn) {
     if (excludeRoutes.includes(route.name)) {

@@ -1,7 +1,6 @@
 .header {
   &__input {
     width: 350px;
-    @include font-medium;
     padding-right: .5rem;
   }
 

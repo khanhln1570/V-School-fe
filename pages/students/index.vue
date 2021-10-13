@@ -37,7 +37,7 @@
             </template>
           </cus-icon-text-button>
         </download-excel>
-        
+
         <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles" ref="inputFile">
         <table-search
           :search.sync="search"
@@ -67,9 +67,9 @@
               @change="handleSelectAll"
             >
               <template #label>
-                <p class="mb-1 body-1 black--text font-weight-medium">
+                <span class="mb-1 black--text font-weight-medium">
                   {{ header.text }}
-                </p>
+                </span>
               </template>
             </v-checkbox>
           </template>
@@ -183,8 +183,8 @@
             {{ uploadFile.response && uploadFile.response.message || 'Xin vui lòng chờ giây lát, file đang được xử lý ...'}}
           </p>
 
-          <div 
-            v-if="uploadFile.response && uploadFile.response.listFailed" 
+          <div
+            v-if="uploadFile.response && uploadFile.response.listFailed"
             class="mt-5 d-flex flex-column justify-content-center align-items-center"
           >
             <p class="mt-2 font-weight-regular text-center" v-for="(student, index) in uploadFile.response.listFailed">
@@ -332,7 +332,7 @@ export default {
           this.notificationObject
         );
       });
-      
+
       this.selected = [];
       this.isSelectAll = false;
     },
@@ -342,7 +342,7 @@ export default {
     async previewFiles(e) {
       let data;
       var files = e.target.files, f = files[0];
-      
+
       this.uploadFile.uploading = true;
       let formData = new FormData();
       console.log(f);

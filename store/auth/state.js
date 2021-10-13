@@ -1,4 +1,4 @@
 export default () => ({
   isLoggedIn: false,
-  currentUser: {  }
+  currentUser: {}
 });

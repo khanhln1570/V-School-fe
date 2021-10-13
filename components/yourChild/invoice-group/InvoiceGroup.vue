@@ -106,5 +106,5 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./InvoiceGroup.scss" scoped>
+<style lang="scss" src="" scoped>
 </style>

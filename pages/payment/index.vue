@@ -49,9 +49,9 @@
           >
             Tiếp tục
           </text-button>
-          <text-button 
-            @click.native="handleCancelClick" 
-            color="red" 
+          <text-button
+            @click.native="handleCancelClick"
+            color="red"
             small
             >
             Huỷ giao dịch
@@ -74,7 +74,7 @@
             >
             <invoice-row
               v-for="(item, index) in invoices"
-              :invoice="item.invoice"
+              :invoice="item"
               :key="index"
               :headers="headers"
               >
@@ -118,9 +118,9 @@
           >
             Tiếp tục
           </text-button>
-          <text-button 
-            @click.native="step -= 1" 
-            color="red" 
+          <text-button
+            @click.native="step -= 1"
+            color="red"
             small
             >
             Quay lại
@@ -151,7 +151,7 @@
                     :ripple="false"
                     class="mb-1"
                     ></v-checkbox>
-                  <img class="mb-1" width="80%" src="@/assets/images/Viettel_logo_2021.svg" alt="viettel"> 
+                  <img class="mb-1" width="80%" src="@/assets/images/Viettelpay-Red.svg" alt="viettel">
                   <span class="text-center">Cổng thanh toán Viettel</span>
                 </v-card>
               </v-col>
@@ -166,9 +166,9 @@
           >
             Tiếp tục
           </text-button>
-          <text-button 
-            @click.native="step -= 1" 
-            color="red" 
+          <text-button
+            @click.native="step -= 1"
+            color="red"
             small
             >
             Quay lại
@@ -203,16 +203,16 @@
           </v-card>
         <text-button
             color="primary"
-            @click.native="step = 4"
+            @click.native="onSubmit"
             small
             :text="false"
             :disabled="$v.form.$invalid ? true : false"
           >
             Thanh toán
           </text-button>
-          <text-button 
-            @click.native="step -= 1" 
-            color="red" 
+          <text-button
+            @click.native="step -= 1"
+            color="red"
             small
             >
             Quay lại
@@ -246,16 +246,20 @@
               <p>Số điện thoại phụ huynh: </p>
               <p class="font-weight-bold text-right">{{currentInvoice.tel1}}</p>
           </div>
-          
+
         </template>
       </main-modal>
     </div>
   </auth-card>
+  <div v-else>
+    <v-btn to="/" color="primary" class="mt-5 mx-auto">Trang chủ</v-btn>
+  </div>
 </template>
 
 <script>
 import { payment } from "~/validations/payment/payment.validate";
 import { LOG_IN_ACTION, GET_PROFILE_ACTION } from "~/store/auth/auth.constants";
+import { ADD_BIlL_PUBLIC_ACTION } from "~/store/payment/payment.constants";
 import { mapGetters } from "vuex";
 import { numberToMoney } from '@/helpers/utils.helper';
 
@@ -277,7 +281,7 @@ export default {
       getCurrentCustomer: "payment/getCurrentCustomer",
     }),
     invoices() {
-      return this.getCurrentCustomer?.invoice_mapping;
+      return this.getCurrentCustomer?.invoice;
     },
     total() {
       // console.log('this.selectedInvoices', this.selectedInvoices);
@@ -285,8 +289,8 @@ export default {
       let checkedInvoices = [];
       this.invoices.filter((item) => {
         this.selectedInvoices.map(selectedId => {
-          if(selectedId === item.invoice.id) {
-            checkedInvoices.push(item.invoice);
+          if(selectedId === item.id) {
+            checkedInvoices.push(item);
           }
         })
       })
@@ -327,9 +331,9 @@ export default {
     form: payment,
   },
   created() {
-    if(!this.getCurrentCustomer) {
-      this.$router.push('/');
-    }
+    // if(!this.getCurrentCustomer) {
+    //   this.$router.push('/');
+    // }
   },
   methods: {
     async onSubmit() {
@@ -341,18 +345,20 @@ export default {
 
       // do your submit logic here
       this.loading = true;
-      // try {
-      //   await this.$store.dispatch(LOG_IN_ACTION, {
-      //     ...this.form,
-      //   });
-      //   // await this.$store.dispatch(GET_PROFILE_ACTION);
-      // } catch (error) {
-      //   this.message = "";
-      // } finally {
-      //   this.loading = false;
-      // }
+      try {
+        const result = await this.$store.dispatch(ADD_BIlL_PUBLIC_ACTION, {
+            listInvoice: this.selectedInvoices,
+            phone: this.form.phone
+          });
+        // await this.$store.dispatch(GET_PROFILE_ACTION);
+      } catch (error) {
+        this.message = "";
+      } finally {
+        this.loading = false;
+      }
       this.loading = false;
-      this.$router.push('/payment');
+      // this.$router.push('/payment');
+
     },
     handleCancelClick() {
       this.$router.push('/')
@@ -363,7 +369,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./__styles/auth.scss";
+@import ".././__styles/auth.scss";
 .v-stepper--vertical {
   box-shadow: none;
 }

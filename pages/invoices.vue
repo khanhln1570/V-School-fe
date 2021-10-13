@@ -19,24 +19,14 @@
         <!-- <p v-for="(invoice, index) in invoices" :key="index">{{ invoice }}</p> -->
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
-            <invoice-manage-group
-              :invoices="getInvoiceByType(type.id)"
-              :invoiceType="type"
-              :headers="headers"
-            >
-            </invoice-manage-group>
+            
           </div>
         </div>
       </template>
       <template #history>
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
-            <invoice-manage-group
-              :invoices="getInvoiceByType(type.id)"
-              :invoiceType="type"
-              :headers="headers"
-            >
-            </invoice-manage-group>
+            
           </div>
         </div>
       </template>
@@ -50,10 +40,6 @@ import { GET_INVOICES_ACTION } from "@/store/invoice/invoice.constants";
 
 export default {
   components: {
-    InvoiceManageGroup: () =>
-      import(
-        "@/components/invoice-manage/invoice-manage-group/InvoiceManageGroup"
-      ),
     MainTable: () => import("@/components/commons/main-table/MainTable"),
     TableSearch: () => import("@/components/commons/main-table/TableSearch"),
     PageHeader: () => import("@/components/commons/page-header/PageHeader"),

@@ -169,8 +169,12 @@ export default {
     },
     currentUser: {
       handler: async function (value) {
-        // console.log("change", value);
-        if (value.id) {
+        // console.log(value);
+        //get your child
+        // console.log("GET_CHILD_ACTION");
+        await this.$store.dispatch(GET_CHILD_ACTION, {params: {search: ''}});
+        if (value.id && this.$fire) {
+          // console.log("value", value.role === "PARENT");
           //get notification
           //this.$store.state.auth.currentUser.userId
           const messageRef = this.$fire.firestore
@@ -210,5 +214,5 @@ export default {
 };
 </script>
 
-<style lang="scss" src="@/assets/scss/container.scss">
+<style lang="scss" src="">
 </style>

@@ -80,7 +80,7 @@
     <main-modal
       :modal="modalNotification"
       @closeClick="modalNotification = false"
-      @nextClick="handleNextClick"
+      @nextClick="handleNextClick()"
       persistent
     >
       <template #modalHeader>
@@ -154,7 +154,7 @@ export default {
       this.modalNotification = !this.modalNotification;
 
       //simulator for next action
-      this.$router.push('/students/1');
+      this.$router.push(`/students/${this.currentNotification.studentID}`);
       return this.$nuxt?.$toast?.success("Thực hiện yêu cầu thành công", {
         duration: 3000,
       });

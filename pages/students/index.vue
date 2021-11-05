@@ -25,6 +25,21 @@
           </cus-icon-text-button>
         </download-excel>
 
+        <cus-icon-text-button
+          @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
+        >
+          <template #icon>
+          <label for="excelUpload" class="d-flex cursor-pointer">
+            <img
+              src="@/assets/images/excelImport.svg"
+              alt="sendNotification"
+              class="mr-2"
+            />
+            <p class="mb-0 d-flex align-center black--text">Nhập excel</p>
+          </label>
+          </template>
+        </cus-icon-text-button>
+
         <input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display:none" @change="previewFiles" ref="inputFile">
         <table-search
           :search.sync="search"

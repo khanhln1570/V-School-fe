@@ -361,7 +361,7 @@ export default {
 
     },
     handleCancelClick() {
-      this.$router.push('/')
+      this.$router.back()
     },
     numberToMoney: numberToMoney
   },

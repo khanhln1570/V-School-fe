@@ -36,6 +36,7 @@
           hide-details
           dense
           :ripple="false"
+          v-show="showCheckBox"
           v-if="item.status !== 'SUCCESS' && currentUser && currentUser.role === 'PARENT'"
         ></v-checkbox>
         <p class="mb-0 txt-success--text font-weight-bold" v-else-if="currentUser.role === 'PARENT'">Đã thu</p>
@@ -71,6 +72,10 @@ export default {
     invoiceType: {
       type: Object,
       default: null,
+    },
+    showCheckBox: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {

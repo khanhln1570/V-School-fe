@@ -29,19 +29,14 @@
           <nuxt-link
             v-if="currentUser.role === 'PARENT'"
             class="d-flex align-center"
-            :class="
-              selectedInvoiceId.length
-                ? 'txt-active--text'
-                : 'txt-secondary--text'
-            "
-            :to="selectedInvoiceId.length ? handleCheckoutSelect : '#'"
-            >({{ selectedInvoiceId.length || 0 }}) Thanh toán
+            :class="'txt-active--text'"
+            :to="'/payment'"
+            @click.native="onCheckout"
+            >Thanh toán hoá đơn
             <v-icon
               size="20"
               class="mb-0 ml-2"
-              :color="
-                selectedInvoiceId.length ? 'txt-active' : 'txt-secondary--text'
-              "
+              :color="'txt-active'"
               >mdi-arrow-right</v-icon
             >
           </nuxt-link>
@@ -54,6 +49,7 @@
                 :invoiceType="type"
                 :invoices="getCurrentChildInvoices"
                 :headers="headers"
+                :showCheckBox="false"
                 @selected="handleSelectedChange"
               ></invoice-group>
             </div>
@@ -70,6 +66,7 @@
 import { mapGetters } from "vuex";
 import { arrayToQuery } from "@/helpers/utils.helper";
 import { GET_CHILD_BY_ID, GET_ALL_INVOICES_OF_CHILD } from "~/store/yourChild/yourChild.constants";
+import { GET_CUSTOMER_DETAILS_ACTION } from "~/store/payment/payment.constants";
 
 export default {
   components: {
@@ -154,6 +151,17 @@ export default {
           type.values = item.values;
         }
       });
+    },
+    async onCheckout() {
+      try {
+        await this.$store.dispatch(GET_CUSTOMER_DETAILS_ACTION, {
+          BHYT: this.currentChild.BHYT
+        });
+        this.$router.push('/payment');
+      } catch (error) {
+        this.message = "";
+      } finally {
+      }
     },
   },
   mounted() {

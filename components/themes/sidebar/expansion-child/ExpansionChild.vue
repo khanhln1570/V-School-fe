@@ -4,13 +4,11 @@
     v-if="item.role === currentUser.role || item.role === 'all'"
   >
     <div v-if="item.group">
-      <v-expansion-panel-header
-        color="bg-sidebar pl-8 text-uppercase expansion__title"
-      >
+      <v-expansion-panel-header color="bg-sidebar pl-8 text-uppercase expansion__title">
         <template v-slot:actions>
           <v-icon color="icon-secondary"> $expand </v-icon> </template
-        >{{ item.group.title }}</v-expansion-panel-header
-      >
+        >{{ item.group.title }}
+      </v-expansion-panel-header>
       <v-expansion-panel-content color="bg-sidebar expansion__body">
         <v-list dense>
           <v-list-item-group color="primary">

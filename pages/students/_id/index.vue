@@ -105,7 +105,7 @@ export default {
     );
     await this.$store.dispatch(
       GET_ALL_INVOICES_OF_CHILD,
-      { params: {bhyt: this.currentChild.BHYT} }
+      { params: {search: this.currentChild.BHYT} }
     );
   },
   data() {

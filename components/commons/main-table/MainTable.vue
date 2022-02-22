@@ -170,7 +170,7 @@ export default {
     },
     getRequestParams(search, page, pageSize, status) {
       let params = {};
-      
+
       params["search"] = "";
       if (search) {
         params["search"] = search;
@@ -275,7 +275,7 @@ export default {
         this.perpage,
         this.status
       );
-      await this.fetchItems(params);
+      await this.fetchItems({...params, limit: this.perpage});
     },
   },
   beforeDestroy() {

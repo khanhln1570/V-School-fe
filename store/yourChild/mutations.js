@@ -14,4 +14,7 @@ export default {
   setCurrentChildInvoices(state, invoices) {
     state.currentChildInvoices = invoices;
   },
+  clearCurrentChildInvoices(state) {
+    state.currentChildInvoices = null;
+  },
 };

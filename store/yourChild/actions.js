@@ -34,6 +34,7 @@ export default {
         commit('setCurrentChildInvoices', response.data.data);
       }
     } catch (error) {
+      commit('clearCurrentChildInvoices');
       console.log("getCurrentChildInvoices");
       errorHandle(error);
     }

@@ -10,7 +10,7 @@
       <template #tabRight>
           <cus-icon-text-button
             smallIcon
-            @click.native="selected.length ? modalSendNotification = !modalSendNotification :''"
+            @click.native="selected.length ? modalSendNotification = true : modalSendNotification = false"
           >
             <template #icon>
               <img
@@ -149,7 +149,7 @@
       @closeClick="modalSendNotification = false"
       @nextClick="handleNextClick"
       persistent
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Gủi thông báo phí thu</h4>
       </template>
@@ -239,6 +239,7 @@ export default {
         },
       ],
       selected: [],
+      selectedBHYT: [],
       search: "",
       invoicesStatus: ["SUCCESS", "PENDING"],
       status: "SUCCESS",
@@ -266,6 +267,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
+      console.log("fetchItems", params);
       await this.$store.dispatch("invoice/getInvoicesByToken", params);
     },
     handleChangeSearch(event) {
@@ -282,6 +284,7 @@ export default {
       if (this.isSelectAll) {
         this.invoices.map((invoice) => {
           this.selected.push(invoice.id);
+          this.selectedBHYT.push(invoice.BHYT);
         });
       } else {
       }
@@ -295,6 +298,10 @@ export default {
 
       //For now, the notification type is "TUITION" ONLY and to parant "Khanh" ONLY
       this.notificationObject.to = ["1"];
+
+      //Get BHYT selected invoices
+
+
       //handle add notification
       await this.$store.dispatch(
         ADD_NOTI_ACTION,
@@ -315,6 +322,9 @@ export default {
     handleSelectClick(invoiceNotificationTypeId) {
       this.notificationObject.type = invoiceNotificationTypeId;
     },
+  },
+  beforeDestroy() {
+    this.$router.replace({'query': null});
   },
   watch: {
     "$route.query.tab": {

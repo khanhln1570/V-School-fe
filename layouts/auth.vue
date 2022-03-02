@@ -39,16 +39,22 @@
             </div>
           </div>
           <div class="rules pa-2">
-            <span class="pr-5 white--text" style="border-right: 1px solid"
-              >Chính sách</span
+            <nuxt-link to="#" class="pr-5 white--text" style="border-right: 1px solid"
+              >Chính sách</nuxt-link
             >
-            <span class="pl-4 white--text">Điều khoản</span>
+            <nuxt-link to="#" class="pl-4 pr-5 white--text" style="border-right: 1px solid"
+              >Điều khoản</nuxt-link
+            >
+            <nuxt-link to="/about" class="pl-4 white--text">Về chúng tôi</nuxt-link>
           </div>
         </div>
       </v-container>
     </v-main>
     <text-button :elevation="5" :text="false" :to="btn.to" class="fixed__btn pa-5 " :color="btn.color" :dark="btn.dark" v-if="btn.show">
       <span class="text-capitalize font-weight-bold">{{btn.title}}</span>
+    </text-button>
+    <text-button :elevation="5" :text="false" to='/about' class="fixed__btn2 pa-5 " color='red' dark="true">
+      <span class="text-capitalize font-weight-bold">Về chúng tôi</span>
     </text-button>
   </v-app>
 </template>

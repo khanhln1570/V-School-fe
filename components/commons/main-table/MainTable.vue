@@ -202,7 +202,7 @@ export default {
         this.perpage,
         this.status
       );
-      await this.fetchItems(params);
+      await this.fetchItems({...params, limit: this.perpage});
 
       this.loading = false;
       if (this.firstLoad) this.firstLoad = false;

@@ -13,6 +13,7 @@
     :large="large"
     :small="small"
     :class="[large ? 'btn-font' : '', dark ? 'white--text' : '']"
+    :height="height"
   >
     <slot> </slot>
   </v-btn>
@@ -73,6 +74,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    height: {
+      type: [Number, String],
+      default: 45,
+    }
   },
   data: () => {
     return {

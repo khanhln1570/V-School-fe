@@ -1,0 +1,22 @@
+.bg-color {
+    position: relative;
+    background-color: #031B4D;
+}
+
+.bg-white {
+    position: relative;
+    background-color: #ffffff;
+}
+
+.bg-purple {
+    position: relative;
+    background-color: #F5F5FF;
+}
+
+/* Using SCSS variables to store breakpoints */
+$breakpoint-mobile: 600px;
+@media (max-width: $breakpoint-mobile) {
+    #img15 {
+        width: 400px
+    }
+}

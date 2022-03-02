@@ -67,6 +67,18 @@
 	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 }
 
+.fixed__btn2{
+    position: fixed;
+    right: 13%;
+    top: 10%;
+    animation: float 4s ease-out infinite;
+
+    box-sizing: border-box;
+	border: 5px white solid;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+}
+
 /* Using SCSS variables to store breakpoints */
 $breakpoint-mobile: 600px;
 @media (max-width: $breakpoint-mobile) {

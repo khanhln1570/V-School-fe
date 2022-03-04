@@ -8,19 +8,6 @@
 
     <main-tabs :items="tabItem" @changeTab="handleChangeTab">
       <template #tabRight>
-          <cus-icon-text-button
-            smallIcon
-            @click.native="selected.length ? modalSendNotification = true : modalSendNotification = false"
-          >
-            <template #icon>
-              <img
-                src="@/assets/images/sendNotification.svg"
-                alt="sendNotification"
-                class="mr-2"
-              />
-              <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
-            </template>
-          </cus-icon-text-button>
         <table-search
           :search.sync="search"
           placeHolder="Nhập tiêu đề, BHTY, lớp …"
@@ -32,7 +19,7 @@
         <main-table
           :showSearch="false"
           :headers="headers"
-          :items="invoices"
+          :items="bills"
           :count="count"
           :showPagination="true"
           @selected-items="getSelectedItem"
@@ -40,6 +27,7 @@
           :search="search"
           searchLabel="Search name or ID"
           :status="status"
+          :showFooter="false"
         >
           <template #header-description="{ header }">
             <v-checkbox
@@ -56,16 +44,10 @@
               </template>
             </v-checkbox>
           </template>
-          <template #description="{ value, item }">
+          <template #MST="{ value, item }">
             <div class="d-flex">
-              <v-checkbox
-                v-model="selected"
-                dense
-                hide-details
-                :value="item.id"
-              ></v-checkbox>
               <div>
-                <p class="mb-1 font-weight-bold">{{ item.description }}</p>
+                <p class="mb-1 font-weight-bold">{{ item.MST }}</p>
                 <span class="font-italic txt-secondary--text"
                   >id: {{ item.id }}</span
                 >
@@ -86,7 +68,7 @@
           <template #action="{ item }">
             <text-button
               @click.native="handleViewClick(item)"
-              :to="`/invoices/${item.id}`"
+              :to="`/bills/${item.id}`"
               small
             >
               <p class="mb-0">Chi tiết</p>
@@ -95,54 +77,6 @@
         </main-table>
       </template>
 
-      <template #history>
-        <main-table
-          :showSearch="false"
-          :headers="headers"
-          :items="invoices"
-          :count="count"
-          :showPagination="true"
-          @selected-items="getSelectedItem"
-          :fetchItems="fetchItems"
-          :search="search"
-          searchLabel="Search name or ID"
-          :status="status"
-        >
-          <template #description="{ value, item }">
-            <div class="d-flex">
-              <v-checkbox
-                v-model="selected"
-                dense
-                hide-details
-                :value="item.id"
-              ></v-checkbox>
-              <div>
-                <p class="mb-1">{{ value }}</p>
-                <span class="font-italic txt-secondary--text"
-                  >id: {{ item.id }}</span
-                >
-              </div>
-            </div>
-          </template>
-          <template #BHYT="{ value }">
-            <p class="mb-0 txt-active--text font-weight-medium">
-              {{ value }} {{ value }}
-            </p>
-          </template>
-          <template #ammount="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
-          </template>
-
-          <template #action="{ item }">
-            <text-button
-              @click.native="handleViewClick(item)"
-              :to="`/schools/${item.id}`"
-            >
-              <p class="mb-0 font-weight-medium">View</p>
-            </text-button>
-          </template>
-        </main-table>
-      </template>
     </main-tabs>
     <main-modal
       :modal="modalSendNotification"
@@ -203,24 +137,20 @@ export default {
       headers: [
         {
           text: "",
-          value: "description",
+          value: "MST",
           sortable: false,
         },
         {
-          text: "Tên học sinh",
-          value: "name",
-        },
-        {
-          text: "BHYT",
-          value: "BHYT",
+          text: "Trạng thái",
+          value: "status",
         },
         {
           text: "Số tiền",
-          value: "ammount",
+          value: "amount",
         },
         {
-          text: "Lớp",
-          value: "className",
+          text: "Ngày tạo",
+          value: "createDate",
         },
         {
           text: "",
@@ -230,12 +160,8 @@ export default {
       ],
       tabItem: [
         {
-          label: "Chưa thu",
+          label: "Thanh toán",
           value: "incoming",
-        },
-        {
-          label: "Đã  thu",
-          value: "history",
         },
       ],
       selected: [],
@@ -255,6 +181,7 @@ export default {
     ...mapGetters({
       count: "invoice/getCountInvoice",
       invoices: "invoice/getInvoices",
+      bills: "bill/getBills",
       getInvoiceTypes: "invoice/getInvoiceTypes",
     }),
   },
@@ -267,7 +194,7 @@ export default {
     },
     async fetchItems(params) {
       console.log("fetchItems", params);
-      await this.$store.dispatch("invoice/getInvoicesByToken", params);
+      await this.$store.dispatch("bill/getBills", params);
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

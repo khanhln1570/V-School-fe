@@ -8,7 +8,7 @@
       <h3 class="mb-5">Thanh toán hoá đơn thất bại</h3>
       <img width="100px" src="@/assets/images/cancel.svg" alt="cancel">
     </div>
-    <v-btn to="/" color="primary" class="mt-5 mx-auto">Trang chủ</v-btn>
+    <v-btn to="/dashboard" color="primary" class="mt-5 mx-auto">Trang chủ</v-btn>
   </div>
 </template>
 

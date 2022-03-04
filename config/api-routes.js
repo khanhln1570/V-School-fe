@@ -11,7 +11,11 @@ export default {
     getProfile: "/profile",
     getInvoiceById:"/invoices/:id",
     getAllInvoices:"/invoices",
-    getAllInvoicesByChild:"/invoices",
+    getAllInvoicesByChild: "/invoices",
+
+    //Bill
+    getAllBills: "/bills/getAllByToken",
+    getBillDetails: "/bills/:id",
 
 
     //school

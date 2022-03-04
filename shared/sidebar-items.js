@@ -1,6 +1,6 @@
 const sidebarItems = [
   {
-    role: 'all',
+    role: 'SCHOOL',
     title: "Summary",
     to: "/dashboard",
     id: "summary"
@@ -11,7 +11,7 @@ const sidebarItems = [
       title: 'Con của bạn',
       id: 'your-child',
       items: [
-        
+
       ]
     }
   },
@@ -21,11 +21,11 @@ const sidebarItems = [
       title: 'Quản Lý',
       id: 'management',
       items: [
-        // {
-        //   title: "Phí thu",
-        //   to: "/invoices",
-        //   role: "PARENT"
-        // },
+        {
+          title: "Thanh toán",
+          to: "/bills",
+          role: "PARENT"
+        },
         {
           title: "Phí thu",
           to: "/invoicesSchool",
@@ -53,10 +53,6 @@ const sidebarItems = [
         {
           title: "Cài đặt",
           to: "/settings",
-        },
-        {
-          title: "Về chúng tôi",
-          to: "/lp",
         },
       ]
     }

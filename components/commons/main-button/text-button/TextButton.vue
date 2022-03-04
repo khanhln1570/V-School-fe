@@ -71,7 +71,7 @@ export default {
       default: false,
     },
     dark: {
-      type: Boolean,
+      type: [Boolean, String],
       default: false,
     },
     height: {

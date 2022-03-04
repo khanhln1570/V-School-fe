@@ -48,7 +48,7 @@
     </v-row>
 
     <v-divider class="my-6"></v-divider>
-    
+
     <div>
       <v-row>
         <v-col md="3">
@@ -106,11 +106,11 @@ export default {
           count: 485
         },
         {
-          label: 'Hoá đơn chưa nộp',
+          label: 'Hoá đơn đã thu',
           count: 5
         },
         {
-          label: 'Tổng số phụ huynh',
+          label: 'Hoá đơn chưa thu',
           count: 485
         },
       ],
@@ -136,10 +136,11 @@ export default {
     };
   },
   methods: {
-    
+
   },
   async fetch() {
     // await this.$store.dispatch(GET_PROFILE_ACTION);
+    if(this.currentUser.role === "PARENT") this.$router.push('/your-child')
   }
 };
 </script>

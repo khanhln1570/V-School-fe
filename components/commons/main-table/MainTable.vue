@@ -64,6 +64,7 @@
     </v-data-table>
 
     <table-footer
+      :showFooter="showFooter"
       :perpage="perpage"
       :footerSelectItem="
         footerSelectItem.length ? footerSelectItem : limitTable
@@ -93,6 +94,10 @@ export default {
       default: 0,
     },
     showSearch: {
+      type: Boolean,
+      default: true,
+    },
+    showFooter: {
       type: Boolean,
       default: true,
     },

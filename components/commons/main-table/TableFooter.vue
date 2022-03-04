@@ -1,5 +1,5 @@
 <template>
-  <v-container class="max-width px-0">
+  <v-container class="max-width px-0" v-if="showFooter">
     <v-row
       no-gutters
       align="center"
@@ -41,6 +41,10 @@ export default {
   },
   props: {
     showPagination: {
+      type: Boolean,
+      default: true,
+    },
+    showFooter: {
       type: Boolean,
       default: true,
     },

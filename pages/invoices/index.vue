@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <page-header title="Niên khoá 2020-2021">
+    <page-header title="Phí thu niên khoá 2020-2021">
       <template #titleIcon>
         <!-- <img src="@/assets/images/school.svg" alt="school" /> -->
       </template>
@@ -19,14 +19,14 @@
         <!-- <p v-for="(invoice, index) in invoices" :key="index">{{ invoice }}</p> -->
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
-            
+
           </div>
         </div>
       </template>
       <template #history>
         <div class="mt-10">
           <div v-for="(type, index) in invoiceTypes" :key="index">
-            
+
           </div>
         </div>
       </template>

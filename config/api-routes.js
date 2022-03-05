@@ -30,6 +30,9 @@ export default {
     addStudentsByExcel: "/students",
     getStudentById: "/students/:id",
 
+    //parent
+    getParents: "/parents",
+
     //notification
     setNotificationRead: "/notifications",
     addNotificationRead: "/notifications",

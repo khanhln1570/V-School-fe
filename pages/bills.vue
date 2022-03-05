@@ -64,6 +64,11 @@
               {{ numberToMoney(value) }}
             </p>
           </template>
+          <template #createDate="{ value }">
+            <p class="mb-0 font-weight-regular">
+              {{ moment(value).format('DD-MM-YYYY') }}
+            </p>
+          </template>
 
           <template #action="{ item }">
             <text-button
@@ -115,6 +120,7 @@ import { mapGetters } from "vuex";
 import { numberToMoney } from "@/helpers/utils.helper";
 import { GET_ALL_INVOICES_ACTION } from "~/store/invoice/invoice.constants.js";
 import { ADD_NOTI_ACTION } from "~/store/notification/notification.constants";
+import moment from "moment";
 
 export default {
   components: {
@@ -175,6 +181,7 @@ export default {
         note: null,
       },
       modalSendNotification: false,
+      moment: moment,
     };
   },
   computed: {

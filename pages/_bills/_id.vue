@@ -50,9 +50,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getInvoiceById: "invoice/getInvoiceById",
       currentUser: "auth/getCurrentUser",
-      currentInvoice: "invoice/getCurrentInvoice",
       currentBill: "bill/getCurrentBill",
     }),
   },

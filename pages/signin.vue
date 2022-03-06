@@ -17,7 +17,7 @@
         </template>
       </group-validator>
       <group-validator class="mt-xl-1" :validation="$v.form.password">
-        <template slot-scope="{ errors }">  
+        <template slot-scope="{ errors }">
           <label>Mật khẩu <span class="red--text">*</span></label>
           <main-input
             placeholder=""

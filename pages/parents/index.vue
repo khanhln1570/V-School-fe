@@ -73,7 +73,7 @@
           <template #action="{ item }">
             <text-button
               @click.native="handleViewClick(item)"
-              :to="`/bills/${item.id}`"
+              :to="`/parents/${item.id}`"
               small
             >
               <p class="mb-0">Chi tiết</p>

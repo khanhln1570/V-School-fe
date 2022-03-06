@@ -32,6 +32,7 @@ export default {
 
     //parent
     getParents: "/parents",
+    getParentDetails: "/parents/:id",
 
     //notification
     setNotificationRead: "/notifications",

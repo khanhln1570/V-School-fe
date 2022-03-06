@@ -1,13 +1,13 @@
 <template>
   <v-container class="invoiceGroup pa-0 mb-10">
-    <v-row no-gutters class="">
+    <v-row no-gutters class="ml-5">
       <v-col
         v-for="(item, index) in headersAfter"
         :key="index"
         class="invoiceGroup__header__item mb-3"
-        :cols="index === headersAfter.length - 1 ? 1 : null"
+        :cols="headersAfter.length"
       >
-        <span :class="{ 'ml-3': index === 1 }">
+        <span :class="{ 'margin-big': index === 1 }">
           {{ item.text }}
         </span>
         <span v-if="index === 0 && invoices">({{ invoices.length }})</span>
@@ -112,4 +112,14 @@ export default {
 </script>
 
 <style lang="scss" src="" scoped>
+.margin-big {
+  margin-left: 115px !important;
+}
+
+$breakpoint-mobile: 600px;
+@media (max-width: $breakpoint-mobile) {
+.margin-big {
+  margin-left: 0px !important;
+}
+}
 </style>

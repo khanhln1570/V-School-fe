@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <page-header title="Phí thu" :backTo="currentUser.role === 'SCHOOL' ? '/invoicesSchool' : ''">
+      <page-header :title="`Chi tiết hoá đơn ${currentBill.id}`" :backTo="currentUser.role === 'SCHOOL' ? '/invoicesSchool' : ''">
         <template #titleIcon></template>
         <template #subTitle></template>
       </page-header>
@@ -11,25 +11,64 @@
             <div class="d-flex justify-space-between">
               <div class="col-5 pa-0">
                 <h2 class="font-weight-medium">
-                  {{ currentBill.MST }}
+                  {{ currentBill.id }}
                 </h2>
                 <!-- <p class="blue--text">{{ currentBill.expiry }}</p> -->
                 <div class="d-flex flex-column">
-                  <span class="">Hoá đơn số: {{ currentBill.id }}</span>
-                  <span class="">Trạng thái: {{ currentBill.status }}</span>
+                  <span class="">Ngày thực hiện: {{ moment(currentBill.createDate).format('DD-MM-YYYY') }}</span>
+                  <span class="">Trạng thái:
+                  <v-chip
+                    class="ma-2 "
+                    :color="currentBill.status === 'pending' ? 'yellow' : 'green'"
+                    small
+                  >
+                    {{ currentBill.status }}
+                  </v-chip></span>
                 </div>
               </div>
-
-              <div v-if="currentBill.status === 'pending'" class="col-3 pa-0 font-weight-medium text-right orange--text">
-                Chưa thanh toán
+              <div>
+                <h3 class="text-right">
+                  <span class="font-weight-medium align-center">Tổng cộng: </span>
+                  <span class="font-weight-regular">{{ numberToMoney(currentBill.amount) }} (VND)</span>
+                </h3>
+                <div v-if="currentBill.status === 'pending'" class="pa-0 font-weight-medium text-right orange--text">
+                  Chưa thanh toán
+                </div>
+                <div v-if="currentBill.status === 'success'" class="pa-0 font-weight-medium text-right success--text">
+                  Đã thanh toán
+                </div>
               </div>
-              <div v-if="currentBill.status === 'success'" class="col-3 pa-0 font-weight-medium text-right success--text">
-                Đã thanh toán
+            </div>
+          </v-card>
+        </template>
+        <template #personal2>
+          <v-card outlined class="rounded-lg mt-6 px-10 py-4" v-if="currentBill">
+            <div class="d-flex justify-space-between" v-for="(item, index) in currentBill.bill_mapping_history"
+              :key="index">
+              <div class="col-5 pa-0">
+                <h2 class="font-weight-medium">
+                  {{ item.invoiceId }}
+                </h2>
+                <!-- <p class="blue--text">{{ currentBill.expiry }}</p> -->
+                <div class="d-flex flex-column">
+                  <span class="">Trạng thái:
+                  <v-chip
+                    class="ma-2 "
+                    :color="item.status === 'pending' ? 'yellow' : 'green'"
+                    small
+                  >
+                    {{ item.status }}
+                  </v-chip></span>
+                </div>
               </div>
-              <h3 class="text-right col-4">
-                <span class="font-weight-medium align-center">Tổng cộng: </span>
-                <span class="font-weight-regular">{{ numberToMoney(currentBill.amount) }} (VND)</span>
-              </h3>
+              <div>
+                <div v-if="item.status === 'pending'" class="pa-0 font-weight-medium text-right orange--text">
+                  Chưa thanh toán
+                </div>
+                <div v-if="item.status === 'success'" class="pa-0 font-weight-medium text-right success--text">
+                  Đã thanh toán
+                </div>
+              </div>
             </div>
           </v-card>
         </template>
@@ -42,6 +81,7 @@
 import { mapGetters } from "vuex";
 import { numberToMoney } from '@/helpers/utils.helper';
 import { GET_INVOICE_BY_ID } from "~/store/invoice/invoice.constants.js";
+import moment from "moment";
 
 export default {
   components: {
@@ -58,8 +98,12 @@ export default {
     return {
       items: [
         {
-          label: "Chi tiết phí thu",
+          label: "Tổng quan",
           value: "personal",
+        },
+        {
+          label: "phí thu thuộc hoá đơn",
+          value: "personal2",
         },
       ],
       from: '',
@@ -84,6 +128,7 @@ export default {
   // },
   methods: {
     numberToMoney: numberToMoney,
+    moment: moment,
   },
 };
 </script>

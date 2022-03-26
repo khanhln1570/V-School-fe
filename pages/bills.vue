@@ -47,12 +47,21 @@
           <template #MST="{ value, item }">
             <div class="d-flex">
               <div>
-                <p class="mb-1 font-weight-bold">{{ item.MST }}</p>
-                <span class="font-italic txt-secondary--text"
-                  >id: {{ item.id }}</span
-                >
+                <p class="mb-1 font-weight-bold">{{ item.id }}</p>
               </div>
             </div>
+          </template>
+          status
+          <template #status="{ value }">
+            <p class="mb-0 txt-active--text font-weight-regular">
+              <v-chip
+                class="ma-2 "
+                :color="value === 'pending' ? 'yellow' : 'green'"
+                small
+              >
+                {{ value }}
+              </v-chip>
+            </p>
           </template>
           <template #BHYT="{ value }">
             <p class="mb-0 txt-active--text font-weight-regular">
@@ -142,7 +151,7 @@ export default {
     return {
       headers: [
         {
-          text: "",
+          text: "ID",
           value: "MST",
           sortable: false,
         },

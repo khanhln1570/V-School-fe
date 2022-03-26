@@ -2,6 +2,7 @@ export default {
   api: {
     // getInfoByCode: '/info/:code',
     login: "/login",
+    updateProfile:"/updateProfile",
 
 
     //invoice

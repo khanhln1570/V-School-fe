@@ -126,7 +126,7 @@
           </template>
           <template #BHYT="{ value }">
             <p class="mb-0 txt-active--text font-weight-medium">
-              {{ value }} {{ value }}
+              {{ value }}
             </p>
           </template>
           <template #ammount="{ value }">
@@ -240,7 +240,7 @@ export default {
       ],
       selected: [],
       search: "",
-      invoicesStatus: ["SUCCESS", "PENDING"],
+      invoicesStatus: ["chuathu", "dathu"],
       status: "SUCCESS",
       isSelectAll: false,
       modalSendNotification: false,

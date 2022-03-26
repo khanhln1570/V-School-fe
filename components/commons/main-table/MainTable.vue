@@ -176,7 +176,7 @@ export default {
     getRequestParams(search, page, pageSize, status) {
       let params = {};
 
-      params["search"] = "";
+      // params["search"] = "";
       if (search) {
         params["search"] = search;
       }
@@ -192,6 +192,7 @@ export default {
       if (status) {
         params["status"] = status;
       }
+
 
       return params;
     },

@@ -70,10 +70,10 @@
         <h4 class="mb-0 subtitle">Thay đổi thông tin cá nhân</h4>
       </template>
       <template #modalBody>
-        <main-input :value="currentUser.name" label="Tên"></main-input>
-        <main-input :value="currentUser.email" label="Email"></main-input>
-        <main-input :value="`waiting to update DB`" label="Số điện thoại"></main-input>
-        <main-input :value="currentUser.address" label="Địa chỉ"></main-input>
+        <main-input :placeholder="currentUser.name" label="Tên" v-model.trim="form.name"></main-input>
+        <main-input :placeholder="currentUser.email" label="Email" v-model.trim="form.email"></main-input>
+        <main-input :placeholder="currentUser.phone" label="Số điện thoại" :disabled="true"></main-input>
+        <main-input :placeholder="currentUser.address" label="Địa chỉ" v-model.trim="form.address"></main-input>
       </template>
     </main-modal>
   </v-container>
@@ -101,6 +101,11 @@ export default {
         },
       ],
       modalUpdateProfile: false,
+      form: {
+        name: '',
+        email: '',
+        address: '',
+      }
     };
   },
   computed: {
@@ -110,14 +115,11 @@ export default {
   },
   mounted() {},
   methods: {
-    handleNextClick() {
+    async handleNextClick() {
       this.modalUpdateProfile = !this.modalUpdateProfile;
-      return this.$nuxt?.$toast?.success(
-        "Yêu cầu đổi thông tin của bạn đã được gửi ^^",
-        {
-          duration: 3000,
-        }
-      );
+      await this.$store.dispatch("auth/updateProfile", {
+        ...this.form,
+      });
     },
   },
 };

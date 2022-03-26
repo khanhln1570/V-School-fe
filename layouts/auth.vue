@@ -42,10 +42,10 @@
             <nuxt-link to="#" class="pr-5 white--text" style="border-right: 1px solid"
               >Chính sách</nuxt-link
             >
-            <nuxt-link to="#" class="pl-4 pr-5 white--text" style="border-right: 1px solid"
+            <nuxt-link to="#" class="pl-4 pr-5 white--text" :style="!currentUser.role ? 'border-right: 1px solid' : ''"
               >Điều khoản</nuxt-link
             >
-            <nuxt-link to="/about" class="pl-4 white--text">Về chúng tôi</nuxt-link>
+            <nuxt-link to="/about" class="pl-4 white--text" v-if="!currentUser.role">Về chúng tôi</nuxt-link>
           </div>
         </div>
       </v-container>
@@ -53,7 +53,7 @@
     <text-button :elevation="5" :text="false" :to="btn.to" class="fixed__btn pa-5 " :color="btn.color" :dark="btn.dark" v-if="btn.show">
       <span class="text-capitalize font-weight-bold">{{btn.title}}</span>
     </text-button>
-    <text-button :elevation="5" :text="false" to='/about' class="fixed__btn2 pa-5 " color='red' dark="true">
+    <text-button v-if="!currentUser.role" :elevation="5" :text="false" to='/about' class="fixed__btn2 pa-5 " color='red' dark="true">
       <span class="text-capitalize font-weight-bold">Về chúng tôi</span>
     </text-button>
   </v-app>
@@ -61,6 +61,7 @@
 
 <script>
 import { publicRoutes } from '../shared/publicRoutes';
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -68,6 +69,11 @@ export default {
       import("@/components/auth-card/AuthCard.vue"),
     TextButton: () =>
       import("@/components/commons/main-button/text-button/TextButton"),
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: "auth/getCurrentUser",
+    }),
   },
   data() {
     return {

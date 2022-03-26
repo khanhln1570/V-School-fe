@@ -6,4 +6,8 @@ export default (axios, resource) => ({
   getProfile() {
     return axios.get(resource.getProfile);
   },
+
+  updateProfile(payload) {
+    return axios.post(resource.updateProfile, payload);
+  },
 });

@@ -32,4 +32,21 @@ export default {
     }
   },
 
+  async updateProfile({ commit, dispatch }, payload) {
+    // commit("setAuth", { token: 'fakeToken' });
+    try {
+      console.log("payload", payload);
+      const response = await this.$api.auth.updateProfile(payload);
+      if (response.data.ok) {
+        this.$toast.success(`Cập nhật thông tin thành công!`, {
+          duration: 3000
+        });
+      }
+      dispatch('getProfile')
+    } catch (error) {
+      // commit("clearAuth");
+      errorHandle(error);
+    }
+  },
+
 };

@@ -22,7 +22,7 @@ const sidebarItems = [
       id: 'management',
       items: [
         {
-          title: "Thanh toán",
+          title: "Hoá đơn",
           to: "/bills",
           role: "PARENT"
         },

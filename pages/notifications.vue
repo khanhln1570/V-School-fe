@@ -35,20 +35,16 @@
         <div class="notification__item__content">
           {{ notification.content }}
         </div>
-
-        <text-button color="black" @click.native="handleViewClick(notification)"
-          >View</text-button
-        >
         <div
-          class="notification__item__createAt"
+          class="notification__item__createAt col-4"
           v-if="isClient && notification.createAt"
         >
+        <text-button color="black" @click.native="handleViewClick(notification)">View</text-button>
           {{
             moment(
               moment.utc(notification.createAt.toDate()).valueOf()
             ).fromNow()
           }}
-          <!-- {{ notification.createAt.toDate() }} -->
         </div>
       </v-sheet>
     </div>
@@ -82,7 +78,7 @@
       @closeClick="modalNotification = false"
       @nextClick="handleNextClick()"
       persistent
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">{{ headerModalNotification }}</h4>
       </template>
@@ -96,7 +92,7 @@
       @closeClick="modalNotificationReadAll = false"
       @nextClick="handleNextClickReadAll"
       persistent
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Đánh dấu đã xem tất cả thông báo</h4>
       </template>

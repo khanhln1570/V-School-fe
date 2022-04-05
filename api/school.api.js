@@ -12,4 +12,7 @@ export default (axios, resource) => ({
   getSchoolDetails(payload) {
     return axios.get(resource.getSchoolDetails.replace(':id', payload));
   },
+  resetpassParent(payload) {
+    return axios.put(resource.resetpassParent, payload);
+  },
 });

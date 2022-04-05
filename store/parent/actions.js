@@ -25,4 +25,32 @@ export default {
       errorHandle(error);
     }
   },
+
+  async banParent({ commit, dispatch, state }, payload) {
+    try {
+      const response = await this.$api.parent.banParent(payload);
+      if (response.data.ok) {
+        this.$toast.success(`Khoá tài khoản ${response.data.data?.name} thành công!`, {
+          duration: 4000
+        });
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
+  async unbanParent({ commit, dispatch, state }, payload) {
+    try {
+      const response = await this.$api.parent.unbanParent(payload);
+      if (response.data.ok) {
+        this.$toast.success(`Mở khoá tài khoản ${response.data.data?.name} thành công!`, {
+          duration: 4000
+        });
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
+
 };

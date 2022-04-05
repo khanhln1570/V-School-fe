@@ -50,9 +50,14 @@
             </div>
           </template>
           <template #status="{ value, item }">
-            <p :class="'mb-0 txt-active--text font-weight-regular'">
-              {{ item.account.status }}
-            </p>
+            <v-chip
+              :class="'mb-0 white--text font-weight-regular' && item.account.status === 'ban' ? '':''"
+              :color="item.account.status === 'ban' ? 'red':'green'"
+              text-color="white"
+              >
+
+              {{ item.account.status === 'ban' ? 'cấm hoạt động' :  'hoạt động'}}
+            </v-chip>
           </template>
           <template #phone="{ value }">
             <p class="mb-0 txt-success--text font-weight-regular">

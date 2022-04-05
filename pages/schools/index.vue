@@ -8,18 +8,6 @@
 
     <main-tabs :items="tabItem">
       <template #tabRight>
-        <cus-icon-text-button>
-          <template #icon>
-            <img src="@/assets/images/ban-user.svg" alt="ban-user" class="mr-2">
-            <p class="mb-0 d-flex align-center black--text">Khoá tài khoản</p>
-          </template>
-        </cus-icon-text-button>
-        <cus-icon-text-button>
-          <template #icon>
-            <img src="@/assets/images/rotation-lock.svg" alt="ban-user" class="mr-2">
-            <p class="mb-0 d-flex align-center black--text">Đặt lại mật khẩu</p>
-          </template>
-        </cus-icon-text-button>
         <table-search :search.sync="search" placeHolder="Hãy nhập gì đó …" @searchChange="handleChangeSearch"></table-search>
       </template>
 
@@ -44,20 +32,23 @@
                 :value="item.id"
               ></v-checkbox>
               <div>
-                <p class="mb-1">{{ value }}</p>
+                <p class="mb-1">{{ item.account.name }}</p>
                 <span class="font-italic txt-secondary--text"
                   >id: {{ item.id }}</span
                 >
               </div>
             </div>
           </template>
-          <template #MST="{ value }">
-            <p class="mb-0 txt-success--text font-weight-medium">{{ value }}</p>
+          <template #MST="{ value, item }">
+            <p class="mb-0 txt-success--text font-weight-medium">{{ value, item }}</p>
           </template>
-          <template #phone="{ value }">
+          <template #phone="{ value, item }">
             <p class="mb-0 txt-active--text font-weight-medium">{{ value }}</p>
           </template>
-          <template #action="{ item }">
+          <template #address="{ value, item }">
+            <p class="mb-0 font-weight-medium">{{ item.account.address }}</p>
+          </template>
+          <template #action="{ value, item }">
               <text-button @click.native="handleViewClick(item)" :to="`/schools/${item.id}`">
                 <p class="mb-0 font-weight-medium">
                   View
@@ -113,10 +104,6 @@ export default {
         {
           label: "Bảng",
           value: "table",
-        },
-        {
-          label: "test",
-          value: "test",
         },
       ],
       selected: [],

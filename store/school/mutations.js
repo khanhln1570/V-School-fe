@@ -1,14 +1,15 @@
 export default {
   setSchools(state, item) {
     if (item) {
-      state.schools = item.data;
+      // console.log("item", item);
+      state.schools = item;
       state.countSchool = item.count;
     }
   },
 
   setSchoolDetails(state, item) {
     if (item) {
-      state.curentSchool = item.data;
+      state.currentSchool = item;
     }
   },
 };

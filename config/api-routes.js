@@ -22,6 +22,7 @@ export default {
     //school
     getSchools: "/schools",
     getSchoolDetails: "/schools/:id",
+    resetpassParent: "/schools/reset-password-user",
 
 
     //student
@@ -34,6 +35,8 @@ export default {
     //parent
     getParents: "/parents",
     getParentDetails: "/parents/:id",
+    banParent: "parents/:id/ban",
+    unbanParent: "parents/:id/unban",
 
     //notification
     setNotificationRead: "/notifications",

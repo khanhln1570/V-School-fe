@@ -39,11 +39,8 @@
             </div>
           </div>
           <div class="rules pa-2">
-            <nuxt-link to="#" class="pr-5 white--text" style="border-right: 1px solid"
+            <nuxt-link to="/policy" class="pr-5 white--text" style="border-right: 1px solid"
               >Chính sách</nuxt-link
-            >
-            <nuxt-link to="#" class="pl-4 pr-5 white--text" :style="!currentUser.role ? 'border-right: 1px solid' : ''"
-              >Điều khoản</nuxt-link
             >
             <nuxt-link to="/about" class="pl-4 white--text" v-if="!currentUser.role">Về chúng tôi</nuxt-link>
           </div>

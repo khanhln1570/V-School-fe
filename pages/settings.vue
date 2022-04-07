@@ -60,12 +60,25 @@
       </template>
     </main-tabs>
 
+    <!-- control tab for admin -->
+    <div class="d-flex flex-column col-md-3 pa-0 mt-10">
+      <text-button class="mb-5" @click.native="" color="primary" :text="false">
+        Cập nhật dữ liệu Phí Thu
+      </text-button>
+      <text-button class="mb-5" @click.native="" color="primary" :text="false">
+        Cập nhật dữ liệu Phụ Huynh
+      </text-button>
+      <text-button class="mb-5" @click.native="" color="primary" :text="false">
+        Cập nhật dữ liệu Học Sinh
+      </text-button>
+    </div>
+
     <main-modal
       :modal="modalUpdateProfile"
       @closeClick="modalUpdateProfile = false"
       @nextClick="handleNextClick"
       persistent
-    >
+      >
       <template #modalHeader>
         <h4 class="mb-0 subtitle">Thay đổi thông tin cá nhân</h4>
       </template>

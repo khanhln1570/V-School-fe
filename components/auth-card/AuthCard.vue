@@ -8,7 +8,7 @@
     :min-width="$vuetify.breakpoint.mobile ? '95%':'500px'"
     max-width='800px'
     >
-      <div class="d-flex justify-center align-center text-right">
+      <div class="d-flex justify-center align-center text-right" v-if="logo">
         <div class="">
           <div class="display-2 font-weight-normal logo-text">V-School</div>
           <div>
@@ -26,6 +26,10 @@ export default {
     clean: {
       type: Boolean,
       default: false,
+    },
+    logo: {
+      type: Boolean,
+      default: true,
     }
   }
 };

@@ -15,7 +15,7 @@ export default async function ({ isHMR, app, store, route, redirect }) {
   const isLoggedIn = app.$cookies.get(AUTH_TOKEN_KEY);
   const currentUser = store.state.auth.currentUser;
   // console.log(route);
-  const excludeRoutes = ['signin', 'reset-password', 'reset-password-token', 'payment-result', 'about'];
+  const excludeRoutes = ['signin', 'reset-password', 'reset-password-token', 'payment-result', 'about', 'policy', 'term'];
   if (!isLoggedIn) {
     if (excludeRoutes.includes(route.name)) {
       return true;

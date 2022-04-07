@@ -21,6 +21,19 @@
               <p class="mb-0 d-flex align-center black--text">Gửi thông báo</p>
             </template>
           </cus-icon-text-button>
+          <cus-icon-text-button
+            smallIcon
+            @click.native="selected.length ? modalSendNotification = true : modalSendNotification = false"
+          >
+            <template #icon>
+              <img
+                src="@/assets/images/refresh.png"
+                alt="sendNotification"
+                class="mr-2"
+              />
+              <p class="mb-0 d-flex align-center black--text">Cập nhật hoá đơn</p>
+            </template>
+          </cus-icon-text-button>
         <table-search
           :search.sync="search"
           placeHolder="Nhập tiêu đề, BHTY, lớp …"

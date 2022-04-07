@@ -33,10 +33,17 @@
                       <p class="text--secondary d-flex justify-space-between" >Trạng thái: <span :class="currentSchool.account.status === 'ban' ? 'red--text':'success--text'"> {{ currentSchool.account.status === 'ban' ? 'cấm hoạt động' : 'hoạt động' }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Ngày lập tài khoản: <span> {{ moment(currentSchool.account.createDate).format('DD-MM-YYYY') }}</span></p>
                     </div>
+
                   </div>
                 </div>
               </div>
               <div class="d-flex flex-column">
+                <text-button class="mb-5" @click.native="" color="primary" :text="false">
+                  Cập nhật dữ liệu Học Sinh
+                </text-button>
+                <text-button class="mb-5" @click.native="" color="primary" :text="false">
+                  Cập nhật dữ liệu Phụ Huynh
+                </text-button>
               </div>
             </div>
           </v-card>

@@ -9,7 +9,7 @@
         <template #personal>
           <v-card outlined class="rounded-lg mt-6 px-10 py-4" v-if="currentSchool">
             <div class="d-flex justify-space-between flex-column flex-md-row">
-              <div class="col-12 col-md-3 pa-0">
+              <div class="col-12 col-md-6 pa-0">
                 <h2 class="font-weight-medium">
                   {{ currentSchool.description }}
                 </h2>

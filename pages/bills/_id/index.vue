@@ -31,12 +31,6 @@
                   <span class="font-weight-medium align-center">Tổng cộng: </span>
                   <span class="font-weight-regular">{{ numberToMoney(currentBill.amount) }} (VND)</span>
                 </h3>
-                <div v-if="currentBill.status === 'pending'" class="pa-0 font-weight-medium text-right orange--text">
-                  Chưa thanh toán
-                </div>
-                <div v-if="currentBill.status === 'success'" class="pa-0 font-weight-medium text-right success--text">
-                  Đã thanh toán
-                </div>
               </div>
             </div>
           </v-card>
@@ -59,14 +53,6 @@
                   >
                     {{ item.status }}
                   </v-chip></span>
-                </div>
-              </div>
-              <div>
-                <div v-if="item.status === 'pending'" class="pa-0 font-weight-medium text-right orange--text">
-                  Chưa thanh toán
-                </div>
-                <div v-if="item.status === 'success'" class="pa-0 font-weight-medium text-right success--text">
-                  Đã thanh toán
                 </div>
               </div>
             </div>
@@ -102,7 +88,7 @@ export default {
           value: "personal",
         },
         {
-          label: "phí thu thuộc hoá đơn",
+          label: "Phí thu thuộc hoá đơn",
           value: "personal2",
         },
       ],

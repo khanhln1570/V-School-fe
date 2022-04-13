@@ -29,7 +29,7 @@
                       <p class="d-flex justify-space-between blue--text">Số điện thoại: <span> {{ currentSchool.phone }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Địa chỉ: <span class="d-block"> {{ currentSchool.account.address }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Email: <span> {{ currentSchool.account.email }}</span></p>
-                      <p class="text--secondary d-flex justify-space-between ">Tuổi: <span> {{ currentSchool.account.age }}</span></p>
+                      <p class="text--secondary d-flex justify-space-between ">Năm hoạt động: <span> {{ currentSchool.account.age }}</span></p>
                       <p class="text--secondary d-flex justify-space-between" >Trạng thái: <span :class="currentSchool.account.status === 'ban' ? 'red--text':'success--text'"> {{ currentSchool.account.status === 'ban' ? 'cấm hoạt động' : 'hoạt động' }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Ngày lập tài khoản: <span> {{ moment(currentSchool.account.createDate).format('DD-MM-YYYY') }}</span></p>
                     </div>

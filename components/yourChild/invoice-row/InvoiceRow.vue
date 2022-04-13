@@ -1,12 +1,12 @@
 <template>
-  <v-sheet 
-    elevation="0" 
+  <v-sheet
+    elevation="0"
     :class="['invoiceRow mb-2', {'px-5 py-3': mobile === true}]">
     <v-container class="d-flex justify-space-between align-center">
       <div
         v-for="(item, index) in headers"
         :key="index"
-        class="pa-0 d-flex align-center"
+        class="pa-0 d-flex align-center col-3"
         :class="{
           'd-flex justify-end': index === headers.length - 1,
         }"

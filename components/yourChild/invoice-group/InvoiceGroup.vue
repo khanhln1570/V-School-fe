@@ -1,13 +1,13 @@
 <template>
   <v-container class="invoiceGroup pa-0 mb-10">
-    <v-row no-gutters class="ml-5">
+    <v-row no-gutters class="ml-5 mr-15">
       <v-col
         v-for="(item, index) in headersAfter"
         :key="index"
         class="invoiceGroup__header__item mb-3"
-        :cols="headersAfter.length"
+        :cols="3"
       >
-        <span :class="{ 'margin-big': index === 1 }">
+        <span :class="{ '': index === 1 }">
           {{ item.text }}
         </span>
         <span v-if="index === 0 && invoices">({{ invoices.length }})</span>

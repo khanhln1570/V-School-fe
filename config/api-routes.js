@@ -47,5 +47,8 @@ export default {
     getPublicSchool: "/schools/public/noToken",
     getPublicStudentBHYT: "/students/public/noToken",
     addBillPublic: "/bills/noToken",
+
+    //Sync data
+    
   }
 }

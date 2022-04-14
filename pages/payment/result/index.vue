@@ -1,10 +1,10 @@
 <template>
   <div class="px-xl-8 d-flex flex-column justify-center">
-    <div class="d-flex flex-column justify-center align-center mt-5" v-if="$route.query.status=== 'success'">
+    <div class="d-flex flex-column justify-center align-center mt-5" v-if="$route.query.error_code === '00'">
       <h3 class="mb-5">Thanh toán hoá đơn thành công</h3>
       <img width="100px" src="@/assets/images/checked.svg" alt="checked">
     </div>
-    <div class="d-flex flex-column justify-center align-center mt-5" v-else-if="$route.query.status=== 'fail'">
+    <div class="d-flex flex-column justify-center align-center mt-5" v-else-if="$route.query.status !== '00'">
       <h3 class="mb-5">Thanh toán hoá đơn thất bại</h3>
       <img width="100px" src="@/assets/images/cancel.svg" alt="cancel">
     </div>
@@ -25,7 +25,7 @@ export default {
   methods: {
   },
   mounted() {
-    console.log('okay');
+    console.log(this.$route.query.error_code);
   },
   created() {
     console.log('okay', this.$route);

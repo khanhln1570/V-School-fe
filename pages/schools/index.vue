@@ -8,6 +8,19 @@
 
     <main-tabs :items="tabItem">
       <template #tabRight>
+      <cus-icon-text-button
+            smallIcon
+            @click.native="modalAddSchool = !modalAddSchool"
+          >
+            <template #icon>
+              <img
+                src="@/assets/images/school.svg"
+                alt="school"
+                class="mr-2"
+              />
+              <p class="mb-0 d-flex align-center black--text">Thêm trường</p>
+            </template>
+          </cus-icon-text-button>
         <table-search :search.sync="search" placeHolder="Hãy nhập gì đó …" @searchChange="handleChangeSearch"></table-search>
       </template>
 
@@ -58,6 +71,26 @@
         </main-table>
       </template>
     </main-tabs>
+
+    <main-modal
+      :modal="modalAddSchool"
+      @closeClick="modalAddSchool = false"
+      persistent
+      >
+      <template #modalHeader>
+        <h4 class="mb-0 subtitle">Thêm trường mới</h4>
+      </template>
+      <template #modalBody>
+        <main-input label="Mã số thuế" v-model.trim="form.mst"></main-input>
+        <main-input label="Tên" v-model.trim="form.name"></main-input>
+        <main-input label="Số điện thoại" v-model.trim="form.phone"></main-input>
+        <main-input label="Địa chỉ" v-model.trim="form.address"></main-input>
+        <main-input label="Năm hoạt động" v-model.trim="form.age"></main-input>
+        <main-input label="Địa chỉ mail" v-model.trim="form.email"></main-input>
+        <main-input label="Ghi chú" v-model.trim="form.note"></main-input>
+
+      </template>
+    </main-modal>
   </v-container>
 </template>
 
@@ -75,6 +108,9 @@ export default {
     CusIconTextButton: () => import("@/components/commons/main-button/cus-icon-text-button/CusIconTextButton"),
     TextButton: () =>
       import("@/components/commons/main-button/text-button/TextButton"),
+    MainModal: () => import("@/components/commons/main-modal/MainModal"),
+    MainInput: () => import("@/components/commons/main-input/MainInput"),
+
   },
   data() {
     return {
@@ -108,6 +144,16 @@ export default {
       ],
       selected: [],
       search: '',
+      modalAddSchool: false,
+      form: {
+        mst: '',
+        name: '',
+        phone: '',
+        address: '',
+        age: '',
+        email: '',
+        note: '',
+      }
     };
   },
   computed: {

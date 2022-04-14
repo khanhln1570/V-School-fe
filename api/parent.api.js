@@ -11,4 +11,7 @@ export default (axios, resource) => ({
   unbanParent(payload) {
     return axios.put(resource.unbanParent.replace(":id", payload.id));
   },
+  saveParents(payload) {
+    return axios.get(resource.saveParents, { params: payload });
+  },
 });

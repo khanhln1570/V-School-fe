@@ -23,7 +23,7 @@
           </cus-icon-text-button>
           <cus-icon-text-button
             smallIcon
-            @click.native="selected.length ? modalSendNotification = true : modalSendNotification = false"
+            @click.native="saveInvoicesBySchool"
           >
             <template #icon>
               <img
@@ -333,6 +333,14 @@ export default {
     handleSelectClick(invoiceNotificationTypeId) {
       this.notificationObject.type = invoiceNotificationTypeId;
     },
+    async saveInvoicesBySchool() {
+      const d = new Date();
+        let month = ('0'+d.getMonth()).slice(-2);
+      await this.$store.dispatch(
+          "invoice/saveInvoicesBySchool",
+           {MONTH: month}
+        );
+    }
   },
   beforeDestroy() {
     this.$router.replace({'query': null});

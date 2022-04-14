@@ -13,6 +13,7 @@ export default {
     getInvoiceById:"/invoices/:id",
     getAllInvoices:"/invoices",
     getAllInvoicesByChild: "/invoices",
+    saveInvoicesBySchool: "/invoices/saveInvoices",
 
     //Bill
     getAllBills: "/bills/getAllByToken",
@@ -48,7 +49,9 @@ export default {
     getPublicStudentBHYT: "/students/public/noToken",
     addBillPublic: "/bills/noToken",
 
-    //Sync data
-    
+    //Sync data admin
+    saveStudents: "/superadmin/saveDataStudents",
+    saveParents: "/superadmin/saveDataParents",
+    saveInvocies: "/superadmin/saveDataInvoices",
   }
 }

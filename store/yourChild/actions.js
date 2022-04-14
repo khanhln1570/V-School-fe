@@ -68,4 +68,21 @@ export default {
       return error.response.data;
     }
   },
+
+  async saveStudents({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.yourChild.saveStudents(payload);
+
+      if (response.data.ok) {
+        this.$toast.success(`Lưu dữ liệu thành công!`, {
+          duration: 4000
+        });
+        return response.data;
+      }
+    } catch (error) {
+      errorHandle(error, 10000);
+      // console.log(error.response.data);
+      return error.response.data;
+    }
+  },
 };

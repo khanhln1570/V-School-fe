@@ -26,6 +26,7 @@
                     <div class="w-100">
                       <p class="d-flex justify-space-between">Họ và tên: <span class="font-weight-bold">{{ currentSchool.account.name }}</span></p>
                       <p class="d-flex justify-space-between font-italic txt-secondary--text">id: <span> {{ currentSchool.id }}</span></p>
+                      <p class="d-flex justify-space-between font-italic txt-secondary--text">MST: <span> {{ currentSchool.MST }}</span></p>
                       <p class="d-flex justify-space-between blue--text">Số điện thoại: <span> {{ currentSchool.phone }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Địa chỉ: <span class="d-block"> {{ currentSchool.account.address }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Email: <span> {{ currentSchool.account.email }}</span></p>
@@ -38,11 +39,14 @@
                 </div>
               </div>
               <div class="d-flex flex-column">
-                <text-button class="mb-5" @click.native="" color="primary" :text="false">
+                <text-button class="mb-5" @click.native="saveStudents" color="primary" :text="false">
                   Cập nhật dữ liệu Học Sinh
                 </text-button>
-                <text-button class="mb-5" @click.native="" color="primary" :text="false">
+                <text-button class="mb-5" @click.native="saveParents" color="primary" :text="false">
                   Cập nhật dữ liệu Phụ Huynh
+                </text-button>
+                <text-button class="" @click.native="saveInvocies" color="primary" :text="false">
+                  Lưu dữ liệu phí thu
                 </text-button>
               </div>
             </div>
@@ -91,6 +95,27 @@ export default {
   },
   methods: {
       moment: moment,
+      async saveStudents() {
+        await this.$store.dispatch(
+          "yourChild/saveStudents",
+          {mst : this.currentSchool.MST}
+        );
+      },
+      async saveParents() {
+        await this.$store.dispatch(
+          "parent/saveParents",
+           {mst : this.currentSchool.MST}
+        );
+      },
+      async saveInvocies() {
+        const d = new Date();
+        let month = ('0'+d.getMonth()).slice(-2);
+        await this.$store.dispatch(
+          "invoice/saveInvocies",
+          {mst : this.currentSchool.MST, month: month }
+        );
+        console.log(month);
+      },
   },
 };
 </script>

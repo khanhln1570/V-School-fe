@@ -25,4 +25,30 @@ export default {
       errorHandle(error);
     }
   },
+
+  async saveInvocies({ commit, dispatch, state }, payload) {
+    try {
+      const response = await this.$api.invoice.saveInvocies(payload);
+      if (response.data.ok) {
+        this.$toast.success(`Lưu dữ liệu thành công!`, {
+          duration: 4000
+        });
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+
+  async saveInvoicesBySchool({ commit, dispatch, state }, payload) {
+    try {
+      const response = await this.$api.invoice.saveInvoicesBySchool(payload);
+      if (response.data.ok) {
+        this.$toast.success(`Lưu dữ liệu thành công!`, {
+          duration: 4000
+        });
+      }
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
 };

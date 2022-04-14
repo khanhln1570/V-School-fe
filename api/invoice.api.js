@@ -9,4 +9,11 @@ export default (axios, resource) => ({
   getCurrentInvoice(payload) {
     return axios.get(resource.getCurrentInvoice.replace(":id", payload.id));
   },
+  saveInvoices(payload) {
+    return axios.get(resource.saveInvoices, { params: payload });
+  },
+
+  saveInvoicesBySchool(payload) {
+    return axios.post(resource.saveInvoicesBySchool, payload);
+  },
 });

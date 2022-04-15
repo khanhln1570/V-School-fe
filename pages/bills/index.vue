@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <page-header title="Niên khoá 2020-2021">
+    <page-header title="Thanh toán">
       <template #titleIcon>
         <!-- <img src="@/assets/images/school.svg" alt="school" /> -->
       </template>
@@ -151,7 +151,7 @@ export default {
     return {
       headers: [
         {
-          text: "ID",
+          text: "Title",
           value: "MST",
           sortable: false,
         },

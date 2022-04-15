@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <page-header title="Phụ huynh niên khoá 2020-2021">
+    <page-header title="Phụ huynh">
       <template #titleIcon>
         <!-- <img src="@/assets/images/school.svg" alt="school" /> -->
       </template>

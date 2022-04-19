@@ -51,12 +51,12 @@
           </template>
           <template #status="{ value, item }">
             <v-chip
-              :class="'mb-0 white--text font-weight-regular' && item.account.status === 'ban' ? '':''"
-              :color="item.account.status === 'ban' ? 'red':'green'"
+              :class="'mb-0 white--text font-weight-regular' && item.account.status === 'BAN' ? '':''"
+              :color="item.account.status === 'BAN' ? 'red':'green'"
               text-color="white"
               >
 
-              {{ item.account.status === 'ban' ? 'cấm hoạt động' :  'hoạt động'}}
+              {{ item.account.status === 'BAN' ? 'cấm hoạt động' :  'hoạt động'}}
             </v-chip>
           </template>
           <template #phone="{ value }">

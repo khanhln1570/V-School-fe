@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="d-flex flex-column">
-                <text-button v-if="currentParent.account.status === 'ban'" :elevation="5" :text="false" class="fixed__btn2 pa-5 mb-5" color='success' dark="true" @click.native="handleUnbanBtn">
+                <text-button v-if="currentParent.account.status === 'BAN'" :elevation="5" :text="false" class="fixed__btn2 pa-5 mb-5" color='success' dark="true" @click.native="handleUnbanBtn">
                   <span class="text-capitalize font-weight-bold">Mở khoá tài khoản</span>
                 </text-button>
                 <text-button v-else :elevation="5" :text="false" class="fixed__btn2 pa-5 mb-5" color='red' dark="true" @click.native="handleBanBtn">

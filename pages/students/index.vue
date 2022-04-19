@@ -59,6 +59,7 @@
           :fetchItems="fetchItems"
           :search="search"
           searchLabel="Search name or ID"
+          :status="status"
         >
           <template #header-studentName="{ header }">
             <v-checkbox
@@ -272,7 +273,8 @@ export default {
       uploadFile: {
         uploading: false,
         response: null,
-      }
+      },
+      status: "SUCCESS",
     };
   },
   computed: {
@@ -302,7 +304,7 @@ export default {
       console.log(items);
     },
     async fetchItems(params) {
-      await this.$store.dispatch(GET_CHILD_BY_MST_ACTION, {mst: this.currentUser.MST, params: {page: params.page, limit: params.size, search: params.search}});
+      await this.$store.dispatch("yourChild/getAllStudents", {mst: this.currentUser.MST, params: {page: params.page, limit: params.size, search: params.search ? params.search : ''}});
     },
     handleChangeSearch(event) {
       this.search = event.target.value;

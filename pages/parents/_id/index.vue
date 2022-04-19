@@ -30,7 +30,7 @@
                       <p class="text--secondary d-flex justify-space-between ">Địa chỉ: <span class="d-block"> {{ currentParent.account.address }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Email: <span> {{ currentParent.account.email }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Tuổi: <span> {{ currentParent.account.age }}</span></p>
-                      <p class="text--secondary d-flex justify-space-between" >Trạng thái: <span :class="currentParent.account.status === 'ban' ? 'red--text':'success--text'"> {{ currentParent.account.status === 'ban' ? 'cấm hoạt động' : 'hoạt động' }}</span></p>
+                      <p class="text--secondary d-flex justify-space-between" >Trạng thái: <span :class="currentParent.account.status === 'BAN' ? 'red--text':'success--text'"> {{ currentParent.account.status === 'BAN' ? 'cấm hoạt động' : 'hoạt động' }}</span></p>
                       <p class="text--secondary d-flex justify-space-between ">Ngày lập tài khoản: <span> {{ moment(currentParent.account.createDate).format('DD-MM-YYYY') }}</span></p>
                     </div>
                   </div>

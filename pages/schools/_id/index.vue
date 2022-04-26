@@ -109,7 +109,7 @@ export default {
       },
       async saveInvocies() {
         const d = new Date();
-        let month = ('0'+d.getMonth()).slice(-2);
+        let month = ('0'+(d.getMonth()+1)).slice(-2);
         await this.$store.dispatch(
           "invoice/saveInvocies",
           {mst : this.currentSchool.MST, month: month }

@@ -56,7 +56,11 @@
             <p class="mb-0 txt-active--text font-weight-regular">
               <v-chip
                 class="ma-2 "
+<<<<<<< HEAD
                 :color="value === 'pending' ? 'yellow' : 'timeout' ? 'red' : 'green'"
+=======
+                :color="getColor(value)"
+>>>>>>> 4d2ce118e49c39f6d514a36438c3652d3af53a33
                 small
               >
                 {{ value }}
@@ -229,6 +233,11 @@ export default {
         });
       } else {
       }
+    },
+    getColor(status) {
+      if(status === 'success') return 'green';
+      if(status === 'pending') return 'yellow';
+      else return 'red';
     },
     numberToMoney: numberToMoney,
     // handleCloseClick() {

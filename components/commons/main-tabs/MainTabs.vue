@@ -43,13 +43,13 @@ export default {
   watch: {
     tab(value) {
       const { query } = this.$route;
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          ...query,
-          tab: value,
-        },
-      });
+      // this.$router.push({
+      //   path: this.$route.path,
+      //   query: {
+      //     ...query,
+      //     tab: value,
+      //   },
+      // });
 
       if (this.refetch) this.onFetchItems();
     },

@@ -29,8 +29,14 @@ export default {
   async saveInvocies({ commit, dispatch, state }, payload) {
     try {
       const response = await this.$api.invoice.saveInvocies(payload);
+      console.log(response);
       if (response.data.ok) {
         this.$toast.success(`Lưu dữ liệu thành công!`, {
+          duration: 4000
+        });
+      }
+      else {
+        this.$toast.error(`${response.data.message}`, {
           duration: 4000
         });
       }

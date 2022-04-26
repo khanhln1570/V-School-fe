@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container>
+    <v-container v-if="currentBill">
       <page-header :title="`Chi tiết hoá đơn ${currentBill.id}`" :backTo="currentUser.role === 'SCHOOL' ? '/invoicesSchool' : ''">
         <template #titleIcon></template>
         <template #subTitle></template>
@@ -95,13 +95,13 @@ export default {
       from: '',
     };
   },
-  async fetch() {
+  async created() {
+    console.log("id", this.$route.params.id);
     await this.$store.dispatch(
       "bill/getBillDetails",
-      {id: this.$route.params.id}
+      {id: this.$route?.params?.id ? this.$route.params.id : "2"}
     );
-    console.log(this);
-    this.form = this.prevRoute.path;
+    // console.log(this);
   },
   beforeRouteEnter(to, from, next) {
     console.log(from);

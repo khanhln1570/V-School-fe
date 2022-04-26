@@ -23,6 +23,6 @@ export default (axios, resource) => ({
     return axios.get(resource.getAllInvoicesByChild, {params: payload.params});
   },
   saveStudents(payload) {
-    return axios.get(resource.saveStudents, { params: payload });
+    return axios.post(resource.saveStudents, { params: payload });
   },
 });

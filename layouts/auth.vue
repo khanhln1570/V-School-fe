@@ -42,7 +42,7 @@
             <nuxt-link to="/policy" class="pr-5 white--text" style="border-right: 1px solid"
               >Chính sách</nuxt-link
             >
-            <nuxt-link to="/about" class="pl-4 white--text" v-if="!currentUser.role">Về chúng tôi</nuxt-link>
+            <nuxt-link to="/" class="pl-4 white--text" v-if="!currentUser.role">Về chúng tôi</nuxt-link>
           </div>
         </div>
       </v-container>
@@ -50,7 +50,7 @@
     <text-button :elevation="5" :text="false" :to="btn.to" class="fixed__btn pa-5 " :color="btn.color" :dark="btn.dark" v-if="btn.show">
       <span class="text-capitalize font-weight-bold">{{btn.title}}</span>
     </text-button>
-    <text-button v-if="!currentUser.role" :elevation="5" :text="false" to='/about' class="fixed__btn2 pa-5 " color='red' dark="true">
+    <text-button v-if="!currentUser.role" :elevation="5" :text="false" to='/' class="fixed__btn2 pa-5 " color='red' dark="true">
       <span class="text-capitalize font-weight-bold">Về chúng tôi</span>
     </text-button>
   </v-app>
@@ -103,7 +103,7 @@ export default {
           this.btn.title = 'Thanh toán học phí'
           this.btn.color = 'color-warning'
           this.btn.dark = false
-          this.btn.to = '/'
+          this.btn.to = '/search'
         }
       },
       deep: true,

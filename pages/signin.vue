@@ -4,9 +4,9 @@
       <group-validator
         class="mt-md-3 mt-xl-10 "
         :validation="$v.form.username"
-      >
+        >
         <template slot-scope="{ errors }">
-          <label >Tên đăng nhập <span class="red--text">*</span></label>
+          <label>Tên đăng nhập <span class="red--text">*</span></label>
           <main-input
             placeholder=""
             name="username"

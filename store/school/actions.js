@@ -52,4 +52,18 @@ export default {
       errorHandle(error);
     }
   },
+
+  async addSchool({ commit, dispatch }, payload) {
+    try {
+      const response = await this.$api.school.addSchool(payload);
+      if (response.data.ok) {
+        this.$toast.success(`thêm trường thành công !`, {
+          duration: 4000
+        });
+      }
+    } catch (error) {
+      // throw error;
+      errorHandle(error);
+    }
+  },
 };

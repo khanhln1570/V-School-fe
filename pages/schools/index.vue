@@ -75,6 +75,7 @@
     <main-modal
       :modal="modalAddSchool"
       @closeClick="modalAddSchool = false"
+      @nextClick="handleNextClick"
       persistent
       >
       <template #modalHeader>
@@ -83,12 +84,13 @@
       <template #modalBody>
         <main-input label="Mã số thuế" v-model.trim="form.mst"></main-input>
         <main-input label="Tên" v-model.trim="form.name"></main-input>
-        <main-input label="Số điện thoại" v-model.trim="form.phone"></main-input>
+        <main-input label="Số điện thoại" v-model.trim="form.email"></main-input>
         <main-input label="Địa chỉ" v-model.trim="form.address"></main-input>
-        <main-input label="Năm hoạt động" v-model.trim="form.age"></main-input>
-        <main-input label="Địa chỉ mail" v-model.trim="form.email"></main-input>
-        <main-input label="Ghi chú" v-model.trim="form.note"></main-input>
-
+        <main-input label="Năm hoạt động" v-model.trim="form.phone"></main-input>
+        <main-input label="merchant_name" v-model.trim="form.merchant_name"></main-input>
+        <main-input label="merchant_code" v-model.trim="form.merchant_code"></main-input>
+        <main-input label="hash_key" v-model.trim="form.hash_key"></main-input>
+        <main-input label="access_code" v-model.trim="form.access_code"></main-input>
       </template>
     </main-modal>
   </v-container>
@@ -148,11 +150,14 @@ export default {
       form: {
         mst: '',
         name: '',
-        phone: '',
-        address: '',
-        age: '',
         email: '',
-        note: '',
+        address: '',
+        phone: '',
+        merchant_name: '',
+        merchant_code: '',
+        hash_key: '',
+        access_code: '',
+
       }
     };
   },
@@ -174,7 +179,16 @@ export default {
     },
     handleViewClick(item) {
       console.log(item);
-    }
+    },
+    async handleNextClick() {
+      console.log("abc");
+
+      this.modalUpdateProfile = !this.modalUpdateProfile;
+      // await this.$store.dispatch("school/addSchool", this.form);
+      await this.$store.dispatch("school/addSchool", {
+        ...this.form,
+      });
+    },
   },
   async fetch() {
     // await this.$store.dispatch(GET_PROFILE_ACTION);

@@ -56,7 +56,7 @@
             <p class="mb-0 txt-active--text font-weight-regular">
               <v-chip
                 class="ma-2 "
-                :color="value === 'pending' ? 'yellow' : 'green'"
+                :color="value === 'pending' ? 'yellow' : 'timeout' ? 'red' : 'green'"
                 small
               >
                 {{ value }}

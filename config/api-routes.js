@@ -24,6 +24,7 @@ export default {
     getSchools: "/schools",
     getSchoolDetails: "/schools/:id",
     resetpassParent: "/schools/reset-password-user",
+    addSchool: "/superadmin/newSchool",
 
 
     //student

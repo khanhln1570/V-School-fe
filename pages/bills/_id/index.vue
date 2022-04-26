@@ -19,7 +19,7 @@
                   <span class="">Trạng thái:
                   <v-chip
                     class="ma-2 "
-                    :color="currentBill.status === 'pending' ? 'yellow' : 'green'"
+                    :color="currentBill.status === 'pending' ? 'yellow' : 'timeout' ? 'red' : 'green'"
                     small
                   >
                     {{ currentBill.status }}

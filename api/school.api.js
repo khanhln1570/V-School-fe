@@ -15,4 +15,8 @@ export default (axios, resource) => ({
   resetpassParent(payload) {
     return axios.put(resource.resetpassParent, payload);
   },
+
+  addSchool(payload) {
+    return axios.post(resource.addSchool, payload);
+  },
 });

@@ -149,7 +149,7 @@
           <template #action="{ item }">
             <text-button
               @click.native="handleViewClick(item)"
-              :to="`/schools/${item.id}`"
+              :to="`/invoices/${item.id}`"
             >
               <p class="mb-0 font-weight-medium">View</p>
             </text-button>

@@ -84,9 +84,9 @@
       <template #modalBody>
         <main-input label="Mã số thuế" v-model.trim="form.mst"></main-input>
         <main-input label="Tên" v-model.trim="form.name"></main-input>
-        <main-input label="Số điện thoại" v-model.trim="form.email"></main-input>
+        <main-input label="Email" v-model.trim="form.email"></main-input>
         <main-input label="Địa chỉ" v-model.trim="form.address"></main-input>
-        <main-input label="Năm hoạt động" v-model.trim="form.phone"></main-input>
+        <main-input label="Số điện thoại" v-model.trim="form.phone"></main-input>
         <main-input label="merchant_name" v-model.trim="form.merchant_name"></main-input>
         <main-input label="merchant_code" v-model.trim="form.merchant_code"></main-input>
         <main-input label="hash_key" v-model.trim="form.hash_key"></main-input>

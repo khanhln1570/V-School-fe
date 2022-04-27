@@ -36,7 +36,7 @@
 
 
     </v-container>
-    <v-container class="bg-white d-flex justify-center align-center flex-column py-10">
+    <v-container class="bg-white d-flex justify-center align-center flex-column py-10" fluid>
         <h2 class=" display-2 mb-2 font-weight-bold text-center"><span class="color-warning--text">VSCHOOL</span> ĐỒNG HÀNH CÙNG CON</h2>
         <p class="subtitle-1 font-weight-bold text-center">trên con đường học tập</p>
         <v-container class="d-flex justify-space-around flex-column flex-md-row align-center">

@@ -59,6 +59,10 @@ export default {
         this.$toast.success(`Lưu dữ liệu thành công!`, {
           duration: 4000
         });
+      } else {
+        this.$toast.error(`${response.data.message}`, {
+          duration: 4000
+        });
       }
     } catch (error) {
       errorHandle(error);

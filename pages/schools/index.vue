@@ -188,6 +188,7 @@ export default {
       await this.$store.dispatch("school/addSchool", {
         ...this.form,
       });
+      this.modalAddSchool = false;
     },
   },
   async fetch() {

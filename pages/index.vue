@@ -21,7 +21,7 @@
       <div class="d-flex justify-space-between align-center pb-10 flex-column flex-md-row">
         <div>
           <h2 class="white--text display-3 mb-2">Đóng Học Phí Chỉ Trong 5 Phút!</h2>
-          <p class="white--text">Gần 1.000 Trường Học, 20.000 Phụ Huynh đã dùng VSchool để quản lý học phí</p>
+          <p class="white--text">Gần 1.000 Trường Học, 20.000 Phụ Huynh đã dùng V-SChool để quản lý học phí</p>
           <text-button :text="false" to='/search'  color='color-warning' height="46px">
             <span class="text-capitalize font-weight-bold">Thanh toán ngay</span>
           </text-button>
@@ -37,7 +37,7 @@
 
     </v-container>
     <v-container class="bg-white d-flex justify-center align-center flex-column py-10" fluid>
-        <h2 class=" display-2 mb-2 font-weight-bold text-center"><span class="color-warning--text">VSCHOOL</span> ĐỒNG HÀNH CÙNG CON</h2>
+        <h2 class=" display-2 mb-2 font-weight-bold text-center"><span class="color-warning--text">V-SChool</span> ĐỒNG HÀNH CÙNG CON</h2>
         <p class="subtitle-1 font-weight-bold text-center">trên con đường học tập</p>
         <v-container class="d-flex justify-space-around flex-column flex-md-row align-center">
           <v-card max-width="286" class="d-flex justify-center align-center flex-column pa-10 rounded-xl" elevation="5">
@@ -73,14 +73,14 @@
         />
         <v-sheet max-width="550px" elevation="0" color="#F5F5FF">
           <h3 class="display-1 mb-2 font-weight-bold">TỔNG QUAN</h3>
-          <p class="font-weight-medium">VSchool là nền tảng công nghệ về giáo dục, giúp kết nối phụ huynh, học sinh với nhà trường thông qua các tiện ích giáo dục. Theo chủ trương của đề án Thẻ học đường thuộc Sở Giáo dục & Đào tạo TP. Đà Nẵng về việc thanh toán không tiền mặt trong nhà trường, các trường học trên địa bàn thành phố đã sử dụng phần mềm VSchool để quản lý nguồn thu trực tuyến.</p>
+          <p class="font-weight-medium">V-School là nền tảng công nghệ về giáo dục, giúp kết nối phụ huynh, học sinh với nhà trường thông qua các tiện ích giáo dục. Theo chủ trương của đề án Thẻ học đường thuộc Sở Giáo dục & Đào tạo TP. Đà Nẵng về việc thanh toán không tiền mặt trong nhà trường, các trường học trên địa bàn thành phố đã sử dụng phần mềm V-SChool để quản lý nguồn thu trực tuyến.</p>
         </v-sheet>
       </v-container>
 
       <v-container class="d-flex justify-space-around flex-column flex-md-row">
         <v-sheet max-width="550px" elevation="0" color="#F5F5FF">
           <h3 class="display-1 mb-2 font-weight-bold">KHÔNG NGỪNG BỨT PHÁ</h3>
-          <p class="font-weight-medium">Trong thời gian sắp tới, VSchool sẽ tiếp tục cải tiến & ra mắt nhiều tính năng mới giúp Quý phụ huynh có thể chủ động theo dõi tình hình, đồng hành cùng con em trên hành trình học vấn. Bên cạnh đó, VSchool sẽ luôn là đối tác tin cậy của nhà trường và giáo viên, góp phần xây dựng môi trường học đường văn minh hiện đại.</p>
+          <p class="font-weight-medium">Trong thời gian sắp tới, V-SChool sẽ tiếp tục cải tiến & ra mắt nhiều tính năng mới giúp Quý phụ huynh có thể chủ động theo dõi tình hình, đồng hành cùng con em trên hành trình học vấn. Bên cạnh đó, V-SChool sẽ luôn là đối tác tin cậy của nhà trường và giáo viên, góp phần xây dựng môi trường học đường văn minh hiện đại.</p>
         </v-sheet>
         <img
           src="../assets/images/Image 20.svg"
@@ -92,15 +92,15 @@
       <img
           src="../assets/images/logo-big.svg"
         />
-      <p class="font-weight-bold subtitle-1">CÔNG TY CỔ PHẦN CÔNG NGHỆ GIÁO DỤC VSCHOOL</p>
+      <p class="font-weight-bold subtitle-1">CÔNG TY TNHH DỊCH VỤ & GIẢI PHÁP VINTECH</p>
 
       <div class="font-weight-bold my-10">
-        <p><span class="font-weight-light">Mã số thuế:</span> 0316517482</p>
-        <p><span class="font-weight-light">Địa chỉ:</span> 12 Nam Kỳ Khởi Nghĩa, Quận Hải Châu, Đà Nẵng</p>
-        <p><span class="font-weight-light">Liên Hệ:</span> hotro@vschool.vn</p>
+        <p><span class="font-weight-light">Mã số thuế:</span> 0402050829</p>
+        <p><span class="font-weight-light">Địa chỉ:</span> 348 Nguyễn Hiến Lê, Phường Hoà Xuân, Quận Cẩm Lệ, Thành phố Đà Nẵng, Việt Nam</p>
+        <p><span class="font-weight-light">Liên Hệ:</span> V-SChool2021vn@gmail.com</p>
       </div>
 
-      <p class="font-weight-bold">© 2022 VSCHOOL. All rights reserved.</p>
+      <p class="font-weight-bold">© 2022 V-SCHOOL. All rights reserved.</p>
     </v-container>
   </div>
 </v-lazy>

@@ -99,6 +99,7 @@
         <p><span class="font-weight-light">Địa chỉ:</span> 348 Nguyễn Hiến Lê, Phường Hoà Xuân, Quận Cẩm Lệ, Thành phố Đà Nẵng, Việt Nam</p>
         <p><span class="font-weight-light">Liên Hệ:</span> V-SChool2021vn@gmail.com</p>
       </div>
+      <a href='http://online.gov.vn/Home/WebDetails/97212'><img alt='' title='' src='http://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoSaleNoti.png'/></a>
 
       <p class="font-weight-bold">© 2022 V-SCHOOL. All rights reserved.</p>
     </v-container>
